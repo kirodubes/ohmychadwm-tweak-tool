@@ -25,6 +25,10 @@
   theme. A theme without a sibling gets a note.
 - The Look page says its settings are shared with all your desktops (Xfce4, Ohmychadwm and the rest): they live in the GTK
   files, gsettings and XFCE's own xsettings, which every session reads.
+- **Started from XFCE (Ctrl+Alt+H) or another desktop**, the pages that only change Ohmychadwm say so: the bar part of
+  Look, Bar & windows, Wallpaper, Startup apps, the terminal/file manager keys, Displays (a change shows now, the
+  saved layout only at Ohmychadwm logins) and Keys. The Restart Ohmychadwm button stays hidden there, and Apply says
+  the bar shows at the next Ohmychadwm login.
 - **Live test** (`tests/run-live-ohmychadwm.sh`, not in the package): run on a box logged in to ohmychadwm, it presses
   every page's buttons and reads each change back (settings files, gsettings, xfconf, xrdb, xrandr, xinput, feh,
   sxhkd, the rebuilt bar), then restores everything.
@@ -52,6 +56,9 @@
   GTK_THEME on/off, system + SDDM cursor, two bar rebuilds, the input file) and the Style fix measured on fresh GTK 3
   and GTK 4 windows (brightness 0.96 Light, 0.24 Dark). The runner restores every file it backed up and removes the
   `.oma-bak` files the run created.
+- `ott_chadwm.in_session()`: the desktop names in `DESKTOP_SESSION` / `XDG_SESSION_DESKTOP` / `XDG_CURRENT_DESKTOP`,
+  or, when none is set (startx), a running `ohmychadwm` for this user. `can_restart()` requires it, so the restart
+  key is never sent into another desktop.
 - Keys parses sxhkdrc and the `keys[]` array (TAGKEYS expanded, `KEY_*` macros resolved for `KIRO_AZERTY`,
   spawn variables resolved to their command).
 

@@ -673,7 +673,7 @@ def build_steps():
     def chk_status():
         stp = PAGES["Status"]
         stp.refresh()
-        record("Status page builds", "PASS", f"session ohmychadwm={ott_gui._in_ohmychadwm()}")
+        record("Status page builds", "PASS", f"session ohmychadwm={ott_chadwm.in_session()}")
     add(Step("status", lambda: None, chk_status, until=always))
 
     add(Step("end", lambda: None, lambda: record("End", "INFO", f"screenshot {shot('end')}"), until=always))

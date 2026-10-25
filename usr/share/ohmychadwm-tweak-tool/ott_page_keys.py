@@ -7,7 +7,7 @@ from gi.repository import Gtk  # noqa: E402
 
 import ott_chadwm  # noqa: E402
 import ott_keys  # noqa: E402
-from ott_widgets import clear, muted, page_box, section  # noqa: E402
+from ott_widgets import clear, muted, page_box, section, warning  # noqa: E402
 
 _SOURCE = {"sxhkd": "sxhkdrc", "ohmychadwm": "Ohmychadwm"}
 
@@ -23,6 +23,9 @@ class KeysPage:
         """Re-read sxhkdrc and config.def.h."""
         clear(self.widget)
         self.widget.append(section("Keys"))
+        if not ott_chadwm.in_session():
+            self.widget.append(warning("You are not in an Ohmychadwm session: these are Ohmychadwm's keys, not the "
+                                       "ones of the desktop you are in now."))
         self.widget.append(muted("From ~/.config/ohmychadwm/sxhkd/sxhkdrc and the keys of "
                                  "~/.config/ohmychadwm/chadwm/config.def.h, as they are now."))
         self._rows = []

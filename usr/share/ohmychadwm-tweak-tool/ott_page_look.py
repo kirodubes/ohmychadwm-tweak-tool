@@ -16,6 +16,7 @@ import ott_scan  # noqa: E402
 import ott_system  # noqa: E402
 import ott_targets  # noqa: E402
 from ott_widgets import (  # noqa: E402
+    session_note,
     dropdown,
     settings_grid,
     muted,
@@ -210,6 +211,8 @@ class LookPage:
     def _build_bar_section(self, sel, config):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
         box.append(section("Ohmychadwm bar"))
+        if (note := session_note()) is not None:
+            box.append(note)
         if not self._has_chadwm:
             box.append(muted("~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once first."))
             self._dd_bar = None
@@ -456,8 +459,10 @@ class LookPage:
             if ott_chadwm.can_restart():
                 self._set_status("Applied. Restart Ohmychadwm to see the new bar." + relogin)
                 self._btn_restart.set_visible(True)
-            else:
+            elif ott_chadwm.in_session():
                 self._set_status("Applied. Press Super+Shift+R to see the new bar." + relogin)
+            else:
+                self._set_status("Applied. The new bar shows at your next Ohmychadwm login." + relogin)
         elif notes:
             self._set_status("Applied. Log out and back in to see the new theme everywhere.")
         else:

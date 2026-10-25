@@ -123,11 +123,6 @@ def _status_grid(rows):
     return grid
 
 
-def _in_ohmychadwm():
-    return "ohmychadwm" in (os.environ.get("DESKTOP_SESSION", "") + os.environ.get("XDG_SESSION_DESKTOP", "")
-                            + os.environ.get("XDG_CURRENT_DESKTOP", "")).lower()
-
-
 class StatusPage:
     """What the app found: the ohmychadwm setup, the built bar, and the tools each page needs."""
 
@@ -142,8 +137,8 @@ class StatusPage:
         installed = os.path.isfile(ott_root.INSTALL_PATH)
         self.widget.append(section("Your desktop"))
         self.widget.append(_status_grid([
-            ("Session", "Ohmychadwm" if _in_ohmychadwm() else "not an Ohmychadwm session — changes show there",
-             _in_ohmychadwm()),
+            ("Session", "Ohmychadwm" if ott_chadwm.in_session() else "not an Ohmychadwm session — changes show there",
+             ott_chadwm.in_session()),
             ("Config", ott_chadwm.CONFIG if config else "missing — log into Ohmychadwm once first", bool(config)),
             ("Bar theme", ott_chadwm.active_theme(config) or "none", True),
             ("Your own bar build", ott_root.INSTALL_PATH if installed

@@ -9,8 +9,10 @@ gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk  # noqa: E402
 
 import log  # noqa: E402
+import ott_chadwm  # noqa: E402
 import ott_display  # noqa: E402
 from ott_widgets import (  # noqa: E402
+    warning,
     KEEP_SECONDS,
     ask_keep,
     clear,
@@ -47,6 +49,10 @@ class DisplaysPage:
         clear(self.widget)
         self._rows = {}
         self.widget.append(section("Displays"))
+        if not ott_chadwm.in_session():
+            self.widget.append(warning("You are not in an Ohmychadwm session: a change shows right away, but the "
+                                       "saved layout is only used at your Ohmychadwm logins. This desktop keeps "
+                                       "its own display settings."))
         short = ott_display.layout_path().replace(os.path.expanduser("~"), "~", 1)
         self.widget.append(muted(
             f"Changes are used right away. Keep them within {KEEP_SECONDS} seconds and they are saved to {short} "

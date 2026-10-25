@@ -12,7 +12,7 @@ from gi.repository import Gdk, GdkPixbuf, Gio, GLib, Gtk, Pango  # noqa: E402
 
 import log  # noqa: E402
 import ott_wallpaper  # noqa: E402
-from ott_widgets import dropdown, muted, page_box, section, selected, set_status  # noqa: E402
+from ott_widgets import dropdown, muted, page_box, section, selected, session_note, set_status  # noqa: E402
 
 _CHOOSE = "Choose folder…"
 _THUMB_W, _THUMB_H = 160, 100
@@ -31,6 +31,8 @@ class WallpaperPage:
 
         box = page_box()
         box.append(section("Wallpaper"))
+        if (note := session_note()) is not None:
+            box.append(note)
 
         row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         row.append(Gtk.Label(label="Show", xalign=0))

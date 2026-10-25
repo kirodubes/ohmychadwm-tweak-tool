@@ -231,9 +231,18 @@ def clean():
     _run(["make", "clean"])
 
 
+def in_session():
+    """Return True when the app runs inside an ohmychadwm session (not XFCE or another desktop)."""
+    names = " ".join(os.environ.get(k, "") for k in ("DESKTOP_SESSION", "XDG_SESSION_DESKTOP", "XDG_CURRENT_DESKTOP"))
+    if names.strip():
+        return "ohmychadwm" in names.lower()
+    # startx and friends set none of these: then a running ohmychadwm is the session
+    return subprocess.run(["pgrep", "-u", str(os.getuid()), "-x", "ohmychadwm"], capture_output=True).returncode == 0
+
+
 def can_restart():
-    """Return True when the app can restart ohmychadwm itself (needs xdotool)."""
-    return shutil.which("xdotool") is not None
+    """Return True when the app can restart ohmychadwm itself (needs xdotool and a running ohmychadwm session)."""
+    return shutil.which("xdotool") is not None and in_session()
 
 
 def restart():

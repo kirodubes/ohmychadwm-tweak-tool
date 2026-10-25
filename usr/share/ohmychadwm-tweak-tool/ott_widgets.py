@@ -7,6 +7,8 @@ import gi
 gi.require_version("Gtk", "4.0")
 from gi.repository import GLib, Gtk  # noqa: E402
 
+import ott_chadwm  # noqa: E402
+
 KEEP_SECONDS = 15
 
 
@@ -30,6 +32,14 @@ def warning(text=""):
     lbl = muted(text)
     lbl.add_css_class("warning-text")
     return lbl
+
+
+def session_note():
+    """Return a warning that this part is for the ohmychadwm session, or None when the app runs in it."""
+    if ott_chadwm.in_session():
+        return None
+    return warning("You are not in an Ohmychadwm session: this part is for your Ohmychadwm desktop. You see it at "
+                   "your next Ohmychadwm login, not here.")
 
 
 def row_label(text):

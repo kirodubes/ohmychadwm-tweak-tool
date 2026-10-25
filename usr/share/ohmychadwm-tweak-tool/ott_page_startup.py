@@ -7,7 +7,7 @@ from gi.repository import Gtk  # noqa: E402
 
 import log  # noqa: E402
 import ott_startup  # noqa: E402
-from ott_widgets import clear, muted, page_box, section, set_status, status_label, warning  # noqa: E402
+from ott_widgets import clear, muted, page_box, section, session_note, set_status, status_label, warning  # noqa: E402
 
 _COMPOSITORS = ("picom", "fastcompmgr", "xcompmgr", "compton")
 
@@ -23,6 +23,8 @@ class StartupPage:
         """Re-read run.sh and rebuild the list."""
         clear(self.widget)
         self.widget.append(section("Startup apps"))
+        if (note := session_note()) is not None:
+            self.widget.append(note)
         text = ott_startup.read()
         if not text:
             self.widget.append(muted("~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "

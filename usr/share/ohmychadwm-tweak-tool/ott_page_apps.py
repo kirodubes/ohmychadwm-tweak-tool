@@ -9,6 +9,7 @@ import log  # noqa: E402
 import ott_apps  # noqa: E402
 import ott_keys  # noqa: E402
 from ott_widgets import (  # noqa: E402
+    session_note,
     clear,
     dropdown,
     muted,
@@ -35,6 +36,8 @@ class AppsPage:
         clear(self.widget)
         self._mime_rows = {}
         self.widget.append(section("Terminal & file manager"))
+        if (note := session_note()) is not None:
+            self.widget.append(note)
         sxhkdrc = ott_keys.read_sxhkdrc()
         self._keys_rows = {}
         if sxhkdrc:

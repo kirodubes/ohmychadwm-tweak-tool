@@ -9,6 +9,7 @@ import log  # noqa: E402
 import ott_chadwm  # noqa: E402
 import ott_root  # noqa: E402
 from ott_widgets import (  # noqa: E402
+    session_note,
     clear,
     muted,
     page_box,
@@ -47,6 +48,8 @@ class BarPage:
         self._widgets = {}
         config = ott_chadwm.read_config()
         self.widget.append(section("Bar & windows"))
+        if (note := session_note()) is not None:
+            self.widget.append(note)
         if not config:
             self.widget.append(muted("~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
                                      "first."))
@@ -130,8 +133,10 @@ class BarPage:
         elif ott_chadwm.can_restart():
             set_status(self._status, "Applied. Restart Ohmychadwm to see it.")
             self._btn_restart.set_visible(True)
-        else:
+        elif ott_chadwm.in_session():
             set_status(self._status, "Applied. Press Super+Shift+R to see it.")
+        else:
+            set_status(self._status, "Applied. It shows at your next Ohmychadwm login.")
 
     def _on_restart(self, _widget):
         self._btn_restart.set_visible(False)
