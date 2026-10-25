@@ -52,8 +52,9 @@ class TweakApp(Gtk.Application):
         log.debug_print(f"color-scheme {scheme}")
 
     def on_activate(self, _app):
-        """Create and show the main window."""
-        window = Main(self)
+        """Show the main window, creating it on the first activation only."""
+        # Ctrl+Alt+H while the app is open activates this instance again: raise the window, don't add a second one
+        window = self.get_active_window() or Main(self)
         window.present()
 
 

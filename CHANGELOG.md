@@ -29,6 +29,7 @@
   Look, Bar & windows, Wallpaper, Startup apps, the terminal/file manager keys, Displays (a change shows now, the
   saved layout only at Ohmychadwm logins) and Keys. The Restart Ohmychadwm button stays hidden there, and Apply says
   the bar shows at the next Ohmychadwm login.
+- **Ctrl+Alt+H while the app is open brings its window forward** instead of opening a second window (found in XFCE).
 - **Live test** (`tests/run-live-ohmychadwm.sh`, not in the package): run on a box logged in to ohmychadwm, it presses
   every page's buttons and reads each change back (settings files, gsettings, xfconf, xrdb, xrandr, xinput, feh,
   sxhkd, the rebuilt bar), then restores everything.
@@ -59,6 +60,10 @@
 - `ott_chadwm.in_session()`: the desktop names in `DESKTOP_SESSION` / `XDG_SESSION_DESKTOP` / `XDG_CURRENT_DESKTOP`,
   or, when none is set (startx), a running `ohmychadwm` for this user. `can_restart()` requires it, so the restart
   key is never sent into another desktop.
+- `tests/live_xfce.py`: the same harness inside an XFCE session, without root. It checks the notes on every page,
+  that Restart stays hidden, Light/Dark measured on fresh GTK 3/4 windows through xsettings, the icon theme in
+  xsettings and the live mouse speed, then restores the user's files. On a test box in XFCE: 17 checks passed.
+- `on_activate` reuses `get_active_window()`: GTK activates the running instance again on every launch.
 - Keys parses sxhkdrc and the `keys[]` array (TAGKEYS expanded, `KEY_*` macros resolved for `KIRO_AZERTY`,
   spawn variables resolved to their command).
 
