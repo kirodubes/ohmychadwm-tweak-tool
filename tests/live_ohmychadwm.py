@@ -298,6 +298,8 @@ def build_steps():
         lp._chk_light.set_active(True)
         lp._resetting = False
         pick(lp._dd_theme, dark_theme)
+        # picking the theme that is already selected emits no notify::selected, so refresh the note by hand
+        lp._update_theme_note()
         shown = lp._btn_twin.get_visible(), lp._btn_twin.get_label()
         lp._btn_twin.emit("clicked")
         check("Look: Light + dark theme offers 'Use <light sibling>' and it picks it",

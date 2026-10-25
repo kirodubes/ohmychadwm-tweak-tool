@@ -32,7 +32,9 @@
 - **Ctrl+Alt+H while the app is open brings its window forward** instead of opening a second window (found in XFCE).
 - **Live test** (`tests/run-live-ohmychadwm.sh`, not in the package): run on a box logged in to ohmychadwm, it presses
   every page's buttons and reads each change back (settings files, gsettings, xfconf, xrdb, xrandr, xinput, feh,
-  sxhkd, the rebuilt bar), then restores everything.
+  sxhkd, the rebuilt bar), then restores everything. Its "Use <light sibling>" check no longer fails when the box
+  already has the dark sibling selected: picking the selected theme again changes nothing, so the test now refreshes
+  the theme note itself (found on a test box: 49 passed, this one failed).
 
 ### Technical Details
 - OMA's toolkit-free modules carried over under the `ott_` prefix (`targets`, `scan`, `env`, `system`, `chadwm`,
