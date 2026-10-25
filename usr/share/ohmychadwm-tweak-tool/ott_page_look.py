@@ -134,9 +134,17 @@ class LookPage:
         self._dd_theme = dropdown(self._gtk_themes.keys(), sel.theme)
         self._dd_theme.connect("notify::selected", lambda *_: self._update_theme_note())
         self._theme_note = muted()
+        # Shown when the Style and the theme disagree (Light + Arc-Dawn-Dark): one click picks the sibling
+        self._btn_twin = Gtk.Button()
+        self._btn_twin.set_halign(Gtk.Align.START)
+        self._btn_twin.set_visible(False)
+        self._btn_twin.connect("clicked", lambda _w: select(self._dd_theme, self._btn_twin.twin))
+        note_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+        note_box.append(self._theme_note)
+        note_box.append(self._btn_twin)
         grid.attach(row_label("Theme"), 0, 0, 1, 1)
         grid.attach(self._dd_theme, 1, 0, 2, 1)
-        grid.attach(self._theme_note, 1, 1, 2, 1)
+        grid.attach(note_box, 1, 1, 2, 1)
         self._chk_force = Gtk.CheckButton(label="Force this theme on every app (system-wide)")
         self._chk_force.set_tooltip_text(
             "Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; shows after re-login."
@@ -255,11 +263,18 @@ class LookPage:
         if not self._gtk_themes.get(name, True):
             notes.append("This theme has no GTK 4 version — GTK 4 apps will look like Adwaita.")
         dark = self._chk_dark.get_active() if hasattr(self, "_chk_dark") else None
-        if dark is not None and ott_scan.style_variant(name, dark, self._gtk_themes) is None:
-            notes.append(f"“{name}” has no {'dark' if dark else 'light'} version, so most apps stay "
-                         f"{'light' if dark else 'dark'}. Pick a {'dark' if dark else 'light'} theme above.")
+        twin = ott_scan.style_variant(name, dark, self._gtk_themes) if dark is not None else name
+        word, other = ("dark", "light") if dark else ("light", "dark")
+        if twin is None:
+            notes.append(f"“{name}” has no {word} version, so most apps stay {other}. Pick a {word} theme above.")
+        elif twin != name:
+            notes.append(f"“{name}” is a {other} theme, so Style {word.capitalize()} changes little.")
         self._theme_note.set_label("\n".join(notes))
         self._theme_note.set_visible(bool(notes))
+        if hasattr(self, "_btn_twin"):
+            self._btn_twin.twin = twin
+            self._btn_twin.set_label(f"Use {twin}" if twin else "")
+            self._btn_twin.set_visible(bool(twin) and twin != name)
 
     def _on_style_toggled(self):
         # The theme decides what GTK 3 apps look like: Light on a dark-only theme would change nothing,

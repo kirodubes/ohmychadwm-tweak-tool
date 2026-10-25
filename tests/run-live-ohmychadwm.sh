@@ -121,13 +121,20 @@ backup() {
 
 allow_pkexec() {
     log_info "Temporary polkit rule: pkexec without a password for $(id -un)"
+    # a file, not a pipe: as_root may feed the sudo password through stdin
+    local rule="${OUT}/livetest.rules"
     printf 'polkit.addRule(function(action, subject) {\n    if (action.id == "org.freedesktop.policykit.exec" && subject.user == "%s") {\n        return polkit.Result.YES;\n    }\n});\n' \
-        "$(id -un)" | as_root tee "$POLKIT_RULE" >/dev/null
-    sleep 1
+        "$(id -un)" > "$rule"
+    as_root install -m 644 "$rule" "$POLKIT_RULE"
+    sleep 2
+    pkexec true || { log_error "pkexec still asks for a password: the root steps will fail"; }
 }
 
 restore() {
     log_section "Restore"
+    # put back as much as possible: one failing step must not leave the rest undone
+    set +e
+    trap - ERR
     as_root rm -f "$POLKIT_RULE"
     pkill -f "live_ohmychadwm[.]py" 2>/dev/null || true
     local i
@@ -143,8 +150,10 @@ restore() {
     [[ -s "${BACKUP}/mime-text" ]] && xdg-mime default "$(cat "${BACKUP}/mime-text")" text/plain || true
     local n target
     while IFS=$'\t' read -r n target; do
-        as_root cp -a "${BACKUP}/root/${n}" "$target"
-        as_root chown root:root "$target"
+        # copy next to it, then rename: the running ohmychadwm binary can't be overwritten in place
+        as_root cp -a "${BACKUP}/root/${n}" "${target}.ott-restore"
+        as_root chown root:root "${target}.ott-restore"
+        as_root mv -f "${target}.ott-restore" "$target" || log_error "Could not restore ${target}"
     done < "${BACKUP}/root-index"
     while read -r i; do
         [[ -n "$i" ]] && as_root rm -f "$i"

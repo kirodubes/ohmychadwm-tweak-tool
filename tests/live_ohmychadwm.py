@@ -255,6 +255,8 @@ def build_steps():
     def act_style(dark):
         def act():
             lp._chk_sys_cursor.set_active(False)
+            # toggle through the other style first, so the switch fires whatever the start state is
+            (lp._chk_light if dark else lp._chk_dark).set_active(True)
             (lp._chk_dark if dark else lp._chk_light).set_active(True)
             st["style_theme"] = ott_scan.style_variant(st["sel0"].theme, dark, themes) or st["sel0"].theme
             st["style_dd"] = ott_page_selected(lp._dd_theme)
@@ -285,6 +287,23 @@ def build_steps():
                   f"mean brightness gtk3 {b3}, gtk4 {b4}; screenshot {shot('style-' + word)}")
         return chk
 
+    def chk_twin():
+        # Light chosen while a dark-only theme is selected (the state a user can open the app in)
+        dark_theme = ott_scan.style_variant(st["sel0"].theme, True, themes)
+        light_theme = ott_scan.style_variant(st["sel0"].theme, False, themes)
+        if not dark_theme or not light_theme or dark_theme == light_theme:
+            record("Look: Use <sibling> button", "INFO", f"{st['sel0'].theme} has no light/dark pair")
+            return
+        lp._resetting = True
+        lp._chk_light.set_active(True)
+        lp._resetting = False
+        pick(lp._dd_theme, dark_theme)
+        shown = lp._btn_twin.get_visible(), lp._btn_twin.get_label()
+        lp._btn_twin.emit("clicked")
+        check("Look: Light + dark theme offers 'Use <light sibling>' and it picks it",
+              shown == (True, f"Use {light_theme}") and ott_page_selected(lp._dd_theme) == light_theme,
+              f"button {shown}, theme now {ott_page_selected(lp._dd_theme)}")
+    add(Step("twin button", lambda: None, chk_twin, until=always))
     add(Step("style light", act_style(False), chk_style(False), page="ott_page_look", timeout=60))
     add(Step("style dark", act_style(True), chk_style(True), page="ott_page_look", timeout=60))
 
@@ -581,7 +600,7 @@ def build_steps():
         ap.refresh()
         keys, dd, now = ap._keys_rows["Terminal"]
         st["term0"] = now
-        st["term"] = next((t for t in ("xterm", "kitty", "xfce4-terminal") if t in dd_names(dd) and t != now), None)
+        st["term"] = next((t for t in dd_names(dd) if t != now), None)
         if st["term"]:
             pick(dd, st["term"])
             ap._on_apply(None)

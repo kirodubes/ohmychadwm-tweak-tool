@@ -19,6 +19,13 @@
 - **Startup apps** (new): switch what ohmychadwm starts at login on or off, add your own.
 - **Default apps** (new): the terminal and file manager on Super+Enter / Super+Shift+Enter, and the app per file type.
 - **Keys** (new): a searchable list of every key binding. **Status**: what the app found.
+- **Style Light/Dark now really changes the look.** It only set a preference, so on a dark-only theme like
+  Arc-Dawn-Dark, Light changed nothing (found on a test box). Picking Light or Dark now also switches to the theme's
+  light or dark sibling (Arc-Dawn-Dark ↔ Arc-Dawn). When the two disagree, a **Use Arc-Dawn** button sits under the
+  theme. A theme without a sibling gets a note.
+- **Live test** (`tests/run-live-ohmychadwm.sh`, not in the package): run on a box logged in to ohmychadwm, it presses
+  every page's buttons and reads each change back (settings files, gsettings, xfconf, xrdb, xrandr, xinput, feh,
+  sxhkd, the rebuilt bar), then restores everything.
 
 ### Technical Details
 - OMA's toolkit-free modules carried over under the `ott_` prefix (`targets`, `scan`, `env`, `system`, `chadwm`,
@@ -35,6 +42,12 @@
   are re-placed side by side when a width changes.
 - Default apps rewrite only single-word commands on the terminal/file-manager keys in sxhkdrc, then
   `pkill -USR1 -x sxhkd`.
+- Mouse & touchpad saves as `40-…`: kiro-system-files ships `30-touchpad.conf` (Tapping on), and Xorg applies
+  InputClass files in name order, so a `30-o…` file lost to it.
+- Style: `ott_scan.style_variant()` finds the sibling by the `-Dark`/`-Darker`/`-Light` suffix; Light writes
+  `color-scheme prefer-light` (not `default`), which apps that follow the desktop, this one included, read as light.
+- Live test, first run on a test box: 39 checks passed. The pkexec steps could not run unattended there, so the root
+  changes were checked by calling the helper with sudo instead (GTK_THEME, cursor, input file, bar install).
 - Keys parses sxhkdrc and the `keys[]` array (TAGKEYS expanded, `KEY_*` macros resolved for `KIRO_AZERTY`,
   spawn variables resolved to their command).
 
