@@ -23,6 +23,8 @@
   Arc-Dawn-Dark, Light changed nothing (found on a test box). Picking Light or Dark now also switches to the theme's
   light or dark sibling (Arc-Dawn-Dark ↔ Arc-Dawn). When the two disagree, a **Use Arc-Dawn** button sits under the
   theme. A theme without a sibling gets a note.
+- The Look page says its settings are shared with your other desktops (XFCE, Hyprland, …): they live in the GTK
+  files, gsettings and XFCE's own xsettings, which every session reads.
 - **Live test** (`tests/run-live-ohmychadwm.sh`, not in the package): run on a box logged in to ohmychadwm, it presses
   every page's buttons and reads each change back (settings files, gsettings, xfconf, xrdb, xrandr, xinput, feh,
   sxhkd, the rebuilt bar), then restores everything.
