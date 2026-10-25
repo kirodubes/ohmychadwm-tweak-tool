@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Ohmychadwm Tweak Tool
+GenericName=Desktop Settings
+Comment=Look, bar, wallpaper, displays, mouse, startup apps, default apps and keys for Ohmychadwm
+Exec=/usr/bin/ohmychadwm-tweak-tool
+Icon=preferences-desktop-theme
+Terminal=false
+Type=Application
+Categories=GTK;Settings;DesktopSettings;X-Kiro-Apps;
+Keywords=theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar;gaps;wallpaper;display;mouse;touchpad;startup;keys
+StartupNotify=true

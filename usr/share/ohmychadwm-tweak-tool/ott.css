@@ -1,0 +1,66 @@
+label#title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+label.info-label {
+    color: alpha(currentColor, 0.65);
+    font-size: 11px;
+}
+
+.support-button {
+    color: #e0567a;
+}
+
+.support-button:hover {
+    background-color: alpha(#e0567a, 0.18);
+}
+
+.section-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.muted {
+    color: alpha(currentColor, 0.65);
+    font-size: 12px;
+}
+
+.status-line {
+    color: #ffa500;  /* ATT orange */
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 20px;
+}
+
+.status-error {
+    color: @error_color;
+}
+
+.warning-text {
+    color: #ffa500;
+}
+
+.drift-banner {
+    padding: 10px 18px;
+    background-color: alpha(#ffa500, 0.14);
+    border-bottom: 1px solid alpha(#ffa500, 0.45);
+}
+
+.drift-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.icon-strip {
+    padding: 8px 10px;
+    border: 1px solid alpha(currentColor, 0.12);
+    border-radius: 8px;
+    background-color: alpha(currentColor, 0.04);
+}
+
+.warn {
+    color: #e0a030;
+    font-weight: 600;
+}
