@@ -129,7 +129,7 @@ class LookPage:
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
         box.append(section("Applications"))
         box.append(muted("Used by Thunar and every GTK 2, 3 and 4 application. Shared with your other desktops: "
-                         "XFCE, Hyprland and the rest get the same theme, icons, cursor and font."))
+                         "XFCE and the rest get the same theme, icons, cursor and font."))
         grid = settings_grid()
 
         self._dd_theme = dropdown(self._gtk_themes.keys(), sel.theme)
