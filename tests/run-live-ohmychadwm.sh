@@ -116,7 +116,13 @@ backup() {
         fi
     done
     as_root chown -R "$(id -u):$(id -g)" "${BACKUP}/root"
+    oma_baks > "${BACKUP}/oma-bak-before"
     log_success "Backup in ${BACKUP}"
+}
+
+oma_baks() {
+    # the app's one-time backups; restore removes the ones this run created
+    as_root find /etc /usr/share/icons/default /usr/local/bin "$HOME" -maxdepth 4 -name '*.oma-bak' 2>/dev/null | sort
 }
 
 allow_pkexec() {
@@ -158,6 +164,9 @@ restore() {
     while read -r i; do
         [[ -n "$i" ]] && as_root rm -f "$i"
     done < "${BACKUP}/root-absent"
+    comm -13 "${BACKUP}/oma-bak-before" <(oma_baks) | while read -r i; do
+        [[ -n "$i" ]] && as_root rm -f "$i"
+    done
     [[ -s "${BACKUP}/xrandr.sh" ]] && sh "${BACKUP}/xrandr.sh" || true
     while IFS=$'\t' read -r i value; do
         [[ -n "$value" ]] && xinput set-prop "$i" "libinput Accel Speed" "$value" 2>/dev/null || true

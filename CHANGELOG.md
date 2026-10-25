@@ -46,9 +46,10 @@
   InputClass files in name order, so a `30-o…` file lost to it.
 - Style: `ott_scan.style_variant()` finds the sibling by the `-Dark`/`-Darker`/`-Light` suffix; Light writes
   `color-scheme prefer-light` (not `default`), which apps that follow the desktop, this one included, read as light.
-- Live test, first run on a test box: 39 checks passed. The pkexec steps could not run unattended there, so the root
-  helper was checked with sudo for the input file and the bar install only; GTK_THEME and the system cursor are
-  still untested through it.
+- Live test on a test box in an ohmychadwm session: 50 checks passed, 0 failed, including every pkexec step (force
+  GTK_THEME on/off, system + SDDM cursor, two bar rebuilds, the input file) and the Style fix measured on fresh GTK 3
+  and GTK 4 windows (brightness 0.96 Light, 0.24 Dark). The runner restores every file it backed up and removes the
+  `.oma-bak` files the run created.
 - Keys parses sxhkdrc and the `keys[]` array (TAGKEYS expanded, `KEY_*` macros resolved for `KIRO_AZERTY`,
   spawn variables resolved to their command).
 
