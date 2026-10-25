@@ -16,7 +16,7 @@ so Ctrl+Alt+X still opens it.
 | **Bar & windows** | Window border, gaps, smart gaps, bar at the top or bottom, system tray, bar autohide | a managed block in `~/.config/ohmychadwm/chadwm/config.def.h`, then a rebuild |
 | **Wallpaper** | Ohmychadwm wallpapers, Variety downloads/favourites or any folder, with a preview, fill mode and Previous/Next through Variety | `~/.fehbg` (feh), which ohmychadwm loads at login |
 | **Displays** | Resolution, refresh rate, on/off and primary per screen. Used right away; keep it within 15 seconds or the old layout comes back | `~/.screenlayout/<user>.sh` (arandr format), which ohmychadwm runs at login |
-| **Mouse & touchpad** | Pointer speed, natural scrolling, left-handed; tap to click and off-while-typing for touchpads. Changes show right away | `/etc/X11/xorg.conf.d/30-ohmychadwm-input.conf` |
+| **Mouse & touchpad** | Pointer speed, natural scrolling, left-handed; tap to click and off-while-typing for touchpads. Changes show right away | `/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf` |
 | **Startup apps** | Switch the programs ohmychadwm starts at login on or off, add your own | the `run …` lines of `~/.config/ohmychadwm/scripts/run.sh` |
 | **Default apps** | The terminal and file manager on Super+Enter / Super+Shift+Enter, and the app per file type (browser, editor, images, video, music, PDF, mail) | `~/.config/ohmychadwm/sxhkd/sxhkdrc` (sxhkd reloads it) and xdg-mime |
 | **Keys** | A searchable list of every key binding, read from sxhkdrc and ohmychadwm's own `config.def.h` | read only |

@@ -30,7 +30,7 @@
 - Backups keep OMA's `.oma-bak` suffix (a new suffix would back up already-edited files). Prefs fall back to OMA's
   `prefs.json`.
 - `ott_root.py` gains `--input JSON`: validated as root by `ott_input.validate()`, written as InputClass sections to
-  `/etc/X11/xorg.conf.d/30-ohmychadwm-input.conf`. `run_root()` is the single pkexec entry point for every page.
+  `/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf`. `run_root()` is the single pkexec entry point for every page.
 - Displays: `--rate` is written only when it differs from the mode's default, since arandr never writes it; outputs
   are re-placed side by side when a width changes.
 - Default apps rewrite only single-word commands on the terminal/file-manager keys in sxhkdrc, then

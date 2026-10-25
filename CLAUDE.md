@@ -67,7 +67,7 @@ A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is 
 | `~/.config/ohmychadwm/chadwm/config.def.h` | Look, Bar | theme include; one managed block with font and bar & window options |
 | `~/.fehbg` | Wallpaper | written by feh itself |
 | `~/.screenlayout/<user>.sh` | Displays | arandr format, written only after **Keep** |
-| `/etc/X11/xorg.conf.d/30-ohmychadwm-input.conf` (root) | Mouse & touchpad | InputClass `MatchIsPointer` then `MatchIsTouchpad` |
+| `/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf` (root) | Mouse & touchpad | InputClass `MatchIsPointer` then `MatchIsTouchpad` |
 | `~/.config/ohmychadwm/scripts/run.sh` | Startup apps | only `run …` / `#run …` lines |
 | `~/.config/ohmychadwm/sxhkd/sxhkdrc` + xdg-mime | Default apps | single-word commands on the terminal/file-manager keys |
 

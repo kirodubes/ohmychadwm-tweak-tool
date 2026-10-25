@@ -8,7 +8,7 @@ Toolkit-free.
 import re
 import subprocess
 
-CONF_PATH = "/etc/X11/xorg.conf.d/30-ohmychadwm-input.conf"
+CONF_PATH = "/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf"
 
 # (key, xinput property, xorg.conf Option, kind)
 _FIELDS = {
