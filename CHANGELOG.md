@@ -47,7 +47,8 @@
 - Style: `ott_scan.style_variant()` finds the sibling by the `-Dark`/`-Darker`/`-Light` suffix; Light writes
   `color-scheme prefer-light` (not `default`), which apps that follow the desktop, this one included, read as light.
 - Live test, first run on a test box: 39 checks passed. The pkexec steps could not run unattended there, so the root
-  changes were checked by calling the helper with sudo instead (GTK_THEME, cursor, input file, bar install).
+  helper was checked with sudo for the input file and the bar install only; GTK_THEME and the system cursor are
+  still untested through it.
 - Keys parses sxhkdrc and the `keys[]` array (TAGKEYS expanded, `KEY_*` macros resolved for `KIRO_AZERTY`,
   spawn variables resolved to their command).
 
