@@ -373,7 +373,8 @@ def _write_gsettings(sel):
         ("cursor-theme", sel.cursor),
         ("cursor-size", str(sel.cursor_size)),
         ("font-name", sel.font),
-        ("color-scheme", "prefer-dark" if sel.dark else "default"),
+        # prefer-light, not "default": apps that follow the desktop (this one too) treat default as "no wish"
+        ("color-scheme", "prefer-dark" if sel.dark else "prefer-light"),
     ]
     for key, value in pairs:
         rc, out = _run(["gsettings", "set", SCHEMA, key, value])

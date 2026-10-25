@@ -44,6 +44,33 @@ def gtk_themes():
     return _sorted(found)
 
 
+_DARK_SUFFIXES = ("-Dark", "-Darker", "-dark", "-darker")
+_LIGHT_SUFFIXES = ("-Light", "-Lighter", "-light")
+
+
+def is_dark_name(name):
+    """Return True when a theme name says it is a dark variant (Arc-Dawn-Dark, Adwaita-dark, …)."""
+    return name.endswith(_DARK_SUFFIXES)
+
+
+def style_variant(name, dark, available):
+    """Return the light or dark sibling of theme name found in available (Arc-Dawn-Dark <-> Arc-Dawn), or None.
+
+    A dark-only theme stays dark whatever the light/dark preference says, so the Style choice has to pick
+    the theme's other variant to change what GTK 3 apps (Thunar) look like.
+    """
+    base = name
+    for suffix in _DARK_SUFFIXES + _LIGHT_SUFFIXES:
+        if name.endswith(suffix):
+            base = name[: -len(suffix)]
+            break
+    if dark:
+        candidates = [name] if is_dark_name(name) else [base + "-Dark", base + "-dark", base + "-Darker"]
+    else:
+        candidates = [name] if not is_dark_name(name) else [base, base + "-Light", base + "-light"]
+    return next((c for c in candidates if c in available), None)
+
+
 def _read_index(path):
     try:
         with open(os.path.join(path, "index.theme"), encoding="utf-8", errors="replace") as f:

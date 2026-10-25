@@ -71,6 +71,7 @@ class LookPage:
         self._preview_theme = Gtk.IconTheme()
         self._preview_theme.set_search_path(ott_scan.icon_theme_search_path())
         self._busy = False
+        self._resetting = False
 
         state = ott_targets.read_all()
         sel = ott_targets.current(state)
@@ -186,6 +187,7 @@ class LookPage:
         self._chk_dark = Gtk.CheckButton(label="Dark")
         self._chk_dark.set_group(self._chk_light)
         (self._chk_dark if sel.dark else self._chk_light).set_active(True)
+        self._chk_dark.connect("toggled", lambda *_: self._on_style_toggled())
         style = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         style.append(self._chk_light)
         style.append(self._chk_dark)
@@ -249,12 +251,25 @@ class LookPage:
 
     def _update_theme_note(self):
         name = selected(self._dd_theme)
-        if self._gtk_themes.get(name, True):
-            self._theme_note.set_label("")
-            self._theme_note.set_visible(False)
-        else:
-            self._theme_note.set_label("This theme has no GTK 4 version — GTK 4 apps will look like Adwaita.")
-            self._theme_note.set_visible(True)
+        notes = []
+        if not self._gtk_themes.get(name, True):
+            notes.append("This theme has no GTK 4 version — GTK 4 apps will look like Adwaita.")
+        dark = self._chk_dark.get_active() if hasattr(self, "_chk_dark") else None
+        if dark is not None and ott_scan.style_variant(name, dark, self._gtk_themes) is None:
+            notes.append(f"“{name}” has no {'dark' if dark else 'light'} version, so most apps stay "
+                         f"{'light' if dark else 'dark'}. Pick a {'dark' if dark else 'light'} theme above.")
+        self._theme_note.set_label("\n".join(notes))
+        self._theme_note.set_visible(bool(notes))
+
+    def _on_style_toggled(self):
+        # The theme decides what GTK 3 apps look like: Light on a dark-only theme would change nothing,
+        # so switch to the theme's sibling (Arc-Dawn-Dark <-> Arc-Dawn) when there is one.
+        if self._resetting:
+            return
+        twin = ott_scan.style_variant(selected(self._dd_theme), self._chk_dark.get_active(), self._gtk_themes)
+        if twin and twin != selected(self._dd_theme):
+            select(self._dd_theme, twin)
+        self._update_theme_note()
 
     def _update_force_note(self):
         if self._chk_force.get_active():
@@ -337,7 +352,10 @@ class LookPage:
         select(self._dd_cursor, sel.cursor)
         select(self._dd_size, str(sel.cursor_size))
         self._font_btn.set_font_desc(Pango.FontDescription.from_string(sel.font))
+        self._resetting = True
         (self._chk_dark if sel.dark else self._chk_light).set_active(True)
+        self._resetting = False
+        self._update_theme_note()
         self._chk_force.set_active(True)  # the Kiro ISO ships GTK_THEME forced
         self._chk_sys_cursor.set_active(True)  # ...and the same cursor for SDDM and /usr/share/icons/default
         if self._dd_bar is not None:
