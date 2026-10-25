@@ -67,7 +67,8 @@ class DisplaysPage:
         for row, out in enumerate(connected):
             names = list(out.modes)
             mode = out.mode or out.preferred or (names[0] if names else None)
-            if vbox and not out.mode and ott_display.VIRTUALBOX_MODE in names:
+            # VirtualBox guests start small (1024x768): offer 1920x1080 as Ohmychadwm Appearance did
+            if vbox and ott_display.VIRTUALBOX_MODE in names:
                 mode = ott_display.VIRTUALBOX_MODE
             dd_mode = dropdown(names, mode)
             dd_rate = dropdown(_rates(out, mode), f"{out.rate} Hz" if out.rate else None)
