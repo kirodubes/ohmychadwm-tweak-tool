@@ -20,7 +20,13 @@ so Ctrl+Alt+X still opens it.
 | **Startup apps** | Switch the programs ohmychadwm starts at login on or off, add your own | the `run …` lines of `~/.config/ohmychadwm/scripts/run.sh` |
 | **Default apps** | The terminal and file manager on Super+Enter / Super+Shift+Enter, and the app per file type (browser, editor, images, video, music, PDF, mail) | `~/.config/ohmychadwm/sxhkd/sxhkdrc` (sxhkd reloads it) and xdg-mime |
 | **Keys** | A searchable list of every key binding, read from sxhkdrc and ohmychadwm's own `config.def.h` | read only |
-| **Status** | Session, config, the bar build and the tools each page needs | read only |
+| **Status** | Session, config, the bar build, the tools each page needs, and the app's language | the language choice in the app's own prefs |
+
+## Languages
+
+The app follows your system language: English, Dutch, German, Spanish, French, Portuguese (Brazil), Russian,
+Hungarian, Italian, Turkish, Polish, Japanese, Chinese (simplified) and Romanian. To use another one, open **Status**,
+pick it under **Language** and press **Restart now**.
 
 Before it changes a file for the first time, the app keeps a copy of the original next to it as `<file>.oma-bak`.
 Root is only needed for `/etc/environment`, the system cursor, the input file and installing the rebuilt bar. Each

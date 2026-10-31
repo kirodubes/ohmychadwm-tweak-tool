@@ -27,6 +27,7 @@ from ott_widgets import (  # noqa: E402
     settings_grid,
     status_label,
 )
+from ott_i18n import _  # noqa: E402
 
 
 def _rates(out, mode):
@@ -48,24 +49,25 @@ class DisplaysPage:
             return
         clear(self.widget)
         self._rows = {}
-        self.widget.append(section("Displays"))
+        self.widget.append(section(_("Displays")))
         if not ott_chadwm.in_session():
-            self.widget.append(warning("You are not in an Ohmychadwm session: a change shows right away, but the "
+            self.widget.append(warning(_("You are not in an Ohmychadwm session: a change shows right away, but the "
                                        "saved layout is only used at your Ohmychadwm logins. This desktop keeps "
-                                       "its own display settings."))
+                                       "its own display settings.")))
         short = ott_display.layout_path().replace(os.path.expanduser("~"), "~", 1)
         self.widget.append(muted(
-            f"Changes are used right away. Keep them within {KEEP_SECONDS} seconds and they are saved to {short} "
-            "(arandr format, so arandr can edit it too) for every login, otherwise the old layout comes back."
+            _("Changes are used right away. Keep them within {seconds} seconds and they are saved to {path} "
+              "(arandr format, so arandr can edit it too) for every login, otherwise the old layout comes back.").format(
+                seconds=KEEP_SECONDS, path=short)
         ))
         try:
             outputs = ott_display.query()
         except (OSError, subprocess.CalledProcessError) as e:
-            self.widget.append(muted(f"xrandr could not read the displays: {e}"))
+            self.widget.append(muted(_("xrandr could not read the displays: {error}").format(error=e)))
             return
         connected = [o for o in outputs if o.connected]
         if not connected:
-            self.widget.append(muted("xrandr reports no connected display."))
+            self.widget.append(muted(_("xrandr reports no connected display.")))
             return
         vbox = ott_display.is_virtualbox()
         grid = settings_grid()
@@ -80,9 +82,9 @@ class DisplaysPage:
             dd_rate = dropdown(_rates(out, mode), f"{out.rate} Hz" if out.rate else None)
             dd_rate.set_hexpand(False)
             dd_mode.connect("notify::selected", lambda dd, _p, o=out, r=dd_rate: self._mode_changed(dd, o, r))
-            on = Gtk.CheckButton(label="On")
+            on = Gtk.CheckButton(label=_("On"))
             on.set_active(out.mode is not None)
-            primary = Gtk.CheckButton(label="Primary")
+            primary = Gtk.CheckButton(label=_("Primary"))
             if group is None:
                 group = primary
             else:
@@ -96,7 +98,7 @@ class DisplaysPage:
             self._rows[out.name] = (dd_mode, dd_rate, on, primary)
         self.widget.append(grid)
 
-        self._btn_apply = Gtk.Button(label="Apply")
+        self._btn_apply = Gtk.Button(label=_("Apply"))
         self._btn_apply.add_css_class("suggested-action")
         self._btn_apply.set_halign(Gtk.Align.END)
         self._btn_apply.connect("clicked", self._on_apply)
@@ -119,11 +121,11 @@ class DisplaysPage:
             if prim.get_active() and mode:
                 primary = name
         if not any(m for m, _r in wanted.values()):
-            set_status(self._status, "At least one display has to stay on.", error=True)
+            set_status(self._status, _("At least one display has to stay on."), error=True)
             return
         self._busy = True
         self._btn_apply.set_sensitive(False)
-        set_status(self._status, "Switching…")
+        set_status(self._status, _("Switching…"))
         run_async(lambda: ott_display.switch(wanted, primary), self._switched)
 
     def _switched(self, result):
@@ -139,7 +141,7 @@ class DisplaysPage:
             else:
                 run_async(lambda: ott_display.revert(old), lambda r: self._done(*r))
 
-        ask_keep(self._window, "Keep this display layout?", answer)
+        ask_keep(self._window, _("Keep this display layout?"), answer)
 
     def _done(self, ok, msg):
         (log.log_success if ok else log.log_error)(f"Displays: {msg}")

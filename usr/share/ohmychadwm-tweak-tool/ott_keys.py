@@ -10,6 +10,8 @@ import re
 import shutil
 from dataclasses import dataclass
 
+from ott_i18n import _
+
 SXHKDRC = os.path.expanduser("~/.config/ohmychadwm/sxhkd/sxhkdrc")
 
 
@@ -91,23 +93,23 @@ _KEY_NAMES = {
     "Return": "Enter", "space": "Space", "comma": ",", "period": ".", "minus": "-", "Tab": "Tab",
     "ampersand": "&", "eacute": "é", "quotedbl": '"', "apostrophe": "'", "parenleft": "(", "section": "§",
     "egrave": "è", "exclam": "!", "ccedilla": "ç", "agrave": "à", "semicolon": ";",
-    "AudioLowerVolume": "Volume down", "AudioRaiseVolume": "Volume up", "AudioMute": "Mute",
-    "MonBrightnessUp": "Brightness up", "MonBrightnessDown": "Brightness down",
+    "AudioLowerVolume": _("Volume down"), "AudioRaiseVolume": _("Volume up"), "AudioMute": _("Mute"),
+    "MonBrightnessUp": _("Brightness up"), "MonBrightnessDown": _("Brightness down"),
 }
 _ACTIONS = {
-    "togglebar": "Show / hide the bar", "togglegaps": "Gaps on / off", "togglefullscr": "Fullscreen",
-    "tabmode": "Tab bar mode", "focusstack": "Focus next / previous window", "incnmaster": "More / fewer masters",
-    "shiftview": "Previous / next tag", "setmfact": "Master area smaller / bigger",
-    "setcfact": "Window size in the stack", "movestack": "Move window in the stack",
-    "rotatestack": "Rotate the stack", "zoom": "Swap with master", "changeopacity": "Window opacity",
-    "view": "View tag", "incrgaps": "Gaps bigger / smaller", "incrigaps": "Inner gaps", "incrogaps": "Outer gaps",
-    "incrihgaps": "Inner horizontal gaps", "incrivgaps": "Inner vertical gaps",
-    "incrohgaps": "Outer horizontal gaps", "incrovgaps": "Outer vertical gaps", "defaultgaps": "Default gaps",
-    "setlayout": "Set layout", "cyclelayout": "Next / previous layout", "focusmon": "Focus other monitor",
-    "tagmon": "Move window to other monitor", "setborderpx": "Border width", "killall": "Close all windows",
-    "quit": "Log out", "killclient": "Close window", "restart": "Restart Ohmychadwm",
-    "togglefloating": "Floating on / off", "toggleview": "Also show tag", "tag": "Move window to tag",
-    "toggletag": "Also put window on tag", "hidewin": "Hide window", "restorewin": "Restore window",
+    "togglebar": _("Show / hide the bar"), "togglegaps": _("Gaps on / off"), "togglefullscr": _("Fullscreen"),
+    "tabmode": _("Tab bar mode"), "focusstack": _("Focus next / previous window"), "incnmaster": _("More / fewer masters"),
+    "shiftview": _("Previous / next tag"), "setmfact": _("Master area smaller / bigger"),
+    "setcfact": _("Window size in the stack"), "movestack": _("Move window in the stack"),
+    "rotatestack": _("Rotate the stack"), "zoom": _("Swap with master"), "changeopacity": _("Window opacity"),
+    "view": _("View tag"), "incrgaps": _("Gaps bigger / smaller"), "incrigaps": _("Inner gaps"), "incrogaps": _("Outer gaps"),
+    "incrihgaps": _("Inner horizontal gaps"), "incrivgaps": _("Inner vertical gaps"),
+    "incrohgaps": _("Outer horizontal gaps"), "incrovgaps": _("Outer vertical gaps"), "defaultgaps": _("Default gaps"),
+    "setlayout": _("Set layout"), "cyclelayout": _("Next / previous layout"), "focusmon": _("Focus other monitor"),
+    "tagmon": _("Move window to other monitor"), "setborderpx": _("Border width"), "killall": _("Close all windows"),
+    "quit": _("Log out"), "killclient": _("Close window"), "restart": _("Restart Ohmychadwm"),
+    "togglefloating": _("Floating on / off"), "toggleview": _("Also show tag"), "tag": _("Move window to tag"),
+    "toggletag": _("Also put window on tag"), "hidewin": _("Hide window"), "restorewin": _("Restore window"),
 }
 _ENTRY_RE = re.compile(r"^\s*\{\s*([\w|]+)\s*,\s*(\w+)\s*,\s*(\w+)\s*,\s*(.*)\}\s*,?\s*(?://.*)?$")
 _TAGKEYS_RE = re.compile(r"^\s*TAGKEYS\(\s*(\w+)\s*,\s*(\d+)\s*\)")
@@ -177,7 +179,7 @@ def chadwm_bindings(text):
         if func == "spawn":
             cmd = _SHCMD_RE.search(arg)
             var = arg.strip(" {}").removeprefix(".v").strip(" =")
-            action = f"Run: {cmd.group(1) if cmd else commands.get(var, var)}"
+            action = _("Run: {command}").format(command=cmd.group(1) if cmd else commands.get(var, var))
         else:
             action = _ACTIONS.get(func, func)
         out.append(Binding("ohmychadwm", _keys_label(mods, key, macros), action))

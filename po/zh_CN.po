@@ -1,0 +1,1285 @@
+# Chinese translations for ohmychadwm-tweak-tool package.
+# Copyright (C) 2026 THE ohmychadwm-tweak-tool'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ohmychadwm-tweak-tool package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ohmychadwm-tweak-tool\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-31 12:46+0100\n"
+"PO-Revision-Date: 2026-10-31 12:46+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: Chinese (simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:18
+msgid "Web browser"
+msgstr "网页浏览器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:19
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:50
+msgid "File manager"
+msgstr "文件管理器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:20
+msgid "Text editor"
+msgstr "文本编辑器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:21
+msgid "Image viewer"
+msgstr "图像查看器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:22
+msgid "Video player"
+msgstr "视频播放器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:23
+msgid "Music player"
+msgstr "音乐播放器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:24
+msgid "PDF viewer"
+msgstr "PDF 查看器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:25
+msgid "Mail"
+msgstr "邮件"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_chadwm.py:226
+msgid "Compile failed:"
+msgstr "编译失败："
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:157
+#, python-brace-format
+msgid "xrandr failed: {error}"
+msgstr "xrandr 失败：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:161
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:124
+msgid "At least one display has to stay on."
+msgstr "至少要保持一个显示器开启。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:165
+#, python-brace-format
+msgid "xrandr could not use this layout: {error}"
+msgstr "xrandr 无法使用此布局：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:166
+msgid "Display layout changed."
+msgstr "显示器布局已更改。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:172
+msgid "There is no previous layout to go back to."
+msgstr "没有可恢复的上一个布局。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+msgid "Display layout reverted, nothing saved."
+msgstr "显示器布局已恢复，未保存任何更改。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+#, python-brace-format
+msgid "Revert failed: {error}"
+msgstr "恢复失败：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#, python-brace-format
+msgid "Layout kept and saved to {path}, so every login uses it."
+msgstr "布局已保留并保存到 {path}，每次登录都会使用。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:30
+msgid "best value — almost all goes to the project"
+msgstr "最划算：几乎全部用于项目"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:31
+msgid "buy a coffee — one-off tip"
+msgstr "请喝杯咖啡：一次性打赏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:32
+msgid "membership tiers + perks"
+msgstr "会员等级和福利"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:33
+msgid "YouTube membership"
+msgstr "YouTube 会员"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:33
+msgid "join on YouTube"
+msgstr "在 YouTube 上加入会员"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:34
+msgid "direct one-off"
+msgstr "直接一次性捐赠"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:39
+msgid "restart Ohmychadwm from the app"
+msgstr "从应用重启 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:40
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+msgid "Mouse & touchpad"
+msgstr "鼠标和触摸板"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:41
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
+msgid "Displays"
+msgstr "显示器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:42
+msgid "edit the saved display layout by hand"
+msgstr "手动编辑已保存的显示器布局"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
+msgid "Wallpaper"
+msgstr "壁纸"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+msgid "Default apps"
+msgstr "默认应用"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
+msgid "rebuild Ohmychadwm"
+msgstr "重新构建 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:61
+msgid "Support Kiro"
+msgstr "支持 Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:65
+msgid ""
+"Kiro and its tools are built by one person, for the community — and kept "
+"free. If the Ohmychadwm Tweak Tool saves you time, a little support keeps "
+"the work going. Thank you for being here."
+msgstr ""
+"Kiro 及其工具由一个人打造，服务社区，并始终免费。如果 Ohmychadwm Tweak Tool "
+"为你节省了时间，一点支持就能让这项工作继续下去。感谢你在这里。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:83
+msgid "Close"
+msgstr "关闭"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
+#: po/ohmychadwm-tweak-tool.desktop.in:2
+msgid "Ohmychadwm Tweak Tool"
+msgstr "Ohmychadwm Tweak Tool"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
+msgid "♥ Support"
+msgstr "♥ 支持"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
+msgid "Support Kiro's development"
+msgstr "支持 Kiro 的开发"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
+msgid "Quit"
+msgstr "退出"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
+msgid "Your desktop"
+msgstr "你的桌面"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
+msgid "Session"
+msgstr "会话"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
+msgid "not an Ohmychadwm session — changes show there"
+msgstr "当前不是 Ohmychadwm 会话：更改会在 Ohmychadwm 中生效"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
+msgid "Config"
+msgstr "配置文件"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
+msgid "missing — log into Ohmychadwm once first"
+msgstr "缺失，请先登录一次 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
+msgid "Bar theme"
+msgstr "状态栏主题"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
+msgid "none"
+msgstr "无"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:147
+msgid "Your own bar build"
+msgstr "你自己构建的状态栏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:148
+msgid "none yet — the packaged Ohmychadwm runs"
+msgstr "尚无：正在运行随包提供的 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:149
+msgid "Display layout"
+msgstr "显示器布局"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
+msgid "Virtual machine"
+msgstr "虚拟机"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
+msgid "no"
+msgstr "否"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:152
+msgid "Tools"
+msgstr "工具"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
+#, python-brace-format
+msgid "found — {why}"
+msgstr "已找到：{why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
+#, python-brace-format
+msgid "missing — {why}"
+msgstr "缺失：{why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:162
+msgid "Language"
+msgstr "语言"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:163
+msgid ""
+"The app follows your system language. Pick another one to use that one "
+"instead."
+msgstr "此应用跟随系统语言。选择其他语言即可改用该语言。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:166
+#, python-brace-format
+msgid "System ({language})"
+msgstr "系统（{language}）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:173
+msgid "Restart now"
+msgstr "立即重启"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+msgid "Saved. The app shows the new language when it starts again."
+msgstr "已保存。应用下次启动时将显示新语言。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:203
+#, python-brace-format
+msgid "This section could not load: {error}"
+msgstr "无法加载此部分：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
+msgid "Look"
+msgstr "外观"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
+msgid "Bar & windows"
+msgstr "状态栏和窗口"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
+msgid "Startup apps"
+msgstr "自启动应用"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
+msgid "Keys"
+msgstr "快捷键"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+msgid "Status"
+msgstr "状态"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Mute"
+msgstr "静音"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Volume down"
+msgstr "降低音量"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Volume up"
+msgstr "提高音量"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:97
+msgid "Brightness down"
+msgstr "降低亮度"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:97
+msgid "Brightness up"
+msgstr "提高亮度"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Fullscreen"
+msgstr "全屏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Gaps on / off"
+msgstr "切换窗口间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Show / hide the bar"
+msgstr "显示或隐藏状态栏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "Focus next / previous window"
+msgstr "聚焦下一个或上一个窗口"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "More / fewer masters"
+msgstr "增加或减少主窗口数"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "Tab bar mode"
+msgstr "标签栏模式"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:102
+msgid "Master area smaller / bigger"
+msgstr "缩小或扩大主区域"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:102
+msgid "Previous / next tag"
+msgstr "上一个或下一个标签"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:103
+msgid "Move window in the stack"
+msgstr "在堆叠中移动窗口"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:103
+msgid "Window size in the stack"
+msgstr "调整堆叠中窗口的大小"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Rotate the stack"
+msgstr "旋转堆叠"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Swap with master"
+msgstr "与主窗口交换"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Window opacity"
+msgstr "窗口不透明度"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Gaps bigger / smaller"
+msgstr "增大或减小窗口间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Inner gaps"
+msgstr "内部间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Outer gaps"
+msgstr "外部间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "View tag"
+msgstr "显示标签"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:106
+msgid "Inner horizontal gaps"
+msgstr "内部水平间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:106
+msgid "Inner vertical gaps"
+msgstr "内部垂直间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Default gaps"
+msgstr "默认间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Outer horizontal gaps"
+msgstr "外部水平间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Outer vertical gaps"
+msgstr "外部垂直间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Focus other monitor"
+msgstr "聚焦其他显示器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Next / previous layout"
+msgstr "下一个或上一个布局"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Set layout"
+msgstr "设置布局"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Border width"
+msgstr "边框宽度"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Close all windows"
+msgstr "关闭所有窗口"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Move window to other monitor"
+msgstr "将窗口移至其他显示器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Close window"
+msgstr "关闭窗口"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Log out"
+msgstr "注销"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Restart Ohmychadwm"
+msgstr "重启 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Also show tag"
+msgstr "同时显示标签"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Floating on / off"
+msgstr "切换浮动模式"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Move window to tag"
+msgstr "将窗口移至标签"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Also put window on tag"
+msgstr "同时将窗口添加到标签"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Hide window"
+msgstr "隐藏窗口"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Restore window"
+msgstr "恢复窗口"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:182
+#, python-brace-format
+msgid "Run: {command}"
+msgstr "运行：{command}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:39
+msgid "Terminal & file manager"
+msgstr "终端和文件管理器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:45
+msgid ""
+"What the keys open. Written into ~/.config/ohmychadwm/sxhkd/sxhkdrc and used "
+"right away."
+msgstr "快捷键打开的应用。写入 ~/.config/ohmychadwm/sxhkd/sxhkdrc 并立即生效。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:49
+msgid "Terminal"
+msgstr "终端"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:63
+msgid ""
+"~/.config/ohmychadwm is not set up for this user, so the keys can't be set."
+msgstr "此用户尚未设置 ~/.config/ohmychadwm，因此无法设置快捷键。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:65
+msgid "File types"
+msgstr "文件类型"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:66
+msgid "Which app opens links, folders and files (xdg-mime)."
+msgstr "设置打开链接、文件夹和文件的应用（xdg-mime）。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:82
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:254
+msgid "Apply"
+msgstr "应用"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:96
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:133
+msgid "Nothing changed."
+msgstr "未作任何更改。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:107
+msgid "Some defaults could not be set:"
+msgstr "部分默认应用无法设置："
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:109
+msgid "Applied."
+msgstr "已应用。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:27
+msgid "Border width around every window, in pixels"
+msgstr "每个窗口边框的宽度，单位为像素"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:27
+msgid "Window border"
+msgstr "窗口边框"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:28
+msgid "Gaps"
+msgstr "间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:28
+msgid "Space between windows and around the screen edge, in pixels"
+msgstr "窗口之间以及窗口与屏幕边缘之间的空隙，单位为像素"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:29
+msgid "No outer gap when only one window is open"
+msgstr "仅打开一个窗口时不留外部间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:29
+msgid "Smart gaps"
+msgstr "智能间距"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:30
+msgid "Bar at the top"
+msgstr "顶部状态栏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:30
+msgid "Off puts the bar at the bottom of the screen"
+msgstr "关闭后，状态栏将移至屏幕底部"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:31
+msgid "Show the tray icons (network, volume, …) in the bar"
+msgstr "在状态栏中显示托盘图标（网络、音量等）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:31
+msgid "System tray"
+msgstr "系统托盘"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:32
+msgid "Hide the bar after"
+msgstr "状态栏在多久后隐藏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:32
+msgid "Seconds without use before the bar hides; 0 = never"
+msgstr "状态栏无操作后隐藏的秒数；0 = 从不"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:218
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
+msgid ""
+"~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
+"first."
+msgstr "此用户尚未设置 ~/.config/ohmychadwm，请先登录一次 Ohmychadwm。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:62
+#, python-brace-format
+msgid ""
+"Starts from what the bar theme “{theme}” sets; anything you change here "
+"stays when you pick another theme. Applying recompiles Ohmychadwm (asks your "
+"password once)."
+msgstr ""
+"初始值来自状态栏主题“{theme}”；你在此处所做的更改会在切换主题后保留。应用更改"
+"会重新编译 Ohmychadwm（需要输入一次密码）。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:249
+msgid "Restart Ohmychadwm now"
+msgstr "立即重启 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:86
+msgid "Use the theme's values"
+msgstr "使用主题的值"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:87
+msgid "Drop every change on this page, so the bar theme decides again"
+msgstr "放弃此页面上的所有更改，重新由状态栏主题决定"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:110
+msgid "The theme's values are loaded — press Apply to use them."
+msgstr "已加载主题的值，按“应用”即可使用。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
+msgid "Recompiling Ohmychadwm…"
+msgstr "正在重新编译 Ohmychadwm…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:135
+msgid "Applied. Restart Ohmychadwm to see it."
+msgstr "已应用。重启 Ohmychadwm 后即可查看。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:138
+msgid "Applied. Press Super+Shift+R to see it."
+msgstr "已应用。按 Super+Shift+R 即可查看。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:140
+msgid "Applied. It shows at your next Ohmychadwm login."
+msgstr "已应用。下次登录 Ohmychadwm 时即可看到。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:165
+#, python-brace-format
+msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
+msgstr "安装新版 Ohmychadwm 已取消或失败：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
+msgid "Installing the new Ohmychadwm was cancelled or failed."
+msgstr "安装新版 Ohmychadwm 已取消或失败。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:54
+msgid ""
+"You are not in an Ohmychadwm session: a change shows right away, but the "
+"saved layout is only used at your Ohmychadwm logins. This desktop keeps its "
+"own display settings."
+msgstr ""
+"你当前不在 Ohmychadwm 会话中：更改会立即生效，但已保存的布局仅在登录 "
+"Ohmychadwm 时使用。当前桌面使用自己的显示器设置。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:59
+#, python-brace-format
+msgid ""
+"Changes are used right away. Keep them within {seconds} seconds and they are "
+"saved to {path} (arandr format, so arandr can edit it too) for every login, "
+"otherwise the old layout comes back."
+msgstr ""
+"更改会立即生效。在 {seconds} 秒内保留更改即可将其保存到 {path}（arandr 格式，"
+"也可用 arandr 编辑），供每次登录时使用；否则将恢复旧布局。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:66
+#, python-brace-format
+msgid "xrandr could not read the displays: {error}"
+msgstr "xrandr 无法读取显示器信息：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:70
+msgid "xrandr reports no connected display."
+msgstr "xrandr 报告没有已连接的显示器。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:85
+msgid "On"
+msgstr "开启"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:87
+msgid "Primary"
+msgstr "主显示器"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:128
+msgid "Switching…"
+msgstr "正在切换…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:144
+msgid "Keep this display layout?"
+msgstr "要保留此显示器布局吗？"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:34
+msgid "Pointer speed"
+msgstr "指针速度"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:34
+msgid "Slower to the left, faster to the right"
+msgstr "向左滑动可减速，向右滑动可加速"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:36
+msgid "Content follows your fingers, as on a phone"
+msgstr "内容随手指移动，就像在手机上一样"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:36
+msgid "Natural scrolling"
+msgstr "自然滚动"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:31
+msgid "Left-handed"
+msgstr "左手习惯"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:31
+msgid "Swap the left and right buttons"
+msgstr "交换左右按键"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:35
+msgid "A light tap counts as a click"
+msgstr "轻触即可点击"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:35
+msgid "Tap to click"
+msgstr "轻触点击"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:37
+msgid "Ignore the touchpad while you type"
+msgstr "打字时忽略触摸板"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:37
+msgid "Off while typing"
+msgstr "打字时关闭"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:40
+msgid "Mouse"
+msgstr "鼠标"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:40
+msgid "Touchpad"
+msgstr "触摸板"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:62
+#, python-brace-format
+msgid ""
+"Changes are used right away. Save keeps them for every login ({path}, asks "
+"your password once)."
+msgstr ""
+"更改会立即生效。保存后，每次登录都会使用这些设置（{path}，需要输入一次密码）"
+"。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:66
+msgid ""
+"No mouse or touchpad was found through xinput (is xorg-xinput installed?)."
+msgstr "xinput 未找到鼠标或触摸板（是否已安装 xorg-xinput？）。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:96
+msgid "Defaults"
+msgstr "默认值"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:97
+msgid "libinput's own defaults — press Save to keep them"
+msgstr "libinput 自带的默认值，按“保存”即可保留"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:99
+msgid "Save"
+msgstr "保存"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:130
+msgid "Some settings could not be used:"
+msgstr "部分设置无法使用："
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:139
+msgid "Defaults loaded and used now — press Save to keep them."
+msgstr "已加载并立即应用默认值，按“保存”即可保留。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:439
+msgid "Waiting for your password…"
+msgstr "正在等待你输入密码…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:156
+msgid "Saved. Every login uses these settings now."
+msgstr "已保存。现在每次登录都会使用这些设置。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:159
+#, python-brace-format
+msgid "Saving was cancelled or failed: {error}"
+msgstr "保存已取消或失败：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:160
+msgid "Saving was cancelled or failed."
+msgstr "保存已取消或失败。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:28
+msgid ""
+"You are not in an Ohmychadwm session: these are Ohmychadwm's keys, not the "
+"ones of the desktop you are in now."
+msgstr ""
+"你当前不在 Ohmychadwm 会话中：这些是 Ohmychadwm 的快捷键，不是当前桌面的快捷"
+"键。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:30
+msgid ""
+"From ~/.config/ohmychadwm/sxhkd/sxhkdrc and the keys of ~/.config/ohmychadwm/"
+"chadwm/config.def.h, as they are now."
+msgstr ""
+"来自 ~/.config/ohmychadwm/sxhkd/sxhkdrc 和 ~/.config/ohmychadwm/chadwm/"
+"config.def.h 中当前的快捷键。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:34
+msgid "Search keys or actions"
+msgstr "搜索快捷键或操作"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:37
+msgid "No key matches."
+msgstr "没有匹配的快捷键。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
+#, python-brace-format
+msgid "System default cursor: cursor = {value}"
+msgstr "系统默认光标：光标 = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:334
+msgid "not set"
+msgstr "未设置"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
+#, python-brace-format
+msgid "Login screen (SDDM): cursor = {value}"
+msgstr "登录界面（SDDM）：光标 = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:59
+#, python-brace-format
+msgid "Login screen (SDDM): cursor size = {value}"
+msgstr "登录界面（SDDM）：光标大小 = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:117
+msgid "Your settings are out of sync"
+msgstr "你的设置不一致"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:122
+msgid "Fix all"
+msgstr "全部修复"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:124
+msgid "Write the choices below to every settings file"
+msgstr "将下面的选择写入每个设置文件"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:132
+msgid "Applications"
+msgstr "应用程序"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:133
+msgid ""
+"Used by Thunar and every GTK 2, 3 and 4 application. Shared with all your "
+"desktops: Xfce4, Ohmychadwm and the rest get the same theme, icons, cursor "
+"and font."
+msgstr ""
+"Thunar 和所有 GTK 2、3、4 应用都会使用此设置。所有桌面共享此设置：Xfce4、"
+"Ohmychadwm 等使用相同的主题、图标、光标和字体。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:148
+msgid "Theme"
+msgstr "主题"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:151
+msgid "Force this theme on every app (system-wide)"
+msgstr "对所有应用强制使用此主题（全系统）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:153
+msgid ""
+"Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; "
+"shows after re-login."
+msgstr ""
+"按 Kiro 的设置将 GTK_THEME 写入 /etc/environment。需要输入密码；重新登录后生"
+"效。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:164
+msgid "Also use this cursor on the login screen and as the system default"
+msgstr "在登录界面也使用此光标，并将其设为系统默认光标"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:167
+msgid ""
+"Sets /usr/share/icons/default and the SDDM CursorTheme / CursorSize. Needs "
+"your password."
+msgstr ""
+"设置 /usr/share/icons/default 以及 SDDM 的 CursorTheme / CursorSize。需要输入"
+"密码。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:177
+msgid "Icons"
+msgstr "图标"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:185
+msgid "Cursor size in pixels"
+msgstr "光标大小（像素）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:186
+msgid "Cursor"
+msgstr "光标"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:190
+msgid "Choose a font"
+msgstr "选择字体"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:194
+msgid "Font"
+msgstr "字体"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:197
+msgid "Light"
+msgstr "浅色"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:198
+msgid "Dark"
+msgstr "深色"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:205
+msgid "Preferred style for apps that follow it (GTK 4 / libadwaita)"
+msgstr "支持此设置的应用的首选样式（GTK 4 / libadwaita）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:206
+msgid "Style"
+msgstr "样式"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:214
+msgid "Ohmychadwm bar"
+msgstr "Ohmychadwm 状态栏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:224
+msgid ""
+"Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks "
+"your password once)."
+msgstr ""
+"顶部状态栏的颜色和字体。更改这些设置会重新编译 Ohmychadwm（需要输入一次密码）"
+"。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:234
+msgid "Also use the font above for the bar"
+msgstr "状态栏也使用上面的字体"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:252
+msgid "Reset to Kiro default"
+msgstr "恢复 Kiro 默认设置"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:269
+msgid "This theme has no GTK 4 version — GTK 4 apps will look like Adwaita."
+msgstr "此主题没有 GTK 4 版本，GTK 4 应用将显示为 Adwaita 外观。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:273
+#, python-brace-format
+msgid ""
+"“{name}” has no dark version, so most apps stay light. Pick a dark theme "
+"above."
+msgstr "“{name}”没有深色版本，因此大多数应用仍会保持浅色。请在上方选择深色主题。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:274
+#, python-brace-format
+msgid ""
+"“{name}” has no light version, so most apps stay dark. Pick a light theme "
+"above."
+msgstr "“{name}”没有浅色版本，因此大多数应用仍会保持深色。请在上方选择浅色主题。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:277
+#, python-brace-format
+msgid "“{name}” is a light theme, so Style Dark changes little."
+msgstr "“{name}”是浅色主题，因此深色样式带来的变化不大。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:278
+#, python-brace-format
+msgid "“{name}” is a dark theme, so Style Light changes little."
+msgstr "“{name}”是深色主题，因此浅色样式带来的变化不大。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:283
+#, python-brace-format
+msgid "Use {theme}"
+msgstr "使用 {theme}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:301
+msgid ""
+"Without it, apps follow your personal settings — some GTK 4 / libadwaita "
+"apps may keep their own look."
+msgstr ""
+"不使用此设置时，应用将遵循你的个人设置，部分 GTK 4 / libadwaita 应用可能保留"
+"自己的外观。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:326
+#, python-brace-format
+msgid ""
+"“{family}” is not a Nerd Font — the bar's tag icons may show as empty boxes."
+msgstr "“{family}”不是 Nerd Font，状态栏的标签图标可能显示为空方框。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:386
+msgid "Kiro defaults loaded for everything — press Apply to use them."
+msgstr "已加载所有 Kiro 默认设置，按“应用”即可使用。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:394
+msgid "Applying…"
+msgstr "正在应用…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:435
+#, python-brace-format
+msgid "Ohmychadwm bar: {error}"
+msgstr "Ohmychadwm 状态栏：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
+msgid "System changes"
+msgstr "系统更改"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
+#, python-brace-format
+msgid "cancelled or failed: {error}"
+msgstr "已取消或失败：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:443
+msgid "cancelled or failed"
+msgstr "已取消或失败"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:460
+msgid "Some settings could not be written:"
+msgstr "部分设置无法写入："
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:462
+msgid "Log out and back in for the system-wide theme."
+msgstr "注销并重新登录后，全系统主题才会生效。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:464
+msgid "Applied. Restart Ohmychadwm to see the new bar."
+msgstr "已应用。重启 Ohmychadwm 即可查看新版状态栏。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:467
+msgid "Applied. Press Super+Shift+R to see the new bar."
+msgstr "已应用。按 Super+Shift+R 即可查看新版状态栏。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:469
+msgid "Applied. The new bar shows at your next Ohmychadwm login."
+msgstr "已应用。下次登录 Ohmychadwm 时即可看到新版状态栏。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:471
+msgid "Applied. Log out and back in to see the new theme everywhere."
+msgstr "已应用。注销并重新登录后，新主题将在所有地方生效。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:473
+msgid "Applied. Apps you open from now on use the new look."
+msgstr "已应用。从现在起打开的应用将使用新外观。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:34
+msgid ""
+"What Ohmychadwm starts when you log in (the run lines of ~/.config/"
+"ohmychadwm/scripts/run.sh). Changes show at your next login."
+msgstr ""
+"登录时 Ohmychadwm 启动的程序（~/.config/ohmychadwm/scripts/run.sh 中的运行命"
+"令）。更改会在下次登录时生效。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:39
+#, python-brace-format
+msgid "More than one compositor is switched on — only one should run: {names}"
+msgstr "启用了多个合成器，应只运行一个：{names}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:50
+msgid "Command to start at login, e.g. redshift-gtk"
+msgstr "登录时启动的命令，例如 redshift-gtk"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:53
+msgid "Add"
+msgstr "添加"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
+msgid "Remove"
+msgstr "移除"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:83
+#, python-brace-format
+msgid "{command}: on from the next login."
+msgstr "{command}：从下次登录起启用。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:84
+#, python-brace-format
+msgid "{command}: off from the next login."
+msgstr "{command}：从下次登录起关闭。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:86
+#, python-brace-format
+msgid ""
+"Careful: Ohmychadwm needs {program} (bar status, password prompts or "
+"notifications)."
+msgstr "注意：Ohmychadwm 需要 {program}（状态栏信息、密码提示或通知）。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:97
+#, python-brace-format
+msgid "{command}: saved for the next login."
+msgstr "{command}：已保存，将在下次登录时生效。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:104
+#, python-brace-format
+msgid "Could not write run.sh: {error}"
+msgstr "无法写入 run.sh：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:18
+msgid "Choose folder…"
+msgstr "选择文件夹…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:39
+msgid "Show"
+msgstr "显示"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:48
+msgid "Start Variety to download wallpapers"
+msgstr "启动 Variety 以下载壁纸"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:73
+msgid "No wallpaper selected"
+msgstr "未选择壁纸"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:78
+msgid "Previous (Variety)"
+msgstr "上一张（Variety）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:80
+msgid "Next (Variety)"
+msgstr "下一张（Variety）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:86
+msgid "fill: cover the screen · scale: stretch · center · max: fit · tile"
+msgstr "fill：铺满屏幕 · scale：拉伸 · center：居中 · max：适应 · tile：平铺"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:87
+msgid "Apply wallpaper"
+msgstr "应用壁纸"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:118
+msgid "Choose a wallpaper folder"
+msgstr "选择壁纸文件夹"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:141
+msgid "No images here yet. Variety fills this folder while it runs."
+msgstr "这里还没有图片。Variety 运行时会将图片下载到此文件夹。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:142
+msgid "No images here yet."
+msgstr "这里还没有图片。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:188
+msgid "Select a wallpaper first."
+msgstr "请先选择一张壁纸。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:191
+msgid "Setting wallpaper…"
+msgstr "正在设置壁纸…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:204
+msgid "It stays after you log out."
+msgstr "注销后仍会保留。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:209
+msgid "Asked Variety for another wallpaper."
+msgstr "已向 Variety 请求另一张壁纸。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:211
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:217
+msgid "Variety is not installed."
+msgstr "未安装 Variety。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:215
+msgid ""
+"Variety started. Pick this source again in a minute to see its downloads."
+msgstr "Variety 已启动。一分钟后再次选择此来源即可查看下载的壁纸。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:21
+msgid "System GTK_THEME"
+msgstr "系统 GTK_THEME"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:22
+msgid "GTK 3 (Thunar)"
+msgstr "GTK 3（Thunar）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:26
+msgid "XFCE xsettings"
+msgstr "XFCE xsettings"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:27
+msgid "Personal default cursor"
+msgstr "个人默认光标"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "cursor"
+msgstr "光标"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "cursor size"
+msgstr "光标大小"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "icons"
+msgstr "图标"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "theme"
+msgstr "主题"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+msgid "dark"
+msgstr "深色"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+msgid "font"
+msgstr "字体"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:315
+#, python-brace-format
+msgid "{target}: not configured"
+msgstr "{target}：未配置"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+msgid "light"
+msgstr "浅色"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:333
+#, python-brace-format
+msgid "{target}: {field} = {value}"
+msgstr "{target}：{field} = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:375
+msgid "gsettings not installed, skipped"
+msgstr "未安装 gsettings，已跳过"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:394
+msgid "xfconf-query not installed, skipped"
+msgstr "未安装 xfconf-query，已跳过"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:33
+msgid "Ohmychadwm wallpapers"
+msgstr "Ohmychadwm 壁纸"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:34
+msgid "Variety downloads"
+msgstr "Variety 下载"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:35
+msgid "Variety favourites"
+msgstr "Variety 收藏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:79
+#, python-brace-format
+msgid "feh could not run: {error}"
+msgstr "feh 无法运行：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:82
+msgid "Set by feh."
+msgstr "由 feh 设置。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:82
+#, python-brace-format
+msgid "feh failed: {error}"
+msgstr "feh 失败：{error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:42
+msgid ""
+"You are not in an Ohmychadwm session: this part is for your Ohmychadwm "
+"desktop. You see it at your next Ohmychadwm login, not here."
+msgstr ""
+"你当前不在 Ohmychadwm 会话中：此部分用于 Ohmychadwm 桌面。下次登录 "
+"Ohmychadwm 时可以看到更改，而不是在当前桌面中。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:134
+msgid "Keep this change?"
+msgstr "要保留此更改吗？"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:144
+msgid "Revert"
+msgstr "恢复"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:145
+msgid "Keep"
+msgstr "保留"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:171
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:174
+#, python-brace-format
+msgid "Going back in {count} second."
+msgid_plural "Going back in {count} seconds."
+msgstr[0] "将在 {count} 秒后恢复。"
+
+#: po/ohmychadwm-tweak-tool.desktop.in:3
+msgid "Desktop Settings"
+msgstr "桌面设置"
+
+#: po/ohmychadwm-tweak-tool.desktop.in:4
+msgid ""
+"Look, bar, wallpaper, displays, mouse, startup apps, default apps and keys "
+"for Ohmychadwm"
+msgstr "Ohmychadwm 的外观、状态栏、壁纸、显示器、鼠标、自启动应用、默认应用和快捷键"
+
+#: po/ohmychadwm-tweak-tool.desktop.in:10
+msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar;gaps;wallpaper;display;mouse;touchpad;startup;keys"
+msgstr ""
+"主题;图标;光标;字体;外观;gtk;lxappearance;chadwm;ohmychadwm;状态栏;间距;壁"
+"纸;显示器;鼠标;触摸板;自启动;快捷键"

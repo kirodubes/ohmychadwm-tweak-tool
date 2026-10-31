@@ -123,6 +123,22 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.
 
+## Translations (since 2026-10-31)
+
+- `ott_i18n.py` (a copy of the KIROTUX premium apps' `khp_i18n.py`): gettext domain `ohmychadwm-tweak-tool`, catalogs in
+  `usr/share/locale`. The saved choice (Status → Language, prefs.json) beats the system language; `OTT_LANGUAGE`
+  beats both, and the live tests pin `OTT_LANGUAGE=en` because they read English status texts.
+- Every user-visible string goes through `_()`, as a whole sentence with named placeholders
+  (`_("Saved to {path}").format(path=…)`), never glued from pieces; counts use `ngettext`. A string that is also a
+  dict key or a comparison value (target labels in `ott_targets`, `ott_apps.CATEGORIES`) is marked `N_()` and
+  translated where it is shown (`_(label)`).
+- Never translated: `ott_root.py` (runs as root via pkexec), log lines, paths, commands, config keys, key and modifier
+  names, sentinel values such as `"unchanged"`, and the names Ohmychadwm, chadwm, sxhkd, xrandr, feh.
+- After changing any visible text: `po/make-mo.sh` (refreshes the template, merges every `.po`, compiles the `.mo`
+  files, writes `usr/share/applications/*.desktop` from `po/*.desktop.in`). New strings stay English until
+  translated; the shared rules, registers and tools are in Kiro-HQ `TRANSLATIONS/` (README + ROADMAP §8).
+- Edit the menu entry in `po/ohmychadwm-tweak-tool.desktop.in`, never in `usr/share/applications/` (overwritten).
+
 ## Code style
 
 - ruff (`ruff.toml`, line length 120) must pass. One-line docstrings on public functions; none needed on `_private`

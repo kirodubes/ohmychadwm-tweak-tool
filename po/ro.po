@@ -1,0 +1,1336 @@
+# Romanian translations for ohmychadwm-tweak-tool package.
+# Copyright (C) 2026 THE ohmychadwm-tweak-tool'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ohmychadwm-tweak-tool package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ohmychadwm-tweak-tool\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-31 12:46+0100\n"
+"PO-Revision-Date: 2026-10-31 12:46+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:18
+msgid "Web browser"
+msgstr "Navigator web"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:19
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:50
+msgid "File manager"
+msgstr "Manager de fișiere"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:20
+msgid "Text editor"
+msgstr "Editor de text"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:21
+msgid "Image viewer"
+msgstr "Vizualizator de imagini"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:22
+msgid "Video player"
+msgstr "Player video"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:23
+msgid "Music player"
+msgstr "Player muzical"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:24
+msgid "PDF viewer"
+msgstr "Vizualizator PDF"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:25
+msgid "Mail"
+msgstr "E-mail"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_chadwm.py:226
+msgid "Compile failed:"
+msgstr "Compilarea a eșuat:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:157
+#, python-brace-format
+msgid "xrandr failed: {error}"
+msgstr "xrandr a eșuat: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:161
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:124
+msgid "At least one display has to stay on."
+msgstr "Cel puțin un ecran trebuie să rămână pornit."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:165
+#, python-brace-format
+msgid "xrandr could not use this layout: {error}"
+msgstr "xrandr nu a putut folosi acest aranjament: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:166
+msgid "Display layout changed."
+msgstr "Aranjamentul ecranelor a fost schimbat."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:172
+msgid "There is no previous layout to go back to."
+msgstr "Nu există un aranjament anterior la care să revii."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+msgid "Display layout reverted, nothing saved."
+msgstr "Aranjamentul ecranelor a fost restabilit, fără să se salveze nimic."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+#, python-brace-format
+msgid "Revert failed: {error}"
+msgstr "Restabilirea a eșuat: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#, python-brace-format
+msgid "Layout kept and saved to {path}, so every login uses it."
+msgstr ""
+"Aranjamentul a fost păstrat și salvat în {path}, așa că va fi folosit la "
+"fiecare autentificare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:30
+msgid "best value — almost all goes to the project"
+msgstr "cea mai bună alegere: aproape totul ajunge la proiect"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:31
+msgid "buy a coffee — one-off tip"
+msgstr "lasă un bacșiș: o singură dată"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:32
+msgid "membership tiers + perks"
+msgstr "niveluri de abonament cu beneficii"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:33
+msgid "YouTube membership"
+msgstr "Abonament de membru YouTube"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:33
+msgid "join on YouTube"
+msgstr "devino membru pe YouTube"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:34
+msgid "direct one-off"
+msgstr "donație directă, o singură dată"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:39
+msgid "restart Ohmychadwm from the app"
+msgstr "repornește Ohmychadwm din aplicație"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:40
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+msgid "Mouse & touchpad"
+msgstr "Mouse și touchpad"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:41
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
+msgid "Displays"
+msgstr "Ecrane"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:42
+msgid "edit the saved display layout by hand"
+msgstr "editează manual aranjamentul ecranelor salvat"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
+msgid "Wallpaper"
+msgstr "Fundal"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+msgid "Default apps"
+msgstr "Aplicații implicite"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
+msgid "rebuild Ohmychadwm"
+msgstr "recompilează Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:61
+msgid "Support Kiro"
+msgstr "Susține Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:65
+msgid ""
+"Kiro and its tools are built by one person, for the community — and kept "
+"free. If the Ohmychadwm Tweak Tool saves you time, a little support keeps "
+"the work going. Thank you for being here."
+msgstr ""
+"Kiro și instrumentele sale sunt create de o singură persoană, pentru "
+"comunitate, și rămân gratuite. Dacă Ohmychadwm Tweak Tool îți economisește "
+"timp, puțin sprijin ajută proiectul să meargă mai departe. Îți mulțumesc că "
+"ești aici."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:83
+msgid "Close"
+msgstr "Închide"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
+#: po/ohmychadwm-tweak-tool.desktop.in:2
+msgid "Ohmychadwm Tweak Tool"
+msgstr "Ohmychadwm Tweak Tool"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
+msgid "♥ Support"
+msgstr "♥ Susține"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
+msgid "Support Kiro's development"
+msgstr "Susține dezvoltarea Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
+msgid "Quit"
+msgstr "Ieșire"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
+msgid "Your desktop"
+msgstr "Desktopul tău"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
+msgid "Session"
+msgstr "Sesiune"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
+msgid "not an Ohmychadwm session — changes show there"
+msgstr "nu ești într-o sesiune Ohmychadwm. Modificările se văd acolo"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
+msgid "Config"
+msgstr "Configurare"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
+msgid "missing — log into Ohmychadwm once first"
+msgstr "lipsește. Autentifică-te mai întâi o dată în Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
+msgid "Bar theme"
+msgstr "Tema barei"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
+msgid "none"
+msgstr "niciuna"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:147
+msgid "Your own bar build"
+msgstr "Versiunea proprie a barei"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:148
+msgid "none yet — the packaged Ohmychadwm runs"
+msgstr "încă nu există. Rulează versiunea inclusă în Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:149
+msgid "Display layout"
+msgstr "Aranjamentul ecranelor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
+msgid "Virtual machine"
+msgstr "Mașină virtuală"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
+msgid "no"
+msgstr "nu"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:152
+msgid "Tools"
+msgstr "Instrumente"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
+#, python-brace-format
+msgid "found — {why}"
+msgstr "găsit: {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
+#, python-brace-format
+msgid "missing — {why}"
+msgstr "lipsește: {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:162
+msgid "Language"
+msgstr "Limbă"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:163
+msgid ""
+"The app follows your system language. Pick another one to use that one "
+"instead."
+msgstr ""
+"Aplicația folosește limba sistemului. Alege altă limbă dacă vrei să o "
+"folosești în locul ei."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:166
+#, python-brace-format
+msgid "System ({language})"
+msgstr "Sistem ({language})"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:173
+msgid "Restart now"
+msgstr "Repornește acum"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+msgid "Saved. The app shows the new language when it starts again."
+msgstr "Salvat. Aplicația va afișa noua limbă la următoarea pornire."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:203
+#, python-brace-format
+msgid "This section could not load: {error}"
+msgstr "Această secțiune nu s-a putut încărca: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
+msgid "Look"
+msgstr "Aspect"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
+msgid "Bar & windows"
+msgstr "Bară și ferestre"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
+msgid "Startup apps"
+msgstr "Aplicații la pornire"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
+msgid "Keys"
+msgstr "Scurtături"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+msgid "Status"
+msgstr "Stare"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Mute"
+msgstr "Dezactivează sunetul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Volume down"
+msgstr "Redu volumul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Volume up"
+msgstr "Mărește volumul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:97
+msgid "Brightness down"
+msgstr "Redu luminozitatea"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:97
+msgid "Brightness up"
+msgstr "Mărește luminozitatea"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Fullscreen"
+msgstr "Pe tot ecranul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Gaps on / off"
+msgstr "Activează / dezactivează spațiile"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Show / hide the bar"
+msgstr "Afișează / ascunde bara"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "Focus next / previous window"
+msgstr "Focalizează fereastra următoare / anterioară"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "More / fewer masters"
+msgstr "Mai multe / mai puține ferestre principale"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "Tab bar mode"
+msgstr "Modul barei de file"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:102
+msgid "Master area smaller / bigger"
+msgstr "Micșorează / mărește zona principală"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:102
+msgid "Previous / next tag"
+msgstr "Tagul anterior / următor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:103
+msgid "Move window in the stack"
+msgstr "Mută fereastra în stivă"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:103
+msgid "Window size in the stack"
+msgstr "Schimbă dimensiunea ferestrei în stivă"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Rotate the stack"
+msgstr "Rotește stiva"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Swap with master"
+msgstr "Schimbă cu fereastra principală"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Window opacity"
+msgstr "Opacitatea ferestrei"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Gaps bigger / smaller"
+msgstr "Mărește / micșorează spațiile"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Inner gaps"
+msgstr "Spații interioare"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Outer gaps"
+msgstr "Spații exterioare"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "View tag"
+msgstr "Afișează tagul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:106
+msgid "Inner horizontal gaps"
+msgstr "Spații interioare orizontale"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:106
+msgid "Inner vertical gaps"
+msgstr "Spații interioare verticale"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Default gaps"
+msgstr "Spații implicite"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Outer horizontal gaps"
+msgstr "Spații exterioare orizontale"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Outer vertical gaps"
+msgstr "Spații exterioare verticale"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Focus other monitor"
+msgstr "Focalizează celălalt monitor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Next / previous layout"
+msgstr "Aranjamentul următor / anterior"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Set layout"
+msgstr "Setează aranjamentul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Border width"
+msgstr "Grosimea bordurii"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Close all windows"
+msgstr "Închide toate ferestrele"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Move window to other monitor"
+msgstr "Mută fereastra pe celălalt monitor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Close window"
+msgstr "Închide fereastra"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Log out"
+msgstr "Deconectare"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Restart Ohmychadwm"
+msgstr "Repornește Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Also show tag"
+msgstr "Afișează și tagul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Floating on / off"
+msgstr "Activează / dezactivează modul flotant"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Move window to tag"
+msgstr "Mută fereastra pe tag"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Also put window on tag"
+msgstr "Adaugă fereastra și pe tag"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Hide window"
+msgstr "Ascunde fereastra"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Restore window"
+msgstr "Restabilește fereastra"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:182
+#, python-brace-format
+msgid "Run: {command}"
+msgstr "Rulează: {command}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:39
+msgid "Terminal & file manager"
+msgstr "Terminal și manager de fișiere"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:45
+msgid ""
+"What the keys open. Written into ~/.config/ohmychadwm/sxhkd/sxhkdrc and used "
+"right away."
+msgstr ""
+"Ce aplicații deschid scurtăturile. Se scriu în ~/.config/ohmychadwm/sxhkd/"
+"sxhkdrc și sunt folosite imediat."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:49
+msgid "Terminal"
+msgstr "Terminal"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:63
+msgid ""
+"~/.config/ohmychadwm is not set up for this user, so the keys can't be set."
+msgstr ""
+"~/.config/ohmychadwm nu este configurat pentru acest utilizator, așa că "
+"scurtăturile nu pot fi setate."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:65
+msgid "File types"
+msgstr "Tipuri de fișiere"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:66
+msgid "Which app opens links, folders and files (xdg-mime)."
+msgstr "Ce aplicație deschide linkurile, dosarele și fișierele (xdg-mime)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:82
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:254
+msgid "Apply"
+msgstr "Aplică"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:96
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:133
+msgid "Nothing changed."
+msgstr "Nu s-a schimbat nimic."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:107
+msgid "Some defaults could not be set:"
+msgstr "Unele aplicații implicite nu au putut fi setate:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:109
+msgid "Applied."
+msgstr "Aplicat."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:27
+msgid "Border width around every window, in pixels"
+msgstr "Grosimea bordurii din jurul fiecărei ferestre, în pixeli"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:27
+msgid "Window border"
+msgstr "Bordura ferestrei"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:28
+msgid "Gaps"
+msgstr "Spații"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:28
+msgid "Space between windows and around the screen edge, in pixels"
+msgstr "Spațiul dintre ferestre și de-a lungul marginii ecranului, în pixeli"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:29
+msgid "No outer gap when only one window is open"
+msgstr "Fără spațiu exterior când este deschisă o singură fereastră"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:29
+msgid "Smart gaps"
+msgstr "Spații inteligente"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:30
+msgid "Bar at the top"
+msgstr "Bara de sus"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:30
+msgid "Off puts the bar at the bottom of the screen"
+msgstr "Dezactivarea mută bara în partea de jos a ecranului"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:31
+msgid "Show the tray icons (network, volume, …) in the bar"
+msgstr "Afișează pictogramele din zona de notificare (rețea, volum, …) în bară"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:31
+msgid "System tray"
+msgstr "Zona de notificare"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:32
+msgid "Hide the bar after"
+msgstr "Ascunde bara după"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:32
+msgid "Seconds without use before the bar hides; 0 = never"
+msgstr "Secunde de inactivitate înainte ca bara să se ascundă; 0 = niciodată"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:218
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
+msgid ""
+"~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
+"first."
+msgstr ""
+"~/.config/ohmychadwm nu este configurat pentru acest utilizator. Autentifică-"
+"te mai întâi o dată în Ohmychadwm."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:62
+#, python-brace-format
+msgid ""
+"Starts from what the bar theme “{theme}” sets; anything you change here "
+"stays when you pick another theme. Applying recompiles Ohmychadwm (asks your "
+"password once)."
+msgstr ""
+"Valorile inițiale sunt cele din tema barei „{theme}”. Orice schimbi aici se "
+"păstrează când alegi altă temă. Aplicarea recompilează Ohmychadwm (îți cere "
+"parola o singură dată)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:249
+msgid "Restart Ohmychadwm now"
+msgstr "Repornește Ohmychadwm acum"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:86
+msgid "Use the theme's values"
+msgstr "Folosește valorile temei"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:87
+msgid "Drop every change on this page, so the bar theme decides again"
+msgstr ""
+"Renunță la toate modificările de pe această pagină, astfel încât tema barei "
+"să decidă din nou"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:110
+msgid "The theme's values are loaded — press Apply to use them."
+msgstr "Valorile temei au fost încărcate. Apasă Aplică pentru a le folosi."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
+msgid "Recompiling Ohmychadwm…"
+msgstr "Se recompilează Ohmychadwm…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:135
+msgid "Applied. Restart Ohmychadwm to see it."
+msgstr "Aplicat. Repornește Ohmychadwm pentru a vedea modificările."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:138
+msgid "Applied. Press Super+Shift+R to see it."
+msgstr "Aplicat. Apasă Super+Shift+R pentru a vedea modificările."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:140
+msgid "Applied. It shows at your next Ohmychadwm login."
+msgstr ""
+"Aplicat. Modificările se vor vedea la următoarea autentificare în Ohmychadwm."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:165
+#, python-brace-format
+msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
+msgstr "Instalarea noii versiuni Ohmychadwm a fost anulată sau a eșuat: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
+msgid "Installing the new Ohmychadwm was cancelled or failed."
+msgstr "Instalarea noii versiuni Ohmychadwm a fost anulată sau a eșuat."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:54
+msgid ""
+"You are not in an Ohmychadwm session: a change shows right away, but the "
+"saved layout is only used at your Ohmychadwm logins. This desktop keeps its "
+"own display settings."
+msgstr ""
+"Nu ești într-o sesiune Ohmychadwm. Modificarea se aplică imediat, dar "
+"aranjamentul salvat este folosit doar când te autentifici în Ohmychadwm. "
+"Acest desktop își păstrează propriile setări pentru ecrane."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:59
+#, python-brace-format
+msgid ""
+"Changes are used right away. Keep them within {seconds} seconds and they are "
+"saved to {path} (arandr format, so arandr can edit it too) for every login, "
+"otherwise the old layout comes back."
+msgstr ""
+"Modificările se aplică imediat. Păstrează-le în următoarele {seconds} "
+"secunde pentru a le salva în {path} (format arandr, deci îl poți edita și cu "
+"arandr) pentru fiecare autentificare. Altfel, revine aranjamentul anterior."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:66
+#, python-brace-format
+msgid "xrandr could not read the displays: {error}"
+msgstr "xrandr nu a putut citi ecranele: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:70
+msgid "xrandr reports no connected display."
+msgstr "xrandr nu detectează niciun ecran conectat."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:85
+msgid "On"
+msgstr "Pornit"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:87
+msgid "Primary"
+msgstr "Principal"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:128
+msgid "Switching…"
+msgstr "Se schimbă…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:144
+msgid "Keep this display layout?"
+msgstr "Păstrezi acest aranjament al ecranelor?"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:34
+msgid "Pointer speed"
+msgstr "Viteza indicatorului"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:34
+msgid "Slower to the left, faster to the right"
+msgstr "Mai lent la stânga, mai rapid la dreapta"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:36
+msgid "Content follows your fingers, as on a phone"
+msgstr "Conținutul urmărește degetele, ca pe telefon"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:36
+msgid "Natural scrolling"
+msgstr "Derulare naturală"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:31
+msgid "Left-handed"
+msgstr "Pentru stângaci"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:31
+msgid "Swap the left and right buttons"
+msgstr "Inversează butoanele stâng și drept"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:35
+msgid "A light tap counts as a click"
+msgstr "O atingere ușoară este considerată un clic"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:35
+msgid "Tap to click"
+msgstr "Atinge pentru clic"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:37
+msgid "Ignore the touchpad while you type"
+msgstr "Ignoră touchpadul în timp ce tastezi"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:37
+msgid "Off while typing"
+msgstr "Dezactivat în timpul tastării"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:40
+msgid "Mouse"
+msgstr "Mouse"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:40
+msgid "Touchpad"
+msgstr "Touchpad"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:62
+#, python-brace-format
+msgid ""
+"Changes are used right away. Save keeps them for every login ({path}, asks "
+"your password once)."
+msgstr ""
+"Modificările se aplică imediat. Apasă Salvează pentru a le păstra la fiecare "
+"autentificare ({path}, îți cere parola o singură dată)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:66
+msgid ""
+"No mouse or touchpad was found through xinput (is xorg-xinput installed?)."
+msgstr ""
+"Nu s-a găsit niciun mouse sau touchpad prin xinput (este instalat xorg-"
+"xinput?)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:96
+msgid "Defaults"
+msgstr "Valori implicite"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:97
+msgid "libinput's own defaults — press Save to keep them"
+msgstr "Valorile implicite ale libinput. Apasă Salvează pentru a le păstra."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:99
+msgid "Save"
+msgstr "Salvează"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:130
+msgid "Some settings could not be used:"
+msgstr "Unele setări nu au putut fi folosite:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:139
+msgid "Defaults loaded and used now — press Save to keep them."
+msgstr ""
+"Valorile implicite au fost încărcate și aplicate. Apasă Salvează pentru a le "
+"păstra."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:439
+msgid "Waiting for your password…"
+msgstr "Se așteaptă parola…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:156
+msgid "Saved. Every login uses these settings now."
+msgstr "Salvat. Aceste setări vor fi folosite la fiecare autentificare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:159
+#, python-brace-format
+msgid "Saving was cancelled or failed: {error}"
+msgstr "Salvarea a fost anulată sau a eșuat: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:160
+msgid "Saving was cancelled or failed."
+msgstr "Salvarea a fost anulată sau a eșuat."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:28
+msgid ""
+"You are not in an Ohmychadwm session: these are Ohmychadwm's keys, not the "
+"ones of the desktop you are in now."
+msgstr ""
+"Nu ești într-o sesiune Ohmychadwm. Acestea sunt scurtăturile Ohmychadwm, nu "
+"cele ale desktopului pe care îl folosești acum."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:30
+msgid ""
+"From ~/.config/ohmychadwm/sxhkd/sxhkdrc and the keys of ~/.config/ohmychadwm/"
+"chadwm/config.def.h, as they are now."
+msgstr ""
+"Din ~/.config/ohmychadwm/sxhkd/sxhkdrc și scurtăturile din ~/.config/"
+"ohmychadwm/chadwm/config.def.h, așa cum sunt acum."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:34
+msgid "Search keys or actions"
+msgstr "Caută scurtături sau acțiuni"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:37
+msgid "No key matches."
+msgstr "Nicio scurtătură nu corespunde."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
+#, python-brace-format
+msgid "System default cursor: cursor = {value}"
+msgstr "Cursor implicit în sistem: cursor = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:334
+msgid "not set"
+msgstr "nesetat"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
+#, python-brace-format
+msgid "Login screen (SDDM): cursor = {value}"
+msgstr "Ecran de autentificare (SDDM): cursor = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:59
+#, python-brace-format
+msgid "Login screen (SDDM): cursor size = {value}"
+msgstr "Ecran de autentificare (SDDM): dimensiunea cursorului = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:117
+msgid "Your settings are out of sync"
+msgstr "Setările tale nu sunt sincronizate"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:122
+msgid "Fix all"
+msgstr "Repară tot"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:124
+msgid "Write the choices below to every settings file"
+msgstr "Scrie alegerile de mai jos în fiecare fișier de setări"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:132
+msgid "Applications"
+msgstr "Aplicații"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:133
+msgid ""
+"Used by Thunar and every GTK 2, 3 and 4 application. Shared with all your "
+"desktops: Xfce4, Ohmychadwm and the rest get the same theme, icons, cursor "
+"and font."
+msgstr ""
+"Folosit de Thunar și de toate aplicațiile GTK 2, 3 și 4. Este comun tuturor "
+"desktopurilor tale: Xfce4, Ohmychadwm și celelalte folosesc aceeași temă, "
+"aceleași pictograme, același cursor și același font."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:148
+msgid "Theme"
+msgstr "Temă"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:151
+msgid "Force this theme on every app (system-wide)"
+msgstr "Impune această temă tuturor aplicațiilor (în tot sistemul)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:153
+msgid ""
+"Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; "
+"shows after re-login."
+msgstr ""
+"Setează GTK_THEME în /etc/environment, așa cum este configurat în Kiro. "
+"Necesită parola ta; modificarea se vede după o nouă autentificare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:164
+msgid "Also use this cursor on the login screen and as the system default"
+msgstr "Folosește cursorul și la autentificare și ca implicit în sistem"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:167
+msgid ""
+"Sets /usr/share/icons/default and the SDDM CursorTheme / CursorSize. Needs "
+"your password."
+msgstr ""
+"Setează /usr/share/icons/default și CursorTheme / CursorSize din SDDM. "
+"Necesită parola."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:177
+msgid "Icons"
+msgstr "Pictograme"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:185
+msgid "Cursor size in pixels"
+msgstr "Dimensiunea cursorului în pixeli"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:186
+msgid "Cursor"
+msgstr "Cursor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:190
+msgid "Choose a font"
+msgstr "Alege un font"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:194
+msgid "Font"
+msgstr "Font"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:197
+msgid "Light"
+msgstr "Luminos"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:198
+msgid "Dark"
+msgstr "Întunecat"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:205
+msgid "Preferred style for apps that follow it (GTK 4 / libadwaita)"
+msgstr ""
+"Stilul preferat pentru aplicațiile care îl respectă (GTK 4 / libadwaita)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:206
+msgid "Style"
+msgstr "Stil"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:214
+msgid "Ohmychadwm bar"
+msgstr "Bara Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:224
+msgid ""
+"Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks "
+"your password once)."
+msgstr ""
+"Culorile și fontul barei de sus. Modificarea recompilează Ohmychadwm (îți "
+"cere parola o singură dată)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:234
+msgid "Also use the font above for the bar"
+msgstr "Folosește și pentru bară fontul de mai sus"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:252
+msgid "Reset to Kiro default"
+msgstr "Revino la valorile implicite Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:269
+msgid "This theme has no GTK 4 version — GTK 4 apps will look like Adwaita."
+msgstr ""
+"Această temă nu are o versiune pentru GTK 4. Aplicațiile GTK 4 vor folosi "
+"aspectul Adwaita."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:273
+#, python-brace-format
+msgid ""
+"“{name}” has no dark version, so most apps stay light. Pick a dark theme "
+"above."
+msgstr ""
+"„{name}” nu are o versiune întunecată, așa că majoritatea aplicațiilor rămân "
+"luminoase. Alege mai sus o temă întunecată."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:274
+#, python-brace-format
+msgid ""
+"“{name}” has no light version, so most apps stay dark. Pick a light theme "
+"above."
+msgstr ""
+"„{name}” nu are o versiune luminoasă, așa că majoritatea aplicațiilor rămân "
+"întunecate. Alege mai sus o temă luminoasă."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:277
+#, python-brace-format
+msgid "“{name}” is a light theme, so Style Dark changes little."
+msgstr "„{name}” este o temă luminoasă, așa că Stilul întunecat schimbă puțin."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:278
+#, python-brace-format
+msgid "“{name}” is a dark theme, so Style Light changes little."
+msgstr "„{name}” este o temă întunecată, așa că Stilul luminos schimbă puțin."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:283
+#, python-brace-format
+msgid "Use {theme}"
+msgstr "Folosește {theme}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:301
+msgid ""
+"Without it, apps follow your personal settings — some GTK 4 / libadwaita "
+"apps may keep their own look."
+msgstr ""
+"Fără această opțiune, aplicațiile folosesc setările tale personale. Unele "
+"aplicații GTK 4 / libadwaita își pot păstra propriul aspect."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:326
+#, python-brace-format
+msgid ""
+"“{family}” is not a Nerd Font — the bar's tag icons may show as empty boxes."
+msgstr ""
+"„{family}” nu este un Nerd Font. Pictogramele tagurilor din bară pot apărea "
+"ca niște pătrate goale."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:386
+msgid "Kiro defaults loaded for everything — press Apply to use them."
+msgstr ""
+"Valorile implicite Kiro au fost încărcate pentru toate opțiunile. Apasă "
+"Aplică pentru a le folosi."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:394
+msgid "Applying…"
+msgstr "Se aplică…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:435
+#, python-brace-format
+msgid "Ohmychadwm bar: {error}"
+msgstr "Bara Ohmychadwm: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
+msgid "System changes"
+msgstr "Modificări de sistem"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
+#, python-brace-format
+msgid "cancelled or failed: {error}"
+msgstr "anulat sau eșuat: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:443
+msgid "cancelled or failed"
+msgstr "anulat sau eșuat"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:460
+msgid "Some settings could not be written:"
+msgstr "Unele setări nu au putut fi scrise:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:462
+msgid "Log out and back in for the system-wide theme."
+msgstr ""
+"Deconectează-te și autentifică-te din nou pentru a folosi tema în tot "
+"sistemul."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:464
+msgid "Applied. Restart Ohmychadwm to see the new bar."
+msgstr "Aplicat. Repornește Ohmychadwm pentru a vedea noua bară."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:467
+msgid "Applied. Press Super+Shift+R to see the new bar."
+msgstr "Aplicat. Apasă Super+Shift+R pentru a vedea noua bară."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:469
+msgid "Applied. The new bar shows at your next Ohmychadwm login."
+msgstr "Aplicat. Noua bară va apărea la următoarea autentificare în Ohmychadwm."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:471
+msgid "Applied. Log out and back in to see the new theme everywhere."
+msgstr ""
+"Aplicat. Deconectează-te și autentifică-te din nou pentru a vedea noua temă "
+"peste tot."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:473
+msgid "Applied. Apps you open from now on use the new look."
+msgstr "Aplicat. Aplicațiile pe care le deschizi de acum folosesc noul aspect."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:34
+msgid ""
+"What Ohmychadwm starts when you log in (the run lines of ~/.config/"
+"ohmychadwm/scripts/run.sh). Changes show at your next login."
+msgstr ""
+"Ce pornește Ohmychadwm la autentificare (liniile run din ~/.config/"
+"ohmychadwm/scripts/run.sh). Modificările se văd la următoarea autentificare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:39
+#, python-brace-format
+msgid "More than one compositor is switched on — only one should run: {names}"
+msgstr ""
+"Este activat mai mult de un compozitor. Ar trebui să ruleze doar unul: "
+"{names}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:50
+msgid "Command to start at login, e.g. redshift-gtk"
+msgstr "Comandă de rulat la autentificare, de exemplu redshift-gtk"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:53
+msgid "Add"
+msgstr "Adaugă"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
+msgid "Remove"
+msgstr "Elimină"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:83
+#, python-brace-format
+msgid "{command}: on from the next login."
+msgstr "{command}: va fi activat de la următoarea autentificare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:84
+#, python-brace-format
+msgid "{command}: off from the next login."
+msgstr "{command}: va fi dezactivat de la următoarea autentificare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:86
+#, python-brace-format
+msgid ""
+"Careful: Ohmychadwm needs {program} (bar status, password prompts or "
+"notifications)."
+msgstr ""
+"Atenție: Ohmychadwm are nevoie de {program} (pentru starea barei, "
+"solicitările parolei sau notificări)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:97
+#, python-brace-format
+msgid "{command}: saved for the next login."
+msgstr "{command}: salvat pentru următoarea autentificare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:104
+#, python-brace-format
+msgid "Could not write run.sh: {error}"
+msgstr "Nu s-a putut scrie run.sh: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:18
+msgid "Choose folder…"
+msgstr "Alege dosarul…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:39
+msgid "Show"
+msgstr "Afișează"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:48
+msgid "Start Variety to download wallpapers"
+msgstr "Pornește Variety pentru a descărca fundaluri"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:73
+msgid "No wallpaper selected"
+msgstr "Niciun fundal selectat"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:78
+msgid "Previous (Variety)"
+msgstr "Anteriorul (Variety)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:80
+msgid "Next (Variety)"
+msgstr "Următorul (Variety)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:86
+msgid "fill: cover the screen · scale: stretch · center · max: fit · tile"
+msgstr ""
+"umplere: acoperă ecranul · scalare: întinde · centrare · maxim: potrivește · "
+"mozaic"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:87
+msgid "Apply wallpaper"
+msgstr "Aplică fundalul"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:118
+msgid "Choose a wallpaper folder"
+msgstr "Alege un dosar cu fundaluri"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:141
+msgid "No images here yet. Variety fills this folder while it runs."
+msgstr ""
+"Încă nu există imagini aici. Variety umple acest dosar cât timp rulează."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:142
+msgid "No images here yet."
+msgstr "Încă nu există imagini aici."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:188
+msgid "Select a wallpaper first."
+msgstr "Mai întâi selectează un fundal."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:191
+msgid "Setting wallpaper…"
+msgstr "Se setează fundalul…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:204
+msgid "It stays after you log out."
+msgstr "Rămâne și după deconectare."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:209
+msgid "Asked Variety for another wallpaper."
+msgstr "I s-a cerut lui Variety alt fundal."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:211
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:217
+msgid "Variety is not installed."
+msgstr "Variety nu este instalat."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:215
+msgid ""
+"Variety started. Pick this source again in a minute to see its downloads."
+msgstr ""
+"Variety a pornit. Alege din nou această sursă peste un minut pentru a vedea "
+"fundalurile descărcate."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:21
+msgid "System GTK_THEME"
+msgstr "GTK_THEME la nivel de sistem"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:22
+msgid "GTK 3 (Thunar)"
+msgstr "GTK 3 (Thunar)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:26
+msgid "XFCE xsettings"
+msgstr "xsettings XFCE"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:27
+msgid "Personal default cursor"
+msgstr "Cursor implicit personal"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "cursor"
+msgstr "cursor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "cursor size"
+msgstr "dimensiunea cursorului"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "icons"
+msgstr "pictograme"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "theme"
+msgstr "temă"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+msgid "dark"
+msgstr "întunecat"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+msgid "font"
+msgstr "font"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:315
+#, python-brace-format
+msgid "{target}: not configured"
+msgstr "{target}: neconfigurat"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+msgid "light"
+msgstr "luminos"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:333
+#, python-brace-format
+msgid "{target}: {field} = {value}"
+msgstr "{target}: {field} = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:375
+msgid "gsettings not installed, skipped"
+msgstr "gsettings nu este instalat; omis"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:394
+msgid "xfconf-query not installed, skipped"
+msgstr "xfconf-query nu este instalat; omis"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:33
+msgid "Ohmychadwm wallpapers"
+msgstr "Fundaluri Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:34
+msgid "Variety downloads"
+msgstr "Descărcări Variety"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:35
+msgid "Variety favourites"
+msgstr "Favorite Variety"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:79
+#, python-brace-format
+msgid "feh could not run: {error}"
+msgstr "feh nu a putut porni: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:82
+msgid "Set by feh."
+msgstr "Setat de feh."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:82
+#, python-brace-format
+msgid "feh failed: {error}"
+msgstr "feh a eșuat: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:42
+msgid ""
+"You are not in an Ohmychadwm session: this part is for your Ohmychadwm "
+"desktop. You see it at your next Ohmychadwm login, not here."
+msgstr ""
+"Nu ești într-o sesiune Ohmychadwm. Această parte este pentru desktopul tău "
+"Ohmychadwm. O vei vedea la următoarea autentificare în Ohmychadwm, nu aici."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:134
+msgid "Keep this change?"
+msgstr "Păstrezi această modificare?"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:144
+msgid "Revert"
+msgstr "Renunță"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:145
+msgid "Keep"
+msgstr "Păstrează"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:171
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:174
+#, python-brace-format
+msgid "Going back in {count} second."
+msgid_plural "Going back in {count} seconds."
+msgstr[0] "Se revine în {count} secundă."
+msgstr[1] "Se revine în {count} secunde."
+msgstr[2] "Se revine în {count} de secunde."
+
+#: po/ohmychadwm-tweak-tool.desktop.in:3
+msgid "Desktop Settings"
+msgstr "Setări desktop"
+
+#: po/ohmychadwm-tweak-tool.desktop.in:4
+msgid ""
+"Look, bar, wallpaper, displays, mouse, startup apps, default apps and keys "
+"for Ohmychadwm"
+msgstr ""
+"Aspect, bară, fundal, ecrane, mouse, aplicații la pornire, aplicații "
+"implicite și scurtături pentru Ohmychadwm"
+
+#: po/ohmychadwm-tweak-tool.desktop.in:10
+msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar;gaps;wallpaper;display;mouse;touchpad;startup;keys"
+msgstr ""
+"temă;pictograme;cursor;font;aspect;gtk;lxappearance;chadwm;ohmychadwm;bară;spații;fundal;ecran;mouse;touchpad;pornire;scurtături"

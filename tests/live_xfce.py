@@ -13,6 +13,8 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# the checks read the app's English texts
+os.environ.setdefault("OTT_LANGUAGE", "en")
 
 import live_ohmychadwm as lo  # noqa: E402  (shares the app, recorders and read-backs)
 from live_ohmychadwm import Gio, Gtk, Step, check, gs, ini, pick, record, shot, xfq  # noqa: E402

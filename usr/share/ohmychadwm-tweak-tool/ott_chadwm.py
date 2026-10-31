@@ -10,6 +10,7 @@ import os
 import re
 import shutil
 import subprocess
+from ott_i18n import _
 
 CHADWM_DIR = os.path.expanduser("~/.config/ohmychadwm/chadwm")
 CONFIG = os.path.join(CHADWM_DIR, "config.def.h")
@@ -222,7 +223,7 @@ def compile_wm():
     rc, out = _run(["make"])
     if rc != 0:
         clean()
-        return False, "Compile failed:\n" + out[-1500:]
+        return False, _("Compile failed:") + "\n" + out[-1500:]
     return True, "compiled"
 
 

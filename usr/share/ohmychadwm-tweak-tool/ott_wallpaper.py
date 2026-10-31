@@ -11,6 +11,7 @@ import shlex
 import subprocess
 
 import log
+from ott_i18n import _
 
 OHMYCHADWM_DIR = os.path.expanduser("~/.config/ohmychadwm/wallpapers")
 VARIETY_DIR = os.path.expanduser("~/.config/variety")
@@ -29,9 +30,9 @@ def sources():
     # list_images reads only the top level, and the shipped Kiro wallpaper sits in the kiro/ subfolder
     kiro = [OHMYCHADWM_DIR, "/usr/share/backgrounds", "/usr/share/backgrounds/kiro"]
     return [
-        ("Ohmychadwm wallpapers", kiro),
-        ("Variety downloads", downloaded or [os.path.join(VARIETY_DIR, "Downloaded")]),
-        ("Variety favourites", [os.path.join(VARIETY_DIR, "Favorites")]),
+        (_("Ohmychadwm wallpapers"), kiro),
+        (_("Variety downloads"), downloaded or [os.path.join(VARIETY_DIR, "Downloaded")]),
+        (_("Variety favourites"), [os.path.join(VARIETY_DIR, "Favorites")]),
     ]
 
 
@@ -75,10 +76,10 @@ def apply(path, mode):
     try:
         proc = subprocess.run(["feh", f"--bg-{mode}", path], capture_output=True, text=True, timeout=15)
     except (OSError, subprocess.TimeoutExpired) as e:
-        return False, f"feh could not run: {e}"
+        return False, _("feh could not run: {error}").format(error=e)
     ok = proc.returncode == 0
     (log.log_success if ok else log.log_error)(f"Wallpaper via feh: {path} {proc.stderr.strip()}".rstrip())
-    return ok, "Set by feh." if ok else f"feh failed: {proc.stderr.strip()}"
+    return ok, _("Set by feh.") if ok else _("feh failed: {error}").format(error=proc.stderr.strip())
 
 
 def variety(*args):

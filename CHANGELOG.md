@@ -1,5 +1,38 @@
 # CHANGELOG
 
+## 2026.10.31
+
+### What Changed
+- **The app speaks 13 languages**: Dutch, German, Spanish, French, Portuguese (Brazil), Russian, Hungarian, Italian,
+  Turkish, Polish, Japanese, Chinese (simplified) and Romanian, besides English. It follows the system language;
+  **Status → Language** picks another one, **Restart now** reopens the app in it. The menu entry is translated too.
+- The terms match the KIROTUX premium apps this app was spun off from (92 strings are word for word the same).
+
+### Technical Details
+- New `ott_i18n.py`, a copy of the premium apps' i18n module: gettext domain `ohmychadwm-tweak-tool`, catalogs from
+  `usr/share/locale` (the repo's own copy when run from git), the saved choice in prefs.json, `OTT_LANGUAGE` beats
+  both (the live tests pin English with it). `N_()` marks lookup keys (target labels, file-type categories) that are
+  translated where they are shown.
+- 279 strings in `_()`, whole sentences with named placeholders; the "dark/light" theme notes and the startup on/off
+  messages became whole sentences per case; the countdown uses `ngettext`. Not translated: `ott_root.py` (runs as
+  root), log lines, paths, commands, key and modifier names, and the names Ohmychadwm, chadwm, sxhkd, xrandr, feh.
+- `po/`: template, 13 `.po` files, `make-mo.sh` (xgettext with `_`, `N_`, `ngettext`; compiles the `.mo` files and
+  writes the menu entry from `po/ohmychadwm-tweak-tool.desktop.in`), `.codespellrc` skips the generated `.desktop`.
+- Translations: the premium apps' translations reused for identical strings, the rest drafted by GitHub Copilot
+  (GPT-6 Luna) with each language's register and the premium terms as a glossary, reviewed by a second AI (GPT-6
+  Luna; GPT-6.1 Terra for Russian, Hungarian, Turkish, Polish, Japanese, Chinese and Romanian): 131 findings, 129
+  taken. `msgfmt -c` and pofilter clean, plural forms checked at runtime, every page of every language checked
+  off-screen.
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_i18n.py` (new), every `ott_page_*.py`, `ott_gui.py` (Language section),
+  `ott_widgets.py`, `ott_targets.py`, `ott_apps.py`, `ott_chadwm.py`, `ott_display.py`, `ott_wallpaper.py`,
+  `ott_keys.py`
+- `po/` (new), `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo` (new),
+  `usr/share/applications/ohmychadwm-tweak-tool.desktop` (now generated), `.codespellrc` (new)
+- `tests/run-live-ohmychadwm.sh`, `tests/live_ohmychadwm.py`, `tests/live_xfce.py` (pin English)
+- `README.md`, `CLAUDE.md`, `CHANGELOG.md`
+
 ## 2026.10.25
 
 ### What Changed

@@ -186,7 +186,8 @@ main() {
     trap 'restore' EXIT
     allow_pkexec
     log_section "Live test"
-    OTT_OUT="$OUT" OTT_APP_DIR="$APP_DIR" timeout 1200 python3 "${SCRIPT_DIR}/live_ohmychadwm.py" \
+    # The checks read the app's English status texts: OTT_LANGUAGE beats both the system and the in-app language choice.
+    OTT_LANGUAGE=en OTT_OUT="$OUT" OTT_APP_DIR="$APP_DIR" timeout 1200 python3 "${SCRIPT_DIR}/live_ohmychadwm.py" \
         || log_error "live_ohmychadwm.py exited with $?"
     log_success "$(basename "$0") done — report ${OUT}/report.json, screenshots ${OUT}/shots"
 }

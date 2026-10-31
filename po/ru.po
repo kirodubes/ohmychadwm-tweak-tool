@@ -1,0 +1,1340 @@
+# Russian translations for ohmychadwm-tweak-tool package.
+# Copyright (C) 2026 THE ohmychadwm-tweak-tool'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the ohmychadwm-tweak-tool package.
+# Automatically generated, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ohmychadwm-tweak-tool\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-31 12:46+0100\n"
+"PO-Revision-Date: 2026-10-31 12:46+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:18
+msgid "Web browser"
+msgstr "Браузер"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:19
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:50
+msgid "File manager"
+msgstr "Файловый менеджер"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:20
+msgid "Text editor"
+msgstr "Текстовый редактор"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:21
+msgid "Image viewer"
+msgstr "Просмотр изображений"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:22
+msgid "Video player"
+msgstr "Видеопроигрыватель"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:23
+msgid "Music player"
+msgstr "Музыкальный проигрыватель"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:24
+msgid "PDF viewer"
+msgstr "Просмотр PDF"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apps.py:25
+msgid "Mail"
+msgstr "Почта"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_chadwm.py:226
+msgid "Compile failed:"
+msgstr "Не удалось выполнить сборку:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:157
+#, python-brace-format
+msgid "xrandr failed: {error}"
+msgstr "Ошибка xrandr: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:161
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:124
+msgid "At least one display has to stay on."
+msgstr "Хотя бы один экран должен оставаться включённым."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:165
+#, python-brace-format
+msgid "xrandr could not use this layout: {error}"
+msgstr "xrandr не удалось применить эту конфигурацию: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:166
+msgid "Display layout changed."
+msgstr "Расположение экранов изменено."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:172
+msgid "There is no previous layout to go back to."
+msgstr "Нет предыдущей конфигурации для возврата."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+msgid "Display layout reverted, nothing saved."
+msgstr "Предыдущее расположение экранов восстановлено, изменения не сохранены."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+#, python-brace-format
+msgid "Revert failed: {error}"
+msgstr "Не удалось отменить изменения: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#, python-brace-format
+msgid "Layout kept and saved to {path}, so every login uses it."
+msgstr ""
+"Расположение экранов сохранено в {path}. Оно будет использоваться при каждом "
+"входе в систему."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:30
+msgid "best value — almost all goes to the project"
+msgstr "Самый выгодный вариант: почти вся сумма идёт проекту"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:31
+msgid "buy a coffee — one-off tip"
+msgstr "Угостить кофе: разовое пожертвование"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:32
+msgid "membership tiers + perks"
+msgstr "Уровни подписки и бонусы"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:33
+msgid "YouTube membership"
+msgstr "Спонсорство на YouTube"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:33
+msgid "join on YouTube"
+msgstr "Стать спонсором на YouTube"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:34
+msgid "direct one-off"
+msgstr "Разовое пожертвование напрямую"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:39
+msgid "restart Ohmychadwm from the app"
+msgstr "перезапустить Ohmychadwm из приложения"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:40
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+msgid "Mouse & touchpad"
+msgstr "Мышь и тачпад"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:41
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
+msgid "Displays"
+msgstr "Экраны"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:42
+msgid "edit the saved display layout by hand"
+msgstr "изменить сохранённое расположение экранов вручную"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
+msgid "Wallpaper"
+msgstr "Обои"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+msgid "Default apps"
+msgstr "Приложения по умолчанию"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
+msgid "rebuild Ohmychadwm"
+msgstr "пересобрать Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:61
+msgid "Support Kiro"
+msgstr "Поддержать Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:65
+msgid ""
+"Kiro and its tools are built by one person, for the community — and kept "
+"free. If the Ohmychadwm Tweak Tool saves you time, a little support keeps "
+"the work going. Thank you for being here."
+msgstr ""
+"Kiro и её инструменты создаёт один человек для сообщества. Они остаются "
+"бесплатными. Если Ohmychadwm Tweak Tool экономит ваше время, небольшое "
+"пожертвование поможет продолжать эту работу. Спасибо, что вы с нами."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:83
+msgid "Close"
+msgstr "Закрыть"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
+#: po/ohmychadwm-tweak-tool.desktop.in:2
+msgid "Ohmychadwm Tweak Tool"
+msgstr "Ohmychadwm Tweak Tool"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
+msgid "♥ Support"
+msgstr "♥ Поддержать"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
+msgid "Support Kiro's development"
+msgstr "Поддержать разработку Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
+msgid "Quit"
+msgstr "Выйти"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
+msgid "Your desktop"
+msgstr "Ваш рабочий стол"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
+msgid "Session"
+msgstr "Сеанс"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
+msgid "not an Ohmychadwm session — changes show there"
+msgstr "сейчас запущен не Ohmychadwm. Изменения появятся в нём"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
+msgid "Config"
+msgstr "Конфигурация"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
+msgid "missing — log into Ohmychadwm once first"
+msgstr "не найдено. Сначала войдите в Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
+msgid "Bar theme"
+msgstr "Тема панели"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
+msgid "none"
+msgstr "нет"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:147
+msgid "Your own bar build"
+msgstr "Собственная сборка панели"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:148
+msgid "none yet — the packaged Ohmychadwm runs"
+msgstr "пока нет. Используется пакетная версия Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:149
+msgid "Display layout"
+msgstr "Расположение экранов"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
+msgid "Virtual machine"
+msgstr "Виртуальная машина"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
+msgid "no"
+msgstr "нет"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:152
+msgid "Tools"
+msgstr "Инструменты"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
+#, python-brace-format
+msgid "found — {why}"
+msgstr "найдено: {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
+#, python-brace-format
+msgid "missing — {why}"
+msgstr "не найдено: {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:162
+msgid "Language"
+msgstr "Язык"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:163
+msgid ""
+"The app follows your system language. Pick another one to use that one "
+"instead."
+msgstr ""
+"Приложение использует язык системы. Выберите другой язык, чтобы использовать "
+"его вместо системного."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:166
+#, python-brace-format
+msgid "System ({language})"
+msgstr "Системный ({language})"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:173
+msgid "Restart now"
+msgstr "Перезапустить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+msgid "Saved. The app shows the new language when it starts again."
+msgstr ""
+"Сохранено. Новый язык будет использоваться после перезапуска приложения."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:203
+#, python-brace-format
+msgid "This section could not load: {error}"
+msgstr "Не удалось загрузить этот раздел: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
+msgid "Look"
+msgstr "Внешний вид"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
+msgid "Bar & windows"
+msgstr "Панель и окна"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
+msgid "Startup apps"
+msgstr "Автозапуск"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
+msgid "Keys"
+msgstr "Сочетания клавиш"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+msgid "Status"
+msgstr "Состояние"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Mute"
+msgstr "Выключить звук"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Volume down"
+msgstr "Уменьшить громкость"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:96
+msgid "Volume up"
+msgstr "Увеличить громкость"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:97
+msgid "Brightness down"
+msgstr "Уменьшить яркость"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:97
+msgid "Brightness up"
+msgstr "Увеличить яркость"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Fullscreen"
+msgstr "На весь экран"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Gaps on / off"
+msgstr "Включить или выключить промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:100
+msgid "Show / hide the bar"
+msgstr "Показать или скрыть панель"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "Focus next / previous window"
+msgstr "Переключить фокус на следующее или предыдущее окно"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "More / fewer masters"
+msgstr "Увеличить или уменьшить число главных окон"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:101
+msgid "Tab bar mode"
+msgstr "Режим панели вкладок"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:102
+msgid "Master area smaller / bigger"
+msgstr "Уменьшить или увеличить главную область"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:102
+msgid "Previous / next tag"
+msgstr "Предыдущая или следующая рабочая область"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:103
+msgid "Move window in the stack"
+msgstr "Переместить окно в стопке"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:103
+msgid "Window size in the stack"
+msgstr "Изменить размер окна в стопке"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Rotate the stack"
+msgstr "Повернуть стопку"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Swap with master"
+msgstr "Поменять местами с главным окном"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:104
+msgid "Window opacity"
+msgstr "Непрозрачность окна"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Gaps bigger / smaller"
+msgstr "Увеличить или уменьшить промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Inner gaps"
+msgstr "Внутренние промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "Outer gaps"
+msgstr "Внешние промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:105
+msgid "View tag"
+msgstr "Показать рабочую область"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:106
+msgid "Inner horizontal gaps"
+msgstr "Внутренние горизонтальные промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:106
+msgid "Inner vertical gaps"
+msgstr "Внутренние вертикальные промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Default gaps"
+msgstr "Промежутки по умолчанию"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Outer horizontal gaps"
+msgstr "Внешние горизонтальные промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:107
+msgid "Outer vertical gaps"
+msgstr "Внешние вертикальные промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Focus other monitor"
+msgstr "Переключить фокус на другой экран"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Next / previous layout"
+msgstr "Следующее или предыдущее расположение окон"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:108
+msgid "Set layout"
+msgstr "Выбрать расположение окон"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Border width"
+msgstr "Толщина рамки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Close all windows"
+msgstr "Закрыть все окна"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:109
+msgid "Move window to other monitor"
+msgstr "Переместить окно на другой экран"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Close window"
+msgstr "Закрыть окно"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Log out"
+msgstr "Выйти из системы"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:110
+msgid "Restart Ohmychadwm"
+msgstr "Перезапустить Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Also show tag"
+msgstr "Также показать рабочую область"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Floating on / off"
+msgstr "Включить или выключить плавающий режим"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:111
+msgid "Move window to tag"
+msgstr "Переместить окно в рабочую область"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Also put window on tag"
+msgstr "Также добавить окно в рабочую область"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Hide window"
+msgstr "Скрыть окно"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:112
+msgid "Restore window"
+msgstr "Восстановить окно"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_keys.py:182
+#, python-brace-format
+msgid "Run: {command}"
+msgstr "Запустить: {command}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:39
+msgid "Terminal & file manager"
+msgstr "Терминал и файловый менеджер"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:45
+msgid ""
+"What the keys open. Written into ~/.config/ohmychadwm/sxhkd/sxhkdrc and used "
+"right away."
+msgstr ""
+"Приложения, запускаемые сочетаниями клавиш. Настройки записываются в ~/"
+".config/ohmychadwm/sxhkd/sxhkdrc и применяются сразу."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:49
+msgid "Terminal"
+msgstr "Терминал"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:63
+msgid ""
+"~/.config/ohmychadwm is not set up for this user, so the keys can't be set."
+msgstr ""
+"Каталог ~/.config/ohmychadwm не настроен для этого пользователя. Не удалось "
+"настроить сочетания клавиш."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:65
+msgid "File types"
+msgstr "Типы файлов"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:66
+msgid "Which app opens links, folders and files (xdg-mime)."
+msgstr "Приложения для ссылок, папок и файлов (xdg-mime)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:82
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:254
+msgid "Apply"
+msgstr "Применить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:96
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:133
+msgid "Nothing changed."
+msgstr "Изменений нет."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:107
+msgid "Some defaults could not be set:"
+msgstr "Не удалось установить некоторые приложения по умолчанию:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:109
+msgid "Applied."
+msgstr "Применено."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:27
+msgid "Border width around every window, in pixels"
+msgstr "Толщина рамки вокруг каждого окна в пикселях"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:27
+msgid "Window border"
+msgstr "Рамка окна"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:28
+msgid "Gaps"
+msgstr "Промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:28
+msgid "Space between windows and around the screen edge, in pixels"
+msgstr "Расстояние между окнами и от окон до края экрана в пикселях"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:29
+msgid "No outer gap when only one window is open"
+msgstr "Без внешнего промежутка, если открыто только одно окно"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:29
+msgid "Smart gaps"
+msgstr "Умные промежутки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:30
+msgid "Bar at the top"
+msgstr "Панель сверху"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:30
+msgid "Off puts the bar at the bottom of the screen"
+msgstr "Если выключить, панель будет внизу экрана"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:31
+msgid "Show the tray icons (network, volume, …) in the bar"
+msgstr ""
+"Показывать на панели значки в области уведомлений (сеть, громкость и т. д.)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:31
+msgid "System tray"
+msgstr "Область уведомлений"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:32
+msgid "Hide the bar after"
+msgstr "Скрыть панель через"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:32
+msgid "Seconds without use before the bar hides; 0 = never"
+msgstr "Секунды бездействия до скрытия панели; 0 означает «никогда»"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:218
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
+msgid ""
+"~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
+"first."
+msgstr ""
+"Каталог ~/.config/ohmychadwm не настроен для этого пользователя. Сначала "
+"войдите в Ohmychadwm."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:62
+#, python-brace-format
+msgid ""
+"Starts from what the bar theme “{theme}” sets; anything you change here "
+"stays when you pick another theme. Applying recompiles Ohmychadwm (asks your "
+"password once)."
+msgstr ""
+"Исходные значения берутся из темы панели «{theme}». Изменённые здесь "
+"параметры сохраняются при выборе другой темы. Нажмите «Применить», чтобы "
+"пересобрать Ohmychadwm (потребуется один раз ввести пароль)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:249
+msgid "Restart Ohmychadwm now"
+msgstr "Перезапустить Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:86
+msgid "Use the theme's values"
+msgstr "Использовать значения темы"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:87
+msgid "Drop every change on this page, so the bar theme decides again"
+msgstr ""
+"Отменить все изменения на этой странице, чтобы снова использовать значения "
+"темы панели"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:110
+msgid "The theme's values are loaded — press Apply to use them."
+msgstr "Загружены значения темы. Нажмите «Применить», чтобы использовать их."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
+msgid "Recompiling Ohmychadwm…"
+msgstr "Пересборка Ohmychadwm…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:135
+msgid "Applied. Restart Ohmychadwm to see it."
+msgstr "Применено. Перезапустите Ohmychadwm, чтобы увидеть изменения."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:138
+msgid "Applied. Press Super+Shift+R to see it."
+msgstr "Применено. Нажмите Super+Shift+R, чтобы увидеть изменения."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:140
+msgid "Applied. It shows at your next Ohmychadwm login."
+msgstr "Применено. Изменения появятся при следующем входе в Ohmychadwm."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:165
+#, python-brace-format
+msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
+msgstr ""
+"Установка новой версии Ohmychadwm отменена или завершилась с ошибкой: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
+msgid "Installing the new Ohmychadwm was cancelled or failed."
+msgstr "Установка новой версии Ohmychadwm отменена или завершилась с ошибкой."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:54
+msgid ""
+"You are not in an Ohmychadwm session: a change shows right away, but the "
+"saved layout is only used at your Ohmychadwm logins. This desktop keeps its "
+"own display settings."
+msgstr ""
+"Сейчас запущен не Ohmychadwm. Изменение применится сразу, но сохранённое "
+"расположение экранов будет использоваться только при входе в Ohmychadwm. В "
+"этой среде рабочего стола действуют собственные настройки экранов."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:59
+#, python-brace-format
+msgid ""
+"Changes are used right away. Keep them within {seconds} seconds and they are "
+"saved to {path} (arandr format, so arandr can edit it too) for every login, "
+"otherwise the old layout comes back."
+msgstr ""
+"Изменения применяются сразу. Подтвердите их в течение {seconds} секунд, и "
+"они будут сохранены в {path} для каждого входа в систему. Файл сохраняется в "
+"формате arandr, поэтому его можно редактировать и в arandr. Иначе "
+"восстановится прежнее расположение."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:66
+#, python-brace-format
+msgid "xrandr could not read the displays: {error}"
+msgstr "xrandr не удалось получить данные об экранах: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:70
+msgid "xrandr reports no connected display."
+msgstr "По данным xrandr, подключённых экранов нет."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:85
+msgid "On"
+msgstr "Включён"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:87
+msgid "Primary"
+msgstr "Основной"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:128
+msgid "Switching…"
+msgstr "Переключение…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:144
+msgid "Keep this display layout?"
+msgstr "Оставить это расположение экранов?"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:34
+msgid "Pointer speed"
+msgstr "Скорость указателя"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:34
+msgid "Slower to the left, faster to the right"
+msgstr "Влево: медленнее; вправо: быстрее"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:36
+msgid "Content follows your fingers, as on a phone"
+msgstr "Содержимое движется вслед за пальцами, как на телефоне"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:36
+msgid "Natural scrolling"
+msgstr "Естественная прокрутка"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:31
+msgid "Left-handed"
+msgstr "Для левшей"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:31
+msgid "Swap the left and right buttons"
+msgstr "Поменять местами левую и правую кнопки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:35
+msgid "A light tap counts as a click"
+msgstr "Лёгкое касание считается щелчком"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:35
+msgid "Tap to click"
+msgstr "Щелчок касанием"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:37
+msgid "Ignore the touchpad while you type"
+msgstr "Игнорировать тачпад во время ввода текста"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:37
+msgid "Off while typing"
+msgstr "Отключать во время ввода текста"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:40
+msgid "Mouse"
+msgstr "Мышь"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:40
+msgid "Touchpad"
+msgstr "Тачпад"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:62
+#, python-brace-format
+msgid ""
+"Changes are used right away. Save keeps them for every login ({path}, asks "
+"your password once)."
+msgstr ""
+"Изменения применяются сразу. Нажмите «Сохранить», чтобы использовать их при "
+"каждом входе в систему ({path}, потребуется один раз ввести пароль)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:66
+msgid ""
+"No mouse or touchpad was found through xinput (is xorg-xinput installed?)."
+msgstr ""
+"Через xinput не удалось обнаружить мышь или тачпад (установлен ли xorg-"
+"xinput?)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:96
+msgid "Defaults"
+msgstr "По умолчанию"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:97
+msgid "libinput's own defaults — press Save to keep them"
+msgstr "Значения libinput по умолчанию. Нажмите «Сохранить», чтобы оставить их."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:99
+msgid "Save"
+msgstr "Сохранить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:130
+msgid "Some settings could not be used:"
+msgstr "Не удалось применить некоторые настройки:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:139
+msgid "Defaults loaded and used now — press Save to keep them."
+msgstr ""
+"Загружены и применены значения по умолчанию. Нажмите «Сохранить», чтобы "
+"оставить их."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:439
+msgid "Waiting for your password…"
+msgstr "Ожидание ввода пароля…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:156
+msgid "Saved. Every login uses these settings now."
+msgstr ""
+"Сохранено. Эти настройки будут использоваться при каждом входе в систему."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:159
+#, python-brace-format
+msgid "Saving was cancelled or failed: {error}"
+msgstr "Сохранение отменено или завершилось с ошибкой: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:160
+msgid "Saving was cancelled or failed."
+msgstr "Сохранение отменено или завершилось с ошибкой."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:28
+msgid ""
+"You are not in an Ohmychadwm session: these are Ohmychadwm's keys, not the "
+"ones of the desktop you are in now."
+msgstr ""
+"Сейчас запущен не Ohmychadwm. Здесь показаны сочетания клавиш Ohmychadwm, а "
+"не текущей среды рабочего стола."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:30
+msgid ""
+"From ~/.config/ohmychadwm/sxhkd/sxhkdrc and the keys of ~/.config/ohmychadwm/"
+"chadwm/config.def.h, as they are now."
+msgstr ""
+"Текущие сочетания клавиш из ~/.config/ohmychadwm/sxhkd/sxhkdrc и ~/.config/"
+"ohmychadwm/chadwm/config.def.h."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:34
+msgid "Search keys or actions"
+msgstr "Поиск сочетаний клавиш или действий"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:37
+msgid "No key matches."
+msgstr "Подходящих сочетаний клавиш нет."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
+#, python-brace-format
+msgid "System default cursor: cursor = {value}"
+msgstr "Системный курсор по умолчанию: cursor = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:334
+msgid "not set"
+msgstr "не задано"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
+#, python-brace-format
+msgid "Login screen (SDDM): cursor = {value}"
+msgstr "Экран входа (SDDM): cursor = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:59
+#, python-brace-format
+msgid "Login screen (SDDM): cursor size = {value}"
+msgstr "Экран входа (SDDM): размер курсора = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:117
+msgid "Your settings are out of sync"
+msgstr "Настройки не синхронизированы"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:122
+msgid "Fix all"
+msgstr "Исправить всё"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:124
+msgid "Write the choices below to every settings file"
+msgstr "Записать выбранные ниже параметры во все файлы настроек"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:132
+msgid "Applications"
+msgstr "Приложения"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:133
+msgid ""
+"Used by Thunar and every GTK 2, 3 and 4 application. Shared with all your "
+"desktops: Xfce4, Ohmychadwm and the rest get the same theme, icons, cursor "
+"and font."
+msgstr ""
+"Используется в Thunar и во всех приложениях GTK 2, 3 и 4. Настройка общая "
+"для всех сред рабочего стола: Xfce4, Ohmychadwm и другие используют одну "
+"тему, значки, курсор и шрифт."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:148
+msgid "Theme"
+msgstr "Тема"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:151
+msgid "Force this theme on every app (system-wide)"
+msgstr "Принудительно использовать эту тему во всех приложениях"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:153
+msgid ""
+"Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; "
+"shows after re-login."
+msgstr ""
+"Задаёт GTK_THEME в /etc/environment, как предусмотрено в Kiro. Требуется "
+"пароль. Изменения появятся после повторного входа в систему."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:164
+msgid "Also use this cursor on the login screen and as the system default"
+msgstr "Также использовать на экране входа и по умолчанию в системе"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:167
+msgid ""
+"Sets /usr/share/icons/default and the SDDM CursorTheme / CursorSize. Needs "
+"your password."
+msgstr ""
+"Задаёт /usr/share/icons/default и CursorTheme / CursorSize в SDDM. Требуется "
+"пароль."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:177
+msgid "Icons"
+msgstr "Значки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:185
+msgid "Cursor size in pixels"
+msgstr "Размер курсора в пикселях"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:186
+msgid "Cursor"
+msgstr "Курсор"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:190
+msgid "Choose a font"
+msgstr "Выбрать шрифт"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:194
+msgid "Font"
+msgstr "Шрифт"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:197
+msgid "Light"
+msgstr "Светлая"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:198
+msgid "Dark"
+msgstr "Тёмная"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:205
+msgid "Preferred style for apps that follow it (GTK 4 / libadwaita)"
+msgstr ""
+"Предпочтительный стиль для приложений, которые его поддерживают (GTK 4 / "
+"libadwaita)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:206
+msgid "Style"
+msgstr "Стиль"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:214
+msgid "Ohmychadwm bar"
+msgstr "Панель Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:224
+msgid ""
+"Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks "
+"your password once)."
+msgstr ""
+"Цвета и шрифт верхней панели. Их изменение приводит к пересборке Ohmychadwm "
+"(потребуется один раз ввести пароль)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:234
+msgid "Also use the font above for the bar"
+msgstr "Также использовать указанный выше шрифт для панели"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:252
+msgid "Reset to Kiro default"
+msgstr "Сбросить до настроек Kiro по умолчанию"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:269
+msgid "This theme has no GTK 4 version — GTK 4 apps will look like Adwaita."
+msgstr ""
+"У этой темы нет версии для GTK 4. Приложения GTK 4 будут выглядеть как "
+"Adwaita."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:273
+#, python-brace-format
+msgid ""
+"“{name}” has no dark version, so most apps stay light. Pick a dark theme "
+"above."
+msgstr ""
+"У темы «{name}» нет тёмной версии, поэтому большинство приложений останутся "
+"светлыми. Выберите тёмную тему выше."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:274
+#, python-brace-format
+msgid ""
+"“{name}” has no light version, so most apps stay dark. Pick a light theme "
+"above."
+msgstr ""
+"У темы «{name}» нет светлой версии, поэтому большинство приложений останутся "
+"тёмными. Выберите светлую тему выше."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:277
+#, python-brace-format
+msgid "“{name}” is a light theme, so Style Dark changes little."
+msgstr "Тема «{name}» светлая, поэтому стиль «Тёмная» почти ничего не изменит."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:278
+#, python-brace-format
+msgid "“{name}” is a dark theme, so Style Light changes little."
+msgstr "Тема «{name}» тёмная, поэтому стиль «Светлая» почти ничего не изменит."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:283
+#, python-brace-format
+msgid "Use {theme}"
+msgstr "Использовать {theme}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:301
+msgid ""
+"Without it, apps follow your personal settings — some GTK 4 / libadwaita "
+"apps may keep their own look."
+msgstr ""
+"Без этой настройки приложения используют ваши личные параметры. Некоторые "
+"приложения GTK 4 / libadwaita могут сохранить собственное оформление."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:326
+#, python-brace-format
+msgid ""
+"“{family}” is not a Nerd Font — the bar's tag icons may show as empty boxes."
+msgstr ""
+"«{family}» не является Nerd Font. Значки рабочих областей на панели могут "
+"отображаться пустыми квадратами."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:386
+msgid "Kiro defaults loaded for everything — press Apply to use them."
+msgstr ""
+"Загружены настройки Kiro по умолчанию. Нажмите «Применить», чтобы "
+"использовать их."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:394
+msgid "Applying…"
+msgstr "Применение…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:435
+#, python-brace-format
+msgid "Ohmychadwm bar: {error}"
+msgstr "Панель Ohmychadwm: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
+msgid "System changes"
+msgstr "Изменения системы"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
+#, python-brace-format
+msgid "cancelled or failed: {error}"
+msgstr "отменено или завершилось с ошибкой: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:443
+msgid "cancelled or failed"
+msgstr "отменено или завершилось с ошибкой"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:460
+msgid "Some settings could not be written:"
+msgstr "Не удалось записать некоторые настройки:"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:462
+msgid "Log out and back in for the system-wide theme."
+msgstr "Чтобы применить системную тему, выйдите из системы и войдите снова."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:464
+msgid "Applied. Restart Ohmychadwm to see the new bar."
+msgstr "Применено. Перезапустите Ohmychadwm, чтобы увидеть новую панель."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:467
+msgid "Applied. Press Super+Shift+R to see the new bar."
+msgstr "Применено. Нажмите Super+Shift+R, чтобы увидеть новую панель."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:469
+msgid "Applied. The new bar shows at your next Ohmychadwm login."
+msgstr "Применено. Новая панель появится при следующем входе в Ohmychadwm."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:471
+msgid "Applied. Log out and back in to see the new theme everywhere."
+msgstr ""
+"Применено. Выйдите из системы и войдите снова, чтобы новая тема "
+"использовалась во всех приложениях."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:473
+msgid "Applied. Apps you open from now on use the new look."
+msgstr ""
+"Применено. Приложения, запущенные после этого, будут использовать новое "
+"оформление."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:34
+msgid ""
+"What Ohmychadwm starts when you log in (the run lines of ~/.config/"
+"ohmychadwm/scripts/run.sh). Changes show at your next login."
+msgstr ""
+"Что запускает Ohmychadwm при входе в систему (команды run в ~/.config/"
+"ohmychadwm/scripts/run.sh). Изменения появятся при следующем входе."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:39
+#, python-brace-format
+msgid "More than one compositor is switched on — only one should run: {names}"
+msgstr "Включено несколько композиторов. Должен работать только один: {names}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:50
+msgid "Command to start at login, e.g. redshift-gtk"
+msgstr "Команда для запуска при входе в систему, например redshift-gtk"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:53
+msgid "Add"
+msgstr "Добавить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
+msgid "Remove"
+msgstr "Удалить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:83
+#, python-brace-format
+msgid "{command}: on from the next login."
+msgstr "{command}: включится при следующем входе в систему."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:84
+#, python-brace-format
+msgid "{command}: off from the next login."
+msgstr "{command}: выключится при следующем входе в систему."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:86
+#, python-brace-format
+msgid ""
+"Careful: Ohmychadwm needs {program} (bar status, password prompts or "
+"notifications)."
+msgstr ""
+"Внимание: Ohmychadwm требуется {program} (строка состояния на панели, "
+"запросы пароля или уведомления)."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:97
+#, python-brace-format
+msgid "{command}: saved for the next login."
+msgstr "{command}: сохранено для следующего входа в систему."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:104
+#, python-brace-format
+msgid "Could not write run.sh: {error}"
+msgstr "Не удалось записать run.sh: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:18
+msgid "Choose folder…"
+msgstr "Выбрать папку…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:39
+msgid "Show"
+msgstr "Показать"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:48
+msgid "Start Variety to download wallpapers"
+msgstr "Запустите Variety, чтобы загружать обои"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:73
+msgid "No wallpaper selected"
+msgstr "Обои не выбраны"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:78
+msgid "Previous (Variety)"
+msgstr "Предыдущие (Variety)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:80
+msgid "Next (Variety)"
+msgstr "Следующие (Variety)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:86
+msgid "fill: cover the screen · scale: stretch · center · max: fit · tile"
+msgstr ""
+"fill: заполнить экран · scale: растянуть · center: по центру · max: вписать "
+"· tile: замостить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:87
+msgid "Apply wallpaper"
+msgstr "Применить обои"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:118
+msgid "Choose a wallpaper folder"
+msgstr "Выбрать папку с обоями"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:141
+msgid "No images here yet. Variety fills this folder while it runs."
+msgstr ""
+"Здесь пока нет изображений. Variety заполняет эту папку во время работы."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:142
+msgid "No images here yet."
+msgstr "Здесь пока нет изображений."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:188
+msgid "Select a wallpaper first."
+msgstr "Сначала выберите обои."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:191
+msgid "Setting wallpaper…"
+msgstr "Установка обоев…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:204
+msgid "It stays after you log out."
+msgstr "Обои останутся после выхода из системы."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:209
+msgid "Asked Variety for another wallpaper."
+msgstr "У Variety запрошены другие обои."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:211
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:217
+msgid "Variety is not installed."
+msgstr "Variety не установлена."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:215
+msgid ""
+"Variety started. Pick this source again in a minute to see its downloads."
+msgstr ""
+"Variety запущена. Через минуту выберите этот источник снова, чтобы увидеть "
+"загруженные обои."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:21
+msgid "System GTK_THEME"
+msgstr "Системная переменная GTK_THEME"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:22
+msgid "GTK 3 (Thunar)"
+msgstr "GTK 3 (Thunar)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:26
+msgid "XFCE xsettings"
+msgstr "Настройки XFCE xsettings"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:27
+msgid "Personal default cursor"
+msgstr "Личный курсор по умолчанию"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "cursor"
+msgstr "курсор"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "cursor size"
+msgstr "размер курсора"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "icons"
+msgstr "значки"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+msgid "theme"
+msgstr "тема"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+msgid "dark"
+msgstr "тёмная"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+msgid "font"
+msgstr "шрифт"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:315
+#, python-brace-format
+msgid "{target}: not configured"
+msgstr "{target}: не настроено"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+msgid "light"
+msgstr "светлая"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:333
+#, python-brace-format
+msgid "{target}: {field} = {value}"
+msgstr "{target}: {field} = {value}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:375
+msgid "gsettings not installed, skipped"
+msgstr "gsettings не установлен: действие пропущено"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:394
+msgid "xfconf-query not installed, skipped"
+msgstr "xfconf-query не установлен: действие пропущено"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:33
+msgid "Ohmychadwm wallpapers"
+msgstr "Обои Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:34
+msgid "Variety downloads"
+msgstr "Загруженные обои Variety"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:35
+msgid "Variety favourites"
+msgstr "Избранные обои Variety"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:79
+#, python-brace-format
+msgid "feh could not run: {error}"
+msgstr "Не удалось запустить feh: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:82
+msgid "Set by feh."
+msgstr "Настроено через feh."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:82
+#, python-brace-format
+msgid "feh failed: {error}"
+msgstr "Ошибка feh: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:42
+msgid ""
+"You are not in an Ohmychadwm session: this part is for your Ohmychadwm "
+"desktop. You see it at your next Ohmychadwm login, not here."
+msgstr ""
+"Сейчас запущен не Ohmychadwm. Этот раздел предназначен для рабочего стола "
+"Ohmychadwm. Изменения появятся при следующем входе в Ohmychadwm, а не здесь."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:134
+msgid "Keep this change?"
+msgstr "Оставить это изменение?"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:144
+msgid "Revert"
+msgstr "Отменить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:145
+msgid "Keep"
+msgstr "Оставить"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:171
+#: usr/share/ohmychadwm-tweak-tool/ott_widgets.py:174
+#, python-brace-format
+msgid "Going back in {count} second."
+msgid_plural "Going back in {count} seconds."
+msgstr[0] "Возврат через {count} секунду."
+msgstr[1] "Возврат через {count} секунды."
+msgstr[2] "Возврат через {count} секунд."
+
+#: po/ohmychadwm-tweak-tool.desktop.in:3
+msgid "Desktop Settings"
+msgstr "Настройки рабочего стола"
+
+#: po/ohmychadwm-tweak-tool.desktop.in:4
+msgid ""
+"Look, bar, wallpaper, displays, mouse, startup apps, default apps and keys "
+"for Ohmychadwm"
+msgstr ""
+"Внешний вид, панель, обои, экраны, мышь, автозапуск, приложения по умолчанию "
+"и сочетания клавиш для Ohmychadwm"
+
+#: po/ohmychadwm-tweak-tool.desktop.in:10
+msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar;gaps;wallpaper;display;mouse;touchpad;startup;keys"
+msgstr ""
+"тема;значки;курсор;шрифт;внешний "
+"вид;gtk;lxappearance;chadwm;ohmychadwm;панель;промежутки;обои;экран;мышь;тачпад;автозапуск;сочетания "
+"клавиш"

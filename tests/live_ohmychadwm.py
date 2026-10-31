@@ -17,6 +17,8 @@ import time
 APP_DIR = os.environ.get("OTT_APP_DIR", "/usr/share/ohmychadwm-tweak-tool")
 OUT = os.environ.get("OTT_OUT", "/tmp/ott-live")
 sys.path.insert(0, APP_DIR)
+# the checks read the app's English texts
+os.environ.setdefault("OTT_LANGUAGE", "en")
 
 import gi  # noqa: E402
 

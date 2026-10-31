@@ -13,8 +13,9 @@ from gi.repository import Gdk, GdkPixbuf, Gio, GLib, Gtk, Pango  # noqa: E402
 import log  # noqa: E402
 import ott_wallpaper  # noqa: E402
 from ott_widgets import dropdown, muted, page_box, section, selected, session_note, set_status  # noqa: E402
+from ott_i18n import _  # noqa: E402
 
-_CHOOSE = "Choose folder…"
+_CHOOSE = _("Choose folder…")
 _THUMB_W, _THUMB_H = 160, 100
 
 
@@ -30,12 +31,12 @@ class WallpaperPage:
         self._selected = current if os.path.isfile(current) else None
 
         box = page_box()
-        box.append(section("Wallpaper"))
+        box.append(section(_("Wallpaper")))
         if (note := session_note()) is not None:
             box.append(note)
 
         row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        row.append(Gtk.Label(label="Show", xalign=0))
+        row.append(Gtk.Label(label=_("Show"), xalign=0))
         self._source = Gtk.DropDown.new_from_strings([label for label, _dirs in self._sources] + [_CHOOSE])
         self._source.connect("notify::selected", self._on_source_changed)
         row.append(self._source)
@@ -44,7 +45,7 @@ class WallpaperPage:
         self._empty = muted()
         self._empty.set_visible(False)
         box.append(self._empty)
-        self._btn_fetch = Gtk.Button(label="Start Variety to download wallpapers")
+        self._btn_fetch = Gtk.Button(label=_("Start Variety to download wallpapers"))
         self._btn_fetch.set_halign(Gtk.Align.START)
         self._btn_fetch.set_visible(False)
         self._btn_fetch.connect("clicked", self._on_start_variety)
@@ -69,21 +70,21 @@ class WallpaperPage:
         self._preview.set_visible(False)
         box.append(self._preview)
 
-        self._path = Gtk.Label(label="No wallpaper selected", xalign=0)
+        self._path = Gtk.Label(label=_("No wallpaper selected"), xalign=0)
         self._path.set_ellipsize(Pango.EllipsizeMode.START)
         box.append(self._path)
 
         buttons = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
-        btn_prev = Gtk.Button(label="Previous (Variety)")
+        btn_prev = Gtk.Button(label=_("Previous (Variety)"))
         btn_prev.connect("clicked", lambda _w: self._variety("--previous"))
-        btn_next = Gtk.Button(label="Next (Variety)")
+        btn_next = Gtk.Button(label=_("Next (Variety)"))
         btn_next.connect("clicked", lambda _w: self._variety("--next"))
         spacer = Gtk.Box()
         spacer.set_hexpand(True)
         self._dd_mode = dropdown(ott_wallpaper.MODES, mode)
         self._dd_mode.set_hexpand(False)
-        self._dd_mode.set_tooltip_text("fill: cover the screen · scale: stretch · center · max: fit · tile")
-        self._btn_apply = Gtk.Button(label="Apply wallpaper")
+        self._dd_mode.set_tooltip_text(_("fill: cover the screen · scale: stretch · center · max: fit · tile"))
+        self._btn_apply = Gtk.Button(label=_("Apply wallpaper"))
         self._btn_apply.add_css_class("suggested-action")
         self._btn_apply.set_sensitive(self._selected is not None)
         self._btn_apply.connect("clicked", self._on_apply)
@@ -114,7 +115,7 @@ class WallpaperPage:
         if index < len(self._sources):
             self._load(self._sources[index][1])
             return
-        dialog = Gtk.FileDialog(title="Choose a wallpaper folder")
+        dialog = Gtk.FileDialog(title=_("Choose a wallpaper folder"))
         dialog.set_initial_folder(Gio.File.new_for_path(self._custom or os.path.expanduser("~/Pictures")))
         dialog.select_folder(self._window, None, self._on_folder_chosen)
 
@@ -137,7 +138,8 @@ class WallpaperPage:
         images = ott_wallpaper.list_images(folders)
         in_variety = any(f.startswith(ott_wallpaper.VARIETY_DIR) for f in folders)
         self._empty.set_visible(not images)
-        self._empty.set_text("No images here yet." + (" Variety fills this folder while it runs." if in_variety else ""))
+        self._empty.set_text(_("No images here yet. Variety fills this folder while it runs.") if in_variety
+                             else _("No images here yet."))
         self._btn_fetch.set_visible(not images and in_variety)
         log.debug_print(f"{len(images)} wallpapers in {folders}")
         queue = list(images)
@@ -183,10 +185,10 @@ class WallpaperPage:
     def _on_apply(self, _widget):
         path = self._selected
         if not path or not os.path.isfile(path):
-            set_status(self._status, "Select a wallpaper first.", error=True)
+            set_status(self._status, _("Select a wallpaper first."), error=True)
             return
         self._btn_apply.set_sensitive(False)
-        set_status(self._status, "Setting wallpaper…")
+        set_status(self._status, _("Setting wallpaper…"))
         mode = selected(self._dd_mode)
         threading.Thread(target=self._apply_worker, args=(path, mode), daemon=True).start()
 
@@ -199,17 +201,17 @@ class WallpaperPage:
         if not ok:
             set_status(self._status, msg, error=True)
         else:
-            set_status(self._status, f"{msg} It stays after you log out.")
+            set_status(self._status, msg + " " + _("It stays after you log out."))
         return False
 
     def _variety(self, arg):
         if ott_wallpaper.variety(arg):
-            set_status(self._status, "Asked Variety for another wallpaper.")
+            set_status(self._status, _("Asked Variety for another wallpaper."))
         else:
-            set_status(self._status, "Variety is not installed.", error=True)
+            set_status(self._status, _("Variety is not installed."), error=True)
 
     def _on_start_variety(self, _widget):
         if ott_wallpaper.variety():
-            set_status(self._status, "Variety started. Pick this source again in a minute to see its downloads.")
+            set_status(self._status, _("Variety started. Pick this source again in a minute to see its downloads."))
         else:
-            set_status(self._status, "Variety is not installed.", error=True)
+            set_status(self._status, _("Variety is not installed."), error=True)

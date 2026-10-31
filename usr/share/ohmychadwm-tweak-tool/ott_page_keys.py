@@ -8,6 +8,7 @@ from gi.repository import Gtk  # noqa: E402
 import ott_chadwm  # noqa: E402
 import ott_keys  # noqa: E402
 from ott_widgets import clear, muted, page_box, section, warning  # noqa: E402
+from ott_i18n import _  # noqa: E402
 
 _SOURCE = {"sxhkd": "sxhkdrc", "ohmychadwm": "Ohmychadwm"}
 
@@ -22,18 +23,18 @@ class KeysPage:
     def refresh(self):
         """Re-read sxhkdrc and config.def.h."""
         clear(self.widget)
-        self.widget.append(section("Keys"))
+        self.widget.append(section(_("Keys")))
         if not ott_chadwm.in_session():
-            self.widget.append(warning("You are not in an Ohmychadwm session: these are Ohmychadwm's keys, not the "
-                                       "ones of the desktop you are in now."))
-        self.widget.append(muted("From ~/.config/ohmychadwm/sxhkd/sxhkdrc and the keys of "
-                                 "~/.config/ohmychadwm/chadwm/config.def.h, as they are now."))
+            self.widget.append(warning(_("You are not in an Ohmychadwm session: these are Ohmychadwm's keys, not the "
+                                       "ones of the desktop you are in now.")))
+        self.widget.append(muted(_("From ~/.config/ohmychadwm/sxhkd/sxhkdrc and the keys of "
+                                 "~/.config/ohmychadwm/chadwm/config.def.h, as they are now.")))
         self._rows = []
         bindings = ott_keys.all_bindings(ott_keys.read_sxhkdrc(), ott_chadwm.read_config())
-        search = Gtk.SearchEntry(placeholder_text="Search keys or actions")
+        search = Gtk.SearchEntry(placeholder_text=_("Search keys or actions"))
         search.connect("search-changed", self._on_search)
         self.widget.append(search)
-        self._empty = muted("No key matches.")
+        self._empty = muted(_("No key matches."))
         self._empty.set_visible(not bindings)
         grid = Gtk.Grid(column_spacing=18, row_spacing=4)
         for i, b in enumerate(bindings):

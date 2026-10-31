@@ -10,6 +10,7 @@ import re
 import shutil
 import subprocess
 from dataclasses import dataclass, field
+from ott_i18n import _
 
 LAYOUT_DIR = os.path.expanduser("~/.screenlayout")
 
@@ -153,24 +154,25 @@ def switch(wanted, primary):
     try:
         outputs = query()
     except (OSError, subprocess.CalledProcessError) as e:
-        return False, f"xrandr failed: {e}", None, None
+        return False, _("xrandr failed: {error}").format(error=e), None, None
     old = build_script(outputs)
     new = build_script(plan(outputs, wanted, primary))
     if new is None:
-        return False, "At least one display has to stay on.", None, None
+        return False, _("At least one display has to stay on."), None, None
     ok, err = _run(new)
     if not ok:
         _run(old)
-        return False, f"xrandr could not use this layout: {err}", None, None
-    return True, "Display layout changed.", new, old
+        return False, _("xrandr could not use this layout: {error}").format(error=err), None, None
+    return True, _("Display layout changed."), new, old
 
 
 def revert(old_script):
     """Switch back to the layout from before switch(); return (ok, message)."""
     if old_script is None:
-        return False, "no previous layout to go back to"
+        return False, _("There is no previous layout to go back to.")
     ok, err = _run(old_script)
-    return (True, "Display layout reverted, nothing saved.") if ok else (False, f"Revert failed: {err}")
+    return (True, _("Display layout reverted, nothing saved.")) if ok else (False, _("Revert failed: {error}").format(
+        error=err))
 
 
 def save(script):
@@ -187,4 +189,4 @@ def save(script):
     except OSError as e:
         return False, f"{path}: {e}"
     short = path.replace(os.path.expanduser("~"), "~", 1)
-    return True, f"Layout kept and saved to {short}, so every login uses it."
+    return True, _("Layout kept and saved to {path}, so every login uses it.").format(path=short)

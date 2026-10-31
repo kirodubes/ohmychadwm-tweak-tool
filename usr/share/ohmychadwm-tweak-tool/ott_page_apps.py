@@ -22,6 +22,7 @@ from ott_widgets import (  # noqa: E402
     settings_grid,
     status_label,
 )
+from ott_i18n import _  # noqa: E402
 
 
 class AppsPage:
@@ -35,18 +36,18 @@ class AppsPage:
         """Re-read the installed apps and the current defaults."""
         clear(self.widget)
         self._mime_rows = {}
-        self.widget.append(section("Terminal & file manager"))
+        self.widget.append(section(_("Terminal & file manager")))
         if (note := session_note()) is not None:
             self.widget.append(note)
         sxhkdrc = ott_keys.read_sxhkdrc()
         self._keys_rows = {}
         if sxhkdrc:
-            self.widget.append(muted("What the keys open. Written into ~/.config/ohmychadwm/sxhkd/sxhkdrc and used "
-                                     "right away."))
+            self.widget.append(muted(_("What the keys open. Written into ~/.config/ohmychadwm/sxhkd/sxhkdrc and used "
+                                     "right away.")))
             grid = settings_grid()
             for row, (label, keys, names, hint) in enumerate([
-                ("Terminal", ott_apps.TERMINAL_KEYS, ott_apps.TERMINALS, "Super+Enter, Super+T"),
-                ("File manager", ott_apps.FILES_KEYS, ott_apps.FILE_MANAGERS, "Super+Shift+Enter, Super+F8"),
+                (_("Terminal"), ott_apps.TERMINAL_KEYS, ott_apps.TERMINALS, "Super+Enter, Super+T"),
+                (_("File manager"), ott_apps.FILES_KEYS, ott_apps.FILE_MANAGERS, "Super+Shift+Enter, Super+F8"),
             ]):
                 now = ott_apps.key_command(sxhkdrc, keys)
                 if now is None:
@@ -59,10 +60,10 @@ class AppsPage:
                 self._keys_rows[label] = (keys, dd, now)
             self.widget.append(grid)
         else:
-            self.widget.append(muted("~/.config/ohmychadwm is not set up for this user, so the keys can't be set."))
+            self.widget.append(muted(_("~/.config/ohmychadwm is not set up for this user, so the keys can't be set.")))
 
-        self.widget.append(section("File types"))
-        self.widget.append(muted("Which app opens links, folders and files (xdg-mime)."))
+        self.widget.append(section(_("File types")))
+        self.widget.append(muted(_("Which app opens links, folders and files (xdg-mime).")))
         candidates = ott_apps.candidates()
         grid = settings_grid()
         for row, (label, _mimes) in enumerate(ott_apps.CATEGORIES):
@@ -73,12 +74,12 @@ class AppsPage:
             now = ott_apps.current(label)
             current = next((n for n, (did, _name) in zip(names, rows) if did == now), None)
             dd = dropdown(names, current)
-            grid.attach(row_label(label), 0, row, 1, 1)
+            grid.attach(row_label(_(label)), 0, row, 1, 1)
             grid.attach(dd, 1, row, 1, 1)
             self._mime_rows[label] = (dd, dict(zip(names, (did for did, _n in rows))), now)
         self.widget.append(grid)
 
-        self._btn_apply = Gtk.Button(label="Apply")
+        self._btn_apply = Gtk.Button(label=_("Apply"))
         self._btn_apply.add_css_class("suggested-action")
         self._btn_apply.set_halign(Gtk.Align.END)
         self._btn_apply.connect("clicked", self._on_apply)
@@ -92,7 +93,7 @@ class AppsPage:
         mime_changes = [(label, ids[selected(dd)]) for label, (dd, ids, now) in self._mime_rows.items()
                         if selected(dd) in ids and ids[selected(dd)] != now]
         if not keys_changes and not mime_changes:
-            set_status(self._status, "Nothing changed.")
+            set_status(self._status, _("Nothing changed."))
             return
         self._btn_apply.set_sensitive(False)
         run_async(lambda: _apply(keys_changes, mime_changes), self._applied)
@@ -103,9 +104,9 @@ class AppsPage:
             log.log_error(f"Default apps: {e}")
         self.refresh()
         if errors:
-            set_status(self._status, "Some defaults could not be set:\n" + "\n".join(errors), error=True)
+            set_status(self._status, _("Some defaults could not be set:") + "\n" + "\n".join(errors), error=True)
         else:
-            set_status(self._status, "Applied.")
+            set_status(self._status, _("Applied."))
 
 
 def _apply(keys_changes, mime_changes):

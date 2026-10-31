@@ -13,20 +13,25 @@ import subprocess
 from dataclasses import dataclass
 
 import ott_env
+from ott_i18n import N_, _
 
 SCHEMA = "org.gnome.desktop.interface"
 
 # Display labels, in the order the drift banner lists them.
-SYSTEM = "System GTK_THEME"
-GTK3 = "GTK 3 (Thunar)"
+SYSTEM = N_("System GTK_THEME")
+GTK3 = N_("GTK 3 (Thunar)")
 GTK4 = "GTK 4"
 GTK2 = "GTK 2"
 GSETTINGS = "gsettings"
-XFCONF = "XFCE xsettings"
-CURSOR_INDEX = "Personal default cursor"
+XFCONF = N_("XFCE xsettings")
+CURSOR_INDEX = N_("Personal default cursor")
 XRESOURCES = "Xresources"
 
 FALLBACK_CURSOR_SIZE = 24
+
+# Field names as the drift banner shows them
+_FIELD_NAMES = {"theme": N_("theme"), "icons": N_("icons"), "cursor": N_("cursor"), "cursor_size": N_("cursor size"),
+                "font": N_("font"), "dark": N_("dark")}
 
 _INI_KEYS = {
     "theme": "gtk-theme-name",
@@ -307,7 +312,7 @@ def drift(sel, state=None):
     for label, vals in state.items():
         if vals is None:
             if label in (GTK4, GTK2, CURSOR_INDEX):
-                lines.append(f"{label}: not configured")
+                lines.append(_("{target}: not configured").format(target=_(label)))
             continue
         for field, raw in vals.items():
             want = expected[field]
@@ -324,8 +329,9 @@ def drift(sel, state=None):
             else:
                 got = raw or None
             if got != want:
-                shown = {True: "dark", False: "light"}.get(got, got) if field == "dark" else got
-                lines.append(f"{label}: {field.replace('_', ' ')} = {shown or 'not set'}")
+                shown = {True: _("dark"), False: _("light")}.get(got, got) if field == "dark" else got
+                lines.append(_("{target}: {field} = {value}").format(
+                    target=_(label), field=_(_FIELD_NAMES[field]), value=shown or _("not set")))
     return lines
 
 
@@ -366,7 +372,7 @@ def _write_gtkrc2(sel):
 
 def _write_gsettings(sel):
     if not shutil.which("gsettings"):
-        return "gsettings not installed, skipped"
+        return _("gsettings not installed, skipped")
     pairs = [
         ("gtk-theme", sel.theme),
         ("icon-theme", sel.icons),
@@ -385,7 +391,7 @@ def _write_gsettings(sel):
 
 def _write_xfconf(sel):
     if not shutil.which("xfconf-query"):
-        return "xfconf-query not installed, skipped"
+        return _("xfconf-query not installed, skipped")
     values = {"theme": sel.theme, "icons": sel.icons, "cursor": sel.cursor,
               "cursor_size": str(sel.cursor_size), "font": sel.font}
     for field, (prop, ptype) in _XFCONF_PROPS.items():

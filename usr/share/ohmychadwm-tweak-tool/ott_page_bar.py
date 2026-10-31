@@ -20,15 +20,16 @@ from ott_widgets import (  # noqa: E402
     settings_grid,
     status_label,
 )
+from ott_i18n import _  # noqa: E402
 
 # (option, label, kind, minimum, maximum, tooltip)
 _FIELDS = [
-    ("THEME_BORDER", "Window border", "spin", 0, 20, "Border width around every window, in pixels"),
-    ("THEME_GAPS", "Gaps", "spin", 0, 60, "Space between windows and around the screen edge, in pixels"),
-    ("THEME_SMARTGAPS", "Smart gaps", "switch", 0, 1, "No outer gap when only one window is open"),
-    ("THEME_TOPBAR", "Bar at the top", "switch", 0, 1, "Off puts the bar at the bottom of the screen"),
-    ("THEME_SHOWSYSTRAY", "System tray", "switch", 0, 1, "Show the tray icons (network, volume, …) in the bar"),
-    ("THEME_AUTOHIDE", "Hide the bar after", "spin", 0, 60, "Seconds without use before the bar hides; 0 = never"),
+    ("THEME_BORDER", _("Window border"), "spin", 0, 20, _("Border width around every window, in pixels")),
+    ("THEME_GAPS", _("Gaps"), "spin", 0, 60, _("Space between windows and around the screen edge, in pixels")),
+    ("THEME_SMARTGAPS", _("Smart gaps"), "switch", 0, 1, _("No outer gap when only one window is open")),
+    ("THEME_TOPBAR", _("Bar at the top"), "switch", 0, 1, _("Off puts the bar at the bottom of the screen")),
+    ("THEME_SHOWSYSTRAY", _("System tray"), "switch", 0, 1, _("Show the tray icons (network, volume, …) in the bar")),
+    ("THEME_AUTOHIDE", _("Hide the bar after"), "spin", 0, 60, _("Seconds without use before the bar hides; 0 = never")),
 ]
 
 
@@ -47,19 +48,19 @@ class BarPage:
         clear(self.widget)
         self._widgets = {}
         config = ott_chadwm.read_config()
-        self.widget.append(section("Bar & windows"))
+        self.widget.append(section(_("Bar & windows")))
         if (note := session_note()) is not None:
             self.widget.append(note)
         if not config:
-            self.widget.append(muted("~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
-                                     "first."))
+            self.widget.append(muted(_("~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
+                                     "first.")))
             return
         theme = ott_chadwm.active_theme(config) or ""
         self._theme_values = ott_chadwm.theme_values(theme)
         overrides = ott_chadwm.bar_options(config)
         self.widget.append(muted(
-            f"Starts from what the bar theme “{theme}” sets; anything you change here stays when you pick another "
-            "theme. Applying recompiles Ohmychadwm (asks your password once)."
+            _("Starts from what the bar theme “{theme}” sets; anything you change here stays when you pick another "
+              "theme. Applying recompiles Ohmychadwm (asks your password once).").format(theme=theme)
         ))
         grid = settings_grid()
         for row, (key, label, kind, lo, hi, tip) in enumerate(_FIELDS):
@@ -79,13 +80,13 @@ class BarPage:
 
         buttons = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         buttons.set_halign(Gtk.Align.END)
-        self._btn_restart = Gtk.Button(label="Restart Ohmychadwm now")
+        self._btn_restart = Gtk.Button(label=_("Restart Ohmychadwm now"))
         self._btn_restart.set_visible(False)
         self._btn_restart.connect("clicked", self._on_restart)
-        reset = Gtk.Button(label="Use the theme's values")
-        reset.set_tooltip_text("Drop every change on this page, so the bar theme decides again")
+        reset = Gtk.Button(label=_("Use the theme's values"))
+        reset.set_tooltip_text(_("Drop every change on this page, so the bar theme decides again"))
         reset.connect("clicked", self._on_reset)
-        self._btn_apply = Gtk.Button(label="Apply")
+        self._btn_apply = Gtk.Button(label=_("Apply"))
         self._btn_apply.add_css_class("suggested-action")
         self._btn_apply.connect("clicked", self._on_apply)
         buttons.append(self._btn_restart)
@@ -106,7 +107,7 @@ class BarPage:
                 self._widgets[key].set_value(value)
             else:
                 self._widgets[key].set_active(bool(value))
-        set_status(self._status, "The theme's values are loaded — press Apply to use them.")
+        set_status(self._status, _("The theme's values are loaded — press Apply to use them."))
 
     def _on_apply(self, _widget):
         if self._busy:
@@ -117,7 +118,7 @@ class BarPage:
         self._busy = True
         self._btn_apply.set_sensitive(False)
         self._btn_restart.set_visible(False)
-        set_status(self._status, "Recompiling Ohmychadwm…")
+        set_status(self._status, _("Recompiling Ohmychadwm…"))
         run_async(lambda: _rebuild(wanted), self._applied)
 
     def _applied(self, result):
@@ -129,14 +130,14 @@ class BarPage:
             set_status(self._status, msg, error=True)
             return
         if msg == "unchanged":
-            set_status(self._status, "Nothing changed.")
+            set_status(self._status, _("Nothing changed."))
         elif ott_chadwm.can_restart():
-            set_status(self._status, "Applied. Restart Ohmychadwm to see it.")
+            set_status(self._status, _("Applied. Restart Ohmychadwm to see it."))
             self._btn_restart.set_visible(True)
         elif ott_chadwm.in_session():
-            set_status(self._status, "Applied. Press Super+Shift+R to see it.")
+            set_status(self._status, _("Applied. Press Super+Shift+R to see it."))
         else:
-            set_status(self._status, "Applied. It shows at your next Ohmychadwm login.")
+            set_status(self._status, _("Applied. It shows at your next Ohmychadwm login."))
 
     def _on_restart(self, _widget):
         self._btn_restart.set_visible(False)
@@ -161,5 +162,6 @@ def _rebuild(wanted):
     finally:
         ott_chadwm.clean()
     if not ok:
-        return False, "Installing the new Ohmychadwm was cancelled or failed" + (f": {err}" if err else "")
+        return False, (_("Installing the new Ohmychadwm was cancelled or failed: {error}").format(error=err) if err
+                       else _("Installing the new Ohmychadwm was cancelled or failed."))
     return True, "Ohmychadwm rebuilt and installed"

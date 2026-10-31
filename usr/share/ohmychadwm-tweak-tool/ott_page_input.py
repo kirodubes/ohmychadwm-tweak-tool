@@ -21,22 +21,23 @@ from ott_widgets import (  # noqa: E402
     settings_grid,
     status_label,
 )
+from ott_i18n import _  # noqa: E402
 
 # kind -> [(key, label, tooltip)]
 _ROWS = {
     "pointer": [
-        ("accel", "Pointer speed", "Slower to the left, faster to the right"),
-        ("natural", "Natural scrolling", "Content follows your fingers, as on a phone"),
-        ("left_handed", "Left-handed", "Swap the left and right buttons"),
+        ("accel", _("Pointer speed"), _("Slower to the left, faster to the right")),
+        ("natural", _("Natural scrolling"), _("Content follows your fingers, as on a phone")),
+        ("left_handed", _("Left-handed"), _("Swap the left and right buttons")),
     ],
     "touchpad": [
-        ("accel", "Pointer speed", "Slower to the left, faster to the right"),
-        ("tapping", "Tap to click", "A light tap counts as a click"),
-        ("natural", "Natural scrolling", "Content follows your fingers, as on a phone"),
-        ("dwt", "Off while typing", "Ignore the touchpad while you type"),
+        ("accel", _("Pointer speed"), _("Slower to the left, faster to the right")),
+        ("tapping", _("Tap to click"), _("A light tap counts as a click")),
+        ("natural", _("Natural scrolling"), _("Content follows your fingers, as on a phone")),
+        ("dwt", _("Off while typing"), _("Ignore the touchpad while you type")),
     ],
 }
-_TITLES = {"pointer": "Mouse", "touchpad": "Touchpad"}
+_TITLES = {"pointer": _("Mouse"), "touchpad": _("Touchpad")}
 
 
 class InputPage:
@@ -58,11 +59,11 @@ class InputPage:
         values = ott_input.current(self._devices)
         kinds = {kind for _id, _name, kind, _props in self._devices}
         self.widget.append(muted(
-            "Changes are used right away. Save keeps them for every login "
-            f"({ott_input.CONF_PATH}, asks your password once)."
+            _("Changes are used right away. Save keeps them for every login ({path}, asks your password once).").format(
+                path=ott_input.CONF_PATH)
         ))
         if not self._devices:
-            self.widget.append(muted("No mouse or touchpad was found through xinput (is xorg-xinput installed?)."))
+            self.widget.append(muted(_("No mouse or touchpad was found through xinput (is xorg-xinput installed?).")))
         for kind in ("pointer", "touchpad"):
             if kind not in kinds and kind == "touchpad":
                 continue
@@ -92,10 +93,10 @@ class InputPage:
 
         buttons = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         buttons.set_halign(Gtk.Align.END)
-        reset = Gtk.Button(label="Defaults")
-        reset.set_tooltip_text("libinput's own defaults — press Save to keep them")
+        reset = Gtk.Button(label=_("Defaults"))
+        reset.set_tooltip_text(_("libinput's own defaults — press Save to keep them"))
         reset.connect("clicked", self._on_defaults)
-        self._btn_save = Gtk.Button(label="Save")
+        self._btn_save = Gtk.Button(label=_("Save"))
         self._btn_save.add_css_class("suggested-action")
         self._btn_save.connect("clicked", self._on_save)
         buttons.append(reset)
@@ -126,7 +127,7 @@ class InputPage:
         for e in errors:
             log.log_warn(f"Mouse & touchpad: {e}")
         if errors:
-            set_status(self._status, "Some settings could not be used:\n" + "\n".join(errors), error=True)
+            set_status(self._status, _("Some settings could not be used:") + "\n" + "\n".join(errors), error=True)
 
     def _on_defaults(self, _widget):
         for (kind, key), w in self._widgets.items():
@@ -135,14 +136,14 @@ class InputPage:
                 w.set_value(value)
             else:
                 w.set_active(value)
-        set_status(self._status, "Defaults loaded and used now — press Save to keep them.")
+        set_status(self._status, _("Defaults loaded and used now — press Save to keep them."))
 
     def _on_save(self, _widget):
         if self._busy:
             return
         self._busy = True
         self._btn_save.set_sensitive(False)
-        set_status(self._status, "Waiting for your password…")
+        set_status(self._status, _("Waiting for your password…"))
         arg = json.dumps(self._settings())
         run_async(lambda: ott_root.run_root(["--input", arg]), self._saved)
 
@@ -152,7 +153,8 @@ class InputPage:
         self._btn_save.set_sensitive(True)
         if ok:
             log.log_success(f"Mouse & touchpad saved to {ott_input.CONF_PATH}")
-            set_status(self._status, "Saved. Every login uses these settings now.")
+            set_status(self._status, _("Saved. Every login uses these settings now."))
         else:
             log.log_error(f"Mouse & touchpad: {err}")
-            set_status(self._status, "Saving was cancelled or failed" + (f": {err}" if err else ""), error=True)
+            set_status(self._status, _("Saving was cancelled or failed: {error}").format(error=err) if err
+                       else _("Saving was cancelled or failed."), error=True)

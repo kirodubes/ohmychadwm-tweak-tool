@@ -28,6 +28,7 @@ from ott_widgets import (  # noqa: E402
     status_label,
     warning,
 )
+from ott_i18n import _  # noqa: E402
 
 _CURSOR_SIZES = [16, 24, 32, 48, 64]
 
@@ -51,11 +52,11 @@ def _system_cursor_lines(sel):
     sysc = ott_system.read()
     lines = []
     if sysc["default"] != sel.cursor:
-        lines.append(f"System default cursor: cursor = {sysc['default'] or 'not set'}")
+        lines.append(_("System default cursor: cursor = {value}").format(value=sysc["default"] or _("not set")))
     if sysc["sddm"] != sel.cursor:
-        lines.append(f"Login screen (SDDM): cursor = {sysc['sddm'] or 'not set'}")
+        lines.append(_("Login screen (SDDM): cursor = {value}").format(value=sysc["sddm"] or _("not set")))
     elif sysc["sddm_size"] not in (None, str(sel.cursor_size)):
-        lines.append(f"Login screen (SDDM): cursor size = {sysc['sddm_size']}")
+        lines.append(_("Login screen (SDDM): cursor size = {value}").format(value=sysc["sddm_size"]))
     return lines
 
 
@@ -113,14 +114,14 @@ class LookPage:
         self._banner.add_css_class("drift-banner")
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
         text.set_hexpand(True)
-        title = Gtk.Label(label="Your settings are out of sync", xalign=0)
+        title = Gtk.Label(label=_("Your settings are out of sync"), xalign=0)
         title.add_css_class("drift-title")
         self._banner_detail = muted()
         text.append(title)
         text.append(self._banner_detail)
-        fix = Gtk.Button(label="Fix all")
+        fix = Gtk.Button(label=_("Fix all"))
         fix.set_valign(Gtk.Align.CENTER)
-        fix.set_tooltip_text("Write the choices below to every settings file")
+        fix.set_tooltip_text(_("Write the choices below to every settings file"))
         fix.connect("clicked", self._on_apply)
         self._banner.append(text)
         self._banner.append(fix)
@@ -128,9 +129,9 @@ class LookPage:
 
     def _build_gtk_section(self, sel):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-        box.append(section("Applications"))
-        box.append(muted("Used by Thunar and every GTK 2, 3 and 4 application. Shared with all your desktops: "
-                         "Xfce4, Ohmychadwm and the rest get the same theme, icons, cursor and font."))
+        box.append(section(_("Applications")))
+        box.append(muted(_("Used by Thunar and every GTK 2, 3 and 4 application. Shared with all your desktops: "
+                         "Xfce4, Ohmychadwm and the rest get the same theme, icons, cursor and font.")))
         grid = settings_grid()
 
         self._dd_theme = dropdown(self._gtk_themes.keys(), sel.theme)
@@ -144,12 +145,12 @@ class LookPage:
         note_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
         note_box.append(self._theme_note)
         note_box.append(self._btn_twin)
-        grid.attach(row_label("Theme"), 0, 0, 1, 1)
+        grid.attach(row_label(_("Theme")), 0, 0, 1, 1)
         grid.attach(self._dd_theme, 1, 0, 2, 1)
         grid.attach(note_box, 1, 1, 2, 1)
-        self._chk_force = Gtk.CheckButton(label="Force this theme on every app (system-wide)")
+        self._chk_force = Gtk.CheckButton(label=_("Force this theme on every app (system-wide)"))
         self._chk_force.set_tooltip_text(
-            "Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; shows after re-login."
+            _("Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; shows after re-login.")
         )
         self._chk_force.set_active(self._forced)
         self._chk_force.connect("toggled", lambda *_: self._update_force_note())
@@ -160,10 +161,10 @@ class LookPage:
         grid.attach(force_box, 1, 7, 2, 1)
 
         self._chk_sys_cursor = Gtk.CheckButton(
-            label="Also use this cursor on the login screen and as the system default"
+            label=_("Also use this cursor on the login screen and as the system default")
         )
         self._chk_sys_cursor.set_tooltip_text(
-            "Sets /usr/share/icons/default and the SDDM CursorTheme / CursorSize. Needs your password."
+            _("Sets /usr/share/icons/default and the SDDM CursorTheme / CursorSize. Needs your password.")
         )
         self._chk_sys_cursor.set_active(self._sys_cursor_follows)
         self._chk_sys_cursor.connect("toggled", lambda *_: self._refresh_drift())
@@ -173,7 +174,7 @@ class LookPage:
         self._dd_icons.connect("notify::selected", lambda *_: self._update_icon_preview())
         self._icon_strip = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         self._icon_strip.add_css_class("icon-strip")
-        grid.attach(row_label("Icons"), 0, 2, 1, 1)
+        grid.attach(row_label(_("Icons")), 0, 2, 1, 1)
         grid.attach(self._dd_icons, 1, 2, 2, 1)
         grid.attach(self._icon_strip, 1, 3, 2, 1)
 
@@ -181,28 +182,28 @@ class LookPage:
         sizes = [str(s) for s in sorted(set(_CURSOR_SIZES) | {sel.cursor_size})]
         self._dd_size = Gtk.DropDown.new_from_strings(sizes)
         self._dd_size.set_selected(sizes.index(str(sel.cursor_size)))
-        self._dd_size.set_tooltip_text("Cursor size in pixels")
-        grid.attach(row_label("Cursor"), 0, 4, 1, 1)
+        self._dd_size.set_tooltip_text(_("Cursor size in pixels"))
+        grid.attach(row_label(_("Cursor")), 0, 4, 1, 1)
         grid.attach(self._dd_cursor, 1, 4, 1, 1)
         grid.attach(self._dd_size, 2, 4, 1, 1)
 
-        self._font_btn = Gtk.FontDialogButton(dialog=Gtk.FontDialog(title="Choose a font"))
+        self._font_btn = Gtk.FontDialogButton(dialog=Gtk.FontDialog(title=_("Choose a font")))
         self._font_btn.set_font_desc(Pango.FontDescription.from_string(sel.font))
         self._font_btn.set_hexpand(True)
         self._font_btn.connect("notify::font-desc", lambda *_: self._update_font_warning())
-        grid.attach(row_label("Font"), 0, 5, 1, 1)
+        grid.attach(row_label(_("Font")), 0, 5, 1, 1)
         grid.attach(self._font_btn, 1, 5, 2, 1)
 
-        self._chk_light = Gtk.CheckButton(label="Light")
-        self._chk_dark = Gtk.CheckButton(label="Dark")
+        self._chk_light = Gtk.CheckButton(label=_("Light"))
+        self._chk_dark = Gtk.CheckButton(label=_("Dark"))
         self._chk_dark.set_group(self._chk_light)
         (self._chk_dark if sel.dark else self._chk_light).set_active(True)
         self._chk_dark.connect("toggled", lambda *_: self._on_style_toggled())
         style = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=12)
         style.append(self._chk_light)
         style.append(self._chk_dark)
-        style.set_tooltip_text("Preferred style for apps that follow it (GTK 4 / libadwaita)")
-        grid.attach(row_label("Style"), 0, 6, 1, 1)
+        style.set_tooltip_text(_("Preferred style for apps that follow it (GTK 4 / libadwaita)"))
+        grid.attach(row_label(_("Style")), 0, 6, 1, 1)
         grid.attach(style, 1, 6, 2, 1)
 
         box.append(grid)
@@ -210,27 +211,27 @@ class LookPage:
 
     def _build_bar_section(self, sel, config):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-        box.append(section("Ohmychadwm bar"))
+        box.append(section(_("Ohmychadwm bar")))
         if (note := session_note()) is not None:
             box.append(note)
         if not self._has_chadwm:
-            box.append(muted("~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once first."))
+            box.append(muted(_("~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once first.")))
             self._dd_bar = None
             self._chk_bar_font = None
             self._font_warning = muted()
             return box
         box.append(muted(
-            "Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks your password once)."
+            _("Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks your password once).")
         ))
         grid = settings_grid()
 
         self._bar_theme_now = ott_chadwm.active_theme(config) or ""
         self._dd_bar = dropdown(ott_chadwm.themes(), self._bar_theme_now)
-        grid.attach(row_label("Bar theme"), 0, 0, 1, 1)
+        grid.attach(row_label(_("Bar theme")), 0, 0, 1, 1)
         grid.attach(self._dd_bar, 1, 0, 1, 1)
 
         self._bar_font_now = ott_chadwm.bar_font(config)
-        self._chk_bar_font = Gtk.CheckButton(label="Also use the font above for the bar")
+        self._chk_bar_font = Gtk.CheckButton(label=_("Also use the font above for the bar"))
         self._chk_bar_font.set_active(self._bar_font_now is not None)
         self._chk_bar_font.connect("toggled", lambda *_: self._update_font_warning())
         grid.attach(self._chk_bar_font, 1, 1, 1, 1)
@@ -245,12 +246,12 @@ class LookPage:
         for side in ("start", "end", "top", "bottom"):
             getattr(footer, f"set_margin_{side}")(12)
         self._status = status_label()
-        self._btn_restart = Gtk.Button(label="Restart Ohmychadwm now")
+        self._btn_restart = Gtk.Button(label=_("Restart Ohmychadwm now"))
         self._btn_restart.set_visible(False)
         self._btn_restart.connect("clicked", self._on_restart)
-        reset = Gtk.Button(label="Reset to Kiro default")
+        reset = Gtk.Button(label=_("Reset to Kiro default"))
         reset.connect("clicked", self._on_reset)
-        self._btn_apply = Gtk.Button(label="Apply")
+        self._btn_apply = Gtk.Button(label=_("Apply"))
         self._btn_apply.add_css_class("suggested-action")
         self._btn_apply.connect("clicked", self._on_apply)
         footer.append(self._status)
@@ -265,19 +266,21 @@ class LookPage:
         name = selected(self._dd_theme)
         notes = []
         if not self._gtk_themes.get(name, True):
-            notes.append("This theme has no GTK 4 version — GTK 4 apps will look like Adwaita.")
+            notes.append(_("This theme has no GTK 4 version — GTK 4 apps will look like Adwaita."))
         dark = self._chk_dark.get_active() if hasattr(self, "_chk_dark") else None
         twin = ott_scan.style_variant(name, dark, self._gtk_themes) if dark is not None else name
-        word, other = ("dark", "light") if dark else ("light", "dark")
         if twin is None:
-            notes.append(f"“{name}” has no {word} version, so most apps stay {other}. Pick a {word} theme above.")
+            notes.append((_("“{name}” has no dark version, so most apps stay light. Pick a dark theme above.") if dark
+                          else _("“{name}” has no light version, so most apps stay dark. Pick a light theme above."))
+                         .format(name=name))
         elif twin != name:
-            notes.append(f"“{name}” is a {other} theme, so Style {word.capitalize()} changes little.")
+            notes.append((_("“{name}” is a light theme, so Style Dark changes little.") if dark
+                          else _("“{name}” is a dark theme, so Style Light changes little.")).format(name=name))
         self._theme_note.set_label("\n".join(notes))
         self._theme_note.set_visible(bool(notes))
         if hasattr(self, "_btn_twin"):
             self._btn_twin.twin = twin
-            self._btn_twin.set_label(f"Use {twin}" if twin else "")
+            self._btn_twin.set_label(_("Use {theme}").format(theme=twin) if twin else "")
             self._btn_twin.set_visible(bool(twin) and twin != name)
 
     def _on_style_toggled(self):
@@ -295,7 +298,7 @@ class LookPage:
             self._force_note.set_visible(False)
         else:
             self._force_note.set_label(
-                "Without it, apps follow your personal settings — some GTK 4 / libadwaita apps may keep their own look."
+                _("Without it, apps follow your personal settings — some GTK 4 / libadwaita apps may keep their own look.")
             )
             self._force_note.set_visible(True)
 
@@ -320,7 +323,7 @@ class LookPage:
         family = self._font_desc().get_family() or ""
         if self._chk_bar_font.get_active() and not ott_scan.is_nerd_font(family):
             self._font_warning.set_label(
-                f"“{family}” is not a Nerd Font — the bar's tag icons may show as empty boxes."
+                _("“{family}” is not a Nerd Font — the bar's tag icons may show as empty boxes.").format(family=family)
             )
             self._font_warning.set_visible(True)
         else:
@@ -380,7 +383,7 @@ class LookPage:
         if self._dd_bar is not None:
             select(self._dd_bar, ott_chadwm.default_theme())
             self._chk_bar_font.set_active(False)
-        self._set_status("Kiro defaults loaded for everything — press Apply to use them.")
+        self._set_status(_("Kiro defaults loaded for everything — press Apply to use them."))
 
     def _on_apply(self, _widget):
         if self._busy:
@@ -388,7 +391,7 @@ class LookPage:
         self._busy = True
         self._btn_apply.set_sensitive(False)
         self._btn_restart.set_visible(False)
-        self._set_status("Applying…")
+        self._set_status(_("Applying…"))
         sel = self._selection()
         bar = self._bar_plan()
         force = self._chk_force.get_active()
@@ -420,7 +423,7 @@ class LookPage:
                 new = ott_chadwm.set_theme(text, theme)
                 new = ott_chadwm.set_bar_font(new, *font) if font else ott_chadwm.clear_bar_font(new)
                 if new != text:
-                    GLib.idle_add(self._set_status, "Recompiling Ohmychadwm…")
+                    GLib.idle_add(self._set_status, _("Recompiling Ohmychadwm…"))
                     ott_chadwm.write_config(new)
                     compiled, msg = ott_chadwm.compile_wm()
                     if compiled:
@@ -429,14 +432,15 @@ class LookPage:
                         bar_result = (False, msg)
             except (OSError, ValueError) as e:
                 # must still reach _apply_finished, or Apply stays greyed out until restart
-                bar_result = (False, f"Ohmychadwm bar: {e}")
+                bar_result = (False, _("Ohmychadwm bar: {error}").format(error=e))
 
         if root_args:
             # one pkexec for everything that needs root, so at most one password prompt
-            GLib.idle_add(self._set_status, "Waiting for your password…")
+            GLib.idle_add(self._set_status, _("Waiting for your password…"))
             ok, err = ott_root.run_root(root_args)
             if not ok:
-                results.append(("System changes", False, "cancelled or failed" + (f": {err}" if err else "")))
+                results.append((_("System changes"), False, _("cancelled or failed: {error}").format(error=err) if err
+                                else _("cancelled or failed")))
                 notes.clear()
             elif compiled:
                 bar_result = (True, "Ohmychadwm rebuilt and installed")
@@ -449,24 +453,24 @@ class LookPage:
     def _apply_finished(self, results, bar_result, notes):
         self._busy = False
         self._btn_apply.set_sensitive(True)
-        failed = [f"{label}: {msg}" for label, ok, msg in results if not ok]
+        failed = [f"{_(label)}: {msg}" for label, ok, msg in results if not ok]
         if bar_result is not None and not bar_result[0]:
             failed.append(bar_result[1])
         if failed:
-            self._set_status("Some settings could not be written:\n" + "\n".join(failed), error=True)
+            self._set_status(_("Some settings could not be written:") + "\n" + "\n".join(failed), error=True)
         elif bar_result is not None:
-            relogin = " Log out and back in for the system-wide theme." if notes else ""
+            relogin = " " + _("Log out and back in for the system-wide theme.") if notes else ""
             if ott_chadwm.can_restart():
-                self._set_status("Applied. Restart Ohmychadwm to see the new bar." + relogin)
+                self._set_status(_("Applied. Restart Ohmychadwm to see the new bar.") + relogin)
                 self._btn_restart.set_visible(True)
             elif ott_chadwm.in_session():
-                self._set_status("Applied. Press Super+Shift+R to see the new bar." + relogin)
+                self._set_status(_("Applied. Press Super+Shift+R to see the new bar.") + relogin)
             else:
-                self._set_status("Applied. The new bar shows at your next Ohmychadwm login." + relogin)
+                self._set_status(_("Applied. The new bar shows at your next Ohmychadwm login.") + relogin)
         elif notes:
-            self._set_status("Applied. Log out and back in to see the new theme everywhere.")
+            self._set_status(_("Applied. Log out and back in to see the new theme everywhere."))
         else:
-            self._set_status("Applied. Apps you open from now on use the new look.")
+            self._set_status(_("Applied. Apps you open from now on use the new look."))
         self._refresh_drift()
         return False
 

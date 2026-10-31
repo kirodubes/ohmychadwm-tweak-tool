@@ -11,17 +11,18 @@ import shutil
 import subprocess
 
 import ott_keys
+from ott_i18n import N_
 
 # (label, mime types; the first one is read as the current default)
 CATEGORIES = [
-    ("Web browser", ["x-scheme-handler/https", "x-scheme-handler/http", "text/html"]),
-    ("File manager", ["inode/directory"]),
-    ("Text editor", ["text/plain"]),
-    ("Image viewer", ["image/png", "image/jpeg", "image/gif", "image/webp"]),
-    ("Video player", ["video/mp4", "video/x-matroska", "video/webm"]),
-    ("Music player", ["audio/mpeg", "audio/flac", "audio/ogg"]),
-    ("PDF viewer", ["application/pdf"]),
-    ("Mail", ["x-scheme-handler/mailto"]),
+    (N_("Web browser"), ["x-scheme-handler/https", "x-scheme-handler/http", "text/html"]),
+    (N_("File manager"), ["inode/directory"]),
+    (N_("Text editor"), ["text/plain"]),
+    (N_("Image viewer"), ["image/png", "image/jpeg", "image/gif", "image/webp"]),
+    (N_("Video player"), ["video/mp4", "video/x-matroska", "video/webm"]),
+    (N_("Music player"), ["audio/mpeg", "audio/flac", "audio/ogg"]),
+    (N_("PDF viewer"), ["application/pdf"]),
+    (N_("Mail"), ["x-scheme-handler/mailto"]),
 ]
 
 TERMINAL_KEYS = ["super + Return", "super + KP_Enter", "super + t"]

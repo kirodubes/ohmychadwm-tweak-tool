@@ -2,16 +2,18 @@
 
 import os
 import shutil
+import sys
 import traceback
 
 import gi
 
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk  # noqa: E402
+from gi.repository import GLib, Gtk  # noqa: E402
 
 import log  # noqa: E402
 import ott_chadwm  # noqa: E402
 import ott_display  # noqa: E402
+import ott_i18n  # noqa: E402
 import ott_root  # noqa: E402
 from ott_page_apps import AppsPage  # noqa: E402
 from ott_page_bar import BarPage  # noqa: E402
@@ -22,24 +24,25 @@ from ott_page_look import LookPage  # noqa: E402
 from ott_page_startup import StartupPage  # noqa: E402
 from ott_page_wallpaper import WallpaperPage  # noqa: E402
 from ott_widgets import clear, muted, page_box, section  # noqa: E402
+from ott_i18n import _  # noqa: E402
 
 _FUNDING = [
-    ("GitHub Sponsors", "https://github.com/sponsors/erikdubois", "best value — almost all goes to the project"),
-    ("Ko-fi", "https://ko-fi.com/erikdubois", "buy a coffee — one-off tip"),
-    ("Patreon", "https://www.patreon.com/kiroproject", "membership tiers + perks"),
-    ("YouTube membership", "https://www.youtube.com/@ErikDubois/join", "join on YouTube"),
-    ("PayPal", "https://www.paypal.me/erikdubois", "direct one-off"),
+    ("GitHub Sponsors", "https://github.com/sponsors/erikdubois", _("best value — almost all goes to the project")),
+    ("Ko-fi", "https://ko-fi.com/erikdubois", _("buy a coffee — one-off tip")),
+    ("Patreon", "https://www.patreon.com/kiroproject", _("membership tiers + perks")),
+    (_("YouTube membership"), "https://www.youtube.com/@ErikDubois/join", _("join on YouTube")),
+    ("PayPal", "https://www.paypal.me/erikdubois", _("direct one-off")),
 ]
 
 # Tools a page needs: (command, what for)
 _TOOLS = [
-    ("xdotool", "restart Ohmychadwm from the app"),
-    ("xinput", "Mouse & touchpad"),
-    ("xrandr", "Displays"),
-    ("arandr", "edit the saved display layout by hand"),
-    ("feh", "Wallpaper"),
-    ("xdg-mime", "Default apps"),
-    ("make", "rebuild Ohmychadwm"),
+    ("xdotool", _("restart Ohmychadwm from the app")),
+    ("xinput", _("Mouse & touchpad")),
+    ("xrandr", _("Displays")),
+    ("arandr", _("edit the saved display layout by hand")),
+    ("feh", _("Wallpaper")),
+    ("xdg-mime", _("Default apps")),
+    ("make", _("rebuild Ohmychadwm")),
 ]
 
 
@@ -48,20 +51,20 @@ def _open_url(parent, url):
 
 
 def _show_support_dialog(window):
-    dlg = Gtk.Window(title="Support Kiro", transient_for=window, modal=True)
+    dlg = Gtk.Window(title=_("Support Kiro"), transient_for=window, modal=True)
     dlg.set_default_size(440, -1)
     box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
     for side in ("start", "end", "top", "bottom"):
         getattr(box, f"set_margin_{side}")(18)
 
     heading = Gtk.Label(xalign=0)
-    heading.set_markup("<b>Support Kiro</b>")
+    heading.set_markup("<b>{}</b>".format(GLib.markup_escape_text(_("Support Kiro"))))
     box.append(heading)
 
     intro = muted(
-        "Kiro and its tools are built by one person, for the community — and kept free. "
+        _("Kiro and its tools are built by one person, for the community — and kept free. "
         "If the Ohmychadwm Tweak Tool saves you time, a little support keeps the work going. "
-        "Thank you for being here."
+        "Thank you for being here.")
     )
     intro.set_max_width_chars(52)
     box.append(intro)
@@ -70,14 +73,14 @@ def _show_support_dialog(window):
         btn = Gtk.Button()
         content = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         label = Gtk.Label(xalign=0)
-        label.set_markup(f"<b>{name}</b>")
+        label.set_markup(f"<b>{GLib.markup_escape_text(name)}</b>")
         content.append(label)
         content.append(muted(note))
         btn.set_child(content)
         btn.connect("clicked", lambda _w, u=url: _open_url(dlg, u))
         box.append(btn)
 
-    close = Gtk.Button(label="Close")
+    close = Gtk.Button(label=_("Close"))
     close.set_halign(Gtk.Align.END)
     close.connect("clicked", lambda _w: dlg.close())
     box.append(close)
@@ -92,14 +95,14 @@ def _header_row(window):
     header.set_margin_end(12)
     header.set_margin_top(10)
     header.set_margin_bottom(8)
-    title = Gtk.Label(label="Ohmychadwm Tweak Tool", xalign=0)
+    title = Gtk.Label(label=_("Ohmychadwm Tweak Tool"), xalign=0)
     title.set_name("title")
     title.set_hexpand(True)
-    btn_support = Gtk.Button(label="♥ Support")
-    btn_support.set_tooltip_text("Support Kiro's development")
+    btn_support = Gtk.Button(label=_("♥ Support"))
+    btn_support.set_tooltip_text(_("Support Kiro's development"))
     btn_support.add_css_class("support-button")
     btn_support.connect("clicked", lambda _w: _show_support_dialog(window))
-    btn_quit = Gtk.Button(label="Quit")
+    btn_quit = Gtk.Button(label=_("Quit"))
     btn_quit.connect("clicked", lambda _w: window.close())
     header.append(title)
     header.append(btn_support)
@@ -135,22 +138,60 @@ class StatusPage:
         clear(self.widget)
         config = ott_chadwm.read_config()
         installed = os.path.isfile(ott_root.INSTALL_PATH)
-        self.widget.append(section("Your desktop"))
+        self.widget.append(section(_("Your desktop")))
         self.widget.append(_status_grid([
-            ("Session", "Ohmychadwm" if ott_chadwm.in_session() else "not an Ohmychadwm session — changes show there",
-             ott_chadwm.in_session()),
-            ("Config", ott_chadwm.CONFIG if config else "missing — log into Ohmychadwm once first", bool(config)),
-            ("Bar theme", ott_chadwm.active_theme(config) or "none", True),
-            ("Your own bar build", ott_root.INSTALL_PATH if installed
-             else "none yet — the packaged Ohmychadwm runs", True),
-            ("Display layout", ott_display.layout_path(), True),
-            ("Virtual machine", "VirtualBox" if ott_display.is_virtualbox() else "no", True),
+            (_("Session"), "Ohmychadwm" if ott_chadwm.in_session()
+             else _("not an Ohmychadwm session — changes show there"), ott_chadwm.in_session()),
+            (_("Config"), ott_chadwm.CONFIG if config else _("missing — log into Ohmychadwm once first"), bool(config)),
+            (_("Bar theme"), ott_chadwm.active_theme(config) or _("none"), True),
+            (_("Your own bar build"), ott_root.INSTALL_PATH if installed
+             else _("none yet — the packaged Ohmychadwm runs"), True),
+            (_("Display layout"), ott_display.layout_path(), True),
+            (_("Virtual machine"), "VirtualBox" if ott_display.is_virtualbox() else _("no"), True),
         ]))
-        self.widget.append(section("Tools"))
+        self.widget.append(section(_("Tools")))
         self.widget.append(_status_grid([
-            (cmd, ("found" if shutil.which(cmd) else "missing") + f" — {why}", shutil.which(cmd) is not None)
+            (cmd, (_("found — {why}") if shutil.which(cmd) else _("missing — {why}")).format(why=why),
+             shutil.which(cmd) is not None)
             for cmd, why in _TOOLS
         ]))
+        self.widget.append(self._language_box())
+
+    def _language_box(self):
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        box.append(section(_("Language")))
+        box.append(muted(_("The app follows your system language. Pick another one to use that one instead.")))
+        # None = follow the system
+        self._codes = [None, *ott_i18n.available()]
+        labels = [_("System ({language})").format(language=ott_i18n.name(ott_i18n.SYSTEM))]
+        labels += [ott_i18n.name(code) for code in self._codes[1:]]
+        dropdown = Gtk.DropDown.new_from_strings(labels)
+        dropdown.set_halign(Gtk.Align.START)
+        dropdown.set_selected(self._codes.index(ott_i18n.chosen()))
+        dropdown.connect("notify::selected", self._on_language)
+        self._language_note = muted()
+        self._btn_restart = Gtk.Button(label=_("Restart now"))
+        self._btn_restart.set_halign(Gtk.Align.START)
+        self._btn_restart.set_visible(False)
+        self._btn_restart.connect("clicked", self._on_restart)
+        for widget in (dropdown, self._language_note, self._btn_restart):
+            box.append(widget)
+        return box
+
+    def _on_language(self, dropdown, _pspec):
+        code = self._codes[dropdown.get_selected()]
+        ott_i18n.save_choice(code)
+        changed = (code or ott_i18n.SYSTEM) != (ott_i18n.ACTIVE or ott_i18n.SYSTEM)
+        self._language_note.set_text(_("Saved. The app shows the new language when it starts again.") if changed
+                                     else "")
+        self._btn_restart.set_visible(changed)
+
+    def _on_restart(self, _widget):
+        argv = [sys.executable, os.path.abspath(sys.argv[0]), "--page", "status"]
+        if "--debug" in sys.argv:
+            argv.append("--debug")
+        ott_i18n.restore_environment()
+        os.execv(sys.executable, argv)
 
 
 class _BrokenPage:
@@ -159,7 +200,7 @@ class _BrokenPage:
     def __init__(self, title, error):
         self.widget = page_box()
         self.widget.append(section(title))
-        self.widget.append(muted(f"This section could not load: {error}"))
+        self.widget.append(muted(_("This section could not load: {error}").format(error=error)))
 
     def refresh(self):
         """Nothing to refresh."""
@@ -184,15 +225,15 @@ def build(window):
     root.append(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL))
 
     sections = [
-        ("look", "Look", _safe("Look", LookPage)),
-        ("bar", "Bar & windows", _safe("Bar & windows", BarPage)),
-        ("wallpaper", "Wallpaper", _safe("Wallpaper", lambda: WallpaperPage(window))),
-        ("displays", "Displays", _safe("Displays", lambda: DisplaysPage(window))),
-        ("mouse", "Mouse & touchpad", _safe("Mouse & touchpad", InputPage)),
-        ("startup", "Startup apps", _safe("Startup apps", StartupPage)),
-        ("apps", "Default apps", _safe("Default apps", AppsPage)),
-        ("keys", "Keys", _safe("Keys", KeysPage)),
-        ("status", "Status", _safe("Status", StatusPage)),
+        ("look", _("Look"), _safe("Look", LookPage)),
+        ("bar", _("Bar & windows"), _safe("Bar & windows", BarPage)),
+        ("wallpaper", _("Wallpaper"), _safe("Wallpaper", lambda: WallpaperPage(window))),
+        ("displays", _("Displays"), _safe("Displays", lambda: DisplaysPage(window))),
+        ("mouse", _("Mouse & touchpad"), _safe("Mouse & touchpad", InputPage)),
+        ("startup", _("Startup apps"), _safe("Startup apps", StartupPage)),
+        ("apps", _("Default apps"), _safe("Default apps", AppsPage)),
+        ("keys", _("Keys"), _safe("Keys", KeysPage)),
+        ("status", _("Status"), _safe("Status", StatusPage)),
     ]
     pages = {}
     stack = Gtk.Stack()
