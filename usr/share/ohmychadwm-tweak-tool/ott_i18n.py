@@ -47,10 +47,16 @@ def _system_language():
     return "en"
 
 
+# A variant without its own catalog borrows its sibling's: Portugal reads Brazilian Portuguese, Taiwan and Hong Kong
+# read simplified Chinese, rather than falling back to English.
+_SIBLING = {"pt": "pt_BR", "zh": "zh_CN"}
+
+
 def _shown(code):
-    # the language the app really shows for a system code: its catalog (nl_BE -> nl), else English
+    # the language the app really shows for a system code: its catalog (nl_BE -> nl), its sibling, else English
     codes = available()
-    for candidate in (code, code.split("_")[0]):
+    base = code.split("_")[0]
+    for candidate in (code, base, _SIBLING.get(base)):
         if candidate in codes:
             return candidate
     return "en"
@@ -72,7 +78,8 @@ def restore_environment():
     else:
         os.environ["LANGUAGE"] = _SYSTEM_LANGUAGE_VAR
 
-_translation = gettext.translation(DOMAIN, localedir=LOCALE_DIR, languages=[ACTIVE] if ACTIVE else None, fallback=True)
+# the catalog _shown() picked, so the sibling rule applies; gettext's own lookup would stop at English for pt_PT
+_translation = gettext.translation(DOMAIN, localedir=LOCALE_DIR, languages=[ACTIVE or SYSTEM], fallback=True)
 _ = _translation.gettext
 ngettext = _translation.ngettext
 

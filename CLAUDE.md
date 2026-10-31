@@ -138,6 +138,8 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   files, writes `usr/share/applications/*.desktop` from `po/*.desktop.in`). New strings stay English until
   translated; the shared rules, registers and tools are in Kiro-HQ `TRANSLATIONS/` (README + ROADMAP §8).
 - Edit the menu entry in `po/ohmychadwm-tweak-tool.desktop.in`, never in `usr/share/applications/` (overwritten).
+- A system variant without its own catalog borrows its sibling's (`_SIBLING`: pt → pt_BR, zh → zh_CN), and the catalog
+  is loaded for the language `_shown()` picked. Keep the same rule in the premium apps' `*_i18n.py`.
 
 ## Code style
 
