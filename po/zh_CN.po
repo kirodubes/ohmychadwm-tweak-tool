@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 12:46+0100\n"
+"POT-Creation-Date: 2026-10-31 17:08+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Chinese (simplified)\n"
@@ -120,12 +120,12 @@ msgid "restart Ohmychadwm from the app"
 msgstr "从应用重启 Ohmychadwm"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:40
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
 msgid "Mouse & touchpad"
 msgstr "鼠标和触摸板"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:41
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
 msgid "Displays"
 msgstr "显示器"
@@ -135,13 +135,13 @@ msgid "edit the saved display layout by hand"
 msgstr "手动编辑已保存的显示器布局"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
 msgid "Wallpaper"
 msgstr "壁纸"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
 msgid "Default apps"
 msgstr "默认应用"
 
@@ -167,134 +167,128 @@ msgstr ""
 msgid "Close"
 msgstr "关闭"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
-#: po/ohmychadwm-tweak-tool.desktop.in:2
-msgid "Ohmychadwm Tweak Tool"
-msgstr "Ohmychadwm Tweak Tool"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
-msgid "♥ Support"
-msgstr "♥ 支持"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
-msgid "Support Kiro's development"
-msgstr "支持 Kiro 的开发"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
-msgid "Quit"
-msgstr "退出"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
-msgid "Your desktop"
-msgstr "你的桌面"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
-msgid "Session"
-msgstr "会话"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
-msgid "not an Ohmychadwm session — changes show there"
-msgstr "当前不是 Ohmychadwm 会话：更改会在 Ohmychadwm 中生效"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
-msgid "Config"
-msgstr "配置文件"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
-msgid "missing — log into Ohmychadwm once first"
-msgstr "缺失，请先登录一次 Ohmychadwm"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
-msgid "Bar theme"
-msgstr "状态栏主题"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
-msgid "none"
-msgstr "无"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:147
-msgid "Your own bar build"
-msgstr "你自己构建的状态栏"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:148
-msgid "none yet — the packaged Ohmychadwm runs"
-msgstr "尚无：正在运行随包提供的 Ohmychadwm"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:149
-msgid "Display layout"
-msgstr "显示器布局"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
-msgid "Virtual machine"
-msgstr "虚拟机"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
-msgid "no"
-msgstr "否"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:152
-msgid "Tools"
-msgstr "工具"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
-#, python-brace-format
-msgid "found — {why}"
-msgstr "已找到：{why}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
-#, python-brace-format
-msgid "missing — {why}"
-msgstr "缺失：{why}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:162
-msgid "Language"
-msgstr "语言"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:163
-msgid ""
-"The app follows your system language. Pick another one to use that one "
-"instead."
-msgstr "此应用跟随系统语言。选择其他语言即可改用该语言。"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:166
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:95
 #, python-brace-format
 msgid "System ({language})"
 msgstr "系统（{language}）"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:173
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
+msgid "Language"
+msgstr "语言"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:103
 msgid "Restart now"
 msgstr "立即重启"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:110
 msgid "Saved. The app shows the new language when it starts again."
 msgstr "已保存。应用下次启动时将显示新语言。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:203
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:130
+#: po/ohmychadwm-tweak-tool.desktop.in:2
+msgid "Ohmychadwm Tweak Tool"
+msgstr "Ohmychadwm Tweak Tool"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:133
+msgid "♥ Support"
+msgstr "♥ 支持"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:134
+msgid "Support Kiro's development"
+msgstr "支持 Kiro 的开发"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:137
+msgid "Quit"
+msgstr "退出"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:177
+msgid "Your desktop"
+msgstr "你的桌面"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:179
+msgid "Session"
+msgstr "会话"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:180
+msgid "not an Ohmychadwm session — changes show there"
+msgstr "当前不是 Ohmychadwm 会话：更改会在 Ohmychadwm 中生效"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:181
+msgid "Config"
+msgstr "配置文件"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:181
+msgid "missing — log into Ohmychadwm once first"
+msgstr "缺失，请先登录一次 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:182
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
+msgid "Bar theme"
+msgstr "状态栏主题"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:182
+msgid "none"
+msgstr "无"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:183
+msgid "Your own bar build"
+msgstr "你自己构建的状态栏"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:184
+msgid "none yet — the packaged Ohmychadwm runs"
+msgstr "尚无：正在运行随包提供的 Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+msgid "Display layout"
+msgstr "显示器布局"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+msgid "Virtual machine"
+msgstr "虚拟机"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+msgid "no"
+msgstr "否"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+msgid "Tools"
+msgstr "工具"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#, python-brace-format
+msgid "found — {why}"
+msgstr "已找到：{why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#, python-brace-format
+msgid "missing — {why}"
+msgstr "缺失：{why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:201
 #, python-brace-format
 msgid "This section could not load: {error}"
 msgstr "无法加载此部分：{error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:226
 msgid "Look"
 msgstr "外观"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:227
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
 msgid "Bar & windows"
 msgstr "状态栏和窗口"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
 msgid "Startup apps"
 msgstr "自启动应用"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
 msgid "Keys"
 msgstr "快捷键"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
 msgid "Status"
 msgstr "状态"
 
@@ -729,8 +723,8 @@ msgid ""
 "Changes are used right away. Save keeps them for every login ({path}, asks "
 "your password once)."
 msgstr ""
-"更改会立即生效。保存后，每次登录都会使用这些设置（{path}，需要输入一次密码）"
-"。"
+"更改会立即生效。保存后，每次登录都会使用这些设置（{path}，需要输入一次密"
+"码）。"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:66
 msgid ""
@@ -918,8 +912,8 @@ msgid ""
 "Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks "
 "your password once)."
 msgstr ""
-"顶部状态栏的颜色和字体。更改这些设置会重新编译 Ohmychadwm（需要输入一次密码）"
-"。"
+"顶部状态栏的颜色和字体。更改这些设置会重新编译 Ohmychadwm（需要输入一次密"
+"码）。"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:234
 msgid "Also use the font above for the bar"
@@ -938,14 +932,16 @@ msgstr "此主题没有 GTK 4 版本，GTK 4 应用将显示为 Adwaita 外观�
 msgid ""
 "“{name}” has no dark version, so most apps stay light. Pick a dark theme "
 "above."
-msgstr "“{name}”没有深色版本，因此大多数应用仍会保持浅色。请在上方选择深色主题。"
+msgstr ""
+"“{name}”没有深色版本，因此大多数应用仍会保持浅色。请在上方选择深色主题。"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:274
 #, python-brace-format
 msgid ""
 "“{name}” has no light version, so most apps stay dark. Pick a light theme "
 "above."
-msgstr "“{name}”没有浅色版本，因此大多数应用仍会保持深色。请在上方选择浅色主题。"
+msgstr ""
+"“{name}”没有浅色版本，因此大多数应用仍会保持深色。请在上方选择浅色主题。"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:277
 #, python-brace-format
@@ -1276,10 +1272,16 @@ msgstr "桌面设置"
 msgid ""
 "Look, bar, wallpaper, displays, mouse, startup apps, default apps and keys "
 "for Ohmychadwm"
-msgstr "Ohmychadwm 的外观、状态栏、壁纸、显示器、鼠标、自启动应用、默认应用和快捷键"
+msgstr ""
+"Ohmychadwm 的外观、状态栏、壁纸、显示器、鼠标、自启动应用、默认应用和快捷键"
 
 #: po/ohmychadwm-tweak-tool.desktop.in:10
 msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar;gaps;wallpaper;display;mouse;touchpad;startup;keys"
 msgstr ""
-"主题;图标;光标;字体;外观;gtk;lxappearance;chadwm;ohmychadwm;状态栏;间距;壁"
-"纸;显示器;鼠标;触摸板;自启动;快捷键"
+"主题;图标;光标;字体;外观;gtk;lxappearance;chadwm;ohmychadwm;状态栏;间距;壁纸;"
+"显示器;鼠标;触摸板;自启动;快捷键"
+
+#~ msgid ""
+#~ "The app follows your system language. Pick another one to use that one "
+#~ "instead."
+#~ msgstr "此应用跟随系统语言。选择其他语言即可改用该语言。"

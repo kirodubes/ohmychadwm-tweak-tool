@@ -89,6 +89,38 @@ def _show_support_dialog(window):
     dlg.present()
 
 
+def _language_controls():
+    """Build the header-row language dropdown, its Restart now button and the saved note."""
+    codes = [None, *ott_i18n.available()]
+    labels = [_("System ({language})").format(language=ott_i18n.name(ott_i18n.SYSTEM))]
+    labels.extend(ott_i18n.name(code) for code in codes[1:])
+    dropdown = Gtk.DropDown.new_from_strings(labels)
+    dropdown.set_tooltip_text(_("Language"))
+    dropdown.set_valign(Gtk.Align.CENTER)
+    dropdown.set_selected(codes.index(ott_i18n.chosen()))
+    note = Gtk.Label(xalign=1, wrap=True, visible=False)
+    note.add_css_class("muted")
+    restart = Gtk.Button(label=_("Restart now"), visible=False)
+    restart.set_valign(Gtk.Align.CENTER)
+
+    def on_language_changed(_dropdown, _pspec):
+        code = codes[dropdown.get_selected()]
+        ott_i18n.save_choice(code)
+        changed = (code or ott_i18n.SYSTEM) != (ott_i18n.ACTIVE or ott_i18n.SYSTEM)
+        note.set_text(_("Saved. The app shows the new language when it starts again.") if changed else "")
+        note.set_visible(changed)
+        restart.set_visible(changed)
+
+    def on_restart(_widget):
+        argv = [sys.executable, os.path.abspath(sys.argv[0]), *sys.argv[1:]]
+        ott_i18n.restore_environment()
+        os.execv(sys.executable, argv)
+
+    dropdown.connect("notify::selected", on_language_changed)
+    restart.connect("clicked", on_restart)
+    return dropdown, note, restart
+
+
 def _header_row(window):
     header = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
     header.set_margin_start(12)
@@ -104,7 +136,11 @@ def _header_row(window):
     btn_support.connect("clicked", lambda _w: _show_support_dialog(window))
     btn_quit = Gtk.Button(label=_("Quit"))
     btn_quit.connect("clicked", lambda _w: window.close())
+    language_dropdown, language_note, btn_restart = _language_controls()
     header.append(title)
+    header.append(language_note)
+    header.append(language_dropdown)
+    header.append(btn_restart)
     header.append(btn_support)
     header.append(btn_quit)
     return header
@@ -155,44 +191,6 @@ class StatusPage:
              shutil.which(cmd) is not None)
             for cmd, why in _TOOLS
         ]))
-        self.widget.append(self._language_box())
-
-    def _language_box(self):
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        box.append(section(_("Language")))
-        box.append(muted(_("The app follows your system language. Pick another one to use that one instead.")))
-        # None = follow the system
-        self._codes = [None, *ott_i18n.available()]
-        labels = [_("System ({language})").format(language=ott_i18n.name(ott_i18n.SYSTEM))]
-        labels += [ott_i18n.name(code) for code in self._codes[1:]]
-        dropdown = Gtk.DropDown.new_from_strings(labels)
-        dropdown.set_halign(Gtk.Align.START)
-        dropdown.set_selected(self._codes.index(ott_i18n.chosen()))
-        dropdown.connect("notify::selected", self._on_language)
-        self._language_note = muted()
-        self._btn_restart = Gtk.Button(label=_("Restart now"))
-        self._btn_restart.set_halign(Gtk.Align.START)
-        self._btn_restart.set_visible(False)
-        self._btn_restart.connect("clicked", self._on_restart)
-        for widget in (dropdown, self._language_note, self._btn_restart):
-            box.append(widget)
-        return box
-
-    def _on_language(self, dropdown, _pspec):
-        code = self._codes[dropdown.get_selected()]
-        ott_i18n.save_choice(code)
-        changed = (code or ott_i18n.SYSTEM) != (ott_i18n.ACTIVE or ott_i18n.SYSTEM)
-        self._language_note.set_text(_("Saved. The app shows the new language when it starts again.") if changed
-                                     else "")
-        self._btn_restart.set_visible(changed)
-
-    def _on_restart(self, _widget):
-        argv = [sys.executable, os.path.abspath(sys.argv[0]), "--page", "status"]
-        if "--debug" in sys.argv:
-            argv.append("--debug")
-        ott_i18n.restore_environment()
-        os.execv(sys.executable, argv)
-
 
 class _BrokenPage:
     """Stand-in for a section that failed to build, so the rest of the app still opens."""

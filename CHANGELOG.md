@@ -3,6 +3,8 @@
 ## 2026.10.31
 
 ### What Changed
+- **The language dropdown moved to the header, top right**, next to Support and Quit, the place every Kiro
+  app uses. It left the Status page.
 - **Portugal and Taiwan/Hong Kong no longer get English**: a system in Portuguese from Portugal now shows
   Brazilian Portuguese, one in traditional Chinese shows simplified Chinese, the closest catalogs there are.
 - **The app speaks 13 languages**: Dutch, German, Spanish, French, Portuguese (Brazil), Russian, Hungarian, Italian,
@@ -11,6 +13,8 @@
 - The terms match the KIROTUX premium apps this app was spun off from (92 strings are word for word the same).
 
 ### Technical Details
+- `ott_gui.py`: module-level `_language_controls()` (same as alacritty/fish-tweak-tool) in `_header_row()`; the Status
+  page's `_language_box` / `_on_language` / `_on_restart` removed; Restart now reopens the app with the same arguments.
 - `ott_i18n.py`: `_SIBLING = {"pt": "pt_BR", "zh": "zh_CN"}` in `_shown()`, and the catalog is loaded for the language
   `_shown()` picked (`languages=[ACTIVE or SYSTEM]`) instead of gettext's own lookup, which stops at English for pt_PT.
   Checked with LANG pt_PT, pt_BR, zh_TW, zh_HK, zh_CN, nl_BE, de_AT, fr_CA, ja_JP, en_US and C.

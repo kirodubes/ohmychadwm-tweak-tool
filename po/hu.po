@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 12:46+0100\n"
+"POT-Creation-Date: 2026-10-31 17:08+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Hungarian\n"
@@ -122,12 +122,12 @@ msgid "restart Ohmychadwm from the app"
 msgstr "Indítsd újra az Ohmychadwm programot az alkalmazásból"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:40
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
 msgid "Mouse & touchpad"
 msgstr "Egér és érintőtábla"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:41
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
 msgid "Displays"
 msgstr "Kijelzők"
@@ -137,13 +137,13 @@ msgid "edit the saved display layout by hand"
 msgstr "A mentett kijelzőelrendezés kézi szerkesztése"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
 msgid "Wallpaper"
 msgstr "Háttérkép"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
 msgid "Default apps"
 msgstr "Alapalkalmazások"
 
@@ -170,136 +170,128 @@ msgstr ""
 msgid "Close"
 msgstr "Bezárás"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
-#: po/ohmychadwm-tweak-tool.desktop.in:2
-msgid "Ohmychadwm Tweak Tool"
-msgstr "Ohmychadwm Tweak Tool"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
-msgid "♥ Support"
-msgstr "♥ Támogatás"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
-msgid "Support Kiro's development"
-msgstr "A Kiro fejlesztésének támogatása"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
-msgid "Quit"
-msgstr "Kilépés"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
-msgid "Your desktop"
-msgstr "Az asztalod"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
-msgid "Session"
-msgstr "Munkamenet"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
-msgid "not an Ohmychadwm session — changes show there"
-msgstr "nem Ohmychadwm-munkamenet, a módosítások ott jelennek meg"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
-msgid "Config"
-msgstr "Beállítófájl"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
-msgid "missing — log into Ohmychadwm once first"
-msgstr "hiányzik, előbb jelentkezz be egyszer az Ohmychadwm rendszerbe"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
-msgid "Bar theme"
-msgstr "Sáv témája"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
-msgid "none"
-msgstr "nincs"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:147
-msgid "Your own bar build"
-msgstr "Saját sávverzió"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:148
-msgid "none yet — the packaged Ohmychadwm runs"
-msgstr "még nincs, a csomagban lévő Ohmychadwm fut"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:149
-msgid "Display layout"
-msgstr "Kijelzőelrendezés"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
-msgid "Virtual machine"
-msgstr "Virtuális gép"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
-msgid "no"
-msgstr "nem"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:152
-msgid "Tools"
-msgstr "Eszközök"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
-#, python-brace-format
-msgid "found — {why}"
-msgstr "megtalálva: {why}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
-#, python-brace-format
-msgid "missing — {why}"
-msgstr "hiányzik: {why}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:162
-msgid "Language"
-msgstr "Nyelv"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:163
-msgid ""
-"The app follows your system language. Pick another one to use that one "
-"instead."
-msgstr ""
-"Az alkalmazás a rendszer nyelvét követi. Válassz egy másikat, ha azt "
-"szeretnéd használni."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:166
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:95
 #, python-brace-format
 msgid "System ({language})"
 msgstr "Rendszer ({language})"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:173
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
+msgid "Language"
+msgstr "Nyelv"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:103
 msgid "Restart now"
 msgstr "Újraindítás most"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:110
 msgid "Saved. The app shows the new language when it starts again."
 msgstr "Mentve. Az alkalmazás a következő indításkor az új nyelvet mutatja."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:203
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:130
+#: po/ohmychadwm-tweak-tool.desktop.in:2
+msgid "Ohmychadwm Tweak Tool"
+msgstr "Ohmychadwm Tweak Tool"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:133
+msgid "♥ Support"
+msgstr "♥ Támogatás"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:134
+msgid "Support Kiro's development"
+msgstr "A Kiro fejlesztésének támogatása"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:137
+msgid "Quit"
+msgstr "Kilépés"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:177
+msgid "Your desktop"
+msgstr "Az asztalod"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:179
+msgid "Session"
+msgstr "Munkamenet"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:180
+msgid "not an Ohmychadwm session — changes show there"
+msgstr "nem Ohmychadwm-munkamenet, a módosítások ott jelennek meg"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:181
+msgid "Config"
+msgstr "Beállítófájl"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:181
+msgid "missing — log into Ohmychadwm once first"
+msgstr "hiányzik, előbb jelentkezz be egyszer az Ohmychadwm rendszerbe"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:182
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
+msgid "Bar theme"
+msgstr "Sáv témája"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:182
+msgid "none"
+msgstr "nincs"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:183
+msgid "Your own bar build"
+msgstr "Saját sávverzió"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:184
+msgid "none yet — the packaged Ohmychadwm runs"
+msgstr "még nincs, a csomagban lévő Ohmychadwm fut"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+msgid "Display layout"
+msgstr "Kijelzőelrendezés"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+msgid "Virtual machine"
+msgstr "Virtuális gép"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+msgid "no"
+msgstr "nem"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+msgid "Tools"
+msgstr "Eszközök"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#, python-brace-format
+msgid "found — {why}"
+msgstr "megtalálva: {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#, python-brace-format
+msgid "missing — {why}"
+msgstr "hiányzik: {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:201
 #, python-brace-format
 msgid "This section could not load: {error}"
 msgstr "Ez a rész nem töltődött be: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:226
 msgid "Look"
 msgstr "Megjelenés"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:227
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
 msgid "Bar & windows"
 msgstr "Sáv és ablakok"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
 msgid "Startup apps"
 msgstr "Automatikus indítás"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
 msgid "Keys"
 msgstr "Gyorsbillentyűk"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
 msgid "Status"
 msgstr "Állapot"
 
@@ -757,8 +749,8 @@ msgstr ""
 msgid ""
 "No mouse or touchpad was found through xinput (is xorg-xinput installed?)."
 msgstr ""
-"Az xinput nem talált egeret vagy érintőtáblát (telepítve van az xorg-xinput?)"
-"."
+"Az xinput nem talált egeret vagy érintőtáblát (telepítve van az xorg-"
+"xinput?)."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:96
 msgid "Defaults"
@@ -1338,3 +1330,10 @@ msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar
 msgstr ""
 "téma;ikonok;kurzor;betűkészlet;megjelenés;gtk;lxappearance;chadwm;ohmychadwm;sáv;térközök;háttérkép;kijelző;egér;érintőtábla;automatikus "
 "indítás;gyorsbillentyűk"
+
+#~ msgid ""
+#~ "The app follows your system language. Pick another one to use that one "
+#~ "instead."
+#~ msgstr ""
+#~ "Az alkalmazás a rendszer nyelvét követi. Válassz egy másikat, ha azt "
+#~ "szeretnéd használni."

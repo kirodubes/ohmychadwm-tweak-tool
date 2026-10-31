@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 12:46+0100\n"
+"POT-Creation-Date: 2026-10-31 17:08+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: French\n"
@@ -89,7 +89,8 @@ msgstr "Échec du rétablissement : {error}"
 #: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
 #, python-brace-format
 msgid "Layout kept and saved to {path}, so every login uses it."
-msgstr "Disposition conservée et enregistrée dans {path} pour chaque connexion."
+msgstr ""
+"Disposition conservée et enregistrée dans {path} pour chaque connexion."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:30
 msgid "best value — almost all goes to the project"
@@ -120,12 +121,12 @@ msgid "restart Ohmychadwm from the app"
 msgstr "redémarrer Ohmychadwm depuis l’appli"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:40
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
 msgid "Mouse & touchpad"
 msgstr "Souris et pavé tactile"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:41
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
 msgid "Displays"
 msgstr "Écrans"
@@ -135,13 +136,13 @@ msgid "edit the saved display layout by hand"
 msgstr "modifier à la main la disposition des écrans enregistrée"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
 msgid "Wallpaper"
 msgstr "Fond d'écran"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
 msgid "Default apps"
 msgstr "Applis par défaut"
 
@@ -168,138 +169,130 @@ msgstr ""
 msgid "Close"
 msgstr "Fermer"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
-#: po/ohmychadwm-tweak-tool.desktop.in:2
-msgid "Ohmychadwm Tweak Tool"
-msgstr "Ohmychadwm Tweak Tool"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
-msgid "♥ Support"
-msgstr "♥ Soutenir"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
-msgid "Support Kiro's development"
-msgstr "Soutenir le développement de Kiro"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
-msgid "Quit"
-msgstr "Quitter"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
-msgid "Your desktop"
-msgstr "Votre bureau"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
-msgid "Session"
-msgstr "Session"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
-msgid "not an Ohmychadwm session — changes show there"
-msgstr ""
-"vous n’êtes pas dans une session Ohmychadwm, les changements s’y afficheront"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
-msgid "Config"
-msgstr "Configuration"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:145
-msgid "missing — log into Ohmychadwm once first"
-msgstr "absent, connectez-vous d’abord une fois à Ohmychadwm"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
-msgid "Bar theme"
-msgstr "Thème de la barre"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:146
-msgid "none"
-msgstr "aucun"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:147
-msgid "Your own bar build"
-msgstr "Votre propre compilation de la barre"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:148
-msgid "none yet — the packaged Ohmychadwm runs"
-msgstr "aucune pour l’instant, la version fournie d’Ohmychadwm est active"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:149
-msgid "Display layout"
-msgstr "Disposition des écrans"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
-msgid "Virtual machine"
-msgstr "Machine virtuelle"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:150
-msgid "no"
-msgstr "non"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:152
-msgid "Tools"
-msgstr "Outils"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
-#, python-brace-format
-msgid "found — {why}"
-msgstr "présent : {why}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:154
-#, python-brace-format
-msgid "missing — {why}"
-msgstr "absent : {why}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:162
-msgid "Language"
-msgstr "Langue"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:163
-msgid ""
-"The app follows your system language. Pick another one to use that one "
-"instead."
-msgstr ""
-"L'appli suit la langue de votre système. Choisissez-en une autre pour "
-"l'utiliser à la place."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:166
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:95
 #, python-brace-format
 msgid "System ({language})"
 msgstr "Système ({language})"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:173
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:98
+msgid "Language"
+msgstr "Langue"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:103
 msgid "Restart now"
 msgstr "Redémarrer maintenant"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:110
 msgid "Saved. The app shows the new language when it starts again."
 msgstr ""
 "Enregistré. L'appli affichera la nouvelle langue à son prochain démarrage."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:203
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:130
+#: po/ohmychadwm-tweak-tool.desktop.in:2
+msgid "Ohmychadwm Tweak Tool"
+msgstr "Ohmychadwm Tweak Tool"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:133
+msgid "♥ Support"
+msgstr "♥ Soutenir"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:134
+msgid "Support Kiro's development"
+msgstr "Soutenir le développement de Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:137
+msgid "Quit"
+msgstr "Quitter"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:177
+msgid "Your desktop"
+msgstr "Votre bureau"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:179
+msgid "Session"
+msgstr "Session"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:180
+msgid "not an Ohmychadwm session — changes show there"
+msgstr ""
+"vous n’êtes pas dans une session Ohmychadwm, les changements s’y afficheront"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:181
+msgid "Config"
+msgstr "Configuration"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:181
+msgid "missing — log into Ohmychadwm once first"
+msgstr "absent, connectez-vous d’abord une fois à Ohmychadwm"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:182
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
+msgid "Bar theme"
+msgstr "Thème de la barre"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:182
+msgid "none"
+msgstr "aucun"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:183
+msgid "Your own bar build"
+msgstr "Votre propre compilation de la barre"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:184
+msgid "none yet — the packaged Ohmychadwm runs"
+msgstr "aucune pour l’instant, la version fournie d’Ohmychadwm est active"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+msgid "Display layout"
+msgstr "Disposition des écrans"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+msgid "Virtual machine"
+msgstr "Machine virtuelle"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+msgid "no"
+msgstr "non"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+msgid "Tools"
+msgstr "Outils"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#, python-brace-format
+msgid "found — {why}"
+msgstr "présent : {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#, python-brace-format
+msgid "missing — {why}"
+msgstr "absent : {why}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:201
 #, python-brace-format
 msgid "This section could not load: {error}"
 msgstr "Impossible de charger cette section : {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:228
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:226
 msgid "Look"
 msgstr "Apparence"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:229
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:227
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
 msgid "Bar & windows"
 msgstr "Barre et fenêtres"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
 msgid "Startup apps"
 msgstr "Applis au démarrage"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
 msgid "Keys"
 msgstr "Raccourcis"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
 msgid "Status"
 msgstr "État"
 
@@ -642,8 +635,8 @@ msgstr ""
 #, python-brace-format
 msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
 msgstr ""
-"L’installation de la nouvelle version d’Ohmychadwm a été annulée ou a échoué "
-": {error}"
+"L’installation de la nouvelle version d’Ohmychadwm a été annulée ou a "
+"échoué : {error}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
 msgid "Installing the new Ohmychadwm was cancelled or failed."
@@ -1097,7 +1090,8 @@ msgstr ""
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:39
 #, python-brace-format
 msgid "More than one compositor is switched on — only one should run: {names}"
-msgstr "Plusieurs compositeurs sont activés. Un seul doit fonctionner : {names}"
+msgstr ""
+"Plusieurs compositeurs sont activés. Un seul doit fonctionner : {names}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:50
 msgid "Command to start at login, e.g. redshift-gtk"
@@ -1351,3 +1345,10 @@ msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar
 msgstr ""
 "thème;icônes;curseur;police;apparence;gtk;lxappearance;chadwm;ohmychadwm;barre;espaces;fond "
 "d’écran;écran;souris;pavé tactile;démarrage;raccourcis"
+
+#~ msgid ""
+#~ "The app follows your system language. Pick another one to use that one "
+#~ "instead."
+#~ msgstr ""
+#~ "L'appli suit la langue de votre système. Choisissez-en une autre pour "
+#~ "l'utiliser à la place."
