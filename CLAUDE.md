@@ -148,4 +148,5 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
 - GTK callbacks name unused widget params `_widget`. Never `subprocess.call` from a callback; slow work runs in a
   daemon thread (`run_async`) and reports back via `GLib.idle_add`.
 - Test the toolkit-free modules with `HOME=$TMPDIR/fakehome python3 -c …` against copied config files, never against
-  the real home.
+  the real home. A fake HOME does **not** isolate gsettings, xfconf or `xrdb`: test single `_write_*` functions,
+  never `ott_targets.apply()`, which writes the live session.

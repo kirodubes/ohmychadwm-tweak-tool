@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 17:08+0100\n"
+"POT-Creation-Date: 2026-11-06 18:37+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: German\n"
@@ -828,7 +828,7 @@ msgstr "Systemstandard-Cursor: Cursor = {value}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:334
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:349
 msgid "not set"
 msgstr "nicht gesetzt"
 
@@ -1216,52 +1216,57 @@ msgstr "XFCE-xsettings"
 msgid "Personal default cursor"
 msgstr "Persönlicher Standard-Cursor"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "cursor"
 msgstr "Cursor"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "cursor size"
 msgstr "Cursorgröße"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "icons"
 msgstr "Symbole"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "theme"
 msgstr "Thema"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:347
 msgid "dark"
 msgstr "dunkel"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:36
 msgid "font"
 msgstr "Schrift"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:315
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:330
 #, python-brace-format
 msgid "{target}: not configured"
 msgstr "{target}: nicht konfiguriert"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:347
 msgid "light"
 msgstr "hell"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:333
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:348
 #, python-brace-format
 msgid "{target}: {field} = {value}"
 msgstr "{target}: {field} = {value}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:375
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:390
 msgid "gsettings not installed, skipped"
 msgstr "gsettings nicht installiert, übersprungen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:394
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:409
 msgid "xfconf-query not installed, skipped"
 msgstr "xfconf-query nicht installiert, übersprungen"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:445
+#, fuzzy, python-brace-format
+msgid "{tool} not configured, skipped"
+msgstr "{target}: nicht konfiguriert"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:33
 msgid "Ohmychadwm wallpapers"

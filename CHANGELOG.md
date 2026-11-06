@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2026.11.06
+
+### What Changed
+- **The icon theme now reaches Qt apps too.** Apply on the Look page also writes the icon theme to qt5ct and qt6ct,
+  which Qt apps read in the Ohmychadwm session. Before, picking a new icon theme left Qt apps on the old one.
+- The drift banner reports qt5ct/qt6ct when their icon theme differs from the pick.
+
+### Technical Details
+- `ott_targets`: new targets `qt5ct`/`qt6ct` (`~/.config/qt5ct/qt5ct.conf`, `~/.config/qt6ct/qt6ct.conf`), read and
+  written as `icon_theme=` under `[Appearance]` with the usual line-based `_upsert` and `.oma-bak` backup. Only the
+  icon theme: style, palette and fonts stay the user's qt5ct/qt6ct choice. A missing file is skipped, never created
+  (`/etc/environment` sets `QT_QPA_PLATFORMTHEME=qt5ct`, but not every user configures qt6ct).
+- DMS (niri) keeps its own icon setting on purpose: it is a different session.
+- New string "{tool} not configured, skipped" (English until translated); catalogs refreshed with `po/make-mo.sh`.
+- CLAUDE.md: a fake `HOME` does not isolate gsettings, xfconf or `xrdb`; test single writers, never `apply()`.
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_targets.py`
+- `po/*.po`, `po/ohmychadwm-tweak-tool.pot`
+- `CLAUDE.md`, `CHANGELOG.md`
+
 ## 2026.10.31
 
 ### What Changed

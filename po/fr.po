@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 17:08+0100\n"
+"POT-Creation-Date: 2026-11-06 18:37+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: French\n"
@@ -831,7 +831,7 @@ msgstr "Curseur par défaut du système : curseur = {value}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:334
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:349
 msgid "not set"
 msgstr "non défini"
 
@@ -1226,52 +1226,57 @@ msgstr "xsettings de XFCE"
 msgid "Personal default cursor"
 msgstr "Curseur par défaut personnel"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "cursor"
 msgstr "curseur"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "cursor size"
 msgstr "taille du curseur"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "icons"
 msgstr "icônes"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "theme"
 msgstr "thème"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:347
 msgid "dark"
 msgstr "sombre"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:36
 msgid "font"
 msgstr "police"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:315
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:330
 #, python-brace-format
 msgid "{target}: not configured"
 msgstr "{target} : non configuré"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:347
 msgid "light"
 msgstr "clair"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:333
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:348
 #, python-brace-format
 msgid "{target}: {field} = {value}"
 msgstr "{target} : {field} = {value}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:375
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:390
 msgid "gsettings not installed, skipped"
 msgstr "gsettings n’est pas installé, ignoré"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:394
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:409
 msgid "xfconf-query not installed, skipped"
 msgstr "xfconf-query n’est pas installé, ignoré"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:445
+#, fuzzy, python-brace-format
+msgid "{tool} not configured, skipped"
+msgstr "{target} : non configuré"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:33
 msgid "Ohmychadwm wallpapers"

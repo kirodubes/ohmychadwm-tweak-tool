@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 17:08+0100\n"
+"POT-Creation-Date: 2026-11-06 18:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -787,7 +787,7 @@ msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:334
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:349
 msgid "not set"
 msgstr ""
 
@@ -1137,51 +1137,56 @@ msgstr ""
 msgid "Personal default cursor"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "cursor"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "cursor size"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "icons"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:35
 msgid "theme"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:347
 msgid "dark"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:36
 msgid "font"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:315
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:330
 #, python-brace-format
 msgid "{target}: not configured"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:332
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:347
 msgid "light"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:333
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:348
 #, python-brace-format
 msgid "{target}: {field} = {value}"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:375
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:390
 msgid "gsettings not installed, skipped"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:394
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:409
 msgid "xfconf-query not installed, skipped"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_targets.py:445
+#, python-brace-format
+msgid "{tool} not configured, skipped"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_wallpaper.py:33

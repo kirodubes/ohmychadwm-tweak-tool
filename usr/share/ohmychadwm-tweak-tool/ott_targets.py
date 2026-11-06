@@ -26,6 +26,8 @@ GSETTINGS = "gsettings"
 XFCONF = N_("XFCE xsettings")
 CURSOR_INDEX = N_("Personal default cursor")
 XRESOURCES = "Xresources"
+QT5CT = "qt5ct"
+QT6CT = "qt6ct"
 
 FALLBACK_CURSOR_SIZE = 24
 
@@ -97,6 +99,11 @@ def cursor_index():
 def xresources():
     """Return the ~/.Xresources path."""
     return _p("~/.Xresources")
+
+
+def qtct_conf(tool):
+    """Return the qt5ct/qt6ct config path (Qt apps read it: /etc/environment sets QT_QPA_PLATFORMTHEME=qt5ct)."""
+    return _p(f"~/.config/{tool}/{tool}.conf")
 
 
 # ── Small parsing helpers ────────────────────────────────────────────────────
@@ -240,6 +247,12 @@ def _read_xresources():
     return {"cursor": kv.get("Xcursor.theme"), "cursor_size": kv.get("Xcursor.size")}
 
 
+def _read_qtct(tool):
+    if not os.path.isfile(qtct_conf(tool)):
+        return None
+    return {"icons": _parse(qtct_conf(tool), "=").get("icon_theme")}
+
+
 def _read_system():
     theme, active = ott_env.read()
     return {"theme": theme} if active else None
@@ -256,6 +269,8 @@ def read_all():
         XFCONF: _read_xfconf(),
         CURSOR_INDEX: _read_cursor_index(),
         XRESOURCES: _read_xresources(),
+        QT5CT: _read_qtct(QT5CT),
+        QT6CT: _read_qtct(QT6CT),
     }
 
 
@@ -424,6 +439,14 @@ def _write_xresources(sel):
     return None
 
 
+def _write_qtct(tool, sel):
+    # only the icon theme: style, palette and fonts stay the user's qt5ct/qt6ct choice
+    if not os.path.isfile(qtct_conf(tool)):
+        return _("{tool} not configured, skipped").format(tool=tool)
+    _upsert(qtct_conf(tool), {"icon_theme": f"icon_theme={sel.icons}"}, "=", "[Appearance]")
+    return None
+
+
 _WRITERS = [
     (GTK3, _write_gtk3),
     (GTK4, _write_gtk4),
@@ -432,6 +455,8 @@ _WRITERS = [
     (XFCONF, _write_xfconf),
     (CURSOR_INDEX, _write_cursor_index),
     (XRESOURCES, _write_xresources),
+    (QT5CT, lambda sel: _write_qtct(QT5CT, sel)),
+    (QT6CT, lambda sel: _write_qtct(QT6CT, sel)),
 ]
 
 
