@@ -6,6 +6,7 @@
 - **The icon theme now reaches Qt apps too.** Apply on the Look page also writes the icon theme to qt5ct and qt6ct,
   which Qt apps read in the Ohmychadwm session. Before, picking a new icon theme left Qt apps on the old one.
 - The drift banner reports qt5ct/qt6ct when their icon theme differs from the pick.
+- **Reset to Kiro default** falls back to the Surfn Kiro icons when /etc/skel has no GTK settings (was Surfn).
 
 ### Technical Details
 - `ott_targets`: new targets `qt5ct`/`qt6ct` (`~/.config/qt5ct/qt5ct.conf`, `~/.config/qt6ct/qt6ct.conf`), read and
@@ -13,6 +14,7 @@
   icon theme: style, palette and fonts stay the user's qt5ct/qt6ct choice. A missing file is skipped, never created
   (`/etc/environment` sets `QT_QPA_PLATFORMTHEME=qt5ct`, but not every user configures qt6ct).
 - DMS (niri) keeps its own icon setting on purpose: it is a different session.
+- `kiro_default()`: the hard-coded fallback icon theme is `Surfn-Kiro` (Kiro's new default).
 - New string "{tool} not configured, skipped" (English until translated); catalogs refreshed with `po/make-mo.sh`.
 - CLAUDE.md: a fake `HOME` does not isolate gsettings, xfconf or `xrdb`; test single writers, never `apply()`.
 

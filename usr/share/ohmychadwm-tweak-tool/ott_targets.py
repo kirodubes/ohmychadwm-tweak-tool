@@ -288,7 +288,7 @@ def _from_values(vals, fallback):
 
 def kiro_default():
     """Return the look Kiro ships, read from /etc/skel when present."""
-    hard = Selection("Arc-Dawn-Dark", "Surfn", "Bibata-Modern-Ice", FALLBACK_CURSOR_SIZE, "Noto Sans 11", True)
+    hard = Selection("Arc-Dawn-Dark", "Surfn-Kiro", "Bibata-Modern-Ice", FALLBACK_CURSOR_SIZE, "Noto Sans 11", True)
     skel3 = _read_ini("/etc/skel/.config/gtk-3.0/settings.ini")
     skel4 = _read_ini("/etc/skel/.config/gtk-4.0/settings.ini") or {}
     sel = _from_values(skel3, hard)
