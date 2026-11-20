@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 18:22+0100\n"
+"POT-Creation-Date: 2026-11-20 18:57+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: French\n"
@@ -176,7 +176,7 @@ msgstr "modifier à la main la disposition des écrans enregistrée"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:179
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:181
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:32
 msgid "Wallpaper"
@@ -276,7 +276,7 @@ msgid "missing — log into Ohmychadwm once first"
 msgstr "absent, connectez-vous d’abord une fois à Ohmychadwm"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:228
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:270
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Bar theme"
 msgstr "Thème de la barre"
@@ -570,7 +570,7 @@ msgstr "Quelle appli ouvre les liens, les dossiers et les fichiers (xdg-mime)."
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:101
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:84
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:252
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:294
 msgid "Apply"
 msgstr "Appliquer"
 
@@ -639,7 +639,7 @@ msgid "Seconds without use before the bar hides; 0 = never"
 msgstr "Délai d’inactivité avant de masquer la barre, en secondes ; 0 = jamais"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:216
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:258
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
 msgid ""
 "~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
@@ -662,7 +662,7 @@ msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:81
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:247
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:289
 msgid "Restart Ohmychadwm now"
 msgstr "Redémarrer Ohmychadwm maintenant"
 
@@ -924,7 +924,7 @@ msgid "Pick two different layouts, or {none} as the second."
 msgstr "Choisissez deux dispositions différentes, ou {none} pour la seconde."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:152
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:392
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:434
 msgid "Applying…"
 msgstr "Application…"
 
@@ -983,23 +983,23 @@ msgstr "Écran de connexion (SDDM) : curseur = {value}"
 msgid "Login screen (SDDM): cursor size = {value}"
 msgstr "Écran de connexion (SDDM) : taille du curseur = {value}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:115
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:157
 msgid "Your settings are out of sync"
 msgstr "Vos réglages ne concordent pas"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:120
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:162
 msgid "Fix all"
 msgstr "Tout corriger"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:122
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:164
 msgid "Write the choices below to every settings file"
 msgstr "Écrire les choix ci-dessous dans chaque fichier de réglages"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:130
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:172
 msgid "Applications"
 msgstr "Applications"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:131
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:173
 msgid ""
 "Used by Thunar and every GTK 2, 3 and 4 application. Shared with all your "
 "desktops: Xfce4, Ohmychadwm and the rest get the same theme, icons, cursor "
@@ -1009,15 +1009,15 @@ msgstr ""
 "bureaux : Xfce4, Ohmychadwm et les autres utilisent le même thème, les mêmes "
 "icônes, le même curseur et la même police."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:188
 msgid "Theme"
 msgstr "Thème"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:149
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:191
 msgid "Force this theme on every app (system-wide)"
 msgstr "Imposer ce thème à toutes les applis (tout le système)"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:151
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:193
 msgid ""
 "Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; "
 "shows after re-login."
@@ -1025,13 +1025,13 @@ msgstr ""
 "Définit GTK_THEME dans /etc/environment, comme Kiro le fournit. Demande "
 "votre mot de passe ; le changement sera visible après reconnexion."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:162
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:204
 msgid "Also use this cursor on the login screen and as the system default"
 msgstr ""
 "Utiliser aussi ce curseur sur l’écran de connexion et comme curseur par "
 "défaut du système"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:165
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:207
 msgid ""
 "Sets /usr/share/icons/default and the SDDM CursorTheme / CursorSize. Needs "
 "your password."
@@ -1039,50 +1039,50 @@ msgstr ""
 "Définit /usr/share/icons/default ainsi que CursorTheme / CursorSize de SDDM. "
 "Demande votre mot de passe."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:175
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:217
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Icons"
 msgstr "Icônes"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:183
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:225
 msgid "Cursor size in pixels"
 msgstr "Taille du curseur en pixels"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:184
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:226
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Cursor"
 msgstr "Curseur"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
 msgid "Choose a font"
 msgstr "Choisir une police"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:234
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
 msgid "Font"
 msgstr "Police"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:195
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:237
 msgid "Light"
 msgstr "Clair"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:196
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:238
 msgid "Dark"
 msgstr "Sombre"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:203
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:245
 msgid "Preferred style for apps that follow it (GTK 4 / libadwaita)"
 msgstr "Style préféré des applis qui le suivent (GTK 4 / libadwaita)"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:204
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:246
 msgid "Style"
 msgstr "Style"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:212
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:254
 msgid "Ohmychadwm bar"
 msgstr "Barre Ohmychadwm"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:222
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:264
 msgid ""
 "Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks "
 "your password once)."
@@ -1090,21 +1090,21 @@ msgstr ""
 "Couleurs et police de la barre supérieure. Toute modification recompile "
 "Ohmychadwm (votre mot de passe vous sera demandé une fois)."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:274
 msgid "Also use the font above for the bar"
 msgstr "Utiliser aussi la police ci-dessus pour la barre"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:250
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:292
 msgid "Reset to Kiro default"
 msgstr "Rétablir les valeurs par défaut de Kiro"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:267
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:309
 msgid "This theme has no GTK 4 version — GTK 4 apps will look like Adwaita."
 msgstr ""
 "Ce thème n’a pas de version GTK 4. Les applis GTK 4 auront l’apparence "
 "d’Adwaita."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:271
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:313
 #, python-brace-format
 msgid ""
 "“{name}” has no dark version, so most apps stay light. Pick a dark theme "
@@ -1113,7 +1113,7 @@ msgstr ""
 "« {name} » n’a pas de version sombre, la plupart des applis restent donc "
 "claires. Choisissez un thème sombre ci-dessus."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:272
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:314
 #, python-brace-format
 msgid ""
 "“{name}” has no light version, so most apps stay dark. Pick a light theme "
@@ -1122,24 +1122,24 @@ msgstr ""
 "« {name} » n’a pas de version claire, la plupart des applis restent donc "
 "sombres. Choisissez un thème clair ci-dessus."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:275
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:317
 #, python-brace-format
 msgid "“{name}” is a light theme, so Style Dark changes little."
 msgstr ""
 "« {name} » est un thème clair, le style sombre change donc peu de choses."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:276
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:318
 #, python-brace-format
 msgid "“{name}” is a dark theme, so Style Light changes little."
 msgstr ""
 "« {name} » est un thème sombre, le style clair change donc peu de choses."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:281
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:323
 #, python-brace-format
 msgid "Use {theme}"
 msgstr "Utiliser {theme}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:299
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:341
 msgid ""
 "Without it, apps follow your personal settings — some GTK 4 / libadwaita "
 "apps may keep their own look."
@@ -1147,7 +1147,7 @@ msgstr ""
 "Sans cette option, les applis suivent vos réglages personnels. Certaines "
 "applis GTK 4 / libadwaita peuvent conserver leur propre apparence."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:324
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:366
 #, python-brace-format
 msgid ""
 "“{family}” is not a Nerd Font — the bar's tag icons may show as empty boxes."
@@ -1155,49 +1155,49 @@ msgstr ""
 "« {family} » n’est pas une Nerd Font. Les icônes de tag de la barre peuvent "
 "apparaître sous forme de cases vides."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:384
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
 msgid "Kiro defaults loaded for everything — press Apply to use them."
 msgstr ""
 "Valeurs par défaut de Kiro chargées pour tous les réglages. Appuyez sur "
 "Appliquer pour les utiliser."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:413
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:201
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:456
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:203
 msgid "Some settings could not be written:"
 msgstr "Certains réglages n'ont pas pu être écrits :"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:415
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:202
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:458
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:204
 msgid "Log out and back in for the system-wide theme."
 msgstr ""
 "Déconnectez-vous puis reconnectez-vous pour appliquer le thème à tout le "
 "système."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:417
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:460
 msgid "Applied. Restart Ohmychadwm to see the new bar."
 msgstr "Appliqué. Redémarrez Ohmychadwm pour voir la nouvelle barre."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:420
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:209
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:463
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:211
 msgid "Applied. Press Super+Shift+R to see the new bar."
 msgstr "Appliqué. Appuyez sur Super+Shift+R pour voir la nouvelle barre."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:422
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:210
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:465
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:212
 msgid "Applied. The new bar shows at your next Ohmychadwm login."
 msgstr ""
 "Appliqué. La nouvelle barre sera visible lors de votre prochaine connexion à "
 "Ohmychadwm."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:424
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:205
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:467
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:207
 msgid "Applied. Log out and back in to see the new theme everywhere."
 msgstr ""
 "Appliqué. Déconnectez-vous puis reconnectez-vous pour voir le nouveau thème "
 "partout."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:206
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:469
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:208
 msgid "Applied. Apps you open from now on use the new look."
 msgstr ""
 "Appliqué. Les applis que vous ouvrez désormais utilisent la nouvelle "
@@ -1284,41 +1284,49 @@ msgstr ""
 "Ce thème d’écran de connexion ne peut pas afficher un autre fond d’écran."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:122
-msgid "Bar at the bottom."
-msgstr "Barre en bas."
+msgid "Dark, bar at the bottom."
+msgstr "Sombre, barre en bas."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:122
-msgid "Bar at the top."
-msgstr "Barre en haut."
+msgid "Dark, bar at the top."
+msgstr "Sombre, barre en haut."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:127
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:123
+msgid "Light, bar at the bottom."
+msgstr "Clair, barre en bas."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:123
+msgid "Light, bar at the top."
+msgstr "Clair, barre en haut."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:129
 msgid "In use"
 msgstr "Utilisé"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:136
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:138
 #, python-brace-format
 msgid "Use the look “{name}”"
 msgstr "Utiliser le style « {name} »"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:140
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:142
 #, python-brace-format
 msgid "Not installed: {what}"
 msgstr "Non installé : {what}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:164
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:166
 #, python-brace-format
 msgid "Applying “{name}”…"
 msgstr "Application de « {name} »…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:212
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:214
 msgid "Restarting Ohmychadwm…"
 msgstr "Redémarrage d’Ohmychadwm…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:219
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:221
 msgid "Applied. Ohmychadwm restarted with the new bar."
 msgstr "Appliqué. Ohmychadwm a redémarré avec la nouvelle barre."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:221
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:223
 msgid ""
 "Applied. Log out and back in once to see the new bar and window borders."
 msgstr ""

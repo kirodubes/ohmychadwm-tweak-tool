@@ -119,7 +119,9 @@ class ThemesPage:
         name = Gtk.Label(label=r.look["name"], xalign=0)
         name.add_css_class("section-title")
         box.append(name)
-        where = _("Bar at the top.") if r.look["top"] else _("Bar at the bottom.")
+        style = {(True, True): _("Dark, bar at the top."), (True, False): _("Dark, bar at the bottom."),
+                 (False, True): _("Light, bar at the top."), (False, False): _("Light, bar at the bottom.")}
+        where = style[(r.look["dark"], r.look["top"])]
         for text in (f"{r.look['desc']} {where}", " · ".join(n for n in (r.bar, r.icons, r.cursor) if n)):
             lbl = muted(text)
             lbl.set_max_width_chars(28)  # a wrapped label's natural width is its whole text: keep tiles side by side

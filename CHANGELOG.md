@@ -23,6 +23,8 @@
   Arc themes (Arc, Arc-Dark, Arc-Lighter) lost their whole style and the window showed the wallpaper through it
   (seen on the VM after Nord Frost with 26.11-07). The app now restarts itself on the page you were on when the GTK
   theme changes, once a look or a password prompt has finished. Same fix as the KiroTux premium apps (written anew).
+- Every look's description now ends with dark or light and where the bar sits ("Dark, bar at the top."), one whole
+  sentence per combination so translators can order it.
 - The Keyboard page no longer logs an error when it opens.
 - **Search settings** above the sidebar (Ctrl+F): type a word and pick a match; the page opens and the row lights up.
   It searches what the pages show, in your language, and knows a few English words from other tools (sddm, xkb,
