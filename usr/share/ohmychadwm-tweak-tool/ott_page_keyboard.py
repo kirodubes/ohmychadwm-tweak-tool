@@ -123,7 +123,9 @@ class KeyboardPage:
     def _update_hint(self):
         if not self._codes:
             return
-        mismatch = not ott_keyboard.keys_match(self._chosen(), self._azerty.get_active())
+        # no KIRO_AZERTY in config.def.h: the radios are greyed out and say nothing, so no warning either
+        keys = None if self._azerty_now is None else self._azerty.get_active()
+        mismatch = not ott_keyboard.keys_match(self._chosen(), keys)
         self._mismatch.set_text(_("Your first layout and the workspace keys don't match: the workspace keys may not "
                                   "work.") if mismatch else "")
         self._mismatch.set_visible(mismatch)

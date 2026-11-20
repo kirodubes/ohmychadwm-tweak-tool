@@ -9,8 +9,9 @@
 - **New Keyboard page.** One or two keyboard layouts (Alt+Shift switches between them), saved for the whole computer,
   so XFCE and the login screen type the same. Below it the **workspace keys**: AZERTY or QWERTY, the keys Ohmychadwm
   listens for to switch workspaces. Changing them rebuilds Ohmychadwm, like the menu's keyboard script, but without a
-  terminal. A warning shows when the first layout and the workspace keys don't match (a Belgian layout with QWERTY
-  workspace keys, as on a fresh v26.11.20 install in VirtualBox).
+  terminal. A warning shows when the first layout and the workspace keys don't match. It shows on a fresh v26.11.20
+  install with a Belgian layout: /etc/skel ships `KIRO_AZERTY false`, so the installer's layout and the workspace keys
+  disagree (open question for the ISO, not for this app).
 - **New Update & News page.** The updates waiting, **Update now** (opens `sudo pacman -Syu` in a terminal), **Restart
   now** after a new kernel, and the latest Kiro News in your language.
 - **No "out of sync" banner on a fresh install.** The Look page warned "GTK 2: not configured" and "Personal default
