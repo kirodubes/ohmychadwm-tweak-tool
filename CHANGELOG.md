@@ -15,6 +15,10 @@
   each). Desert Dusk and Celestial Ocean got their own bar colours: they were copies of Everforest and of the Kiro look.
   After a click a spinner turns on the picture and next to the status, and Ohmychadwm restarts by itself, so the new
   bar and window borders show straight away.
+- **No false "Your settings are out of sync" after a look.** The Look page kept the choices it read when the app
+  started, so after a Themes click it compared old choices with the new files, showed the banner, and its Apply or
+  Fix all would have put the old look back. It now reloads its choices when the files changed while you were away,
+  and keeps your unsaved edits when nothing changed.
 - The Keyboard page no longer logs an error when it opens.
 - **Search settings** above the sidebar (Ctrl+F): type a word and pick a match; the page opens and the row lights up.
   It searches what the pages show, in your language, and knows a few English words from other tools (sddm, xkb,
@@ -116,6 +120,19 @@
   in navy with yellow, Ohmychadwm restarted by itself 3 s after the install and ran the new `/usr/local/bin` binary,
   the status said "restarted with the new bar", both spinners stopped, and the Look page showed no "out of sync"
   banner afterwards. The VM was put back on the look Erik had picked (Desert Gruv), login wallpaper included.
+- Look page `refresh()` (it had none, so the sidebar never refreshed it): `_files_now()` is a fingerprint of every
+  settings target, the system/SDDM cursor and the bar theme + font. When it differs from what the pickers were filled
+  from, `_load()` sets every picker from `ott_targets.current()` (the Style switch under `_resetting`, so it doesn't
+  swap the theme for its light/dark sibling); otherwise only the drift banner is re-checked. Its own Apply updates
+  the fingerprint.
+- Full VM run of this version (session started from `/usr/bin/ohmychadwm`, `/usr/local/bin/ohmychadwm` moved aside,
+  new run.sh with `hash -r`, one fresh login): all 16 looks, one after another, pass every check. That covers bar
+  theme, effective border and bar position, GTK in settings.ini and gsettings, icons, cursor in the session, system
+  and SDDM, light/dark, wallpaper, login wallpaper, automatic restart into the new `/usr/local/bin` build (the first
+  one too: the `hash -r` fix works), spinners off, In use, and no out-of-sync banner after a Look page visit. An
+  unsaved Look edit survives a revisit. Screenshots show the bar at the top or bottom as each description says. The
+  first run of the same check found the banner on 15 of 16 looks. Everything on the VM was put back and compared
+  byte for byte afterwards.
 - Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
   until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
   here (it is ohmychadwm's `run.sh`).

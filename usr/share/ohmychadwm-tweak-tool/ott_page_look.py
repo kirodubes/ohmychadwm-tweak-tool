@@ -104,6 +104,48 @@ class LookPage:
         self._update_icon_preview()
         self._update_font_warning()
         self._refresh_drift(state)
+        self._loaded = self._files_now(state, config)
+
+    def _files_now(self, state=None, config=None):
+        # what the pickers were filled from: when it changes (the Themes page applied a look), refresh() reloads them
+        state = state or ott_targets.read_all()
+        config = ott_chadwm.read_config() if config is None else config
+        return repr((sorted(state.items(), key=str), ott_system.read(), ott_chadwm.active_theme(config),
+                     ott_chadwm.bar_font(config)))
+
+    def refresh(self):
+        """Reload the pickers when the settings files changed elsewhere (Themes page); else keep unsaved edits."""
+        if self._busy:
+            return
+        state = ott_targets.read_all()
+        config = ott_chadwm.read_config()
+        now = self._files_now(state, config)
+        if now != self._loaded:
+            self._load(ott_targets.current(state), state, config)
+            self._loaded = now
+        self._refresh_drift(state)
+
+    def _load(self, sel, state, config):
+        select(self._dd_theme, sel.theme)
+        select(self._dd_icons, sel.icons)
+        select(self._dd_cursor, sel.cursor)
+        select(self._dd_size, str(sel.cursor_size))
+        self._font_btn.set_font_desc(Pango.FontDescription.from_string(sel.font))
+        self._resetting = True  # not a user choice: don't swap the theme for its light/dark sibling
+        (self._chk_dark if sel.dark else self._chk_light).set_active(True)
+        self._resetting = False
+        self._chk_force.set_active(state.get(ott_targets.SYSTEM) is not None)
+        sysc = ott_system.read()
+        self._chk_sys_cursor.set_active(sysc["default"] == sel.cursor and sysc["sddm"] in (None, sel.cursor))
+        if self._dd_bar is not None:
+            self._bar_theme_now = ott_chadwm.active_theme(config) or ""
+            select(self._dd_bar, self._bar_theme_now)
+            self._bar_font_now = ott_chadwm.bar_font(config)
+            self._chk_bar_font.set_active(self._bar_font_now is not None)
+        self._update_theme_note()
+        self._update_force_note()
+        self._update_icon_preview()
+        self._update_font_warning()
 
     # ── Construction ─────────────────────────────────────────────────────────
 
@@ -405,6 +447,7 @@ class LookPage:
 
     def _apply_finished(self, results, bar_result, notes):
         self._busy = False
+        self._loaded = self._files_now()  # the pickers are what was just written: no reload on the next visit
         self._btn_apply.set_sensitive(True)
         failed = [f"{_(label)}: {msg}" for label, ok, msg in results if not ok]
         if bar_result is not None and not bar_result[0]:

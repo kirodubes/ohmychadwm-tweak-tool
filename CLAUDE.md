@@ -61,6 +61,8 @@ usr/share/ohmychadwm-tweak-tool/
 
 Module prefix `ott_` = **o**hmychadwm **t**weak **t**ool. Pages expose `.widget` and usually `refresh()`; the
 sidebar calls `refresh()` on every visit (not Wallpaper or Update & News), because the Look page changes what Bar & windows shows.
+Look's `refresh()` reloads its pickers only when the files changed since it filled them (`_files_now()`), so a Themes
+click shows on the Look page while unsaved Look edits survive a visit.
 A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is not wrapped in a ScrolledWindow.
 
 ## Write targets
