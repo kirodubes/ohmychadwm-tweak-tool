@@ -28,7 +28,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ohmychadwm-tweak-tool.py  # Gtk.Application + window, CSS, follows color-scheme, prefs window size
 ├── ott_gui.py                # header row, support dialog, StackSidebar, Status page, _BrokenPage/_safe
 ├── ott_widgets.py            # section / muted / warning / dropdown / settings_grid / status / run_async / ask_keep
-├── ott_page_themes.py        # Themes: 10 picture tiles (FlowBox), one click = ott_apply.apply_look + feh
+├── ott_page_themes.py        # Themes: 16 picture tiles (FlowBox), one click = ott_apply.apply_look + feh + restart
 ├── ott_page_look.py          # Look (OMA's page): drift banner, pickers, force GTK_THEME, system cursor, bar theme+font
 ├── ott_page_bar.py           # Bar & windows: THEME_BORDER/GAPS/SMARTGAPS/TOPBAR/SHOWSYSTRAY/AUTOHIDE → rebuild
 ├── ott_page_wallpaper.py     # Wallpaper (KHP layout): sources, thumbnails, preview, Variety prev/next, feh
@@ -39,7 +39,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_page_startup.py       # Startup apps: run lines of run.sh on/off, add/remove own
 ├── ott_page_apps.py          # Default apps: terminal/file manager in sxhkdrc, xdg-mime per category
 ├── ott_page_keys.py          # Keys: searchable read-only list
-├── ott_themes.py             # the 10 looks (ISO packages only) + resolve_all(): installed names, missing parts
+├── ott_themes.py             # the 16 looks (ISO packages only) + resolve_all(): installed names, missing parts
 ├── ott_apply.py              # apply_look(): user files, bar rebuild, ONE pkexec (used by Look and Themes)
 ├── ott_targets.py            # Look targets: read_all / current / drift / apply  (toolkit-free, from OMA)
 ├── ott_chadwm.py             # config.def.h: theme include, managed block (font + options), rebuild, restart
@@ -145,6 +145,12 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   painting. A look keeps the user's font, cursor size and bar font; `border` None drops the THEME_BORDER override.
   GTK_THEME is rewritten only when `/etc/environment` already forces it.
   The tile frame colour is `SchemeSelbr` (the focused window border); `col_borderbar` is only the frame around the bar.
+  Every look sets `top` (bar position) and `border`; `_bar_options()` writes an override only where it differs from the
+  bar theme. Each look uses a clearly different bar theme: everforest = gruvchad, celestial ≈ dracul, nord-polarnight ≈
+  nord-frost and the five planet themes are near copies (colour check 2026-11-20), so use one of each group at most.
+  After a rebuild the page restarts Ohmychadwm itself and checks `ott_chadwm.running_binary()`: a run.sh without
+  `hash -r` (before ohmychadwm 2026.11.20) keeps starting `/usr/bin/ohmychadwm` until the next login, and the status
+  says so.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.

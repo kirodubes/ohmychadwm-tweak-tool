@@ -7,28 +7,25 @@ import ott_root
 import ott_targets
 from ott_i18n import _
 
-# bar font or border: leave what config.def.h has
+# bar font or bar options: leave what config.def.h has
 KEEP = object()
 
 
-def _bar_text(text, theme, font, border):
+def _bar_text(text, theme, font, options):
     new = ott_chadwm.set_theme(text, theme)
     if font is not KEEP:
         new = ott_chadwm.set_bar_font(new, *font) if font else ott_chadwm.clear_bar_font(new)
-    if border is not KEEP:
-        options = {k: v for k, v in ott_chadwm.bar_options(new).items() if k != "THEME_BORDER"}
-        if border is not None:
-            options["THEME_BORDER"] = border
-        new = ott_chadwm.set_bar_options(new, options)
+    if options is not KEEP:
+        # other overrides (the Bar page's gaps, …) stay; a value of None drops that override
+        merged = {**ott_chadwm.bar_options(new), **options}
+        new = ott_chadwm.set_bar_options(new, {k: v for k, v in merged.items() if v is not None})
     return new
 
 
+# bar: None or (theme, font, options). font: KEEP, None (the theme's own) or (family, size). options: KEEP or
+# {THEME_*: value, or None for the theme's own}. force: True writes GTK_THEME, False releases it, None leaves it.
 def apply_look(sel, bar=None, force=None, sys_cursor=False, sddm_background=None, status=lambda _text: None):
-    """Apply sel everywhere; return (results, bar_result, notes). Call from a thread.
-
-    bar is None or (theme, font, border): font KEEP / None (theme's own) / (family, size); border KEEP / None
-    (theme's own) / pixels. force True writes GTK_THEME, False releases it, None leaves /etc/environment alone.
-    """
+    """Apply sel everywhere; return (results, bar_result, notes). Call from a thread."""
     log.log_section("Apply")
     results = ott_targets.apply(sel)
     for label, ok, msg in results:

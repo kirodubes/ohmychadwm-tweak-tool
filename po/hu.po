@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 17:38+0100\n"
+"POT-Creation-Date: 2026-11-20 18:19+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Hungarian\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:56
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:53
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:152
 msgid "Recompiling Ohmychadwm…"
 msgstr "Ohmychadwm újrafordítása…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:65
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:62
 #, python-brace-format
 msgid "Ohmychadwm bar: {error}"
 msgstr "Ohmychadwm sávja: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:69
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:66
 #: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:146
 msgid "Waiting for your password…"
 msgstr "Várakozás a jelszavadra…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:72
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:69
 msgid "System changes"
 msgstr "Rendszermódosítások"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:72
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:69
 #, python-brace-format
 msgid "cancelled or failed: {error}"
 msgstr "megszakítva vagy sikertelen: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:73
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:70
 msgid "cancelled or failed"
 msgstr "megszakítva vagy sikertelen"
 
@@ -177,7 +177,7 @@ msgstr "A mentett kijelzőelrendezés kézi szerkesztése"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:163
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:179
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:32
 msgid "Wallpaper"
@@ -324,7 +324,7 @@ msgid "This section could not load: {error}"
 msgstr "Ez a rész nem töltődött be: {error}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:53
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:63
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:29
@@ -661,7 +661,6 @@ msgstr ""
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:81
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:247
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:84
 msgid "Restart Ohmychadwm now"
 msgstr "Ohmychadwm újraindítása most"
 
@@ -1155,41 +1154,40 @@ msgstr ""
 "használatukhoz."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:413
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:174
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:201
 msgid "Some settings could not be written:"
 msgstr "Néhány beállítást nem sikerült kiírni:"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:415
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:176
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:202
 msgid "Log out and back in for the system-wide theme."
 msgstr "Jelentkezz ki, majd vissza a rendszerszintű téma használatához."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:417
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:178
 msgid "Applied. Restart Ohmychadwm to see the new bar."
 msgstr ""
 "Alkalmazva. Indítsd újra az Ohmychadwm programot az új sáv megjelenítéséhez."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:420
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:181
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:209
 msgid "Applied. Press Super+Shift+R to see the new bar."
 msgstr ""
 "Alkalmazva. Nyomd meg a Super+Shift+R billentyűkombinációt az új sáv "
 "megjelenítéséhez."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:422
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:183
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:210
 msgid "Applied. The new bar shows at your next Ohmychadwm login."
 msgstr ""
 "Alkalmazva. Az új sáv a következő Ohmychadwm-bejelentkezéskor jelenik meg."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:424
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:205
 msgid "Applied. Log out and back in to see the new theme everywhere."
 msgstr "Alkalmazva. Jelentkezz ki és be, hogy mindenhol lásd az új témát."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:187
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:206
 msgid "Applied. Apps you open from now on use the new look."
 msgstr ""
 "Alkalmazva. A mostantól megnyitott alkalmazások az új megjelenést használják."
@@ -1249,46 +1247,69 @@ msgstr "{command}: mentve, a következő bejelentkezéskor lép érvénybe."
 msgid "Could not write run.sh: {error}"
 msgstr "A run.sh fájlt nem sikerült kiírni: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:57
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:67
 msgid ""
 "Click a picture to use its whole look: wallpaper, bar colours, window "
-"border, GTK theme, icons and cursor. Ohmychadwm is recompiled, and your "
-"password is asked once."
+"border, GTK theme, icons and cursor. Ohmychadwm is recompiled and restarted, "
+"and your password is asked once."
 msgstr ""
 "Kattints egy képre, hogy a teljes megjelenését használd: háttérkép, "
-"sávszínek, ablakkeret, GTK-téma, ikonok és kurzor. Az Ohmychadwm újrafordul, "
-"és a jelszavad egyszer kérjük."
+"sávszínek, ablakkeret, GTK-téma, ikonok és kurzor. Az Ohmychadwm újrafordul "
+"és újraindul, és a jelszavad egyszer kérjük."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:59
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:69
 msgid "Also the login screen (SDDM): the same wallpaper and cursor"
 msgstr "A bejelentkezési képernyő (SDDM) is: ugyanaz a háttérkép és kurzor"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:62
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:72
 msgid "Also the login screen (SDDM) cursor"
 msgstr "A bejelentkezési képernyő (SDDM) kurzora is"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:63
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:73
 msgid "This login screen theme can't show another wallpaper."
 msgstr "Ez a bejelentkezési téma nem tud más háttérképet mutatni."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:111
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:122
+msgid "Bar at the bottom."
+msgstr "Sáv alul."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:122
+msgid "Bar at the top."
+msgstr "Sáv felül."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:127
 msgid "In use"
 msgstr "Használatban"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:120
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:136
 #, python-brace-format
 msgid "Use the look “{name}”"
 msgstr "A(z) „{name}” megjelenés használata"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:124
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:140
 #, python-brace-format
 msgid "Not installed: {what}"
 msgstr "Nincs telepítve: {what}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:148
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:164
 #, python-brace-format
 msgid "Applying “{name}”…"
 msgstr "A(z) „{name}” alkalmazása…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:212
+msgid "Restarting Ohmychadwm…"
+msgstr "Az Ohmychadwm újraindul…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:219
+msgid "Applied. Ohmychadwm restarted with the new bar."
+msgstr "Alkalmazva. Az Ohmychadwm az új sávval újraindult."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:221
+msgid ""
+"Applied. Log out and back in once to see the new bar and window borders."
+msgstr ""
+"Alkalmazva. Jelentkezz ki és be egyszer, hogy lásd az új sávot és "
+"ablakkereteket."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_update.py:28
 msgid "Updates"
@@ -1505,104 +1526,152 @@ msgstr "Az xfconf-query nincs telepítve, kihagyva"
 msgid "{tool} not configured, skipped"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:26
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
 msgid "Kiro"
 msgstr "Kiro"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:26
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
 msgid "The look Kiro ships with."
 msgstr "A megjelenés, amellyel a Kiro érkezik."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
 msgid "A frozen lake in art deco, cool blue, thin borders."
 msgstr "Befagyott tó art deco stílusban, hűvös kék, vékony keretek."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
 msgid "Nord Frost"
 msgstr "Nord Frost"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
 msgid "Bats around a dark moon, purple and candy icons."
 msgstr "Denevérek egy sötét hold körül, lila és candy ikonok."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
 msgid "Dracula Night"
 msgstr "Dracula Night"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
 msgid "A starry city in layered paper, deep blue."
 msgstr "Csillagos város rétegzett papírból, mélykék."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
 msgid "Tokyo Night"
 msgstr "Tokyo Night"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:43
 msgid "A sunset in layered paper, light and calm."
 msgstr "Naplemente rétegzett papírból, világos és nyugodt."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:43
 msgid "Paper Day"
 msgstr "Paper Day"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:42
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
 msgid "An origami forest, soft green and wide borders."
 msgstr "Origami erdő, lágy zöld és széles keretek."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:42
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
 msgid "Everforest"
 msgstr "Everforest"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
-msgid "A car in a monsoon desert, warm gruvbox colours."
-msgstr "Autó egy monszunos sivatagban, meleg gruvbox színek."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
-msgid "Desert Gruv"
-msgstr "Desert Gruv"
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+msgid "A car in a monsoon desert, deep brown with red borders."
+msgstr "Autó egy monszunos sivatagban, mélybarna, piros keretekkel."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+msgid "Desert Dusk"
+msgstr "Desert Dusk"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
 msgid "A pink bird in a dreamscape, light rose tones."
 msgstr "Rózsaszín madár egy álomtájban, világos rózsás árnyalatok."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
 msgid "Rosé Pine"
 msgstr "Rosé Pine"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
 msgid "A paper-quilled solar system, pastel on dark."
 msgstr "Papírfiligrán naprendszer, pasztell sötéten."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
 msgid "Catppuccin Space"
 msgstr "Catppuccin Space"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
-msgid "A psychedelic whale, bright colours and bold borders."
-msgstr "Pszichedelikus bálna, élénk színek és vastag keretek."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:62
 msgid "Celestial Ocean"
 msgstr "Celestial Ocean"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:120
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:63
+msgid "A psychedelic whale, deep sea blue and teal borders."
+msgstr "Pszichedelikus bálna, mély tengerkék és kékeszöld keretek."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:67
+msgid "A snowy dreamscape, light, with a warm orange bar."
+msgstr "Havas álomtáj, világos, meleg narancssárga sávval."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:67
+msgid "Bright Snow"
+msgstr "Bright Snow"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:71
+msgid "A tall tree in a dreamscape, lime green borders."
+msgstr "Magas fa egy álomtájban, limezöld keretek."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:71
+msgid "Monokai Grove"
+msgstr "Monokai Grove"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:75
+msgid "An empty road below a planet, purple bar, red borders."
+msgstr "Üres út egy bolygó alatt, lila sáv, piros keretek."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:75
+msgid "Summit Road"
+msgstr "Summit Road"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:79
+msgid "Dragon Fire"
+msgstr "Dragon Fire"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:80
+msgid "A ball of fire on the sea, orange on plum, very wide borders."
+msgstr "Tűzgömb a tengeren, narancs a szilván, nagyon széles keretek."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:84
+msgid "A shark at night, navy blue with yellow borders."
+msgstr "Cápa éjjel, sötétkék, sárga keretekkel."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:84
+msgid "Neptune Deep"
+msgstr "Neptune Deep"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:87
+msgid "A demon in red and black origami, blood-red borders."
+msgstr "Démon piros-fekete origamiból, vérvörös keretek."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:87
+msgid "Venom"
+msgstr "Venom"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:150
 msgid "the wallpaper (kiro-atelier-wallpapers)"
 msgstr "a háttérkép (kiro-atelier-wallpapers)"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:122
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:152
 #, python-brace-format
 msgid "the bar theme {name}"
 msgstr "a(z) {name} sávtéma"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:123
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:153
 msgid "a GTK theme"
 msgstr "egy GTK-téma"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:123
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:153
 msgid "a cursor"
 msgstr "egy kurzor"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:123
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:153
 msgid "an icon theme"
 msgstr "egy ikontéma"
 

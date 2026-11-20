@@ -673,6 +673,7 @@ def build_steps():
             if r is None:
                 return
             st["bin0"] = mtime(ott_root.INSTALL_PATH)
+            st["wm_before"] = wm_pid()
             st["env0"] = ott_env.read()
             st["sddm_conf"] = ott_system.background_conf()
             tp._chk_login.set_active(True)
@@ -694,10 +695,14 @@ def build_steps():
             scheme = gs("color-scheme")
             check(f"Themes {name}: {word} preference", scheme == ("prefer-dark" if dark else "prefer-light"), scheme)
             text = ott_chadwm.read_config()
-            border = ott_chadwm.bar_options(text).get("THEME_BORDER")
-            check(f"Themes {name}: bar theme {r.bar}, border {r.look['border']}",
-                  ott_chadwm.active_theme(text) == r.bar and border == r.look["border"],
-                  f"{ott_chadwm.active_theme(text)}, THEME_BORDER {border}")
+            # what the bar really gets: the managed block's override, else the bar theme's own value
+            own, over = ott_chadwm.theme_values(r.bar), ott_chadwm.bar_options(text)
+            border = over.get("THEME_BORDER", own.get("THEME_BORDER"))
+            top = over.get("THEME_TOPBAR", own.get("THEME_TOPBAR"))
+            want_border = r.look["border"] if r.look["border"] is not None else own.get("THEME_BORDER")
+            check(f"Themes {name}: bar theme {r.bar}, border {want_border}, bar {'top' if r.look['top'] else 'bottom'}",
+                  ott_chadwm.active_theme(text) == r.bar and border == want_border and top == int(r.look["top"]),
+                  f"{ott_chadwm.active_theme(text)}, THEME_BORDER {border}, THEME_TOPBAR {top}, block {over}")
             check(f"Themes {name}: rebuilt bar installed (pkexec)", mtime(ott_root.INSTALL_PATH) > st["bin0"],
                   f"status '{last_status('ott_page_themes')[0]}'")
             path, _mode = ott_wallpaper.current()
@@ -717,19 +722,16 @@ def build_steps():
             b3 = brightness(3)
             ok = b3 is not None and (b3 < 0.45 if dark else b3 > 0.55)
             check(f"Themes {name}: a new GTK 3 window really is {word}", ok, f"mean brightness {b3}")
+            now = wm_pid()
+            check(f"Themes {name}: Ohmychadwm restarted by itself", now and now != st["wm_before"],
+                  f"pid {st['wm_before']} -> {now}; screenshot {shot('themes-' + name)}")
+            # a run.sh from before 2026.11.20 (no hash -r) starts /usr/bin/ohmychadwm until the next login
+            exe = sh("readlink", f"/proc/{now}/exe")[1] if now else ""
+            record(f"Themes {name}: binary after the restart", "INFO",
+                   f"{exe}; status '{last_status('ott_page_themes')[0]}'")
+            check(f"Themes {name}: spinners stopped", not tp._spinner.get_visible()
+                  and not any(sp.get_visible() for sp in tp._spinners.values()), "")
         return chk
-
-    def act_theme_restart():
-        st["wm_before"] = wm_pid()
-        tp._on_restart(None)
-
-    def chk_theme_restart():
-        now = wm_pid()
-        exe = sh("readlink", f"/proc/{now}/exe")[1] if now else ""
-        check("Themes: Restart Ohmychadwm relaunches it", now and now != st["wm_before"],
-              f"pid {st['wm_before']} -> {now}; screenshot {shot('themes-' + st['look'].look['key'])}")
-        # run.sh's bash remembers /usr/bin/ohmychadwm until relogin when /usr/local/bin had none before
-        record("Themes: binary running after restart", "INFO", exe)
 
     def theme_done():
         # only statuses from this step count: the previous look's "Applied." is still in STATUS
@@ -739,10 +741,7 @@ def build_steps():
     for word, keys in (("dark", ("dracula", "tokyo", "nord-frost", "catppuccin")),
                        ("light", ("rose-pine", "paper-day"))):
         add(Step(f"themes {word}", act_theme(keys), chk_theme(word), page="ott_page_themes", timeout=240,
-                 until=theme_done))
-        add(Step(f"themes {word} restart", act_theme_restart, chk_theme_restart,
-                 until=lambda: st.get("look") is None or wm_pid() not in ("", st.get("wm_before")),
-                 timeout=20, settle=2500))
+                 until=theme_done, settle=2500))
 
     def chk_theme_tiles():
         missing = {r.look["key"]: r.missing for r in tp._looks if not r.usable}

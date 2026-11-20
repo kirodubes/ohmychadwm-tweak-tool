@@ -246,6 +246,17 @@ def can_restart():
     return shutil.which("xdotool") is not None and in_session()
 
 
+def running_binary():
+    """Return the file the running ohmychadwm was started from, or None."""
+    pids = subprocess.run(["pgrep", "-u", str(os.getuid()), "-x", "ohmychadwm"], capture_output=True, text=True)
+    for pid in pids.stdout.split():
+        try:
+            return os.readlink(f"/proc/{pid}/exe")
+        except OSError:
+            continue
+    return None
+
+
 def restart():
     """Send Super+Shift+R; dwm's restart exits 0 and the run.sh session loop relaunches it."""
     subprocess.Popen(["xdotool", "key", "--clearmodifiers", "super+shift+r"])

@@ -10,6 +10,11 @@
   frame around each picture shows that look's window border colour and width. The looks are Kiro, Nord Frost,
   Dracula Night, Tokyo Night, Paper Day, Everforest, Desert Gruv, Rosé Pine, Catppuccin Space and Celestial Ocean,
   each on a different Kiro Atelier painting.
+- **Themes: 16 looks, and you see the result at once.** Six new looks (Bright Snow, Monokai Grove, Summit Road,
+  Dragon Fire, Neptune Deep, Venom), and every look says whether its bar sits at the top or the bottom (half of them
+  each). Desert Dusk and Celestial Ocean got their own bar colours: they were copies of Everforest and of the Kiro look.
+  After a click a spinner turns on the picture and next to the status, and Ohmychadwm restarts by itself, so the new
+  bar and window borders show straight away.
 - The Keyboard page no longer logs an error when it opens.
 - **Search settings** above the sidebar (Ctrl+F): type a word and pick a match; the page opens and the row lights up.
   It searches what the pages show, in your language, and knows a few English words from other tools (sddm, xkb,
@@ -93,6 +98,17 @@
   pointer over the tiles, so most likely a click into the VM window. To be re-run hands-off.
 - `ott_root._write_file(backup=False)` for `theme.conf.user`: the second look made a `.oma-bak` of the first look's
   file, a stray file under `/usr/share/sddm/themes`. The runner's `.oma-bak` sweep now includes that folder.
+- 16 looks: a colour comparison of the 45 bar themes (CIELAB distance over bar background, focused border, selected
+  tag and tag colours) found everforest = gruvchad (0.0), celestial ≈ dracul, nord-polarnight ≈ nord-frost and the
+  five planet themes as near copies. Desert now uses meditation, Celestial Ocean faraway; the six new looks use bar
+  themes that differ clearly from all others and six unused Kiro Atelier paintings (still one painting per look).
+- Each look sets `top`; `_bar_options()` writes THEME_TOPBAR / THEME_BORDER only where they differ from the bar theme,
+  so switching theme later on the Look page doesn't keep a stale override. `ott_apply` takes a dict of THEME_*
+  overrides (None = drop) instead of only a border.
+- Automatic restart: after a rebuild the page sends the restart key, waits 3 s and reads the running binary
+  (`ott_chadwm.running_binary()`). If it is still `/usr/bin/ohmychadwm` (run.sh from before ohmychadwm's `hash -r`
+  fix), the status asks for one logout. The Restart button is gone from this page. Live test: restart and spinner
+  checks moved into the look steps, and the bar check reads the effective border and position.
 - Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
   until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
   here (it is ohmychadwm's `run.sh`).
