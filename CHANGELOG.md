@@ -19,6 +19,10 @@
   started, so after a Themes click it compared old choices with the new files, showed the banner, and its Apply or
   Fix all would have put the old look back. It now reloads its choices when the files changed while you were away,
   and keeps your unsaved edits when nothing changed.
+- **No see-through app window after a look.** GTK 4 can't switch an open window to another theme reliably: the
+  Arc themes (Arc, Arc-Dark, Arc-Lighter) lost their whole style and the window showed the wallpaper through it
+  (seen on the VM after Nord Frost with 26.11-07). The app now restarts itself on the page you were on when the GTK
+  theme changes, once a look or a password prompt has finished. Same fix as the KiroTux premium apps (written anew).
 - The Keyboard page no longer logs an error when it opens.
 - **Search settings** above the sidebar (Ctrl+F): type a word and pick a match; the page opens and the row lights up.
   It searches what the pages show, in your language, and knows a few English words from other tools (sddm, xkb,
@@ -133,6 +137,16 @@
   unsaved Look edit survives a revisit. Screenshots show the bar at the top or bottom as each description says. The
   first run of the same check found the banner on 15 of 16 looks. Everything on the VM was put back and compared
   byte for byte afterwards.
+- Restart on a theme change (`ohmychadwm-tweak-tool.py`): gsettings `changed::gtk-theme` that differs from the
+  theme at start → poll every 500 ms until no page has `_busy` set and no pkexec child runs → save the window size
+  → `os.execv` with `--page <shown page>`. A light/dark change under a gresource theme (Arc*: `gtk-4.0/gtk.gresource`)
+  restarts too instead of switching live (GTK 4.24 drops their stylesheet). At start `GTK_THEME` is set from
+  `/etc/environment` (or dropped when nothing is forced), so a restart never inherits the login's stale value.
+  `ott_gui.build` keeps `window.ott_pages` / `window.ott_stack` for it. The live test harness runs its own
+  Gtk.Application, so it never restarts. Tested on the VM with the app started in the session (an app started over
+  SSH has no polkit agent: pkexec fails with "Error creating textual authentication agent"): Venom with 26.11-08
+  (no theme change, no restart needed), Nord Frost (same Arc-Dark, no restart, correct), Paper Day (Arc-Dark →
+  Arc-Lighter, dark → light): "GTK theme changed: restarting on the themes page", back light and solid.
 - Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
   until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
   here (it is ohmychadwm's `run.sh`).
@@ -146,6 +160,7 @@
 - `usr/share/ohmychadwm-tweak-tool/ott_targets.py`
 - `usr/share/ohmychadwm-tweak-tool/ott_themes.py`, `ott_page_themes.py`, `ott_apply.py` (new)
 - `usr/share/ohmychadwm-tweak-tool/ott_page_look.py`, `ott_system.py`, `ott_search.py`
+- `usr/share/ohmychadwm-tweak-tool/ohmychadwm-tweak-tool.py`, `ott_gui.py`
 - `tests/live_ohmychadwm.py`, `tests/run-live-ohmychadwm.sh`
 
 ## 2026.11.06

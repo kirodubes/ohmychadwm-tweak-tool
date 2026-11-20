@@ -270,6 +270,8 @@ def build(window):
     sidebar.set_vexpand(True)
     search = ott_search.SearchBox(stack, [(name, title, page.widget) for name, title, page in sections])
     window.ott_search = search  # the tests type into it
+    # the app restarts itself on the page shown when the GTK theme changes, once no page is busy
+    window.ott_pages, window.ott_stack = pages, stack
     # Ctrl+F jumps to the search
     keys = Gtk.ShortcutController(scope=Gtk.ShortcutScope.GLOBAL)
     keys.add_shortcut(Gtk.Shortcut(trigger=Gtk.ShortcutTrigger.parse_string("<Control>f"),

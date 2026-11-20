@@ -16,16 +16,49 @@ if codecs.lookup(sys.getfilesystemencoding()).name != "utf-8":
 import gi  # noqa: E402
 
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gio, Gtk  # noqa: E402
+from gi.repository import Gio, GLib, Gtk  # noqa: E402
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE_DIR)
 
 import ott_config  # noqa: E402
+import ott_env  # noqa: E402
 import ott_gui  # noqa: E402
 import log  # noqa: E402
 
 _INTERFACE_SCHEMA = "org.gnome.desktop.interface"
+_THEME_DIRS = ("~/.themes", "~/.local/share/themes", "/usr/share/themes")
+_RESTART_POLL_MS = 500
+
+
+def _gresource_theme(name):
+    """Return True when the GTK theme keeps its GTK 4 stylesheet in a gresource (Arc, Arc-Dark, Arc-Lighter)."""
+    return bool(name) and any(os.path.isfile(os.path.join(os.path.expanduser(d), name, "gtk-4.0", "gtk.gresource"))
+                              for d in _THEME_DIRS)
+
+
+def _follow_forced_theme():
+    # the session's GTK_THEME is what /etc/environment said at login; a restart after a look must use today's line
+    theme, active = ott_env.read()
+    if active and theme:
+        os.environ["GTK_THEME"] = theme
+    else:
+        os.environ.pop("GTK_THEME", None)
+
+
+def _pkexec_running():
+    me = str(os.getpid())
+    for pid in filter(str.isdigit, os.listdir("/proc")):
+        try:
+            with open(f"/proc/{pid}/stat", encoding="utf-8") as f:
+                fields = f.read().rsplit(")", 1)[1].split()
+            with open(f"/proc/{pid}/comm", encoding="utf-8") as f:
+                comm = f.read().strip()
+        except OSError:
+            continue
+        if fields[1] == me and comm == "pkexec":
+            return True
+    return False
 
 
 class TweakApp(Gtk.Application):
@@ -34,6 +67,9 @@ class TweakApp(Gtk.Application):
     def __init__(self):
         super().__init__(application_id="com.kiro.ohmychadwm-tweak-tool")
         self._interface = None
+        self._window = None
+        self._theme_at_start = None
+        self._restart_pending = False
         self.connect("startup", self._on_startup)
         self.connect("activate", self.on_activate)
 
@@ -44,17 +80,50 @@ class TweakApp(Gtk.Application):
         if source and source.lookup(_INTERFACE_SCHEMA, True):
             self._interface = Gio.Settings.new(_INTERFACE_SCHEMA)
             self._interface.connect("changed::color-scheme", lambda *_args: self._apply_color_scheme())
-        self._apply_color_scheme()
+            self._interface.connect("changed::gtk-theme", lambda *_args: self._on_theme_changed())
+            self._theme_at_start = self._interface.get_string("gtk-theme")
+        self._apply_color_scheme(starting=True)
 
-    def _apply_color_scheme(self):
+    def _apply_color_scheme(self, starting=False):
         scheme = self._interface.get_string("color-scheme") if self._interface else "prefer-dark"
-        Gtk.Settings.get_default().props.gtk_application_prefer_dark_theme = scheme != "prefer-light"
+        settings = Gtk.Settings.get_default()
+        dark = scheme != "prefer-light"
         log.debug_print(f"color-scheme {scheme}")
+        if dark == settings.props.gtk_application_prefer_dark_theme:
+            return
+        if not starting and _gresource_theme(settings.props.gtk_theme_name):
+            # GTK 4.24 drops an Arc theme's stylesheet when light/dark changes in an open window: see-through
+            self._restart_soon()
+            return
+        settings.props.gtk_application_prefer_dark_theme = dark
+
+    def _on_theme_changed(self):
+        # an open GTK 4 window can't take a new theme reliably (Arc goes see-through); a fresh start always can
+        if self._interface.get_string("gtk-theme") != self._theme_at_start:
+            self._restart_soon()
+
+    def _restart_soon(self):
+        if self._restart_pending or self._window is None:
+            return
+        self._restart_pending = True
+        GLib.timeout_add(_RESTART_POLL_MS, self._restart_when_idle)
+
+    def _restart_when_idle(self):
+        pages = getattr(self._window, "ott_pages", {})
+        if any(getattr(page, "_busy", False) for page in pages.values()) or _pkexec_running():
+            return True  # a look is still being applied or a password is asked: try again
+        page = self._window.ott_stack.get_visible_child_name()
+        self._window.save_size()
+        args = [a for i, a in enumerate(sys.argv[1:], 1) if a != "--page" and sys.argv[i - 1] != "--page"]
+        log.log_info(f"GTK theme changed: restarting on the {page} page")
+        os.execv(sys.executable, [sys.executable, os.path.abspath(__file__), *args, "--page", page])
+        return False
 
     def on_activate(self, _app):
         """Show the main window, creating it on the first activation only."""
         # Ctrl+Alt+H while the app is open activates this instance again: raise the window, don't add a second one
         window = self.get_active_window() or Main(self)
+        self._window = window
         window.present()
 
 
@@ -83,9 +152,13 @@ class Main(Gtk.ApplicationWindow):
             self.get_display(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
 
-    def _on_close(self, _window):
+    def save_size(self):
+        """Remember the window size for the next start."""
         w, h = self.get_default_size()
         ott_config.update_prefs({"window_width": w, "window_height": h})
+
+    def _on_close(self, _window):
+        self.save_size()
         return False
 
 
@@ -96,6 +169,7 @@ def main():
     if "--page" in sys.argv[:-1]:
         ott_gui.START_PAGE = sys.argv[sys.argv.index("--page") + 1]
     log.log_section("Ohmychadwm Tweak Tool")
+    _follow_forced_theme()
     TweakApp().run(None)
 
 

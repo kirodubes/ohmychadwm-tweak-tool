@@ -153,6 +153,10 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   After a rebuild the page restarts Ohmychadwm itself and checks `ott_chadwm.running_binary()`: a run.sh without
   `hash -r` (before ohmychadwm 2026.11.20) keeps starting `/usr/bin/ohmychadwm` until the next login, and the status
   says so.
+- **GTK theme change = app restart.** An open GTK 4 window can't take a new theme reliably (Arc gresource themes go
+  see-through), so the app `execv`s itself on the shown page when gsettings `gtk-theme` changes, after every page's
+  `_busy` is clear and no pkexec child runs. A new page with a worker must set `_busy` while it works, or the
+  restart can cut it off. Test it with the app started inside the session: started over SSH, pkexec has no agent.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.
