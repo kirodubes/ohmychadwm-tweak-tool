@@ -10,7 +10,7 @@
   frame around each picture shows that look's window border colour and width. The looks are Kiro, Nord Frost,
   Dracula Night, Tokyo Night, Paper Day, Everforest, Desert Gruv, Rosé Pine, Catppuccin Space and Celestial Ocean,
   each on a different Kiro Atelier painting.
-- **Themes: 16 looks, and you see the result at once.** Six new looks (Bright Snow, Monokai Grove, Summit Road,
+- **Themes: 16 looks, and you see the result at once.** Six new looks (Bright Moon, Monokai House, Summit Dawn,
   Dragon Fire, Neptune Deep, Venom), and every look says whether its bar sits at the top or the bottom (half of them
   each). Desert Dusk and Celestial Ocean got their own bar colours: they were copies of Everforest and of the Kiro look.
   After a click a spinner turns on the picture and next to the status, and Ohmychadwm restarts by itself, so the new
@@ -105,10 +105,17 @@
 - Each look sets `top`; `_bar_options()` writes THEME_TOPBAR / THEME_BORDER only where they differ from the bar theme,
   so switching theme later on the Look page doesn't keep a stale override. `ott_apply` takes a dict of THEME_*
   overrides (None = drop) instead of only a border.
+- Descriptions are written from the paintings themselves: the Kiro Atelier file names often say something else
+  (the "shark at night" is people walking through a blue cave, the "whale" is sea swirls), checked on a contact sheet
+  of all 16. Seven descriptions and three names changed.
 - Automatic restart: after a rebuild the page sends the restart key, waits 3 s and reads the running binary
   (`ott_chadwm.running_binary()`). If it is still `/usr/bin/ohmychadwm` (run.sh from before ohmychadwm's `hash -r`
   fix), the status asks for one logout. The Restart button is gone from this page. Live test: restart and spinner
   checks moved into the look steps, and the bar check reads the effective border and position.
+- VM check of this version (from a copy of the source, root through sudo): Neptune Deep moved the bar to the bottom
+  in navy with yellow, Ohmychadwm restarted by itself 3 s after the install and ran the new `/usr/local/bin` binary,
+  the status said "restarted with the new bar", both spinners stopped, and the Look page showed no "out of sync"
+  banner afterwards. The VM was put back on the look Erik had picked (Desert Gruv), login wallpaper included.
 - Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
   until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
   here (it is ohmychadwm's `run.sh`).

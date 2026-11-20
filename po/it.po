@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 18:19+0100\n"
+"POT-Creation-Date: 2026-11-20 18:22+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Italian\n"
@@ -1517,152 +1517,153 @@ msgstr "xfconf-query non installato, ignorato"
 msgid "{tool} not configured, skipped"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:30
 msgid "Kiro"
 msgstr "Kiro"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:30
 msgid "The look Kiro ships with."
 msgstr "L’aspetto con cui viene fornito Kiro."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:33
 msgid "A frozen lake in art deco, cool blue, thin borders."
 msgstr "Un lago ghiacciato in art déco, blu freddo, bordi sottili."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:33
 msgid "Nord Frost"
 msgstr "Nord Frost"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
-msgid "Bats around a dark moon, purple and candy icons."
-msgstr "Pipistrelli attorno a una luna scura, viola e icone candy."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:36
 msgid "Dracula Night"
 msgstr "Dracula Night"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:37
+msgid "A glowing figure under two moons, purple and candy icons."
+msgstr "Una figura luminosa sotto due lune, viola e icone candy."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:41
 msgid "A starry city in layered paper, deep blue."
 msgstr "Una città stellata in carta a strati, blu profondo."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:41
 msgid "Tokyo Night"
 msgstr "Tokyo Night"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:45
 msgid "A sunset in layered paper, light and calm."
 msgstr "Un tramonto in carta a strati, chiaro e calmo."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:45
 msgid "Paper Day"
 msgstr "Paper Day"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:48
 msgid "An origami forest, soft green and wide borders."
 msgstr "Una foresta in origami, verde tenue e bordi larghi."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:48
 msgid "Everforest"
 msgstr "Everforest"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:52
 msgid "A car in a monsoon desert, deep brown with red borders."
 msgstr "Un’auto in un deserto monsonico, marrone scuro con bordi rossi."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:52
 msgid "Desert Dusk"
 msgstr "Desert Dusk"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:56
 msgid "A pink bird in a dreamscape, light rose tones."
 msgstr "Un uccello rosa in un paesaggio onirico, toni rosa chiari."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:56
 msgid "Rosé Pine"
 msgstr "Rosé Pine"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:60
 msgid "A paper-quilled solar system, pastel on dark."
 msgstr "Un sistema solare in quilling, pastello su scuro."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:60
 msgid "Catppuccin Space"
 msgstr "Catppuccin Space"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:62
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:64
 msgid "Celestial Ocean"
 msgstr "Celestial Ocean"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:63
-msgid "A psychedelic whale, deep sea blue and teal borders."
-msgstr "Una balena psichedelica, blu mare profondo e bordi verde acqua."
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:65
+msgid "Psychedelic sea swirls, deep sea blue and teal borders."
+msgstr "Vortici marini psichedelici, blu mare profondo e bordi verde acqua."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:67
-msgid "A snowy dreamscape, light, with a warm orange bar."
-msgstr "Un paesaggio onirico innevato, chiaro, con una barra arancione calda."
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:69
+msgid "Bright Moon"
+msgstr "Bright Moon"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:67
-msgid "Bright Snow"
-msgstr "Bright Snow"
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:70
+msgid "A pale moon over a dream valley, light, with a warm orange bar."
+msgstr ""
+"Una luna pallida su una valle onirica, chiaro, con una barra arancione calda."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:71
-msgid "A tall tree in a dreamscape, lime green borders."
-msgstr "Un albero alto in un paesaggio onirico, bordi verde lime."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:71
-msgid "Monokai Grove"
-msgstr "Monokai Grove"
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:74
+msgid "Monokai House"
+msgstr "Monokai House"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_themes.py:75
-msgid "An empty road below a planet, purple bar, red borders."
-msgstr "Una strada vuota sotto un pianeta, barra viola, bordi rossi."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:75
-msgid "Summit Road"
-msgstr "Summit Road"
+msgid "A house in a dream pyramid under the moon, lime green borders."
+msgstr "Una casa in una piramide onirica sotto la luna, bordi verde lime."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_themes.py:79
+msgid "A paper-cut tree at dawn, purple bar, red borders."
+msgstr "Un albero di carta intagliata all’alba, barra viola, bordi rossi."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:79
+msgid "Summit Dawn"
+msgstr "Summit Dawn"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:83
 msgid "Dragon Fire"
 msgstr "Dragon Fire"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:80
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:84
 msgid "A ball of fire on the sea, orange on plum, very wide borders."
 msgstr "Una palla di fuoco sul mare, arancione su prugna, bordi molto larghi."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:84
-msgid "A shark at night, navy blue with yellow borders."
-msgstr "Uno squalo di notte, blu navy con bordi gialli."
-
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:84
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:88
 msgid "Neptune Deep"
 msgstr "Neptune Deep"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:87
-msgid "A demon in red and black origami, blood-red borders."
-msgstr "Un demone in origami rosso e nero, bordi rosso sangue."
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:89
+msgid "Wanderers in a blue shadow box, navy with yellow borders."
+msgstr "Viandanti in una scatola d’ombre blu, blu navy con bordi gialli."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:87
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:92
+msgid "Red and black origami shards, blood-red borders."
+msgstr "Schegge di origami rosse e nere, bordi rosso sangue."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:92
 msgid "Venom"
 msgstr "Venom"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:150
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:155
 msgid "the wallpaper (kiro-atelier-wallpapers)"
 msgstr "lo sfondo (kiro-atelier-wallpapers)"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:152
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:157
 #, python-brace-format
 msgid "the bar theme {name}"
 msgstr "il tema della barra {name}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:153
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:158
 msgid "a GTK theme"
 msgstr "un tema GTK"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:153
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:158
 msgid "a cursor"
 msgstr "un cursore"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:153
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:158
 msgid "an icon theme"
 msgstr "un tema di icone"
 

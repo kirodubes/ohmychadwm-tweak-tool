@@ -21,7 +21,8 @@ KA_DIR = "/usr/share/backgrounds/kiro-atelier"
 KIRO_WALLPAPER = "/usr/share/backgrounds/kiro/kiro-wallpaper.jpg"
 _COLOR_RE = re.compile(r'^\s*static\s+const\s+char\s+SchemeSelbr\[\]\s*=\s*"(#[0-9A-Fa-f]{6})"')
 
-# picture: KIRO_WALLPAPER, or the subject of a Kiro Atelier painting (any style or version of it matches).
+# picture: KIRO_WALLPAPER, or the subject of a Kiro Atelier painting (any style or version of it matches). The KA file
+# names often don't describe the painting (the "shark" is people in a cave): write desc from looking at the picture.
 # bar None = the bar theme Kiro ships; border None = the bar theme's own width; top = the bar at the top (else bottom).
 # Each bar theme differs clearly from the others here: everforest = gruvchad, celestial = dracul and the five planet
 # themes are near copies, so only one of each group is used.
@@ -32,7 +33,8 @@ BUILTIN = [
     {"key": "nord-frost", "name": _("Nord Frost"), "desc": _("A frozen lake in art deco, cool blue, thin borders."),
      "picture": "frozen-lake-with-a-mountain-in-the-background", "bar": "nord-frost", "border": 1, "top": False,
      "dark": True, "gtk": ["Arc-Dark", "Arc-Dawn-Dark"], "icons": ["Surfn-Kiro"], "cursor": ["Bibata-Modern-Ice"]},
-    {"key": "dracula", "name": _("Dracula Night"), "desc": _("Bats around a dark moon, purple and candy icons."),
+    {"key": "dracula", "name": _("Dracula Night"),
+     "desc": _("A glowing figure under two moons, purple and candy icons."),
      "picture": "circle-with-bats-flying-around-it-in-the-dark", "bar": "dracula", "border": 2, "top": True,
      "dark": True, "gtk": ["Arc-Dawn-Dark"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
      "cursor": ["Bibata-Modern-Classic"]},
@@ -60,19 +62,21 @@ BUILTIN = [
      "gtk": ["Arc-Dawn-Dark"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
      "cursor": ["capitaine-cursors-light", "Bibata-Modern-Ice"]},
     {"key": "celestial", "name": _("Celestial Ocean"),
-     "desc": _("A psychedelic whale, deep sea blue and teal borders."),
+     "desc": _("Psychedelic sea swirls, deep sea blue and teal borders."),
      "picture": "humpback-whale-and-a-fish-swimming-in-the-ocean", "bar": "faraway", "border": 4, "top": False,
      "dark": True, "gtk": ["Celestial-Dawn-Dark", "Arc-Dawn-Dark"], "icons": ["Surfn-Kiro"],
      "cursor": ["Bibata-Original-Ice"]},
-    {"key": "bright-snow", "name": _("Bright Snow"), "desc": _("A snowy dreamscape, light, with a warm orange bar."),
+    {"key": "bright-moon", "name": _("Bright Moon"),
+     "desc": _("A pale moon over a dream valley, light, with a warm orange bar."),
      "picture": "snowy-landscape-with-trees-in-the-background", "bar": "bright", "border": 2, "top": True,
      "dark": False, "gtk": ["adw-gtk3", "Arc-Lighter"], "icons": ["Surfn-Kiro"],
      "cursor": ["capitaine-cursors", "Bibata-Modern-Classic"]},
-    {"key": "monokai", "name": _("Monokai Grove"), "desc": _("A tall tree in a dreamscape, lime green borders."),
+    {"key": "monokai", "name": _("Monokai House"),
+     "desc": _("A house in a dream pyramid under the moon, lime green borders."),
      "picture": "tall-tree-in-the-middle-of-a-forest", "bar": "monokai", "border": 2, "top": False, "dark": True,
      "gtk": ["adw-gtk3-dark", "Arc-Dark"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
      "cursor": ["Bibata-Original-Classic", "Bibata-Modern-Classic"]},
-    {"key": "summit", "name": _("Summit Road"), "desc": _("An empty road below a planet, purple bar, red borders."),
+    {"key": "summit-dawn", "name": _("Summit Dawn"), "desc": _("A paper-cut tree at dawn, purple bar, red borders."),
      "picture": "long-empty-road-with-a-planet-in-the-background", "bar": "summit", "border": 3, "top": False,
      "dark": True, "gtk": ["Arc-Dawn-Dark"], "icons": ["Surfn-Kiro"],
      "cursor": ["Vimix-white-cursors", "Bibata-Modern-Ice"]},
@@ -81,10 +85,11 @@ BUILTIN = [
      "picture": "ball-of-fire-in-the-middle-of-the-ocean", "bar": "dragon", "border": 5, "top": True, "dark": True,
      "gtk": ["Celestial-Dawn-Dark", "Arc-Dawn-Dark"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
      "cursor": ["Bibata-Original-Amber", "Bibata-Modern-Amber"]},
-    {"key": "neptune", "name": _("Neptune Deep"), "desc": _("A shark at night, navy blue with yellow borders."),
+    {"key": "neptune", "name": _("Neptune Deep"),
+     "desc": _("Wanderers in a blue shadow box, navy with yellow borders."),
      "picture": "shark-swimming-in-the-ocean-at-night", "bar": "neptune", "border": 2, "top": False, "dark": True,
      "gtk": ["Arc-Dark", "Arc-Dawn-Dark"], "icons": ["Surfn-Kiro"], "cursor": ["Bibata-Modern-Amber"]},
-    {"key": "venom", "name": _("Venom"), "desc": _("A demon in red and black origami, blood-red borders."),
+    {"key": "venom", "name": _("Venom"), "desc": _("Red and black origami shards, blood-red borders."),
      "picture": "demonic-creature-in-a-red-and-black-background", "bar": "venom", "border": 3, "top": True,
      "dark": True, "gtk": ["Arc-Dark", "Arc-Dawn-Dark"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
      "cursor": ["Bibata-Original-Classic", "Bibata-Modern-Classic"]},
