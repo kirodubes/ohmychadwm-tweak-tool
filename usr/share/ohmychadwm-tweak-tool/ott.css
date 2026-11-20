@@ -64,3 +64,9 @@ label.info-label {
     color: #e0a030;
     font-weight: 600;
 }
+
+.search-hit {
+    background-color: alpha(@accent_bg_color, 0.30);
+    border-radius: 6px;
+    transition: background-color 400ms ease-out;
+}

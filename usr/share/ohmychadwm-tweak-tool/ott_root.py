@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Root helper, run via pkexec: GTK_THEME, the system/SDDM cursor, mouse/touchpad and the rebuilt ohmychadwm binary.
+"""Root helper, run via pkexec: GTK_THEME, system/SDDM cursor, mouse/touchpad, keyboard layout, rebuilt ohmychadwm.
 
 Every root action of the app goes through this one script, so one Apply asks
 for the password at most once. The install destination is fixed.
@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import ott_env  # noqa: E402
 import ott_input  # noqa: E402
+import ott_keyboard  # noqa: E402
 import ott_system  # noqa: E402
 
 INSTALL_PATH = "/usr/local/bin/ohmychadwm"
@@ -58,6 +59,8 @@ def main():
     parser.add_argument("--system-cursor", help="cursor for /usr/share/icons/default and the SDDM login screen")
     parser.add_argument("--cursor-size", type=int, default=24, help="SDDM cursor size (with --system-cursor)")
     parser.add_argument("--input", help="mouse/touchpad settings as JSON, written to " + ott_input.CONF_PATH)
+    parser.add_argument("--keyboard", help="X11 keyboard layouts for the whole computer, e.g. us,be (localectl)")
+    parser.add_argument("--keyboard-options", default="", help="xkb options with --keyboard")
     parser.add_argument("--install", help="built ohmychadwm binary to install to " + INSTALL_PATH)
     args = parser.parse_args()
 
@@ -79,6 +82,12 @@ def main():
         except ValueError as e:
             parser.error(f"bad --input: {e}")
         _write_file(ott_input.CONF_PATH, lambda _text: ott_input.build_conf(settings))
+
+    if args.keyboard:
+        layouts = args.keyboard.split(",")
+        if not ott_keyboard.valid_layouts(layouts) or not ott_keyboard.valid_options(args.keyboard_options):
+            parser.error(f"bad --keyboard: {args.keyboard!r} {args.keyboard_options!r}")
+        subprocess.run(ott_keyboard.localectl_args(layouts, args.keyboard_options), check=True)
 
     if args.install:
         os.makedirs(os.path.dirname(INSTALL_PATH), exist_ok=True)

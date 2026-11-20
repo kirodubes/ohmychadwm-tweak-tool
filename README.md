@@ -17,10 +17,15 @@ so Ctrl+Alt+X still opens it.
 | **Wallpaper** | Ohmychadwm wallpapers, Variety downloads/favourites or any folder, with a preview, fill mode and Previous/Next through Variety | `~/.fehbg` (feh), which ohmychadwm loads at login |
 | **Displays** | Resolution, refresh rate, on/off and primary per screen. Used right away; keep it within 15 seconds or the old layout comes back | `~/.screenlayout/<user>.sh` (arandr format), which ohmychadwm runs at login |
 | **Mouse & touchpad** | Pointer speed, natural scrolling, left-handed; tap to click and off-while-typing for touchpads. Changes show right away | `/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf` |
+| **Keyboard** | One or two keyboard layouts (Alt+Shift switches), and the AZERTY or QWERTY workspace keys Ohmychadwm listens for, with a warning when the two don't match | the whole computer's X11 layout through `localectl` (`/etc/X11/xorg.conf.d/00-keyboard.conf`, used by XFCE and the login screen too); `KIRO_AZERTY` in `config.def.h`, then a rebuild |
 | **Startup apps** | Switch the programs ohmychadwm starts at login on or off, add your own | the `run …` lines of `~/.config/ohmychadwm/scripts/run.sh` |
 | **Default apps** | The terminal and file manager on Super+Enter / Super+Shift+Enter, and the app per file type (browser, editor, images, video, music, PDF, mail) | `~/.config/ohmychadwm/sxhkd/sxhkdrc` (sxhkd reloads it) and xdg-mime |
 | **Keys** | A searchable list of every key binding, read from sxhkdrc and ohmychadwm's own `config.def.h` | read only |
+| **Update & News** | The updates waiting, **Update now** (opens `sudo pacman -Syu` in a terminal), **Restart now** after a new kernel, and the latest Kiro News | nothing: updating runs in the terminal you see |
 | **Status** | Session, config, the bar build, the tools each page needs, and the app's language | the language choice in the app's own prefs |
+
+**Search settings** above the sidebar (Ctrl+F) finds a setting on any page by its text, in your language, and a few
+English words from other tools (sddm, xkb, azerty, sxhkd, …); choosing a match opens the page and lights up the row.
 
 ## Languages
 
@@ -66,8 +71,9 @@ Launch it from the menu (**Ohmychadwm Tweak Tool**), or run `ohmychadwm-tweak-to
 ## Requirements
 
 `ohmychadwm`, `python-gobject`, `gtk4`, `xfconf`, `polkit` (plus a running polkit agent), `arandr` (pulls in
-`xorg-xrandr`), `xorg-xinput`, `feh`, `xdg-utils`. Optional: `xdotool` for the restart button, `xorg-xrdb` to apply
-the cursor live, `variety` for the Variety wallpaper sources.
+`xorg-xrandr`), `xorg-xinput`, `xorg-setxkbmap`, `feh`, `xdg-utils`. Optional: `xdotool` for the restart button,
+`xorg-xrdb` to apply the cursor live, `variety` for the Variety wallpaper sources, `pacman-contrib` (checkupdates) and
+`kiro-news` for the Update & News page.
 
 <!-- KIRO-FUNDING-FOOTER:START — managed by Kiro-HQ/cascade-readme-footer.sh -->
 ## Help fund Kiro

@@ -33,6 +33,8 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_page_wallpaper.py     # Wallpaper (KHP layout): sources, thumbnails, preview, Variety prev/next, feh
 ├── ott_page_displays.py      # Displays: per output mode/rate/on/primary, 15 s keep/revert, save
 ├── ott_page_input.py         # Mouse & touchpad: live xinput (debounced), Save → pkexec --input
+├── ott_page_keyboard.py      # Keyboard: 1–2 layouts (pkexec --keyboard → localectl, then setxkbmap) + KIRO_AZERTY rebuild
+├── ott_page_update.py        # Update & News: checkupdates, Update now in a terminal, restart after a new kernel, Kiro News
 ├── ott_page_startup.py       # Startup apps: run lines of run.sh on/off, add/remove own
 ├── ott_page_apps.py          # Default apps: terminal/file manager in sxhkdrc, xdg-mime per category
 ├── ott_page_keys.py          # Keys: searchable read-only list
@@ -44,15 +46,18 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_wallpaper.py          # sources, list_images, ~/.fehbg, feh, variety
 ├── ott_startup.py            # run.sh run-line transforms
 ├── ott_apps.py               # .desktop scan, xdg-mime, sxhkdrc key commands
+├── ott_search.py             # search above the sidebar (Ctrl+F): page texts + English synonyms (from khp_search)
+├── ott_keyboard.py           # layouts (evdev.lst, setxkbmap -query, 00-keyboard.conf), options, KIRO_AZERTY define
+├── ott_update.py             # checkupdates, kernel-restart check, /usr/share/kiro-news/feed.json, open a terminal
 ├── ott_keys.py               # sxhkdrc parser + chadwm keys[] parser (KIRO_AZERTY macros resolved)
-├── ott_root.py               # the pkexec helper: --gtk-theme / --release-gtk-theme / --system-cursor / --input / --install
+├── ott_root.py               # the pkexec helper: --gtk-theme / --release-gtk-theme / --system-cursor / --input / --keyboard / --install
 ├── ott_config.py             # prefs (~/.config/ohmychadwm-tweak-tool/prefs.json; falls back to OMA's)
 ├── log.py
 └── ott.css
 ```
 
 Module prefix `ott_` = **o**hmychadwm **t**weak **t**ool. Pages expose `.widget` and usually `refresh()`; the
-sidebar calls `refresh()` on every visit (not Wallpaper), because the Look page changes what Bar & windows shows.
+sidebar calls `refresh()` on every visit (not Wallpaper or Update & News), because the Look page changes what Bar & windows shows.
 A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is not wrapped in a ScrolledWindow.
 
 ## Write targets
@@ -68,6 +73,8 @@ A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is 
 | `~/.fehbg` | Wallpaper | written by feh itself |
 | `~/.screenlayout/<user>.sh` | Displays | arandr format, written only after **Keep** |
 | `/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf` (root) | Mouse & touchpad | InputClass `MatchIsPointer` then `MatchIsTouchpad` |
+| `/etc/X11/xorg.conf.d/00-keyboard.conf` via `localectl set-x11-keymap` (root) | Keyboard | 1–2 layouts + options; `grp:alt_shift_toggle` only with two layouts, other options kept |
+| `config.def.h` `#define KIRO_AZERTY` | Keyboard | workspace keys; rebuild + `--install`, then `keybindings-<set>.txt` → `keybindings.txt` |
 | `~/.config/ohmychadwm/scripts/run.sh` | Startup apps | only `run …` / `#run …` lines |
 | `~/.config/ohmychadwm/sxhkd/sxhkdrc` + xdg-mime | Default apps | single-word commands on the terminal/file-manager keys |
 
@@ -119,6 +126,14 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   `# added by ohmychadwm-tweak-tool` and only those can be removed.
 - **Default apps**: sxhkdrc hard-codes alacritty/thunar, so xdg-mime alone changes nothing on Super+Enter. Only
   single-word commands on those keys are rewritten (`alacritty -e claude` stays); then `pkill -USR1 -x sxhkd`.
+- **Keyboard**: the save (pkexec) runs **before** `setxkbmap`, so a cancelled password prompt changes nothing. On a
+  failed compile or install `config.def.h` gets its old `KIRO_AZERTY` back, so the page never shows keys the installed
+  binary doesn't have. `ott_keyboard` is imported by the root helper: keep it free of `ott_i18n`.
+- **Search** (`ott_search`) walks the visible labels/buttons of each page. The Look page has its own scroller
+  (`own_scroll`), so `_scroller_of()` scrolls the ScrolledWindow around the hit there. Synonym targets must be texts a
+  page really shows, or the synonym finds nothing.
+- **Update & News** never runs root itself: Update now opens `sudo pacman -Syu` in a terminal. It loads in a thread
+  and only reloads on Look again (`on_switch` skips it, like Wallpaper). Recovery (keys, boot problems) is ATT's.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.

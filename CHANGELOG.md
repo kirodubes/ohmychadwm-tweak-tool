@@ -3,12 +3,37 @@
 ## 2026.11.20
 
 ### What Changed
+- **Search settings** above the sidebar (Ctrl+F): type a word and pick a match; the page opens and the row lights up.
+  It searches what the pages show, in your language, and knows a few English words from other tools (sddm, xkb,
+  azerty, sxhkd, …).
+- **New Keyboard page.** One or two keyboard layouts (Alt+Shift switches between them), saved for the whole computer,
+  so XFCE and the login screen type the same. Below it the **workspace keys**: AZERTY or QWERTY, the keys Ohmychadwm
+  listens for to switch workspaces. Changing them rebuilds Ohmychadwm, like the menu's keyboard script, but without a
+  terminal. A warning shows when the first layout and the workspace keys don't match (a Belgian layout with QWERTY
+  workspace keys, as on a fresh v26.11.20 install in VirtualBox).
+- **New Update & News page.** The updates waiting, **Update now** (opens `sudo pacman -Syu` in a terminal), **Restart
+  now** after a new kernel, and the latest Kiro News in your language.
 - **No "out of sync" banner on a fresh install.** The Look page warned "GTK 2: not configured" and "Personal default
   cursor: not configured" on a freshly installed Kiro (seen on the v26.11.20 ISO in VirtualBox), although the look was
   exactly the Kiro default. Neither was a real problem: Kiro doesn't install gtk2, and without a personal cursor file
   the system default cursor (Bibata-Modern-Ice) is used.
 
 ### Technical Details
+- Ported from the KiroTux premium apps (copied and adapted, no shared code): `ott_search.py` from `khp_search.py`
+  (own synonyms; `_scroller_of()` because the Look page keeps its own scroller), `ott_update.py` /
+  `ott_page_update.py` from `khp_update.py` / `khp_page_update.py` (feed `/usr/share/kiro-news/feed.json`), and the
+  layout list of `khp_keyboard.py`.
+- `ott_keyboard.py` (new, X11): reads `setxkbmap -query` and `/etc/X11/xorg.conf.d/00-keyboard.conf`, keeps xkb
+  options other than `grp:*` and adds `grp:alt_shift_toggle` only for two layouts, edits `#define KIRO_AZERTY`.
+- `ott_root.py --keyboard LAYOUTS --keyboard-options OPTS`: validates every code against `evdev.lst` and the options
+  against a plain pattern, then runs `localectl set-x11-keymap`. One Apply = one pkexec (layout + rebuilt binary).
+  The save runs before `setxkbmap`; a failed compile or install puts the old `KIRO_AZERTY` back in `config.def.h`.
+  `ott_keyboard` stays free of `ott_i18n` because the root helper imports it.
+- Translations: the premium apps' `.po` files were used as a compendium (`msgmerge --no-fuzzy-matching --compendium`)
+  before `po/make-mo.sh`, so 18 of the 27 new strings are translated in all 13 languages; 9 stay English for now.
+- Tested on the v26.11.20 VM from a copy of the source: both pages and the search drop-down render; `ott_root
+  --keyboard us,be` wrote `00-keyboard.conf` and refused `us;rm`; the VM's keyboard file and session options were
+  put back exactly afterwards. The workspace-key rebuild was not run on the VM.
 - `ott_targets.drift()`: a missing `~/.icons/default/index.theme` is no longer drift; it falls back to
   `/usr/share/icons/default/index.theme`, which the Look page already checks on its own. A missing `~/.gtkrc-2.0`
   only counts when gtk2 is installed (`/usr/lib/libgtk-x11-2.0.so.0`). A missing GTK 4 settings.ini still counts.
@@ -16,6 +41,11 @@
 - Checked on the VM, read-only: the shipped module reports both lines, the patched one reports no drift.
 
 ### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_search.py`, `ott_keyboard.py`, `ott_page_keyboard.py`, `ott_update.py`,
+  `ott_page_update.py` (new)
+- `usr/share/ohmychadwm-tweak-tool/ott_gui.py`, `ott_root.py`, `ott.css`
+- `po/*.po`, `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
+- `README.md`, `CLAUDE.md`
 - `usr/share/ohmychadwm-tweak-tool/ott_targets.py`
 
 ## 2026.11.06

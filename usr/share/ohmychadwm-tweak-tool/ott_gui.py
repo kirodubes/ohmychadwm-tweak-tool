@@ -15,13 +15,16 @@ import ott_chadwm  # noqa: E402
 import ott_display  # noqa: E402
 import ott_i18n  # noqa: E402
 import ott_root  # noqa: E402
+import ott_search  # noqa: E402
 from ott_page_apps import AppsPage  # noqa: E402
 from ott_page_bar import BarPage  # noqa: E402
 from ott_page_displays import DisplaysPage  # noqa: E402
 from ott_page_input import InputPage  # noqa: E402
+from ott_page_keyboard import KeyboardPage  # noqa: E402
 from ott_page_keys import KeysPage  # noqa: E402
 from ott_page_look import LookPage  # noqa: E402
 from ott_page_startup import StartupPage  # noqa: E402
+from ott_page_update import UpdatePage  # noqa: E402
 from ott_page_wallpaper import WallpaperPage  # noqa: E402
 from ott_widgets import clear, muted, page_box, section  # noqa: E402
 from ott_i18n import _  # noqa: E402
@@ -38,11 +41,13 @@ _FUNDING = [
 _TOOLS = [
     ("xdotool", _("restart Ohmychadwm from the app")),
     ("xinput", _("Mouse & touchpad")),
+    ("setxkbmap", _("Keyboard")),
     ("xrandr", _("Displays")),
     ("arandr", _("edit the saved display layout by hand")),
     ("feh", _("Wallpaper")),
     ("xdg-mime", _("Default apps")),
     ("make", _("rebuild Ohmychadwm")),
+    ("checkupdates", _("Update & News")),
 ]
 
 
@@ -228,9 +233,11 @@ def build(window):
         ("wallpaper", _("Wallpaper"), _safe("Wallpaper", lambda: WallpaperPage(window))),
         ("displays", _("Displays"), _safe("Displays", lambda: DisplaysPage(window))),
         ("mouse", _("Mouse & touchpad"), _safe("Mouse & touchpad", InputPage)),
+        ("keyboard", _("Keyboard"), _safe("Keyboard", KeyboardPage)),
         ("startup", _("Startup apps"), _safe("Startup apps", StartupPage)),
         ("apps", _("Default apps"), _safe("Default apps", AppsPage)),
         ("keys", _("Keys"), _safe("Keys", KeysPage)),
+        ("update", _("Update & News"), _safe("Update & News", UpdatePage)),
         ("status", _("Status"), _safe("Status", StatusPage)),
     ]
     pages = {}
@@ -250,17 +257,29 @@ def build(window):
         stack.set_visible_child_name(START_PAGE.lower())
 
     def on_switch(st, _pspec):
-        # the other pages read files the Look page changes (bar theme), so re-read on every visit
+        # the other pages read files the Look page changes (bar theme), so re-read on every visit; Wallpaper and
+        # Update & News are slow (pictures, the mirrors) and reload by their own buttons
         page = pages.get(st.get_visible_child_name())
-        if page is not None and hasattr(page, "refresh") and st.get_visible_child_name() != "wallpaper":
+        if page is not None and hasattr(page, "refresh") and st.get_visible_child_name() not in ("wallpaper", "update"):
             page.refresh()
 
     stack.connect("notify::visible-child-name", on_switch)
     sidebar = Gtk.StackSidebar(stack=stack)
-    sidebar.set_size_request(190, -1)
+    sidebar.set_vexpand(True)
+    search = ott_search.SearchBox(stack, [(name, title, page.widget) for name, title, page in sections])
+    window.ott_search = search  # the tests type into it
+    # Ctrl+F jumps to the search
+    keys = Gtk.ShortcutController(scope=Gtk.ShortcutScope.GLOBAL)
+    keys.add_shortcut(Gtk.Shortcut(trigger=Gtk.ShortcutTrigger.parse_string("<Control>f"),
+                                   action=Gtk.CallbackAction.new(lambda *_args: search.entry.grab_focus() or True)))
+    window.add_controller(keys)
+    left = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+    left.set_size_request(190, -1)
+    left.append(search.widget)
+    left.append(sidebar)
     body = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
     body.set_vexpand(True)
-    body.append(sidebar)
+    body.append(left)
     body.append(Gtk.Separator(orientation=Gtk.Orientation.VERTICAL))
     body.append(stack)
     root.append(body)
