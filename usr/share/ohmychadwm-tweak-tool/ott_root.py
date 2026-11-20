@@ -29,7 +29,7 @@ def run_root(args):
     return proc.returncode == 0, (proc.stdout + proc.stderr).strip()
 
 
-def _write_file(path, transform):
+def _write_file(path, transform, backup=True):
     """Apply transform to a root-owned text file: one-time .oma-bak backup, atomic replace, mode 0644."""
     try:
         with open(path, encoding="utf-8") as f:
@@ -39,9 +39,9 @@ def _write_file(path, transform):
     new = transform(text)
     if new == text:
         return
-    backup = path + ".oma-bak"
-    if os.path.isfile(path) and not os.path.exists(backup):
-        shutil.copy2(path, backup)
+    bak = path + ".oma-bak"
+    if backup and os.path.isfile(path) and not os.path.exists(bak):
+        shutil.copy2(path, bak)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     tmp = path + ".ott-tmp"
     with open(tmp, "w", encoding="utf-8") as f:
@@ -85,7 +85,8 @@ def main():
             print(f"SDDM theme {ott_system.sddm_theme()!r} has no wallpaper setting; login wallpaper unchanged")
         else:
             path = os.path.realpath(args.sddm_background)
-            _write_file(conf, lambda text: ott_system.set_background(text, path))
+            # the app's own file (no package owns it): a backup would only be a stray file under /usr
+            _write_file(conf, lambda text: ott_system.set_background(text, path), backup=False)
 
     if args.input:
         try:

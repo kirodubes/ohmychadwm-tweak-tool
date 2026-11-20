@@ -86,6 +86,13 @@
   missing parts. Each step only counts its own status lines, so the light look can't finish on the dark look's
   "Applied.". The runner now also backs up qt5ct/qt6ct (written by Apply since 2026.11.06) and `theme.conf.user`,
   and on restore removes what a first Apply creates (`.gtkrc-2.0`, `.Xresources`, `.icons/default`).
+- Live test on the VM with the 26.11-07 build and kiro-sddm-simplicity 26.11-02: 70 pass, 3 fail, 4 info. All 22
+  Themes checks pass through the real pkexec path, login wallpaper included. The 3 failures are the Look page's
+  "style light" step: the Kiro tile was activated in the middle of it (status log: "Applying “Kiro”" right after the
+  Look page's Apply) and set the dark theme back. The test never touches that tile, and the screenshots show the VM's
+  pointer over the tiles, so most likely a click into the VM window. To be re-run hands-off.
+- `ott_root._write_file(backup=False)` for `theme.conf.user`: the second look made a `.oma-bak` of the first look's
+  file, a stray file under `/usr/share/sddm/themes`. The runner's `.oma-bak` sweep now includes that folder.
 - Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
   until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
   here (it is ohmychadwm's `run.sh`).

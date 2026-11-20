@@ -134,7 +134,8 @@ backup() {
 
 oma_baks() {
     # the app's one-time backups; restore removes the ones this run created
-    as_root find /etc /usr/share/icons/default /usr/local/bin "$HOME" -maxdepth 4 -name '*.oma-bak' 2>/dev/null | sort
+    as_root find /etc /usr/share/icons/default /usr/share/sddm/themes /usr/local/bin "$HOME" -maxdepth 4 \
+        -name '*.oma-bak' 2>/dev/null | sort
 }
 
 allow_pkexec() {
