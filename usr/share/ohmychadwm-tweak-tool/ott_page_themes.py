@@ -1,4 +1,4 @@
-"""Themes page: sixteen pictures, one click sets the whole look (wallpaper, login screen, bar, GTK, icons, cursor)."""
+"""Themes page: eighteen pictures, one click sets the whole look (wallpaper, login screen, bar, GTK, icons, cursor)."""
 
 import threading
 
@@ -21,7 +21,7 @@ import ott_wallpaper  # noqa: E402
 from ott_widgets import muted, page_box, run_async, section, session_note, set_status, status_label  # noqa: E402
 from ott_i18n import N_, _  # noqa: E402
 
-_THUMB_W, _THUMB_H = 240, 135
+_THUMB_W, _THUMB_H = 300, 169
 _RESTART_CHECK_MS = 3000
 
 
@@ -35,10 +35,32 @@ def _tile_css(looks):
     return "\n".join(rules)
 
 
+class _Thumb(Gtk.Picture):
+    """A picture that is always exactly _THUMB_W x _THUMB_H, whatever the row height asks for."""
+
+    # Gtk.Picture keeps the painting's aspect: in a taller row (a longer description) it asked for more width,
+    # so some tiles came out wider than others
+    def do_measure(self, orientation, _for_size):
+        size = _THUMB_W if orientation == Gtk.Orientation.HORIZONTAL else _THUMB_H
+        return size, size, -1, -1
+
+
+class _TileText(Gtk.Label):
+    """Wrapped tile text that is always exactly _THUMB_W wide; only its height follows the text."""
+
+    # the FlowBox lays rows out height-first, and for a given row height a wrapped label asks for more width (to need
+    # fewer lines), which stretched the tiles with a long description
+    def do_measure(self, orientation, for_size):
+        if orientation == Gtk.Orientation.HORIZONTAL:
+            return _THUMB_W, _THUMB_W, -1, -1
+        return Gtk.Label.do_measure(self, orientation, _THUMB_W)
+
+
 def _bar_options(r):
     """Return the THEME_* overrides of look r: None where it matches what the bar theme sets anyway."""
     own = ott_chadwm.theme_values(r.bar)
-    wanted = {"THEME_BORDER": r.look["border"], "THEME_TOPBAR": int(r.look["top"])}
+    wanted = {"THEME_BORDER": r.look["border"], "THEME_TOPBAR": int(r.look["top"]),
+              "THEME_AUTOHIDE": r.look.get("hide")}
     return {k: None if v is None or v == own.get(k) else v for k, v in wanted.items()}
 
 
@@ -51,14 +73,16 @@ def _load_pixbuf(path):
 
 
 class ThemesPage:
-    """Sixteen looks as pictures; a click applies the whole look with at most one password prompt."""
+    """Eighteen looks as pictures; a click applies the whole look with at most one password prompt."""
 
     def __init__(self):
         self.widget = page_box()
         self._busy = False
         self._tiles = {}
         self._spinners = {}
-        self._looks = ott_themes.resolve_all()
+        # Kiro first, the rest alphabetical by the name shown (translated)
+        looks = ott_themes.resolve_all()
+        self._looks = looks[:1] + sorted(looks[1:], key=lambda r: r.look["name"].casefold())
 
         self.widget.append(section(_("Themes")))
         if (note := session_note()) is not None:
@@ -79,7 +103,7 @@ class ThemesPage:
                                                   Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         flow = Gtk.FlowBox(selection_mode=Gtk.SelectionMode.NONE, homogeneous=True)
-        flow.set_max_children_per_line(4)
+        flow.set_max_children_per_line(5)
         flow.set_valign(Gtk.Align.START)
         flow.set_min_children_per_line(1)
         flow.set_column_spacing(12)
@@ -100,51 +124,61 @@ class ThemesPage:
     def _tile(self, r):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
         box.set_size_request(_THUMB_W, -1)
+        box.set_halign(Gtk.Align.CENTER)
         frame = Gtk.Frame()
         frame.add_css_class(f"look-{r.look['key']}")
         frame.set_size_request(_THUMB_W, _THUMB_H)
-        pic = Gtk.Picture()
+        frame.set_halign(Gtk.Align.START)
+        pic = _Thumb()
         pic.set_content_fit(Gtk.ContentFit.COVER)
         pic.set_can_shrink(True)
         pic.set_size_request(_THUMB_W, _THUMB_H)
-        # a spinner over the picture while this look is applied
-        overlay = Gtk.Overlay(child=pic)
-        spinner = Gtk.Spinner(halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
-        spinner.set_size_request(48, 48)
-        spinner.set_visible(False)
-        overlay.add_overlay(spinner)
-        self._spinners[r.look["key"]] = spinner
-        frame.set_child(overlay)
+        frame.set_child(pic)
         box.append(frame)
         name = Gtk.Label(label=r.look["name"], xalign=0)
         name.add_css_class("section-title")
         box.append(name)
-        style = {(True, True): _("Dark, bar at the top."), (True, False): _("Dark, bar at the bottom."),
-                 (False, True): _("Light, bar at the top."), (False, False): _("Light, bar at the bottom.")}
-        where = style[(r.look["dark"], r.look["top"])]
+        # (dark, top, hides): one whole sentence each, so translators can order it
+        style = {(True, True, False): _("Dark, bar at the top."), (True, False, False): _("Dark, bar at the bottom."),
+                 (False, True, False): _("Light, bar at the top."),
+                 (False, False, False): _("Light, bar at the bottom."),
+                 (True, True, True): _("Dark, bar at the top, hides itself."),
+                 (True, False, True): _("Dark, bar at the bottom, hides itself."),
+                 (False, True, True): _("Light, bar at the top, hides itself."),
+                 (False, False, True): _("Light, bar at the bottom, hides itself.")}
+        where = style[(r.look["dark"], r.look["top"], ott_themes.hides(r.look) > 0)]
         for text in (f"{r.look['desc']} {where}", " · ".join(n for n in (r.bar, r.icons, r.cursor) if n)):
-            lbl = muted(text)
-            lbl.set_max_width_chars(28)  # a wrapped label's natural width is its whole text: keep tiles side by side
+            lbl = _TileText(label=text, xalign=0, yalign=0, wrap=True)
+            lbl.add_css_class("muted")
             box.append(lbl)
+        # Apply with its spinner right after it, as in the KiroTux premium apps: the busy look is visible on the tile
+        row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        btn = Gtk.Button(label=_("Apply"))
+        row.append(btn)
+        spinner = Gtk.Spinner(valign=Gtk.Align.CENTER, visible=False)
+        row.append(spinner)
+        self._spinners[r.look["key"]] = spinner
         in_use = Gtk.Label(label=_("In use"), xalign=0)
         in_use.add_css_class("status-line")
         in_use.set_visible(False)
-        box.append(in_use)
-
-        btn = Gtk.Button(child=box)
-        btn.add_css_class("flat")
-        btn.set_halign(Gtk.Align.CENTER)
+        row.append(in_use)
+        box.append(row)
         if r.usable:
-            btn.set_tooltip_text(_("Use the look “{name}”").format(name=r.look["name"]))
+            box.set_tooltip_text(_("Use the look “{name}”").format(name=r.look["name"]))
             btn.connect("clicked", lambda _widget, look=r: self._on_apply(look))
+            # the picture is an Apply button too; it follows that button (greyed while a look applies)
+            pic.set_cursor_from_name("pointer")
+            click = Gtk.GestureClick()
+            click.connect("released", lambda *_args: btn.get_sensitive() and btn.emit("clicked"))
+            pic.add_controller(click)
         else:
             btn.set_sensitive(False)
-            btn.set_tooltip_text(_("Not installed: {what}").format(what=", ".join(r.missing)))
+            box.set_tooltip_text(_("Not installed: {what}").format(what=", ".join(r.missing)))
         self._tiles[r.look["key"]] = (btn, in_use)
         if r.picture:
             run_async(lambda: _load_pixbuf(r.picture),
                       lambda pixbuf: pic.set_paintable(Gdk.Texture.new_for_pixbuf(pixbuf)) if pixbuf else None)
-        return btn
+        return box
 
     def refresh(self):
         """Mark the look in use (the Look and Bar pages may have changed it)."""

@@ -38,6 +38,7 @@ import ott_scan  # noqa: E402
 import ott_startup  # noqa: E402
 import ott_system  # noqa: E402
 import ott_targets  # noqa: E402
+import ott_themes  # noqa: E402
 import ott_wallpaper  # noqa: E402
 
 _spec = importlib.util.spec_from_file_location("ott_main", os.path.join(APP_DIR, "ohmychadwm-tweak-tool.py"))
@@ -699,6 +700,9 @@ def build_steps():
             own, over = ott_chadwm.theme_values(r.bar), ott_chadwm.bar_options(text)
             border = over.get("THEME_BORDER", own.get("THEME_BORDER"))
             top = over.get("THEME_TOPBAR", own.get("THEME_TOPBAR"))
+            hide = over.get("THEME_AUTOHIDE", own.get("THEME_AUTOHIDE", 0))
+            check(f"Themes {name}: bar hides after {ott_themes.hides(r.look)} s (0 = never)",
+                  hide == ott_themes.hides(r.look), f"THEME_AUTOHIDE {hide}")
             want_border = r.look["border"] if r.look["border"] is not None else own.get("THEME_BORDER")
             check(f"Themes {name}: bar theme {r.bar}, border {want_border}, bar {'top' if r.look['top'] else 'bottom'}",
                   ott_chadwm.active_theme(text) == r.bar and border == want_border and top == int(r.look["top"]),

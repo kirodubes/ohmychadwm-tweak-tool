@@ -1,4 +1,4 @@
-"""Themes: sixteen whole looks (wallpaper, login wallpaper, bar, border, GTK, icons, cursor) from Kiro ISO packages.
+"""Themes: eighteen whole looks (wallpaper, login wallpaper, bar, border, GTK, icons, cursor) from Kiro ISO packages.
 
 Toolkit-free. Every name below comes from a package on the Kiro ISO (kiro-iso archiso/packages.x86_64):
 kiro-atelier-wallpapers and kiro-system-files (pictures), ohmychadwm (bar themes; each sets SchemeSelbr, the focused
@@ -23,7 +23,8 @@ _COLOR_RE = re.compile(r'^\s*static\s+const\s+char\s+SchemeSelbr\[\]\s*=\s*"(#[0
 
 # picture: KIRO_WALLPAPER, or the subject of a Kiro Atelier painting (any style or version of it matches). The KA file
 # names often don't describe the painting (the "shark" is people in a cave): write desc from looking at the picture.
-# bar None = the bar theme Kiro ships; border None = the bar theme's own width; top = the bar at the top (else bottom).
+# bar None = the bar theme Kiro ships; border None = the bar theme's own width; top = the bar at the top (else bottom);
+# hide = seconds before the bar hides itself (0 = never), left out = what the bar theme sets.
 # Each bar theme differs clearly from the others here: everforest = gruvchad, celestial = dracul and the five planet
 # themes are near copies, so only one of each group is used.
 BUILTIN = [
@@ -57,6 +58,17 @@ BUILTIN = [
      "picture": "pink-and-purple-bird-flying-through-the-air", "bar": "rosepine", "border": 2, "top": False,
      "dark": False, "gtk": ["Celestial-Dawn-Light", "Arc-Lighter"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
      "cursor": ["Vimix-cursors", "Bibata-Modern-Classic"]},
+    {"key": "rose-quill", "name": _("Rose Quill"),
+     "desc": _("Rose and lavender paper swirls with the rose borders."),
+     "picture": "space-scene-with-planets-and-stars-in-the-background", "bar": "rosepine", "border": 2, "top": True,
+     "hide": 3, "dark": True, "gtk": ["Celestial-Dawn-Dark", "Arc-Dawn-Dark"],
+     "icons": ["neo-candy-icons", "Surfn-Kiro"],
+     "cursor": ["Vimix-white-cursors", "Bibata-Modern-Ice"]},
+    {"key": "snow-leopard", "name": _("Snow Leopard"),
+     "desc": _("A snow leopard in gold and teal art deco, with blue borders."),
+     "picture": "snow-leopard-with-red-eyes-in-the-snow", "bar": "solarized", "border": 2, "top": False,
+     "dark": True, "gtk": ["adw-gtk3-dark", "Arc-Dawn-Dark"], "icons": ["Surfn-Kiro"],
+     "cursor": ["Bibata-Original-Ice", "Bibata-Modern-Ice"]},
     {"key": "catppuccin", "name": _("Catppuccin Space"), "desc": _("A paper-quilled solar system, pastel on dark."),
      "picture": "solar-system-with-planets-and-stars", "bar": "catppuccin", "border": 2, "top": True, "dark": True,
      "gtk": ["Arc-Dawn-Dark"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
@@ -113,6 +125,13 @@ class Resolved:
     def usable(self):
         """Return True when nothing is missing."""
         return not self.missing
+
+
+def hides(look):
+    """Return the seconds before the bar of look hides itself (0 = never): the look's own, else the bar theme's."""
+    if look.get("hide") is not None:
+        return look["hide"]
+    return ott_chadwm.theme_values(look["bar"] or ott_chadwm.default_theme()).get("THEME_AUTOHIDE", 0)
 
 
 def picture(look):

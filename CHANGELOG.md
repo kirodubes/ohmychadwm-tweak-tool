@@ -23,8 +23,17 @@
   Arc themes (Arc, Arc-Dark, Arc-Lighter) lost their whole style and the window showed the wallpaper through it
   (seen on the VM after Nord Frost with 26.11-07). The app now restarts itself on the page you were on when the GTK
   theme changes, once a look or a password prompt has finished. Same fix as the KiroTux premium apps (written anew).
-- Every look's description now ends with dark or light and where the bar sits ("Dark, bar at the top."), one whole
-  sentence per combination so translators can order it.
+- Every look's description now ends with dark or light, where the bar sits and whether it hides itself ("Dark, bar
+  at the top, hides itself."), one whole sentence per combination so translators can order it.
+- **18 looks.** New: **Rose Quill** (the Rosé Pine rose borders, dark, the bar at the top hiding after 3 s, on the
+  paper-quilled rose and lavender swirls) and **Snow Leopard** (Solarized blue borders, the art deco snow leopard,
+  the bar at the bottom hiding itself). Even number, so the last row is full; 9 looks have the bar at the top, 9 at
+  the bottom. **Kiro stays top left, the rest are alphabetical** by the name shown in your language.
+- **Apply button with a spinner under every picture**, as in the KiroTux premium apps: the busy look is visible on its
+  own tile (the status line at the bottom is often out of view). The picture is still clickable. While a look
+  applies, every Apply waits.
+- **Every tile is the same size.** Short descriptions made narrow tiles and long ones wide tiles (Kiro and Nord Frost
+  were smaller than the rest); now every picture is 300 x 169 and the text wraps at that width.
 - The Keyboard page no longer logs an error when it opens.
 - **Search settings** above the sidebar (Ctrl+F): type a word and pick a match; the page opens and the row lights up.
   It searches what the pages show, in your language, and knows a few English words from other tools (sddm, xkb,
@@ -149,6 +158,15 @@
   SSH has no polkit agent: pkexec fails with "Error creating textual authentication agent"): Venom with 26.11-08
   (no theme change, no restart needed), Nord Frost (same Arc-Dark, no restart, correct), Paper Day (Arc-Dark →
   Arc-Lighter, dark → light): "GTK theme changed: restarting on the themes page", back light and solid.
+- Equal tiles: `_Thumb` (Gtk.Picture) and `_TileText` (Gtk.Label) override `do_measure` to report exactly
+  `_THUMB_W` wide (the label still computes its height for that width). Measured on Broadway: the FlowBox lays rows
+  out height-first, and for a given row height a Picture keeping its aspect and a wrapped Label wanting fewer lines
+  both asked for more width (tiles 308 vs 464 px). `max_width_chars` alone didn't help.
+- Looks have an optional `hide` (THEME_AUTOHIDE seconds); `ott_themes.hides()` gives the effective value (the look's,
+  else the bar theme's) for the description. Rose Pine, Monokai House, Neptune Deep, Rose Quill and Snow Leopard hide
+  their bar (3 s), Dragon Fire after 1 s. The live test checks the effective auto-hide too.
+- Tested on the VM from a copy of the source started in the session: Rose Quill (rose borders, bar hidden, app
+  restarted dark) and Snow Leopard (blue `#268bd2` in the rebuilt binary, solarized, snow leopard wallpaper).
 - Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
   until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
   here (it is ohmychadwm's `run.sh`).
