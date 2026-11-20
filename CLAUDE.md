@@ -144,6 +144,7 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   candy and beautyline dirs are `Hidden=true` layers neo-candy inherits, not choices. Each look uses a different
   painting. A look keeps the user's font, cursor size and bar font; `border` None drops the THEME_BORDER override.
   GTK_THEME is rewritten only when `/etc/environment` already forces it.
+  The tile frame colour is `SchemeSelbr` (the focused window border); `col_borderbar` is only the frame around the bar.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.

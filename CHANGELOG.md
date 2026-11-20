@@ -50,8 +50,9 @@
 - Checked on the VM, read-only: the shipped module reports both lines, the patched one reports no drift.
 - Themes, written fresh (the idea of the KiroTux premium Themes, none of its paid code): `ott_themes.py` holds the
   ten looks and `resolve_all()`. That picks the first installed GTK/icon/cursor name of each fallback list, matches
-  Kiro Atelier paintings by subject (any style or version) and reads `col_borderbar` from the bar theme for the tile
-  frame. Every name was checked with `pacman -Qo` against the ISO's `packages.x86_64`. On the ISO the only icon sets
+  Kiro Atelier paintings by subject (any style or version) and reads `SchemeSelbr` from the bar theme for the tile
+  frame: the focused window border (`col_borderbar` is only the frame around the bar). Every name was checked with
+  `pacman -Qo` against the ISO's `packages.x86_64`. On the ISO the only icon sets
   are Surfn-Kiro and neo-candy-icons; the `or-`/`al-` candy and beautyline dirs are hidden layers, not choices.
 - `ott_apply.apply_look()`: the Look page's apply worker moved here unchanged, so Look and Themes share one path and
   one pkexec. New: `bar=(theme, font, border)` with `KEEP`, `force=None` (leave `/etc/environment` alone) and
@@ -70,6 +71,16 @@
   `msgmerge --compendium`. The old fuzzy "{tool} not configured, skipped" had a wrong placeholder; it is now empty
   (English).
 - Rendered on GTK Broadway with a fake HOME: 10 tiles, two per row in the default window, thumbnails loaded off-thread.
+- Tested on the v26.11.20 VM in an Ohmychadwm session, from a copy of the source (root helper through sudo, as SSH
+  has no polkit agent; the SDDM wallpaper write pointed at a scratch theme because the VM still has the old one).
+  Dracula Night (dark) and Rosé Pine (light) wrote all nine user targets, the wallpaper, the bar theme + border block,
+  the system and SDDM cursor and `theme.conf.user`, and installed a rebuilt binary that carries the new colours. Thunar
+  showed the light theme and neo-candy icons. The Look page's Apply after the refactor wrote only the user files
+  (nothing to rebuild, no password) and kept the border override. On the real, old SDDM theme the page offers the
+  cursor only. Every file, gsettings, xfconf and xrdb value was put back exactly afterwards.
+- Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
+  until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
+  here (it is ohmychadwm's `run.sh`).
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_search.py`, `ott_keyboard.py`, `ott_page_keyboard.py`, `ott_update.py`,

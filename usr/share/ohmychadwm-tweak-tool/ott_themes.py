@@ -1,10 +1,11 @@
 """Themes: ten whole looks (wallpaper, login wallpaper, bar, border, GTK, icons, cursor) built from Kiro ISO packages.
 
 Toolkit-free. Every name below comes from a package on the Kiro ISO (kiro-iso archiso/packages.x86_64):
-kiro-atelier-wallpapers and kiro-system-files (pictures), ohmychadwm (bar themes; each sets col_borderbar, the
+kiro-atelier-wallpapers and kiro-system-files (pictures), ohmychadwm (bar themes; each sets SchemeSelbr, the focused
 window border colour), arc-gtk-theme, kiro-arc-dawn, celestial-dawn, adw-gtk-theme, surfn-kiro-icons-git,
-neo-candy-icons-git (its or-/al- sets are hidden layers, not choices), bibata-cursor-theme, capitaine-cursors and vimix-cursors. A look whose picture or bar theme is
-missing can't be used; icons, cursor and GTK theme fall back along their list.
+neo-candy-icons-git (its or-/al- sets are hidden layers, not choices), bibata-cursor-theme, capitaine-cursors and
+vimix-cursors. A look whose picture or bar theme is missing can't be used; icons, cursor and GTK theme fall back
+along their list.
 """
 
 import glob
@@ -18,7 +19,7 @@ from ott_i18n import _
 
 KA_DIR = "/usr/share/backgrounds/kiro-atelier"
 KIRO_WALLPAPER = "/usr/share/backgrounds/kiro/kiro-wallpaper.jpg"
-_COLOR_RE = re.compile(r'^\s*static\s+const\s+char\s+col_borderbar\[\]\s*=\s*"(#[0-9A-Fa-f]{6})"')
+_COLOR_RE = re.compile(r'^\s*static\s+const\s+char\s+SchemeSelbr\[\]\s*=\s*"(#[0-9A-Fa-f]{6})"')
 
 # picture: KIRO_WALLPAPER, or the subject of a Kiro Atelier painting (any style or version of it matches).
 # bar None = the bar theme Kiro ships; border None = the bar theme's own width.
@@ -55,7 +56,8 @@ BUILTIN = [
      "picture": "solar-system-with-planets-and-stars", "bar": "catppuccin", "border": 2, "dark": True,
      "gtk": ["Arc-Dawn-Dark"], "icons": ["neo-candy-icons", "Surfn-Kiro"],
      "cursor": ["capitaine-cursors-light", "Bibata-Modern-Ice"]},
-    {"key": "celestial", "name": _("Celestial Ocean"), "desc": _("A psychedelic whale, bright colours and bold borders."),
+    {"key": "celestial", "name": _("Celestial Ocean"),
+     "desc": _("A psychedelic whale, bright colours and bold borders."),
      "picture": "humpback-whale-and-a-fish-swimming-in-the-ocean", "bar": "celestial", "border": 4, "dark": True,
      "gtk": ["Celestial-Dawn-Dark", "Arc-Dawn-Dark"], "icons": ["Surfn-Kiro"], "cursor": ["Bibata-Original-Ice"]},
 ]
@@ -90,7 +92,7 @@ def picture(look):
 
 
 def border_color(bar):
-    """Return col_borderbar of bar theme bar ('#rrggbb'), or None."""
+    """Return SchemeSelbr (focused window border) of bar theme bar ('#rrggbb'), or None."""
     try:
         with open(os.path.join(ott_chadwm.CHADWM_DIR, "themes", f"{bar}.h"), encoding="utf-8") as f:
             for line in f:
