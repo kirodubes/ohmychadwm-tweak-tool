@@ -78,6 +78,14 @@
   showed the light theme and neo-candy icons. The Look page's Apply after the refactor wrote only the user files
   (nothing to rebuild, no password) and kept the border override. On the real, old SDDM theme the page offers the
   cursor only. Every file, gsettings, xfconf and xrdb value was put back exactly afterwards.
+- Live test (`tests/live_ohmychadwm.py`, run with `tests/run-live-ohmychadwm.sh` on the test box): new Themes steps
+  click a dark and a light look, through the real pkexec path, and read every target back. That covers GTK in
+  gtk3/gsettings/xfconf, icons, cursor, light/dark, the bar theme and border, the installed rebuild, the wallpaper,
+  the system and SDDM cursor, `theme.conf.user` (or INFO when the SDDM theme can't show a wallpaper), a forced
+  GTK_THEME, the In use mark and a fresh GTK 3 window's brightness. Then Restart, and greyed-out tiles for looks with
+  missing parts. Each step only counts its own status lines, so the light look can't finish on the dark look's
+  "Applied.". The runner now also backs up qt5ct/qt6ct (written by Apply since 2026.11.06) and `theme.conf.user`,
+  and on restore removes what a first Apply creates (`.gtkrc-2.0`, `.Xresources`, `.icons/default`).
 - Found on the VM: on the very first install of `/usr/local/bin/ohmychadwm`, Restart still runs `/usr/bin/ohmychadwm`
   until the next login, because the `run.sh` loop's bash remembers the old path. Same for the Look page; not changed
   here (it is ohmychadwm's `run.sh`).
@@ -91,6 +99,7 @@
 - `usr/share/ohmychadwm-tweak-tool/ott_targets.py`
 - `usr/share/ohmychadwm-tweak-tool/ott_themes.py`, `ott_page_themes.py`, `ott_apply.py` (new)
 - `usr/share/ohmychadwm-tweak-tool/ott_page_look.py`, `ott_system.py`, `ott_search.py`
+- `tests/live_ohmychadwm.py`, `tests/run-live-ohmychadwm.sh`
 
 ## 2026.11.06
 

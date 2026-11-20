@@ -13,8 +13,9 @@ set -euo pipefail
 #          Backs up every user and system file the app writes, lets pkexec through without a password for the
 #          duration of the run (a temporary polkit rule), runs live_ohmychadwm.py (it drives the real GUI and
 #          reads every change back: settings files, gsettings, xfconf, xrdb, xrandr, xinput, feh, sxhkd, the
-#          rebuilt bar), then restores the backup, the screen layout and the bar. Run it ON the test box, from
-#          SSH or a terminal: bash run-live-ohmychadwm.sh   (OTT_SUDO_PASS=<pw> to answer sudo from SSH)
+#          rebuilt bar, the Themes page's looks), then restores the backup, the screen layout and the bar.
+#          Run it ON the test box, from SSH or a terminal: bash run-live-ohmychadwm.sh
+#          (OTT_SUDO_PASS=<pw> to answer sudo from SSH)
 # Why:     the headless smoke test never presses a button; this shows whether every setting really changes.
 #
 ##################################################################################################################
@@ -81,15 +82,22 @@ sddm_conf() {
     python3 -c "import sys; sys.path.insert(0, '${APP_DIR}'); import ott_system; print(ott_system.sddm_conf())"
 }
 
+sddm_background_conf() {
+    python3 -c "import sys; sys.path.insert(0, '${APP_DIR}'); import ott_system
+print(ott_system.background_conf() or '')"
+}
+
 backup() {
     log_section "Backup"
     rm -rf "$OUT"
     mkdir -p "${BACKUP}/root" "${OUT}/shots"
-    local items=() i
+    local items=() absent=() i
     for i in .config/gtk-3.0 .config/gtk-4.0 .config/ohmychadwm .config/mimeapps.list .config/ohmychadwm-tweak-tool \
-             .gtkrc-2.0 .icons/default .Xresources .fehbg .screenlayout; do
-        [[ -e "${HOME}/${i}" ]] && items+=("$i")
+             .config/qt5ct .config/qt6ct .gtkrc-2.0 .icons/default .Xresources .fehbg .screenlayout; do
+        if [[ -e "${HOME}/${i}" ]]; then items+=("$i"); else absent+=("$i"); fi
     done
+    # what the app creates on a first Apply (.gtkrc-2.0, .Xresources, .icons/default) is removed again on restore
+    printf '%s\n' "${absent[@]}" > "${BACKUP}/home-absent"
     tar -C "$HOME" --exclude=.config/ohmychadwm/chadwm/ohmychadwm --exclude='*.o' -cf "${BACKUP}/home.tar" "${items[@]}"
     printf '%s\n' "${items[@]}" > "${BACKUP}/home-items"
     dconf dump /org/gnome/desktop/interface/ > "${BACKUP}/dconf-interface.ini"
@@ -103,6 +111,10 @@ backup() {
         printf '%s\t%s\n' "$i" "$(xinput list-props "$i" 2>/dev/null | sed -n 's/.*libinput Accel Speed ([0-9]*):\s*//p')"
     done > "${BACKUP}/accel"
     ROOT_FILES+=("$(sddm_conf)")
+    # the login wallpaper the Themes page writes, when the SDDM theme can show one
+    local bg_conf
+    bg_conf="$(sddm_background_conf)"
+    [[ -n "$bg_conf" ]] && ROOT_FILES+=("$bg_conf")
     local n=0
     : > "${BACKUP}/root-index"
     : > "${BACKUP}/root-absent"
@@ -147,6 +159,9 @@ restore() {
     while read -r i; do
         [[ -n "$i" ]] && rm -rf "${HOME:?}/${i}"
     done < "${BACKUP}/home-items"
+    while read -r i; do
+        [[ -n "$i" ]] && rm -rf "${HOME:?}/${i}"
+    done < "${BACKUP}/home-absent"
     rm -rf "${HOME}/.config/ohmychadwm-tweak-tool"
     tar -C "$HOME" -xf "${BACKUP}/home.tar"
     dconf load /org/gnome/desktop/interface/ < "${BACKUP}/dconf-interface.ini"

@@ -658,6 +658,98 @@ def build_steps():
                    else "FAIL", msg)
     add(Step("mime back", act_mime_back, lambda: None, until=always))
 
+    # ── Themes: one click = the whole look (pkexec once) ─────────────────────
+    tp = PAGES["Themes"]
+
+    def look(keys):
+        usable = {r.look["key"]: r for r in tp._looks if r.usable}
+        bar = ott_chadwm.active_theme(ott_chadwm.read_config())
+        return next((usable[k] for k in keys if k in usable and usable[k].bar != bar), None)
+
+    def act_theme(keys):
+        def act():
+            st["look"] = r = look(keys)
+            st["mark"] = len(STATUS)
+            if r is None:
+                return
+            st["bin0"] = mtime(ott_root.INSTALL_PATH)
+            st["env0"] = ott_env.read()
+            st["sddm_conf"] = ott_system.background_conf()
+            tp._chk_login.set_active(True)
+            tp._on_apply(r)
+        return act
+
+    def chk_theme(word):
+        def chk():
+            r = st["look"]
+            if r is None:
+                record(f"Themes {word}", "INFO", "no usable look with another bar theme installed")
+                return
+            name, dark = r.look["key"], r.look["dark"]
+            got = {"gtk3": ini("~/.config/gtk-3.0/settings.ini", "gtk-theme-name"), "gsettings": gs("gtk-theme"),
+                   "xfconf": xfq("/Net/ThemeName")}
+            check(f"Themes {name}: GTK theme {r.gtk} everywhere", all(v == r.gtk for v in got.values()), f"{got}")
+            check(f"Themes {name}: icons and cursor", (gs("icon-theme"), gs("cursor-theme")) == (r.icons, r.cursor),
+                  f"{gs('icon-theme')} {gs('cursor-theme')}")
+            scheme = gs("color-scheme")
+            check(f"Themes {name}: {word} preference", scheme == ("prefer-dark" if dark else "prefer-light"), scheme)
+            text = ott_chadwm.read_config()
+            border = ott_chadwm.bar_options(text).get("THEME_BORDER")
+            check(f"Themes {name}: bar theme {r.bar}, border {r.look['border']}",
+                  ott_chadwm.active_theme(text) == r.bar and border == r.look["border"],
+                  f"{ott_chadwm.active_theme(text)}, THEME_BORDER {border}")
+            check(f"Themes {name}: rebuilt bar installed (pkexec)", mtime(ott_root.INSTALL_PATH) > st["bin0"],
+                  f"status '{last_status('ott_page_themes')[0]}'")
+            path, _mode = ott_wallpaper.current()
+            check(f"Themes {name}: wallpaper", path == r.picture, f"{path}")
+            sysc = ott_system.read()
+            check(f"Themes {name}: system and SDDM cursor",
+                  sysc["default"] == r.cursor and sysc["sddm"] in (None, r.cursor), f"{sysc}")
+            if st["sddm_conf"]:
+                bg = ini(st["sddm_conf"], "background")
+                check(f"Themes {name}: login screen wallpaper", bg == os.path.realpath(r.picture), f"{bg}")
+            else:
+                record(f"Themes {name}: login screen wallpaper", "INFO", "the SDDM theme can't show one: cursor only")
+            if st["env0"][1]:
+                theme, active = ott_env.read()
+                check(f"Themes {name}: forced GTK_THEME follows", active and theme == r.gtk, f"{theme} active={active}")
+            check(f"Themes {name}: tile marked In use", tp._tiles[name][1].get_visible(), "")
+            b3 = brightness(3)
+            ok = b3 is not None and (b3 < 0.45 if dark else b3 > 0.55)
+            check(f"Themes {name}: a new GTK 3 window really is {word}", ok, f"mean brightness {b3}")
+        return chk
+
+    def act_theme_restart():
+        st["wm_before"] = wm_pid()
+        tp._on_restart(None)
+
+    def chk_theme_restart():
+        now = wm_pid()
+        exe = sh("readlink", f"/proc/{now}/exe")[1] if now else ""
+        check("Themes: Restart Ohmychadwm relaunches it", now and now != st["wm_before"],
+              f"pid {st['wm_before']} -> {now}; screenshot {shot('themes-' + st['look'].look['key'])}")
+        # run.sh's bash remembers /usr/bin/ohmychadwm until relogin when /usr/local/bin had none before
+        record("Themes: binary running after restart", "INFO", exe)
+
+    def theme_done():
+        # only statuses from this step count: the previous look's "Applied." is still in STATUS
+        return st.get("look") is None or any(page == "ott_page_themes" and text and not text.endswith("…")
+                                             for page, text, _error in STATUS[st["mark"]:])
+
+    for word, keys in (("dark", ("dracula", "tokyo", "nord-frost", "catppuccin")),
+                       ("light", ("rose-pine", "paper-day"))):
+        add(Step(f"themes {word}", act_theme(keys), chk_theme(word), page="ott_page_themes", timeout=240,
+                 until=theme_done))
+        add(Step(f"themes {word} restart", act_theme_restart, chk_theme_restart,
+                 until=lambda: st.get("look") is None or wm_pid() not in ("", st.get("wm_before")),
+                 timeout=20, settle=2500))
+
+    def chk_theme_tiles():
+        missing = {r.look["key"]: r.missing for r in tp._looks if not r.usable}
+        greyed = all(not tp._tiles[k][0].get_sensitive() for k in missing)
+        check("Themes: looks with missing parts are greyed out", greyed, f"missing {missing or 'none'}")
+    add(Step("themes tiles", lambda: None, chk_theme_tiles, until=always))
+
     # ── Keys + Status ────────────────────────────────────────────────────────
     kp = PAGES["Keys"]
 
