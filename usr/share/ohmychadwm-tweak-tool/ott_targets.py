@@ -31,6 +31,8 @@ QT6CT = "qt6ct"
 
 FALLBACK_CURSOR_SIZE = 24
 
+_GTK2_LIB = "/usr/lib/libgtk-x11-2.0.so.0"
+
 # Field names as the drift banner shows them
 _FIELD_NAMES = {"theme": N_("theme"), "icons": N_("icons"), "cursor": N_("cursor"), "cursor_size": N_("cursor size"),
                 "font": N_("font"), "dark": N_("dark")}
@@ -326,7 +328,9 @@ def drift(sel, state=None):
     lines = []
     for label, vals in state.items():
         if vals is None:
-            if label in (GTK4, GTK2, CURSOR_INDEX):
+            # A missing personal cursor falls back to the system default (checked on the Look page), and a missing
+            # gtkrc only matters when gtk2 is installed: neither is drift on a fresh install.
+            if label == GTK4 or (label == GTK2 and os.path.exists(_GTK2_LIB)):
                 lines.append(_("{target}: not configured").format(target=_(label)))
             continue
         for field, raw in vals.items():

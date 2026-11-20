@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026.11.20
+
+### What Changed
+- **No "out of sync" banner on a fresh install.** The Look page warned "GTK 2: not configured" and "Personal default
+  cursor: not configured" on a freshly installed Kiro (seen on the v26.11.20 ISO in VirtualBox), although the look was
+  exactly the Kiro default. Neither was a real problem: Kiro doesn't install gtk2, and without a personal cursor file
+  the system default cursor (Bibata-Modern-Ice) is used.
+
+### Technical Details
+- `ott_targets.drift()`: a missing `~/.icons/default/index.theme` is no longer drift; it falls back to
+  `/usr/share/icons/default/index.theme`, which the Look page already checks on its own. A missing `~/.gtkrc-2.0`
+  only counts when gtk2 is installed (`/usr/lib/libgtk-x11-2.0.so.0`). A missing GTK 4 settings.ini still counts.
+  Apply still writes all three files.
+- Checked on the VM, read-only: the shipped module reports both lines, the patched one reports no drift.
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_targets.py`
+
 ## 2026.11.06
 
 ### What Changed
