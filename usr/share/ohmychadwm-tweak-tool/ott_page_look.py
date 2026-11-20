@@ -8,10 +8,8 @@ gi.require_version("Gtk", "4.0")
 gi.require_version("Pango", "1.0")
 from gi.repository import GLib, Gtk, Pango  # noqa: E402
 
-import log  # noqa: E402
+import ott_apply  # noqa: E402
 import ott_chadwm  # noqa: E402
-import ott_env  # noqa: E402
-import ott_root  # noqa: E402
 import ott_scan  # noqa: E402
 import ott_system  # noqa: E402
 import ott_targets  # noqa: E402
@@ -399,55 +397,10 @@ class LookPage:
         threading.Thread(target=self._apply_worker, args=(sel, bar, force, sys_cursor), daemon=True).start()
 
     def _apply_worker(self, sel, bar, force, sys_cursor):
-        log.log_section("Apply")
-        results = ott_targets.apply(sel)
-        for label, ok, msg in results:
-            (log.log_success if ok else log.log_error)(f"{label}: {msg}")
-
-        root_args, notes, bar_result = [], [], None
-        env_theme, env_active = ott_env.read()
-        if force and (not env_active or env_theme != sel.theme):
-            root_args += ["--gtk-theme", sel.theme]
-            notes.append("theme")
-        elif not force and env_active:
-            root_args.append("--release-gtk-theme")
-            notes.append("theme")
-        if sys_cursor and _system_cursor_lines(sel):
-            root_args += ["--system-cursor", sel.cursor, "--cursor-size", str(sel.cursor_size)]
-
-        compiled = False
-        if bar is not None:
-            theme, font = bar
-            try:
-                text = ott_chadwm.read_config()
-                new = ott_chadwm.set_theme(text, theme)
-                new = ott_chadwm.set_bar_font(new, *font) if font else ott_chadwm.clear_bar_font(new)
-                if new != text:
-                    GLib.idle_add(self._set_status, _("Recompiling Ohmychadwm…"))
-                    ott_chadwm.write_config(new)
-                    compiled, msg = ott_chadwm.compile_wm()
-                    if compiled:
-                        root_args += ["--install", ott_chadwm.BUILT_BINARY]
-                    else:
-                        bar_result = (False, msg)
-            except (OSError, ValueError) as e:
-                # must still reach _apply_finished, or Apply stays greyed out until restart
-                bar_result = (False, _("Ohmychadwm bar: {error}").format(error=e))
-
-        if root_args:
-            # one pkexec for everything that needs root, so at most one password prompt
-            GLib.idle_add(self._set_status, _("Waiting for your password…"))
-            ok, err = ott_root.run_root(root_args)
-            if not ok:
-                results.append((_("System changes"), False, _("cancelled or failed: {error}").format(error=err) if err
-                                else _("cancelled or failed")))
-                notes.clear()
-            elif compiled:
-                bar_result = (True, "Ohmychadwm rebuilt and installed")
-        if compiled:
-            ott_chadwm.clean()
-        if bar_result is not None:
-            (log.log_success if bar_result[0] else log.log_error)(bar_result[1])
+        bar = (bar[0], bar[1], ott_apply.KEEP) if bar is not None else None
+        sys_cursor = bool(sys_cursor and _system_cursor_lines(sel))
+        results, bar_result, notes = ott_apply.apply_look(
+            sel, bar, force, sys_cursor, status=lambda text: GLib.idle_add(self._set_status, text))
         GLib.idle_add(self._apply_finished, results, bar_result, notes)
 
     def _apply_finished(self, results, bar_result, notes):

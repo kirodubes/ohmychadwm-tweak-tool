@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 07:34+0100\n"
+"POT-Creation-Date: 2026-11-20 17:38+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Dutch\n"
@@ -16,6 +16,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:56
+#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:152
+msgid "Recompiling Ohmychadwm…"
+msgstr "Ohmychadwm opnieuw compileren…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:65
+#, python-brace-format
+msgid "Ohmychadwm bar: {error}"
+msgstr "Ohmychadwm-balk: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:69
+#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:146
+msgid "Waiting for your password…"
+msgstr "Wachten op je wachtwoord…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:72
+msgid "System changes"
+msgstr "Systeemwijzigingen"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:72
+#, python-brace-format
+msgid "cancelled or failed: {error}"
+msgstr "geannuleerd of mislukt: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_apply.py:73
+msgid "cancelled or failed"
+msgstr "geannuleerd of mislukt"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_apps.py:18
 msgid "Web browser"
@@ -93,89 +122,90 @@ msgstr ""
 "Indeling behouden en opgeslagen in {path}, zodat die bij elke aanmelding "
 "wordt gebruikt."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:34
 msgid "best value — almost all goes to the project"
 msgstr "beste keuze: bijna alles gaat naar het project"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:35
 msgid "buy a coffee — one-off tip"
 msgstr "trakteer op een koffie: een eenmalige fooi"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:36
 msgid "membership tiers + perks"
 msgstr "lidmaatschapsniveaus met extra's"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
 msgid "YouTube membership"
 msgstr "YouTube-lidmaatschap"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
 msgid "join on YouTube"
 msgstr "word lid op YouTube"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:38
 msgid "direct one-off"
 msgstr "rechtstreeks, eenmalig"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:42
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
 msgid "restart Ohmychadwm from the app"
 msgstr "Ohmychadwm herstarten vanuit de app"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:237
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:35
 msgid "Mouse & touchpad"
 msgstr "Muis en touchpad"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:37
 msgid "Keyboard"
 msgstr "Toetsenbord"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:46
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:32
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:34
 msgid "Displays"
 msgstr "Beeldschermen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:46
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
 msgid "edit the saved display layout by hand"
 msgstr "De opgeslagen beeldschermindeling handmatig bewerken"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:163
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:31
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:32
 msgid "Wallpaper"
 msgstr "Achtergrond"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:38
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:49
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:240
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:39
 msgid "Default apps"
 msgstr "Standaardapps"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:49
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:50
 msgid "rebuild Ohmychadwm"
 msgstr "Ohmychadwm opnieuw compileren"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:50
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:240
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:40
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:51
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:242
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:41
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:42
 msgid "Update & News"
 msgstr "Bijwerken en nieuws"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:59
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:66
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:60
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:67
 msgid "Support Kiro"
 msgstr "Steun Kiro"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:70
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:71
 msgid ""
 "Kiro and its tools are built by one person, for the community — and kept "
 "free. If the Ohmychadwm Tweak Tool saves you time, a little support keeps "
@@ -186,140 +216,149 @@ msgstr ""
 "helpt een kleine bijdrage om het werk voort te zetten. Bedankt dat je erbij "
 "bent."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:88
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:89
 msgid "Close"
 msgstr "Sluiten"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:100
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
 #, python-brace-format
 msgid "System ({language})"
 msgstr "Systeem ({language})"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:103
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:104
 msgid "Language"
 msgstr "Taal"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:108
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:109
 #: usr/share/ohmychadwm-tweak-tool/ott_page_update.py:42
 msgid "Restart now"
 msgstr "Nu herstarten"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:115
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:116
 msgid "Saved. The app shows the new language when it starts again."
 msgstr "Bewaard. De app toont de nieuwe taal bij de volgende start."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:135
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:136
 #: po/ohmychadwm-tweak-tool.desktop.in:2
 msgid "Ohmychadwm Tweak Tool"
 msgstr "Ohmychadwm Tweak Tool"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:138
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:139
 msgid "♥ Support"
 msgstr "♥ Steun"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:139
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:140
 msgid "Support Kiro's development"
 msgstr "Steun de ontwikkeling van Kiro"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:142
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:182
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:183
 msgid "Your desktop"
 msgstr "Je desktop"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:184
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
 msgid "Session"
 msgstr "Sessie"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
 msgid "not an Ohmychadwm session — changes show there"
 msgstr "geen Ohmychadwm-sessie: wijzigingen zijn daar zichtbaar"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
 msgid "Config"
 msgstr "Configuratie"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
 msgid "missing — log into Ohmychadwm once first"
 msgstr "ontbreekt: meld je eerst één keer aan bij Ohmychadwm"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:228
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Bar theme"
 msgstr "Balkthema"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
 msgid "none"
 msgstr "geen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
 msgid "Your own bar build"
 msgstr "Je eigen balkversie"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
 msgid "none yet — the packaged Ohmychadwm runs"
 msgstr "nog geen: de meegeleverde Ohmychadwm is actief"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:191
 msgid "Display layout"
 msgstr "Beeldschermindeling"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:191
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
 msgid "Virtual machine"
 msgstr "Virtuele machine"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:191
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
 msgid "no"
 msgstr "nee"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:193
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:194
 msgid "Tools"
 msgstr "Hulpmiddelen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:195
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:196
 #, python-brace-format
 msgid "found — {why}"
 msgstr "gevonden: {why}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:195
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:196
 #, python-brace-format
 msgid "missing — {why}"
 msgstr "ontbreekt: {why}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:206
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:207
 #, python-brace-format
 msgid "This section could not load: {error}"
 msgstr "Dit onderdeel kon niet worden geladen: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:53
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:29
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:32
+msgid "Themes"
+msgstr "Thema's"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
 msgid "Look"
 msgstr "Uiterlijk"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:29
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:31
 msgid "Bar & windows"
 msgstr "Balk en vensters"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:237
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:239
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:37
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:38
 msgid "Startup apps"
 msgstr "Opstartapps"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:239
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:241
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:40
 msgid "Keys"
 msgstr "Sneltoetsen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:241
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:243
 msgid "Status"
 msgstr "Status"
 
@@ -531,13 +570,13 @@ msgstr "Welke app links, mappen en bestanden opent (xdg-mime)."
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:101
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:84
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:254
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:252
 msgid "Apply"
 msgstr "Toepassen"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:96
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:133
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:144
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:147
 msgid "Nothing changed."
 msgstr "Er is niets gewijzigd."
 
@@ -598,7 +637,7 @@ msgid "Seconds without use before the bar hides; 0 = never"
 msgstr "Seconden zonder activiteit voordat de balk wordt verborgen; 0 = nooit"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:218
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:216
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
 msgid ""
 "~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
@@ -620,7 +659,8 @@ msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:81
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:249
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:247
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:84
 msgid "Restart Ohmychadwm now"
 msgstr "Ohmychadwm nu herstarten"
 
@@ -639,24 +679,18 @@ msgid "The theme's values are loaded — press Apply to use them."
 msgstr ""
 "De waarden van het thema zijn geladen. Druk op Toepassen om ze te gebruiken."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:149
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
-msgid "Recompiling Ohmychadwm…"
-msgstr "Ohmychadwm opnieuw compileren…"
-
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:135
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:161
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:164
 msgid "Applied. Restart Ohmychadwm to see it."
 msgstr "Toegepast. Herstart Ohmychadwm om het te zien."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:138
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:164
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:167
 msgid "Applied. Press Super+Shift+R to see it."
 msgstr "Toegepast. Druk op Super+Shift+R om het te zien."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:140
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:166
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:169
 msgid "Applied. It shows at your next Ohmychadwm login."
 msgstr "Toegepast. Je ziet het bij je volgende aanmelding bij Ohmychadwm."
 
@@ -806,23 +840,18 @@ msgstr ""
 "Standaardwaarden geladen en meteen toegepast. Druk op Opslaan om ze te "
 "behouden."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:146
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:439
-msgid "Waiting for your password…"
-msgstr "Wachten op je wachtwoord…"
-
 #: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:156
 msgid "Saved. Every login uses these settings now."
 msgstr "Opgeslagen. Deze instellingen worden nu bij elke aanmelding gebruikt."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:159
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:201
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:204
 #, python-brace-format
 msgid "Saving was cancelled or failed: {error}"
 msgstr "Het opslaan is geannuleerd of mislukt: {error}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:160
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:202
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:205
 msgid "Saving was cancelled or failed."
 msgstr "Het opslaan is geannuleerd of mislukt"
 
@@ -874,28 +903,28 @@ msgstr ""
 msgid "AZERTY (Belgian / French)"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:127
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:130
 msgid ""
 "Your first layout and the workspace keys don't match: the workspace keys may "
 "not work."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:136
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:139
 #, python-brace-format
 msgid "Pick two different layouts, or {none} as the second."
 msgstr "Kies twee verschillende indelingen, of {none} als tweede."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:149
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:394
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:152
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:392
 msgid "Applying…"
 msgstr "Bezig met toepassen…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:168
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:171
 #, python-brace-format
 msgid "Applied: {layouts}."
 msgstr "Toegepast: {layouts}."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:209
+#: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:212
 #, python-brace-format
 msgid "Saved, but switching this session failed: {error}"
 msgstr ""
@@ -924,44 +953,44 @@ msgstr "Sneltoetsen of acties zoeken"
 msgid "No key matches."
 msgstr "Geen sneltoets komt overeen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:53
 #, python-brace-format
 msgid "System default cursor: cursor = {value}"
 msgstr "Systeemstandaardcursor: cursor = {value}"
 
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:53
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
 #: usr/share/ohmychadwm-tweak-tool/ott_targets.py:353
 msgid "not set"
 msgstr "niet ingesteld"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:55
 #, python-brace-format
 msgid "Login screen (SDDM): cursor = {value}"
 msgstr "Aanmeldscherm (SDDM): cursor = {value}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:59
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:57
 #, python-brace-format
 msgid "Login screen (SDDM): cursor size = {value}"
 msgstr "Aanmeldscherm (SDDM): cursorgrootte = {value}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:117
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:115
 msgid "Your settings are out of sync"
 msgstr "Je instellingen lopen niet gelijk"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:122
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:120
 msgid "Fix all"
 msgstr "Alles herstellen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:124
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:122
 msgid "Write the choices below to every settings file"
 msgstr "Schrijf de keuzes hieronder naar elk instellingenbestand"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:132
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:130
 msgid "Applications"
 msgstr "Toepassingen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:133
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:131
 msgid ""
 "Used by Thunar and every GTK 2, 3 and 4 application. Shared with all your "
 "desktops: Xfce4, Ohmychadwm and the rest get the same theme, icons, cursor "
@@ -971,15 +1000,15 @@ msgstr ""
 "desktops: Xfce4, Ohmychadwm en de rest gebruiken hetzelfde thema, dezelfde "
 "pictogrammen, dezelfde cursor en hetzelfde lettertype."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:148
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:146
 msgid "Theme"
 msgstr "Thema"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:151
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:149
 msgid "Force this theme on every app (system-wide)"
 msgstr "Dit thema opleggen aan elke app (voor het hele systeem)"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:153
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:151
 msgid ""
 "Sets GTK_THEME in /etc/environment, as Kiro ships it. Needs your password; "
 "shows after re-login."
@@ -987,11 +1016,11 @@ msgstr ""
 "Stelt GTK_THEME in /etc/environment in, zoals Kiro het meelevert. Vraagt om "
 "je wachtwoord; wordt zichtbaar nadat je je opnieuw hebt aangemeld."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:164
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:162
 msgid "Also use this cursor on the login screen and as the system default"
 msgstr "Deze cursor ook op het aanmeldscherm en als systeemstandaard"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:167
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:165
 msgid ""
 "Sets /usr/share/icons/default and the SDDM CursorTheme / CursorSize. Needs "
 "your password."
@@ -999,50 +1028,50 @@ msgstr ""
 "Stelt /usr/share/icons/default en CursorTheme / CursorSize van SDDM in. "
 "Vraagt je wachtwoord."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:177
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:175
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Icons"
 msgstr "Pictogrammen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:183
 msgid "Cursor size in pixels"
 msgstr "Cursorgrootte in pixels"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:186
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:184
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Cursor"
 msgstr "Cursor"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:190
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:188
 msgid "Choose a font"
 msgstr "Kies een lettertype"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:194
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:192
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
 msgid "Font"
 msgstr "Lettertype"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:197
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:195
 msgid "Light"
 msgstr "Licht"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:198
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:196
 msgid "Dark"
 msgstr "Donker"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:205
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:203
 msgid "Preferred style for apps that follow it (GTK 4 / libadwaita)"
 msgstr "Voorkeursstijl voor apps die deze stijl volgen (GTK 4 / libadwaita)"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:206
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:204
 msgid "Style"
 msgstr "Stijl"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:214
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:212
 msgid "Ohmychadwm bar"
 msgstr "Ohmychadwm-balk"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:224
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:222
 msgid ""
 "Colours and font of the top bar. Changing these recompiles Ohmychadwm (asks "
 "your password once)."
@@ -1050,19 +1079,19 @@ msgstr ""
 "Kleuren en lettertype van de balk bovenaan. Als je deze wijzigt, wordt "
 "Ohmychadwm opnieuw gecompileerd en wordt één keer om je wachtwoord gevraagd."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:234
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:232
 msgid "Also use the font above for the bar"
 msgstr "Ook het lettertype hierboven voor de balk gebruiken"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:252
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:250
 msgid "Reset to Kiro default"
 msgstr "Kiro-standaard herstellen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:269
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:267
 msgid "This theme has no GTK 4 version — GTK 4 apps will look like Adwaita."
 msgstr "Dit thema heeft geen GTK 4-versie: GTK 4-apps zien eruit als Adwaita."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:273
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:271
 #, python-brace-format
 msgid ""
 "“{name}” has no dark version, so most apps stay light. Pick a dark theme "
@@ -1071,7 +1100,7 @@ msgstr ""
 "“{name}” heeft geen donkere versie, dus de meeste apps blijven licht. Kies "
 "hierboven een donker thema."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:274
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:272
 #, python-brace-format
 msgid ""
 "“{name}” has no light version, so most apps stay dark. Pick a light theme "
@@ -1080,22 +1109,22 @@ msgstr ""
 "“{name}” heeft geen lichte versie, dus de meeste apps blijven donker. Kies "
 "hierboven een licht thema."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:277
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:275
 #, python-brace-format
 msgid "“{name}” is a light theme, so Style Dark changes little."
 msgstr "“{name}” is een licht thema, dus de donkere stijl heeft weinig effect."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:278
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:276
 #, python-brace-format
 msgid "“{name}” is a dark theme, so Style Light changes little."
 msgstr "“{name}” is een donker thema, dus de lichte stijl heeft weinig effect."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:283
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:281
 #, python-brace-format
 msgid "Use {theme}"
 msgstr "{theme} gebruiken"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:301
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:299
 msgid ""
 "Without it, apps follow your personal settings — some GTK 4 / libadwaita "
 "apps may keep their own look."
@@ -1103,7 +1132,7 @@ msgstr ""
 "Zonder deze optie volgen apps je persoonlijke instellingen. Sommige GTK 4- / "
 "libadwaita-apps behouden mogelijk hun eigen uiterlijk."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:326
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:324
 #, python-brace-format
 msgid ""
 "“{family}” is not a Nerd Font — the bar's tag icons may show as empty boxes."
@@ -1111,57 +1140,46 @@ msgstr ""
 "“{family}” is geen Nerd Font: de tagpictogrammen in de balk kunnen als lege "
 "vakjes worden weergegeven."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:386
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:384
 msgid "Kiro defaults loaded for everything — press Apply to use them."
 msgstr ""
 "Kiro-standaardwaarden voor alles geladen. Druk op Toepassen om ze te "
 "gebruiken."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:435
-#, python-brace-format
-msgid "Ohmychadwm bar: {error}"
-msgstr "Ohmychadwm-balk: {error}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
-msgid "System changes"
-msgstr "Systeemwijzigingen"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:442
-#, python-brace-format
-msgid "cancelled or failed: {error}"
-msgstr "geannuleerd of mislukt: {error}"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:443
-msgid "cancelled or failed"
-msgstr "geannuleerd of mislukt"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:460
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:413
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:174
 msgid "Some settings could not be written:"
 msgstr "Sommige instellingen konden niet geschreven worden:"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:462
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:415
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:176
 msgid "Log out and back in for the system-wide theme."
 msgstr "Meld je af en weer aan om het systeembrede thema te gebruiken."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:464
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:417
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:178
 msgid "Applied. Restart Ohmychadwm to see the new bar."
 msgstr "Toegepast. Herstart Ohmychadwm om de nieuwe balk te zien."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:467
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:420
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:181
 msgid "Applied. Press Super+Shift+R to see the new bar."
 msgstr "Toegepast. Druk op Super+Shift+R om de nieuwe balk te zien."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:469
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:422
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:183
 msgid "Applied. The new bar shows at your next Ohmychadwm login."
 msgstr ""
 "Toegepast. De nieuwe balk is zichtbaar bij je volgende aanmelding bij "
 "Ohmychadwm."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:471
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:424
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:185
 msgid "Applied. Log out and back in to see the new theme everywhere."
 msgstr "Toegepast. Meld je af en weer aan om het nieuwe thema overal te zien."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:473
+#: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:426
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:187
 msgid "Applied. Apps you open from now on use the new look."
 msgstr "Toegepast. Apps die je vanaf nu opent, gebruiken het nieuwe uiterlijk."
 
@@ -1221,6 +1239,47 @@ msgstr "{command}: opgeslagen voor de volgende aanmelding."
 #, python-brace-format
 msgid "Could not write run.sh: {error}"
 msgstr "run.sh kon niet worden geschreven: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:57
+msgid ""
+"Click a picture to use its whole look: wallpaper, bar colours, window "
+"border, GTK theme, icons and cursor. Ohmychadwm is recompiled, and your "
+"password is asked once."
+msgstr ""
+"Klik op een afbeelding om die hele look te gebruiken: achtergrond, "
+"balkkleuren, vensterrand, GTK-thema, pictogrammen en cursor. Ohmychadwm "
+"wordt opnieuw gecompileerd en je wachtwoord wordt één keer gevraagd."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:59
+msgid "Also the login screen (SDDM): the same wallpaper and cursor"
+msgstr "Ook het aanmeldscherm (SDDM): dezelfde achtergrond en cursor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:62
+msgid "Also the login screen (SDDM) cursor"
+msgstr "Ook de cursor van het aanmeldscherm (SDDM)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:63
+msgid "This login screen theme can't show another wallpaper."
+msgstr "Dit thema van het aanmeldscherm kan geen andere achtergrond tonen."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:111
+msgid "In use"
+msgstr "In gebruik"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:120
+#, python-brace-format
+msgid "Use the look “{name}”"
+msgstr "De look “{name}” gebruiken"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:124
+#, python-brace-format
+msgid "Not installed: {what}"
+msgstr "Niet geïnstalleerd: {what}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:148
+#, python-brace-format
+msgid "Applying “{name}”…"
+msgstr "“{name}” wordt toegepast…"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_update.py:28
 msgid "Updates"
@@ -1363,11 +1422,11 @@ msgstr ""
 "Variety is gestart. Kies deze bron over een minuut opnieuw om de downloads "
 "te zien."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:172
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:173
 msgid "Search settings"
 msgstr "Instellingen zoeken"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:216
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:217
 msgid "Nothing found."
 msgstr "Niets gevonden."
 
@@ -1435,9 +1494,110 @@ msgid "xfconf-query not installed, skipped"
 msgstr "xfconf-query niet geïnstalleerd, overgeslagen"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_targets.py:449
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{tool} not configured, skipped"
-msgstr "{target}: niet ingesteld"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:26
+msgid "Kiro"
+msgstr "Kiro"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:26
+msgid "The look Kiro ships with."
+msgstr "De look waarmee Kiro geleverd wordt."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
+msgid "A frozen lake in art deco, cool blue, thin borders."
+msgstr "Een bevroren meer in art deco, koel blauw, dunne randen."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:29
+msgid "Nord Frost"
+msgstr "Nord Frost"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+msgid "Bats around a dark moon, purple and candy icons."
+msgstr "Vleermuizen rond een donkere maan, paars en candy-pictogrammen."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+msgid "Dracula Night"
+msgstr "Dracula Night"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
+msgid "A starry city in layered paper, deep blue."
+msgstr "Een sterrenstad in gelaagd papier, diepblauw."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
+msgid "Tokyo Night"
+msgstr "Tokyo Night"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
+msgid "A sunset in layered paper, light and calm."
+msgstr "Een zonsondergang in gelaagd papier, licht en rustig."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
+msgid "Paper Day"
+msgstr "Paper Day"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:42
+msgid "An origami forest, soft green and wide borders."
+msgstr "Een origamibos, zacht groen en brede randen."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:42
+msgid "Everforest"
+msgstr "Everforest"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
+msgid "A car in a monsoon desert, warm gruvbox colours."
+msgstr "Een auto in een moessonwoestijn, warme gruvbox-kleuren."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:46
+msgid "Desert Gruv"
+msgstr "Desert Gruv"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+msgid "A pink bird in a dreamscape, light rose tones."
+msgstr "Een roze vogel in een droomlandschap, lichte roze tinten."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+msgid "Rosé Pine"
+msgstr "Rosé Pine"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+msgid "A paper-quilled solar system, pastel on dark."
+msgstr "Een zonnestelsel in papierfiligraan, pastel op donker."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+msgid "Catppuccin Space"
+msgstr "Catppuccin Space"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
+msgid "A psychedelic whale, bright colours and bold borders."
+msgstr "Een psychedelische walvis, felle kleuren en dikke randen."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
+msgid "Celestial Ocean"
+msgstr "Celestial Ocean"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:120
+msgid "the wallpaper (kiro-atelier-wallpapers)"
+msgstr "de achtergrond (kiro-atelier-wallpapers)"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:122
+#, python-brace-format
+msgid "the bar theme {name}"
+msgstr "het balkthema {name}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:123
+msgid "a GTK theme"
+msgstr "een GTK-thema"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:123
+msgid "a cursor"
+msgstr "een cursor"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:123
+msgid "an icon theme"
+msgstr "een pictogramthema"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_update.py:65
 msgid "Press Enter to close this window."

@@ -3,6 +3,14 @@
 ## 2026.11.20
 
 ### What Changed
+- **New Themes page** (first in the sidebar): ten looks shown as pictures. One click sets the wallpaper, the bar
+  colours and window border, the GTK theme and light/dark, the icons and the cursor; with the check box on, the
+  login screen (SDDM) gets the same wallpaper and cursor. Ohmychadwm is recompiled and the password is asked once.
+  Every part comes from a package on the Kiro ISO; a look whose picture or bar theme is missing is greyed out. The
+  frame around each picture shows that look's window border colour and width. The looks are Kiro, Nord Frost,
+  Dracula Night, Tokyo Night, Paper Day, Everforest, Desert Gruv, Rosé Pine, Catppuccin Space and Celestial Ocean,
+  each on a different Kiro Atelier painting.
+- The Keyboard page no longer logs an error when it opens.
 - **Search settings** above the sidebar (Ctrl+F): type a word and pick a match; the page opens and the row lights up.
   It searches what the pages show, in your language, and knows a few English words from other tools (sddm, xkb,
   azerty, sxhkd, …).
@@ -40,6 +48,25 @@
   only counts when gtk2 is installed (`/usr/lib/libgtk-x11-2.0.so.0`). A missing GTK 4 settings.ini still counts.
   Apply still writes all three files.
 - Checked on the VM, read-only: the shipped module reports both lines, the patched one reports no drift.
+- Themes, written fresh (the idea of the KiroTux premium Themes, none of its paid code): `ott_themes.py` holds the
+  ten looks and `resolve_all()`. That picks the first installed GTK/icon/cursor name of each fallback list, matches
+  Kiro Atelier paintings by subject (any style or version) and reads `col_borderbar` from the bar theme for the tile
+  frame. Every name was checked with `pacman -Qo` against the ISO's `packages.x86_64`. On the ISO the only icon sets
+  are Surfn-Kiro and neo-candy-icons; the `or-`/`al-` candy and beautyline dirs are hidden layers, not choices.
+- `ott_apply.apply_look()`: the Look page's apply worker moved here unchanged, so Look and Themes share one path and
+  one pkexec. New: `bar=(theme, font, border)` with `KEEP`, `force=None` (leave `/etc/environment` alone) and
+  `sddm_background`. Themes keeps the user's font, cursor size and bar font, rewrites GTK_THEME only when it is
+  already forced, and drops the THEME_BORDER override for the Kiro look (the theme's own width).
+- `ott_root.py --sddm-background PATH`: only an image under `/usr/share/backgrounds` (realpath, no newline), written
+  as `[General] background=` to `theme.conf.user` beside the SDDM theme in use. Only `edu-simplicity` reads it,
+  from kiro-sddm-simplicity 2026.11.20, whose `Main.qml` now takes `config.background`. Other themes are skipped
+  with a note, and the check box then only offers the cursor.
+- Keyboard page: `_azerty_now` is set before the first `refresh()`. Selecting the current layout fired
+  `_update_hint()` before it existed (AttributeError traceback in the log; the hint itself was right).
+- Translations: the 34 new strings are translated in all 13 languages (look names kept as names), merged with
+  `msgmerge --compendium`. The old fuzzy "{tool} not configured, skipped" had a wrong placeholder; it is now empty
+  (English).
+- Rendered on GTK Broadway with a fake HOME: 10 tiles, two per row in the default window, thumbnails loaded off-thread.
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_search.py`, `ott_keyboard.py`, `ott_page_keyboard.py`, `ott_update.py`,
@@ -48,6 +75,8 @@
 - `po/*.po`, `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
 - `README.md`, `CLAUDE.md`
 - `usr/share/ohmychadwm-tweak-tool/ott_targets.py`
+- `usr/share/ohmychadwm-tweak-tool/ott_themes.py`, `ott_page_themes.py`, `ott_apply.py` (new)
+- `usr/share/ohmychadwm-tweak-tool/ott_page_look.py`, `ott_system.py`, `ott_search.py`
 
 ## 2026.11.06
 

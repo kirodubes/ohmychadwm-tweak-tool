@@ -12,6 +12,7 @@ so Ctrl+Alt+X still opens it.
 
 | Page | What it does | Where it is saved |
 |---|---|---|
+| **Themes** | Ten looks as pictures. One click sets the wallpaper, the bar theme (its colours and window border), the border width, GTK theme + light/dark, icons and cursor, and optionally the login screen (SDDM) wallpaper and cursor. Everything comes from packages on the Kiro ISO; a look whose parts are missing is greyed out | `~/.fehbg`, `config.def.h`, the Look page's files; optionally the SDDM cursor and `theme.conf.user` of the SDDM theme |
 | **Look** | GTK theme, icons, cursor + size, font, light/dark, bar theme, optional bar font. An **out of sync** banner with **Fix all** when the settings files disagree | GTK 2/3/4 files, gsettings, the XFCE `xsettings` channel, `~/.icons/default`, `~/.Xresources`, `config.def.h`; optionally `GTK_THEME` in `/etc/environment` and the system/login-screen cursor |
 | **Bar & windows** | Window border, gaps, smart gaps, bar at the top or bottom, system tray, bar autohide | a managed block in `~/.config/ohmychadwm/chadwm/config.def.h`, then a rebuild |
 | **Wallpaper** | Ohmychadwm wallpapers, Variety downloads/favourites or any folder, with a preview, fill mode and Previous/Next through Variety | `~/.fehbg` (feh), which ohmychadwm loads at login |
@@ -65,7 +66,7 @@ sudo pacman -S ohmychadwm-tweak-tool
 ```
 
 Launch it from the menu (**Ohmychadwm Tweak Tool**), or run `ohmychadwm-tweak-tool` (short: `ott`, or the old
-`oma`). `--page NAME` opens a page directly (`look`, `bar`, `wallpaper`, `displays`, `mouse`, `startup`, `apps`,
+`oma`). `--page NAME` opens a page directly (`themes`, `look`, `bar`, `wallpaper`, `displays`, `mouse`, `startup`, `apps`,
 `keys`, `status`); `--debug` prints more to the console.
 
 ## Requirements

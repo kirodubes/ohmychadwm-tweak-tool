@@ -24,6 +24,7 @@ from ott_page_keyboard import KeyboardPage  # noqa: E402
 from ott_page_keys import KeysPage  # noqa: E402
 from ott_page_look import LookPage  # noqa: E402
 from ott_page_startup import StartupPage  # noqa: E402
+from ott_page_themes import ThemesPage  # noqa: E402
 from ott_page_update import UpdatePage  # noqa: E402
 from ott_page_wallpaper import WallpaperPage  # noqa: E402
 from ott_widgets import clear, muted, page_box, section  # noqa: E402
@@ -228,6 +229,7 @@ def build(window):
     root.append(Gtk.Separator(orientation=Gtk.Orientation.HORIZONTAL))
 
     sections = [
+        ("themes", _("Themes"), _safe("Themes", ThemesPage)),
         ("look", _("Look"), _safe("Look", LookPage)),
         ("bar", _("Bar & windows"), _safe("Bar & windows", BarPage)),
         ("wallpaper", _("Wallpaper"), _safe("Wallpaper", lambda: WallpaperPage(window))),

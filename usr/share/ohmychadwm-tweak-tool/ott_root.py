@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Root helper, run via pkexec: GTK_THEME, system/SDDM cursor, mouse/touchpad, keyboard layout, rebuilt ohmychadwm.
+"""Root helper, run via pkexec: GTK_THEME, system/SDDM cursor, SDDM wallpaper, mouse/touchpad, keyboard layout, rebuilt ohmychadwm.
 
 Every root action of the app goes through this one script, so one Apply asks
 for the password at most once. The install destination is fixed.
@@ -58,6 +58,7 @@ def main():
     group.add_argument("--release-gtk-theme", action="store_true", help="comment out GTK_THEME")
     parser.add_argument("--system-cursor", help="cursor for /usr/share/icons/default and the SDDM login screen")
     parser.add_argument("--cursor-size", type=int, default=24, help="SDDM cursor size (with --system-cursor)")
+    parser.add_argument("--sddm-background", help="login screen wallpaper, an image under /usr/share/backgrounds")
     parser.add_argument("--input", help="mouse/touchpad settings as JSON, written to " + ott_input.CONF_PATH)
     parser.add_argument("--keyboard", help="X11 keyboard layouts for the whole computer, e.g. us,be (localectl)")
     parser.add_argument("--keyboard-options", default="", help="xkb options with --keyboard")
@@ -75,6 +76,16 @@ def main():
         cursor = args.system_cursor
         _write_file(ott_system.DEFAULT_INDEX, lambda text: ott_system.set_default_cursor(text, cursor))
         _write_file(ott_system.sddm_conf(), lambda text: ott_system.set_sddm_cursor(text, cursor, args.cursor_size))
+
+    if args.sddm_background:
+        if not ott_system.valid_background(args.sddm_background):
+            parser.error(f"not an image under {ott_system.BACKGROUNDS_DIR}: {args.sddm_background!r}")
+        conf = ott_system.background_conf()
+        if conf is None:
+            print(f"SDDM theme {ott_system.sddm_theme()!r} has no wallpaper setting; login wallpaper unchanged")
+        else:
+            path = os.path.realpath(args.sddm_background)
+            _write_file(conf, lambda text: ott_system.set_background(text, path))
 
     if args.input:
         try:

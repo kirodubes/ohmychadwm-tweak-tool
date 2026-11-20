@@ -89,6 +89,7 @@ class KeyboardPage:
         box.append(buttons)
 
         self.widget = box
+        self._azerty_now = None  # refresh() changes the dropdowns, whose handler reads this before refresh sets it
         self.refresh()
 
     def refresh(self):

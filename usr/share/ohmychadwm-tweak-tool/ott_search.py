@@ -24,11 +24,12 @@ _FILE_EXTS = (".jpg", ".jpeg", ".png", ".webp")
 def _synonyms():
     # English terms people know from other tools -> the words this app uses (already translated catalog entries)
     return {
-        "gtk": [_("Look")], "theme": [_("Look"), _("Bar theme")], "icon": [_("Icons")], "cursor": [_("Cursor")],
-        "font": [_("Font")], "dark": [_("Look")], "sddm": [_("Look")], "login": [_("Look")],
+        "gtk": [_("Look")], "theme": [_("Themes"), _("Look"), _("Bar theme")], "icon": [_("Icons")], "cursor": [_("Cursor")],
+        "font": [_("Font")], "dark": [_("Look")], "sddm": [_("Look"), _("Themes")], "login": [_("Look"), _("Themes")],
+        "preset": [_("Themes")], "rice": [_("Themes")],
         "bar": [_("Bar & windows")], "gaps": [_("Bar & windows")], "border": [_("Bar & windows")],
         "systray": [_("Bar & windows")], "tray": [_("Bar & windows")],
-        "variety": [_("Wallpaper")], "background": [_("Wallpaper")], "feh": [_("Wallpaper")],
+        "variety": [_("Wallpaper")], "background": [_("Wallpaper"), _("Themes")], "feh": [_("Wallpaper")],
         "monitor": [_("Displays")], "screen": [_("Displays")], "resolution": [_("Displays")],
         "xrandr": [_("Displays")], "arandr": [_("Displays")],
         "touchpad": [_("Mouse & touchpad")], "mouse": [_("Mouse & touchpad")], "libinput": [_("Mouse & touchpad")],

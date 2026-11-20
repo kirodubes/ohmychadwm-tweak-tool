@@ -17,7 +17,7 @@ dependency stays satisfied. Keep all three.
 - **Launchers**: `usr/bin/ohmychadwm-tweak-tool` + relative symlinks `ott` and `oma`. **`oma` must stay**: existing
   users keep their own sxhkdrc (skel is copied once), and theirs runs `oma` on Ctrl+Alt+X.
 - **Runs as the normal user.** All root work goes through ONE helper, `ott_root.py` (`run_root()` calls it via
-  `pkexec`): `GTK_THEME` in `/etc/environment`, the system/SDDM cursor, the xorg.conf.d input file and installing
+  `pkexec`): `GTK_THEME` in `/etc/environment`, the system/SDDM cursor, the SDDM wallpaper, the xorg.conf.d input file and installing
   the rebuilt binary. One prompt per Apply/Save. Never add other root escalation.
 - **Design study** (offline, in Kiro-HQ): `STUDIES/OHMYCHADWM-APPEARANCE-STUDY.md` (the Look page's reasons).
 
@@ -28,6 +28,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ohmychadwm-tweak-tool.py  # Gtk.Application + window, CSS, follows color-scheme, prefs window size
 ├── ott_gui.py                # header row, support dialog, StackSidebar, Status page, _BrokenPage/_safe
 ├── ott_widgets.py            # section / muted / warning / dropdown / settings_grid / status / run_async / ask_keep
+├── ott_page_themes.py        # Themes: 10 picture tiles (FlowBox), one click = ott_apply.apply_look + feh
 ├── ott_page_look.py          # Look (OMA's page): drift banner, pickers, force GTK_THEME, system cursor, bar theme+font
 ├── ott_page_bar.py           # Bar & windows: THEME_BORDER/GAPS/SMARTGAPS/TOPBAR/SHOWSYSTRAY/AUTOHIDE → rebuild
 ├── ott_page_wallpaper.py     # Wallpaper (KHP layout): sources, thumbnails, preview, Variety prev/next, feh
@@ -38,6 +39,8 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_page_startup.py       # Startup apps: run lines of run.sh on/off, add/remove own
 ├── ott_page_apps.py          # Default apps: terminal/file manager in sxhkdrc, xdg-mime per category
 ├── ott_page_keys.py          # Keys: searchable read-only list
+├── ott_themes.py             # the 10 looks (ISO packages only) + resolve_all(): installed names, missing parts
+├── ott_apply.py              # apply_look(): user files, bar rebuild, ONE pkexec (used by Look and Themes)
 ├── ott_targets.py            # Look targets: read_all / current / drift / apply  (toolkit-free, from OMA)
 ├── ott_chadwm.py             # config.def.h: theme include, managed block (font + options), rebuild, restart
 ├── ott_scan.py ott_env.py ott_system.py   # from OMA: theme scan, GTK_THEME line, system/SDDM cursor
@@ -50,7 +53,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_keyboard.py           # layouts (evdev.lst, setxkbmap -query, 00-keyboard.conf), options, KIRO_AZERTY define
 ├── ott_update.py             # checkupdates, kernel-restart check, /usr/share/kiro-news/feed.json, open a terminal
 ├── ott_keys.py               # sxhkdrc parser + chadwm keys[] parser (KIRO_AZERTY macros resolved)
-├── ott_root.py               # the pkexec helper: --gtk-theme / --release-gtk-theme / --system-cursor / --input / --keyboard / --install
+├── ott_root.py               # the pkexec helper: --gtk-theme / --release-gtk-theme / --system-cursor / --sddm-background / --input / --keyboard / --install
 ├── ott_config.py             # prefs (~/.config/ohmychadwm-tweak-tool/prefs.json; falls back to OMA's)
 ├── log.py
 └── ott.css
@@ -66,6 +69,7 @@ A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is 
 |---|---|---|
 | `/etc/environment` `GTK_THEME` (root) | Look | theme. **Beats every file below** for GTK 3 and 4; shows after re-login |
 | `/usr/share/icons/default/index.theme` + SDDM conf (root, optional) | Look | `Inherits=` cursor; SDDM `[Theme] CursorTheme`/`CursorSize` in the conf that already sets it. SDDM ignores icons/default once CursorTheme is set, so write BOTH |
+| `/usr/share/sddm/themes/edu-simplicity/theme.conf.user` (root, optional) | Themes | `[General] background=` an image under `/usr/share/backgrounds` only (the `sddm` user must read it). Only themes in `ott_system.BACKGROUND_THEMES` read it (kiro-sddm-simplicity 2026.11.20+ reads `config.background`); no package owns the file |
 | `~/.config/gtk-3.0/settings.ini`, `gtk-4.0/settings.ini`, `~/.gtkrc-2.0` | Look | theme, icons, cursor, size, font (+ prefer-dark in gtk-4.0). **Thunar reads gtk-3.0**: xfsettingsd is NOT running |
 | gsettings `org.gnome.desktop.interface`, xfconf `xsettings` | Look | theme, icons, cursor, size, font, color-scheme |
 | `~/.icons/default/index.theme`, `~/.Xresources` | Look | cursor (`xrdb -merge` + `xsetroot -cursor_name left_ptr`) |
@@ -134,6 +138,12 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   page really shows, or the synonym finds nothing.
 - **Update & News** never runs root itself: Update now opens `sudo pacman -Syu` in a terminal. It loads in a thread
   and only reloads on Look again (`on_switch` skips it, like Wallpaper). Recovery (keys, boot problems) is ATT's.
+- **Themes** (2026-11-20): written fresh for this free app; **never copy code from the paid KiroTux premium apps'
+  Themes** (`knp_themes`/`khp_themes`), only the idea. Every name in `ott_themes.BUILTIN` must come from a package in
+  `kiro-iso/archiso/packages.x86_64`. On the ISO the only icon sets are Surfn-Kiro and neo-candy-icons: the `or-`/`al-`
+  candy and beautyline dirs are `Hidden=true` layers neo-candy inherits, not choices. Each look uses a different
+  painting. A look keeps the user's font, cursor size and bar font; `border` None drops the THEME_BORDER override.
+  GTK_THEME is rewritten only when `/etc/environment` already forces it.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.
