@@ -60,7 +60,10 @@
 - `ott_root.py --sddm-background PATH`: only an image under `/usr/share/backgrounds` (realpath, no newline), written
   as `[General] background=` to `theme.conf.user` beside the SDDM theme in use. Only `edu-simplicity` reads it,
   from kiro-sddm-simplicity 2026.11.20, whose `Main.qml` now takes `config.background`. Other themes are skipped
-  with a note, and the check box then only offers the cursor.
+  with a note, and the check box then only offers the cursor. The same happens with an older kiro-sddm-simplicity
+  whose `Main.qml` doesn't read `config.background` yet, so the page never promises a wallpaper SDDM would ignore.
+- `ott_apply._bar_text` text-tested on a copy of config.def.h: the Look path gives the same text as before; KEEP
+  keeps font and border; `border=None` drops only THEME_BORDER; a Bar page gaps override survives every case.
 - Keyboard page: `_azerty_now` is set before the first `refresh()`. Selecting the current layout fired
   `_update_hint()` before it existed (AttributeError traceback in the log; the hint itself was right).
 - Translations: the 34 new strings are translated in all 13 languages (look names kept as names), merged with

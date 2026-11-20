@@ -106,7 +106,10 @@ def sddm_theme():
 def background_conf():
     """Return the theme.conf.user that sets the login wallpaper, or None when the SDDM theme can't show one."""
     theme = sddm_theme()
-    if theme not in BACKGROUND_THEMES or not os.path.isfile(os.path.join(SDDM_THEMES, theme, "theme.conf")):
+    if theme not in BACKGROUND_THEMES:
+        return None
+    # an older kiro-sddm-simplicity has a fixed picture and would ignore theme.conf.user
+    if "config.background" not in _read(os.path.join(SDDM_THEMES, theme, "Main.qml")):
         return None
     return os.path.join(SDDM_THEMES, theme, "theme.conf.user")
 
