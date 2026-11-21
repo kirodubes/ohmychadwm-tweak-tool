@@ -164,17 +164,32 @@ def _settle(seen):
     return seen
 
 
-def show_start_workspaces(start):
-    """Put every screen that has a start workspace on it, then the pointer back where it was."""
+def login_targets(start, goto, open_classes, rules, boxes):
+    """Return [(connector, workspace)] to show at login: the chosen start workspaces, plus the workspace of every
+    "go to it" app that opened at login, on a screen that has no start workspace of its own (that one wins)."""
+    targets = {c: w for c, w in start.items() if c in boxes and 1 <= w <= 10}
+    by_number = {b[0]: c for c, b in boxes.items()}
+    for rule in rules:
+        if rule["class"] not in goto or rule["class"] not in open_classes or not rule["workspace"]:
+            continue
+        connector = by_number.get(max(rule["monitor"], 0))  # "current screen" is the primary one at login
+        if connector and connector not in targets:
+            targets[connector] = rule["workspace"]
+    return sorted(targets.items(), key=lambda item: boxes[item[0]][0])
+
+
+def show_login_workspaces(start, goto):
+    """Show the login workspaces on every screen, then put the pointer back where it was."""
     go, boxes = _switcher(), screen_boxes()
     if go is None:
         return
+    open_classes = {_wm_class(wid) for wid in _client_ids()}
+    targets = login_targets(start, goto, open_classes, ott_placement.rules(ott_chadwm.read_config()), boxes)
     where = subprocess.run(["xdotool", "getmouselocation", "--shell"], capture_output=True, text=True).stdout
-    for connector, workspace in sorted(start.items(), key=lambda item: boxes.get(item[0], (99,))[0]):
-        if connector in boxes and 1 <= workspace <= 10:
-            _select_screen(boxes[connector])
-            go(workspace)
-            _say(f"{connector} shows workspace {workspace}")
+    for connector, workspace in targets:
+        _select_screen(boxes[connector])
+        go(workspace)
+        _say(f"{connector} shows workspace {workspace}")
     pos = dict(line.split("=", 1) for line in where.splitlines() if "=" in line)
     if "X" in pos and "Y" in pos:
         _xdotool("mousemove", pos["X"], pos["Y"])
@@ -232,9 +247,9 @@ def main():
     seen = _client_ids()
     if "--login" in sys.argv:
         seen = _settle(seen)
-        start = settings()[1]
-        if start:
-            show_start_workspaces(start)
+        goto, start = settings()
+        if start or goto:
+            show_login_workspaces(start, goto)
     watch(seen)  # cheap; the page stops this helper when neither setting is on
 
 

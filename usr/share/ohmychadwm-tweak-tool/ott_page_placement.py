@@ -173,8 +173,8 @@ class PlacementPage:
         grid.attach(self._chk_login, 1, 4, 1, 1)
         self._chk_goto = Gtk.CheckButton(label=_("Go to it when it opens"))
         self._chk_goto.set_tooltip_text(_("Switches to its screen and workspace when the app opens a window, so it "
-                                          "is in front of you (not when you log in: then the screens show the "
-                                          "workspaces chosen below)"))
+                                          "is in front of you. Also after you log in, unless you chose a workspace "
+                                          "for that screen under “When you log in”."))
         grid.attach(self._chk_goto, 1, 5, 1, 1)
         self._dd_app.connect("notify::selected", lambda _dd, _pspec: self._sync_login())
         self.widget.append(grid)
@@ -203,7 +203,8 @@ class PlacementPage:
 
         self.widget.append(section(_("When you log in")))
         self.widget.append(muted(_("The workspace each screen shows after you log in, once the apps that start at "
-                                   "login have opened. Workspace 1 is how Ohmychadwm always starts.")))
+                                   "login have opened. Left on Workspace 1, a screen shows the app that has “Go to "
+                                   "it when it opens”; a workspace you choose here wins.")))
         if not can_switch():
             self.widget.append(warning(_("Your workspace keys don't match your keyboard layout, so the tool can't "
                                          "switch workspaces for you. Fix it on the Keyboard page.")))
