@@ -52,7 +52,8 @@ def summary(rule, monitors):
     if rule["instance"] or rule["title"]:
         parts.append(_("only windows named “{name}”").format(name=rule["title"] or rule["instance"]))
     if rule["monitor"] < 0 and rule["workspace"] == 0 and rule["mode"] == "tiled":
-        return _("When {app} opens: no effect, it opens like any other app").format(app=rule["class"] or "*")
+        return _("When {app} opens: {placement} (this rule changes nothing)").format(
+            app=rule["class"] or "*", placement=" · ".join([screen] + parts))
     return _("When {app} opens: {placement}").format(app=rule["class"] or "*",
                                                      placement=" · ".join([screen] + parts))
 

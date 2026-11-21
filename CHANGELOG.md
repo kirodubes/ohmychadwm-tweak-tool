@@ -21,6 +21,7 @@
   Every rule now names its screen, also when it has none: "When Alacritty opens: the screen you are working on ·
   workspace 4". A rule that only sets a screen is no longer called "no effect". The workspace and how it opens are
   always named too: "When Alacritty opens: screen 2 (HDMI-0) · the workspace you are on · tiled, as usual".
+  A rule that changes nothing lists the same three and ends with "(this rule changes nothing)".
 - **App placement: "Also start it at login".** A rule alone only moves an app's window when you open the app; with
   this ticked the app also opens by itself at login, on its screen and workspace. It writes the same `run …` line as
   the Startup apps page, so it shows there too. Rules that start at login say "starts at login". Removing a rule
