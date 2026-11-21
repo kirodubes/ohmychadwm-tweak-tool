@@ -13,6 +13,8 @@
   Each rule reads as a sentence ("When Firefox opens: workspace 9"), rules that change nothing say "no effect",
   and a line above them says rules never start an app (first wording on riker read as a list of apps that start).
   The app list leaves out python3 windows: that class is every Python GTK app at once, this one included.
+  Remove on a rule that is already gone now says so and redraws the list (it said "This rule is already there").
+  A spinner turns next to Save rule while Ohmychadwm recompiles, and the status says the password window comes next.
 
 ### Technical Details
 - `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /

@@ -108,7 +108,9 @@ class PlacementPage:
         self._btn_save = Gtk.Button(label=_("Save rule"))
         self._btn_save.add_css_class("suggested-action")
         self._btn_save.connect("clicked", self._on_save)
-        for b in (reread, self._btn_restart, self._btn_save):
+        # next to the button, not only in the status line below, which can be out of view
+        self._spinner = Gtk.Spinner(valign=Gtk.Align.CENTER, visible=False)
+        for b in (self._spinner, reread, self._btn_restart, self._btn_save):
             buttons.append(b)
         self.widget.append(buttons)
         self.widget.append(muted(_("Screens are numbered the way Ohmychadwm counts them: the primary screen is "
@@ -173,13 +175,14 @@ class PlacementPage:
                                        "change nothing.").format(name=cls), error=True)
             return
         self._change(lambda text: ott_placement.set_rule(text, cls, workspace, monitor, mode),
-                     _("Saved the rule for {name}.").format(name=cls))
+                     _("Saved the rule for {name}.").format(name=cls), _("This rule is already there."))
 
     def _on_remove(self, _widget, cls):
         self._change(lambda text: ott_placement.remove_rule(text, cls),
-                     _("Removed the rule for {name}.").format(name=cls))
+                     _("Removed the rule for {name}.").format(name=cls),
+                     _("The rule for {name} was already gone.").format(name=cls))
 
-    def _change(self, transform, done_text):
+    def _change(self, transform, done_text, same_text):
         # always from the file on disk: another page may have rebuilt since this one was drawn
         if self._busy:
             return
@@ -190,18 +193,22 @@ class PlacementPage:
             set_status(self._status, str(e), error=True)
             return
         if new == old:
-            set_status(self._status, _("This rule is already there."))
+            self._text = old
+            self._show_rules()
+            set_status(self._status, same_text)
             return
         self._busy = True
         self._btn_save.set_sensitive(False)
         self._btn_restart.set_visible(False)
+        self._busy_spinner(True)
         self._show_rules()
-        set_status(self._status, _("Recompiling Ohmychadwm…"))
+        set_status(self._status, _("Recompiling Ohmychadwm… then a window asks for your password."))
         run_async(lambda: _rebuild(old, new), lambda result: self._applied(result, done_text))
 
     def _applied(self, result, done_text):
         ok, msg = result
         self._busy = False
+        self._busy_spinner(False)
         self._btn_save.set_sensitive(True)
         (log.log_success if ok else log.log_error)(f"App placement: {msg}")
         self._text = ott_chadwm.read_config()
@@ -215,6 +222,10 @@ class PlacementPage:
             set_status(self._status, done_text + " " + _("Press Super+Shift+R to use it."))
         else:
             set_status(self._status, done_text + " " + _("It shows at your next Ohmychadwm login."))
+
+    def _busy_spinner(self, on):
+        self._spinner.set_visible(on)
+        (self._spinner.start if on else self._spinner.stop)()
 
     def _on_restart(self, _widget):
         self._btn_restart.set_visible(False)
