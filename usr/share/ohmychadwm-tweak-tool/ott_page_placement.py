@@ -198,6 +198,11 @@ class PlacementPage:
             label.set_ellipsize(Pango.EllipsizeMode.END)
             row.append(label)
             if rule["editable"]:
+                edit = Gtk.Button(label=_("Edit"))
+                edit.set_tooltip_text(_("Put this rule in the form below: change it, then press Save rule"))
+                edit.set_sensitive(not self._busy)
+                edit.connect("clicked", self._on_edit, rule)
+                row.append(edit)
                 btn = Gtk.Button(label=_("Remove"))
                 btn.set_sensitive(not self._busy)
                 btn.connect("clicked", self._on_remove, rule["class"])
@@ -222,6 +227,26 @@ class PlacementPage:
         self._change(lambda text: ott_placement.set_rule(text, cls, workspace, monitor, mode),
                      _("Saved the rule for {name}.").format(name=cls) + login,
                      _("This rule is already there.") + login)
+
+    def _on_edit(self, _widget, rule):
+        cls = rule["class"]
+        index = next((i for i, (c, *_rest) in enumerate(self._choices) if c == cls), None)
+        if index is None:
+            # a rule for an app that is not open and names no window class in its menu entry (e.g. Kiro's "Firefox")
+            label = _("{title}  ({window_class})").format(title=cls, window_class=cls)
+            if not self._choices:
+                self._dd_app.set_model(Gtk.StringList.new([]))  # drop the "No apps found" line
+            self._choices.append((cls, cls, False, None))
+            self._dd_app.get_model().append(label)
+            index = len(self._choices) - 1
+        self._dd_app.set_selected(index)
+        screen = next((i + 1 for i, (num, _name, _size) in enumerate(self._monitors) if num == rule["monitor"]), 0)
+        self._dd_screen.set_selected(screen)
+        self._dd_workspace.set_selected(rule["workspace"] or 0)
+        self._dd_mode.set_selected(list(_mode_labels()).index(rule["mode"]))
+        self._sync_login()
+        set_status(self._status, _("The rule for {name} is in the form: change it, then press Save rule.").format(
+            name=cls))
 
     def _on_remove(self, _widget, cls):
         command = self._command_for(cls)

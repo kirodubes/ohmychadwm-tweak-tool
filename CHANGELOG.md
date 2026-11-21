@@ -27,6 +27,8 @@
   this ticked the app also opens by itself at login, on its screen and workspace. It writes the same `run …` line as
   the Startup apps page, so it shows there too. Rules that start at login say "starts at login". Removing a rule
   also stops the login start, when this app added it (a line Kiro ships is never removed).
+- **Edit a rule**: every rule has an Edit button that puts its app, screen, workspace, how it opens and the login
+  tick back in the form; change what you want and press Save rule (saving replaces the app's old rule).
 - **The Screen list says which screen you are on now**: "The screen you are working on (now screen 1: DVI-D-0)".
 
 ### Technical Details

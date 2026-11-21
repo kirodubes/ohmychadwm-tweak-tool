@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 06:39+0100\n"
+"POT-Creation-Date: 2026-11-21 06:45+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -701,13 +701,13 @@ msgid "Applied. It shows at your next Ohmychadwm login."
 msgstr "Aplicado. As alterações aparecerão no próximo login no Ohmychadwm."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:165
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:318
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:343
 #, python-brace-format
 msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
 msgstr "A instalação do novo Ohmychadwm foi cancelada ou falhou: {error}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:319
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:344
 msgid "Installing the new Ohmychadwm was cancelled or failed."
 msgstr "A instalação do novo Ohmychadwm foi cancelada ou falhou."
 
@@ -1322,6 +1322,7 @@ msgid "{title}  ({window_class}, open now)"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:141
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:236
 #, python-brace-format
 msgid "{title}  ({window_class})"
 msgstr ""
@@ -1366,73 +1367,86 @@ msgid "{rule} · starts at login"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:201
+msgid "Edit"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:202
+msgid "Put this rule in the form below: change it, then press Save rule"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:206
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
 msgid "Remove"
 msgstr "Remover"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:206
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:211
 msgid "Written by hand in config.def.h: change it there."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:211
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:216
 msgid "No apps found: open the app, then press Refresh."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:218
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:223
 #, python-brace-format
 msgid ""
 "Choose a screen, a workspace or floating for {name}: as it is, the rule "
 "would change nothing."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:223
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:228
 #, fuzzy, python-brace-format
 msgid "Saved the rule for {name}."
 msgstr "Os valores do tema foram carregados; pressione Aplicar para usá-los."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:224
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:229
 msgid "This rule is already there."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:230
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:248
+#, python-brace-format
+msgid "The rule for {name} is in the form: change it, then press Save rule."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:255
 #, fuzzy, python-brace-format
 msgid "Removed the rule for {name}."
 msgstr "Os valores do tema foram carregados; pressione Aplicar para usá-los."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:231
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:256
 #, fuzzy, python-brace-format
 msgid "The rule for {name} was already gone."
 msgstr "Os valores do tema foram carregados; pressione Aplicar para usá-los."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:249
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:274
 #, fuzzy, python-brace-format
 msgid "Could not change the startup apps: {error}"
 msgstr "Não foi possível gravar run.sh: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:250
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:275
 msgid "It no longer starts at login."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:250
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:275
 #, fuzzy
 msgid "It starts at your next login."
 msgstr "Aplicado. As alterações aparecerão no próximo login no Ohmychadwm."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:273
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:298
 msgid "Recompiling Ohmychadwm… then a window asks for your password."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:288
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:313
 #, fuzzy
 msgid "Restart Ohmychadwm to use it."
 msgstr "Aplicado. Reinicie o Ohmychadwm para ver as alterações."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:291
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:316
 #, fuzzy
 msgid "Press Super+Shift+R to use it."
 msgstr "Aplicado. Pressione Super+Shift+R para ver as alterações."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:293
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:318
 #, fuzzy
 msgid "It shows at your next Ohmychadwm login."
 msgstr "Aplicado. As alterações aparecerão no próximo login no Ohmychadwm."
