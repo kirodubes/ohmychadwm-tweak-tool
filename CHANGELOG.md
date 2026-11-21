@@ -29,6 +29,11 @@
   also stops the login start, when this app added it (a line Kiro ships is never removed).
 - **Edit a rule**: every rule has an Edit button that puts its app, screen, workspace, how it opens and the login
   tick back in the form; change what you want and press Save rule (saving replaces the app's old rule).
+- **"Go to it when it opens"** on a rule: when the app opens a window, its screen and workspace come to the front
+  with the app focused, instead of the app opening out of sight (on riker: Firefox → screen 1, workspace 10).
+- **"When you log in"**: choose the workspace each screen shows after login, once the login apps have opened
+  (e.g. the left screen on 10 with Firefox, the right on 4 with Alacritty). Both settings need no recompile and no
+  password; a restart of Ohmychadwm (Super+Shift+R) doesn't make the screens jump.
 - **The Screen list says which screen you are on now**: "The screen you are working on (now screen 1: DVI-D-0)".
 
 ### Technical Details
@@ -42,6 +47,20 @@
   through the existing `--install` helper, and restores the old file when the compile or the install fails, so the
   page never shows rules the installed binary doesn't have and never writes over another page's rebuild.
 - Search: monitor, screen, workspace, tag, rule, window rule and floating also find App placement.
+- `ott_session.py` + `usr/bin/ott-session` (new): chadwm has no way for a program to switch workspaces and Erik
+  wanted no change to chadwm's code (dwm.c lives in every user's home), so a small helper does what a person does:
+  pointer to the screen's centre (chadwm selects a screen on pointer motion), then Super+Right once (chadwm only
+  updates `_NET_CURRENT_DESKTOP` on a view change, not on a screen change), read `_NET_CURRENT_DESKTOP`, and the
+  shortest way round with Super+Left/Right (`shiftview` wraps, so workspace 10, which has no key, works). Arrow keys
+  type the same on every layout; configs without the shiftview keys fall back to the number keys, refused when
+  `ott_keyboard.keys_match()` says they don't fit the layout (xdotool would add Shift = move the window). It watches
+  `xprop -spy _NET_CLIENT_LIST`; window ids seen before are ignored, so Super+Shift+R triggers nothing. With
+  `--login` it first waits until no new window came for 3 s (max 15 s), then sets the start workspaces. It renames
+  itself to `ott-session` via /proc/self/comm, so run.sh's `pgrep -x` and the page find one instance. The page adds
+  `run ott-session --login` to run.sh and starts the helper while either setting is on, and removes both when off.
+  Settings in prefs.json: `placement.goto` (classes) and `placement.start` (connector → workspace, so rearranging
+  screens doesn't swap them). Tested on riker: start workspaces, go to it, no jump on Super+Shift+R.
+- Package recipe: `xdotool` and `xorg-xprop` are dependencies now (xdotool was optional).
 - Login start: `ott_placement.choices()` also returns a one-word start command per app (the .desktop `Exec` program,
   else `/proc/<_NET_WM_PID>/cmdline` of the open window), checked against `COMMAND_OK` before it goes into run.sh.
   `_set_login()` adds or switches on the line with `ott_startup`; unticking removes a line this app added and only

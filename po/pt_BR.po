@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 06:45+0100\n"
+"POT-Creation-Date: 2026-11-21 07:03+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -344,7 +344,7 @@ msgid "Bar & windows"
 msgstr "Barra e janelas"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:76
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:120
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:37
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:38
@@ -644,7 +644,7 @@ msgstr "Segundos sem atividade até a barra ser ocultada; 0 = nunca"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:258
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:81
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:125
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
 msgid ""
 "~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
@@ -667,7 +667,7 @@ msgstr ""
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:81
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:289
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:117
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:166
 msgid "Restart Ohmychadwm now"
 msgstr "Reiniciar Ohmychadwm agora"
 
@@ -701,13 +701,13 @@ msgid "Applied. It shows at your next Ohmychadwm login."
 msgstr "Aplicado. As alterações aparecerão no próximo login no Ohmychadwm."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:165
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:343
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:448
 #, python-brace-format
 msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
 msgstr "A instalação do novo Ohmychadwm foi cancelada ou falhou: {error}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:344
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:449
 msgid "Installing the new Ohmychadwm was cancelled or failed."
 msgstr "A instalação do novo Ohmychadwm foi cancelada ou falhou."
 
@@ -835,6 +835,7 @@ msgid "libinput's own defaults — press Save to keep them"
 msgstr "Valores padrão do libinput; pressione Salvar para mantê-los"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_input.py:99
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:227
 msgid "Save"
 msgstr "Salvar"
 
@@ -1191,68 +1192,72 @@ msgid "Applied. Apps you open from now on use the new look."
 msgstr ""
 "Aplicado. Os apps que você abrir a partir de agora usam a nova aparência."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:38
 #, fuzzy
 msgid "Floating"
 msgstr "Ativar/desativar modo flutuante"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:38
 #, fuzzy
 msgid "Floating, in the middle"
 msgstr "um tema de ícones"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:30
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:38
 msgid "Tiled"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:37
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:79
 #, python-brace-format
 msgid "screen {n} ({name})"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:38
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:80
 #, python-brace-format
 msgid "screen {n}, not connected now"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:40
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:82
 msgid "current screen"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:85
 #, python-brace-format
 msgid "workspace {n}"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:45
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:87
 msgid "current workspace"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:47
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:89
 #, python-brace-format
 msgid "workspaces {mask}"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:51
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:93
 msgid "own floating settings"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:53
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:95
 #, fuzzy, python-brace-format
 msgid "only windows named “{name}”"
 msgstr "Aplicando “{name}”…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:55
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:97
+msgid "you go there when it opens"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:99
 #, python-brace-format
 msgid "When {app} opens: {placement} (this rule changes nothing)"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:57
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:101
 #, python-brace-format
 msgid "When {app} opens: {placement}"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:85
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:129
 msgid ""
 "Choose on which screen and workspace an app opens, and whether it floats. "
 "Open windows are listed first. Saving a rule recompiles Ohmychadwm (asks "
@@ -1260,193 +1265,248 @@ msgid ""
 "“Also start it at login” to have it open there by itself when you log in."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:93
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:137
 msgid "Reading the open windows…"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:97
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:147
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:141
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:207
 msgid "Current screen"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:99
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:143
 msgid "Current workspace"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:145
 #, fuzzy
 msgid "App"
 msgstr "Aplicar"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:145
 #, fuzzy
 msgid "Screen"
 msgstr "Tela cheia"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:102
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:146
 msgid "Open as"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:102
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:146
 msgid "Workspace"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:106
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:150
 msgid "Also start it at login"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:114
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:153
+msgid "Go to it when it opens"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:154
+msgid ""
+"Switches to its screen and workspace when the app opens a window, so it is "
+"in front of you (not when you log in: then the screens show the workspaces "
+"chosen below)"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:163
 msgid "Refresh"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:115
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:164
 #, fuzzy
 msgid "Read the open windows and the screens again"
 msgstr "Espaço entre as janelas e ao redor da borda da tela, em pixels"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:120
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:169
 #, fuzzy
 msgid "Save rule"
 msgstr "Salvar"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:128
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:177
 msgid ""
 "Screens are numbered the way Ohmychadwm counts them: the primary screen is "
 "screen 1. Rearranging your screens on the Displays page can change the "
 "numbers."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:140
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:182
+msgid "When you log in"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:183
+msgid ""
+"The workspace each screen shows after you log in, once the apps that start "
+"at login have opened. Workspace 1 is how Ohmychadwm always starts."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:186
+msgid ""
+"Your workspace keys don't match your keyboard layout, so the tool can't "
+"switch workspaces for you. Fix it on the Keyboard page."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:200
 #, python-brace-format
 msgid "{title}  ({window_class}, open now)"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:141
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:201
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:339
 #, python-brace-format
 msgid "{title}  ({window_class})"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:143
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:203
 msgid "No apps found: open the app, then press Refresh"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:146
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:206
 #, python-brace-format
 msgid "Current screen (now screen {n}: {name})"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:148
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:208
 #, python-brace-format
 msgid "Screen {n}: {name} ({size})"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:175
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:220
+#, python-brace-format
+msgid "Workspace {n}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:224
+#, python-brace-format
+msgid "Screen {n}: {name}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:238
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:250
+#, fuzzy, python-brace-format
+msgid "Could not save: {error}"
+msgstr "Não foi possível gravar run.sh: {error}"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:240
+msgid "Saved. The screens show these workspaces from your next login."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:251
+msgid "It no longer takes you there."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:251
+msgid "You go there when it opens."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:276
 #, python-brace-format
 msgid ""
 "Starts “{command}” when you log in; it shows on the Startup apps page too."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:176
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:277
 msgid "No start command found for this app: add it on the Startup apps page."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:186
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:287
 msgid "No rules yet: apps open on the current screen and workspace."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:289
 msgid ""
 "Rules now. They move an app's window when it opens; only the ones marked "
 "“starts at login” open by themselves."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:195
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:297
 #, python-brace-format
 msgid "{rule} · starts at login"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:201
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:303
 msgid "Edit"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:202
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:304
 msgid "Put this rule in the form below: change it, then press Save rule"
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:206
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:308
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
 msgid "Remove"
 msgstr "Remover"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:211
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:313
 msgid "Written by hand in config.def.h: change it there."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:216
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:318
 msgid "No apps found: open the app, then press Refresh."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:223
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:325
 #, python-brace-format
 msgid ""
 "Choose a screen, a workspace or floating for {name}: as it is, the rule "
 "would change nothing."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:228
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:331
 #, fuzzy, python-brace-format
 msgid "Saved the rule for {name}."
 msgstr "Os valores do tema foram carregados; pressione Aplicar para usá-los."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:229
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:332
 msgid "This rule is already there."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:248
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:352
 #, python-brace-format
 msgid "The rule for {name} is in the form: change it, then press Save rule."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:255
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:360
 #, fuzzy, python-brace-format
 msgid "Removed the rule for {name}."
 msgstr "Os valores do tema foram carregados; pressione Aplicar para usá-los."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:256
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:361
 #, fuzzy, python-brace-format
 msgid "The rule for {name} was already gone."
 msgstr "Os valores do tema foram carregados; pressione Aplicar para usá-los."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:274
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:379
 #, fuzzy, python-brace-format
 msgid "Could not change the startup apps: {error}"
 msgstr "Não foi possível gravar run.sh: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:275
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:380
 msgid "It no longer starts at login."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:275
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:380
 #, fuzzy
 msgid "It starts at your next login."
 msgstr "Aplicado. As alterações aparecerão no próximo login no Ohmychadwm."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:298
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:403
 msgid "Recompiling Ohmychadwm… then a window asks for your password."
 msgstr ""
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:313
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:418
 #, fuzzy
 msgid "Restart Ohmychadwm to use it."
 msgstr "Aplicado. Reinicie o Ohmychadwm para ver as alterações."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:316
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:421
 #, fuzzy
 msgid "Press Super+Shift+R to use it."
 msgstr "Aplicado. Pressione Super+Shift+R para ver as alterações."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:318
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:423
 #, fuzzy
 msgid "It shows at your next Ohmychadwm login."
 msgstr "Aplicado. As alterações aparecerão no próximo login no Ohmychadwm."

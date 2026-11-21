@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+
+# Login helper of the App placement page: start workspace per screen, "go to it when it opens".
+exec python3 /usr/share/ohmychadwm-tweak-tool/ott_session.py "$@"

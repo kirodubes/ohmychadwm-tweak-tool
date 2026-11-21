@@ -14,7 +14,7 @@ dependency stays satisfied. Keep all three.
 
 - **Language**: Python 3, GTK4 + PyGObject.
 - **Entry point**: `usr/share/ohmychadwm-tweak-tool/ohmychadwm-tweak-tool.py` (`--debug`, `--page NAME`)
-- **Launchers**: `usr/bin/ohmychadwm-tweak-tool` + relative symlinks `ott` and `oma`. **`oma` must stay**: existing
+- **Launchers**: `usr/bin/ohmychadwm-tweak-tool` + relative symlinks `ott` and `oma`. `usr/bin/ott-session` starts the App placement login helper. **`oma` must stay**: existing
   users keep their own sxhkdrc (skel is copied once), and theirs runs `oma` on Ctrl+Alt+X.
 - **Runs as the normal user.** All root work goes through ONE helper, `ott_root.py` (`run_root()` calls it via
   `pkexec`): `GTK_THEME` in `/etc/environment`, the system/SDDM cursor, the SDDM wallpaper, the xorg.conf.d input file and installing
@@ -45,6 +45,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_targets.py            # Look targets: read_all / current / drift / apply  (toolkit-free, from OMA)
 ├── ott_chadwm.py             # config.def.h: theme include, managed block (font + options), rebuild, restart
 ├── ott_placement.py          # rules[] parse/set/remove, xrandr --listmonitors (dwm order), open windows via xprop
+├── ott_session.py            # `ott-session` login helper: start workspace per screen, go to an app when it opens (xdotool)
 ├── ott_scan.py ott_env.py ott_system.py   # from OMA: theme scan, GTK_THEME line, system/SDDM cursor
 ├── ott_display.py            # xrandr parse / plan / arandr script / switch / revert / save
 ├── ott_input.py              # libinput props via xinput, validate(), build_conf() for xorg.conf.d
@@ -86,6 +87,7 @@ A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is 
 | `config.def.h` `#define KIRO_AZERTY` | Keyboard | workspace keys; rebuild + `--install`, then `keybindings-<set>.txt` → `keybindings.txt` |
 | `~/.config/ohmychadwm/scripts/run.sh` | Startup apps, App placement | only `run …` / `#run …` lines |
 | `~/.config/ohmychadwm/sxhkd/sxhkdrc` + xdg-mime | Default apps | single-word commands on the terminal/file-manager keys |
+| `~/.config/ohmychadwm-tweak-tool/prefs.json` `placement` | App placement | `goto` classes, `start` {connector: workspace}; read by `ott-session` |
 
 `current()` (Look) takes an active `GTK_THEME` first for the theme, then GTK 3 (what Thunar shows), then gsettings,
 then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 `0` means "X default", so
@@ -173,6 +175,9 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   Open windows come from `xprop` (`_NET_CLIENT_LIST`, WM_CLASS); `xorg-xprop` is pulled in by at-spi2-core.
   C forbids an empty `rules[]`: `remove_rule()` leaves `ott_placement.PLACEHOLDER` when the last rule goes, `rules()`
   hides it and `set_rule()` drops it. Never write an empty table.
+  "Go to it" and the start workspaces live in prefs.json (`placement`), not in config.def.h, and need no rebuild:
+  `ott-session` switches with the pointer + Super+Left/Right (see the CHANGELOG 2026.11.21 for why). Never send the
+  number keys when `keys_match()` is False: xdotool adds Shift and chadwm MOVES the window instead.
   "Also start it at login" writes the same `run …` line as Startup apps (`ott_startup`, tagged `added by`); Remove
   only drops a line this app added. Erik first read the rule list as apps that start at login: keep the wording
   explicit about which rules start at login.
