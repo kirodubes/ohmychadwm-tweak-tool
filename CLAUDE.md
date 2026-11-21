@@ -84,7 +84,7 @@ A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is 
 | `/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf` (root) | Mouse & touchpad | InputClass `MatchIsPointer` then `MatchIsTouchpad` |
 | `/etc/X11/xorg.conf.d/00-keyboard.conf` via `localectl set-x11-keymap` (root) | Keyboard | 1–2 layouts + options; `grp:alt_shift_toggle` only with two layouts, other options kept |
 | `config.def.h` `#define KIRO_AZERTY` | Keyboard | workspace keys; rebuild + `--install`, then `keybindings-<set>.txt` → `keybindings.txt` |
-| `~/.config/ohmychadwm/scripts/run.sh` | Startup apps | only `run …` / `#run …` lines |
+| `~/.config/ohmychadwm/scripts/run.sh` | Startup apps, App placement | only `run …` / `#run …` lines |
 | `~/.config/ohmychadwm/sxhkd/sxhkdrc` + xdg-mime | Default apps | single-word commands on the terminal/file-manager keys |
 
 `current()` (Look) takes an active `GTK_THEME` first for the theme, then GTK 3 (what Thunar shows), then gsettings,
@@ -173,6 +173,9 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   Open windows come from `xprop` (`_NET_CLIENT_LIST`, WM_CLASS); `xorg-xprop` is pulled in by at-spi2-core.
   C forbids an empty `rules[]`: `remove_rule()` leaves `ott_placement.PLACEHOLDER` when the last rule goes, `rules()`
   hides it and `set_rule()` drops it. Never write an empty table.
+  "Also start it at login" writes the same `run …` line as Startup apps (`ott_startup`, tagged `added by`); Remove
+  only drops a line this app added. Erik first read the rule list as apps that start at login: keep the wording
+  explicit about which rules start at login.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.

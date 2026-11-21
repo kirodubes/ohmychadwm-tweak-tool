@@ -11,6 +11,8 @@ from gi.repository import Gio
 
 # Classes go into C source as a string literal: no quotes, no backslashes.
 CLASS_OK = re.compile(r"^[A-Za-z0-9._ +-]{1,80}$")
+# A start command goes into run.sh as a shell word: one program name, nothing the shell would read.
+COMMAND_OK = re.compile(r"^[A-Za-z0-9._+-]{1,60}$")
 WORKSPACES = range(1, 11)  # tags[] has ten names in every ohmychadwm config
 MODES = ("tiled", "float", "center")
 _FLAGS = {"tiled": (0, 0), "float": (0, 1), "center": (1, 1)}  # mode -> (iscentered, isfloating)
@@ -150,33 +152,54 @@ def _xprop(*args):
         return ""
 
 
+def _command_of(pid):
+    try:
+        with open(f"/proc/{pid}/cmdline", "rb") as f:
+            argv0 = f.read().split(b"\0")[0].decode(errors="replace")
+    except (OSError, ValueError):
+        return None
+    name = os.path.basename(argv0)
+    return name if COMMAND_OK.match(name) else None
+
+
 def open_windows():
-    """Return {class: title} of the windows open now (dwm keeps _NET_CLIENT_LIST), not this app's."""
+    """Return {class: (title, command)} of the windows open now (dwm keeps _NET_CLIENT_LIST), not this app's."""
     ids = re.findall(r"0x[0-9a-f]+", _xprop("-root", "_NET_CLIENT_LIST").partition("#")[2])
     out = {}
     for wid in ids:
         info = _xprop("-id", wid, "WM_CLASS", "_NET_WM_NAME", "_NET_WM_PID")
-        if re.search(rf"_NET_WM_PID\(CARDINAL\) = {os.getpid()}$", info, re.M):
+        pid = re.search(r"_NET_WM_PID\(CARDINAL\) = (\d+)$", info, re.M)
+        if pid and int(pid[1]) == os.getpid():
             continue
         classes = re.findall(r'"([^"]*)"', info.partition("WM_CLASS")[2].splitlines()[0]) if "WM_CLASS" in info else []
         # python3 is every PyGObject app at once (this one too): a rule on it would move them all
         if len(classes) < 2 or not CLASS_OK.match(classes[1]) or classes[1].lower().startswith("python"):
             continue
         title = re.search(r'_NET_WM_NAME\(\w+\) = "(.*)"', info)
-        out.setdefault(classes[1], title[1] if title else classes[1])
+        out.setdefault(classes[1], (title[1] if title else classes[1], _command_of(pid[1]) if pid else None))
     return out
 
 
+def _desktop_command(info):
+    exe = os.path.basename(info.get_executable() or "")
+    return exe if COMMAND_OK.match(exe) else None
+
+
 def choices():
-    """Return [(class, title, open_now)]: the open windows first, then installed apps that name their window class."""
-    rows, seen = [], set()
-    for cls, title in sorted(open_windows().items(), key=lambda item: item[0].lower()):
-        rows.append((cls, title, True))
-        seen.add(cls)
+    """Return [(class, title, open_now, command)]: open windows first, then installed apps that name their class.
+
+    command is what a run.sh line starts (one word, or None when there is no safe one).
+    """
     apps = [i for i in Gio.AppInfo.get_all() if isinstance(i, Gio.DesktopAppInfo) and i.should_show()]
+    by_class = {i.get_startup_wm_class(): i for i in apps if i.get_startup_wm_class()}
+    rows, seen = [], set()
+    for cls, (title, command) in sorted(open_windows().items(), key=lambda item: item[0].lower()):
+        info = by_class.get(cls)
+        rows.append((cls, title, True, (_desktop_command(info) if info else None) or command))
+        seen.add(cls)
     for info in sorted(apps, key=lambda i: i.get_display_name().lower()):
         cls = info.get_startup_wm_class()
         if cls and CLASS_OK.match(cls) and cls not in seen:
-            rows.append((cls, info.get_display_name(), False))
+            rows.append((cls, info.get_display_name(), False, _desktop_command(info)))
             seen.add(cls)
     return rows

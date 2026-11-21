@@ -20,6 +20,11 @@
   rule replaces it. The failed compile had already put the old file back, so nothing broke.
   Every rule now names its screen, also when it has none: "When Alacritty opens: the screen you are working on ·
   workspace 4". A rule that only sets a screen is no longer called "no effect".
+- **App placement: "Also start it at login".** A rule alone only moves an app's window when you open the app; with
+  this ticked the app also opens by itself at login, on its screen and workspace. It writes the same `run …` line as
+  the Startup apps page, so it shows there too. Rules that start at login say "starts at login". Removing a rule
+  also stops the login start, when this app added it (a line Kiro ships is never removed).
+- **The Screen list says which screen you are on now**: "The screen you are working on (now screen 1: DVI-D-0)".
 
 ### Technical Details
 - `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /
@@ -32,6 +37,12 @@
   through the existing `--install` helper, and restores the old file when the compile or the install fails, so the
   page never shows rules the installed binary doesn't have and never writes over another page's rebuild.
 - Search: monitor, screen, workspace, tag, rule, window rule and floating also find App placement.
+- Login start: `ott_placement.choices()` also returns a one-word start command per app (the .desktop `Exec` program,
+  else `/proc/<_NET_WM_PID>/cmdline` of the open window), checked against `COMMAND_OK` before it goes into run.sh.
+  `_set_login()` adds or switches on the line with `ott_startup`; unticking removes a line this app added and only
+  comments out one Kiro ships. The rules run before chadwm starts at login, which is fine: `scan()` applies the
+  rules to windows that already exist. The current screen comes from `Gdk.Display.get_monitor_at_surface()` of
+  this window, matched to `xrandr --listmonitors` by connector name.
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_placement.py` (new)
