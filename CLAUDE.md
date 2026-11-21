@@ -178,6 +178,8 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   "Go to it" and the start workspaces live in prefs.json (`placement`), not in config.def.h, and need no rebuild:
   `ott-session` switches with the pointer + Super+Left/Right (see the CHANGELOG 2026.11.21 for why). Never send the
   number keys when `keys_match()` is False: xdotool adds Shift and chadwm MOVES the window instead.
+  Every screen label names its place (`ott_placement._places()`: left/right…, primary): dwm's screen 1 is the
+  PRIMARY screen, which is often not the left one (riker: right), and people read "screen 1" as left.
   "Also start it at login" writes the same `run …` line as Startup apps (`ott_startup`, tagged `added by`); Remove
   only drops a line this app added. Erik first read the rule list as apps that start at login: keep the wording
   explicit about which rules start at login.

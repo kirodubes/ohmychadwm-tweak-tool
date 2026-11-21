@@ -123,17 +123,41 @@ def remove_rule(text, cls):
     return "".join(lines[:start + 1] + body + lines[end:])
 
 
-_MONITOR = re.compile(r"^\s*(\d+):\s+\+?\*?(\S+)\s+(\d+)/\d+x(\d+)/\d+\+(-?\d+)\+(-?\d+)\s")
+_MONITOR = re.compile(r"^\s*(\d+):\s+\+?(\*?)(\S+)\s+(\d+)/\d+x(\d+)/\d+\+(-?\d+)\+(-?\d+)\s")
+_SIDES = {"x": ("left", "middle", "right"), "y": ("top", "middle", "bottom")}
+
+
+def _places(screens):
+    """Return {connector: (side, primary)}: side is left/middle/right (or top/middle/bottom when stacked), or the
+    1-based place from the left when there are more than three; None for a single screen."""
+    if len(screens) < 2:
+        return {s["name"]: (None, s["primary"]) for s in screens}
+    cx = [s["x"] + s["w"] / 2 for s in screens]
+    cy = [s["y"] + s["h"] / 2 for s in screens]
+    axis = "x" if max(cx) - min(cx) >= max(cy) - min(cy) else "y"
+    order = sorted(screens, key=lambda s: s[axis] + s["w" if axis == "x" else "h"] / 2)
+    out = {}
+    for i, s in enumerate(order):
+        if len(order) == 2:
+            side = _SIDES[axis][0 if i == 0 else 2]
+        elif len(order) == 3:
+            side = _SIDES[axis][i]
+        else:
+            side = i + 1
+        out[s["name"]] = (side, s["primary"])
+    return out
 
 
 def parse_monitors(listmonitors):
-    """Return [(number, name, 'WxH')] from `xrandr --listmonitors`; dwm numbers its monitors in this order."""
-    out = []
+    """Return [(number, name, 'WxH', (side, primary))] from `xrandr --listmonitors`, in dwm's numbering order."""
+    screens = []
     for line in listmonitors.splitlines():
         m = _MONITOR.match(line)
         if m:
-            out.append((int(m[1]), m[2], f"{m[3]}x{m[4]}"))
-    return out
+            screens.append({"num": int(m[1]), "primary": bool(m[2]), "name": m[3], "w": int(m[4]), "h": int(m[5]),
+                            "x": int(m[6]), "y": int(m[7])})
+    places = _places(screens)
+    return [(s["num"], s["name"], f"{s['w']}x{s['h']}", places[s["name"]]) for s in screens]
 
 
 def monitors():

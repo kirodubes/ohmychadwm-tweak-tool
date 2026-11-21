@@ -72,11 +72,32 @@ def can_switch():
     return bool(ott_session.shiftview_keys(config)) or ott_session.keys_usable(config, ott_keyboard.current()[0])
 
 
+def where(place):
+    """Return where a screen sits, e.g. "left, primary", from parse_monitors()'s (side, primary)."""
+    side, primary = place
+    sides = {"left": _("left"), "right": _("right"), "middle": _("middle"), "top": _("top"), "bottom": _("bottom")}
+    words = [sides[side] if isinstance(side, str) else _("number {n} from the left").format(n=side)] if side else []
+    if primary:
+        words.append(_("primary"))
+    return ", ".join(words)
+
+
+def _first_upper(text):
+    return text[:1].upper() + text[1:]
+
+
+def screen_name(num, name, place):
+    """Return e.g. "screen 2 (HDMI-0, left)"."""
+    w = where(place)
+    return (_("screen {n} ({name}, {where})").format(n=num + 1, name=name, where=w) if w
+            else _("screen {n} ({name})").format(n=num + 1, name=name))
+
+
 def summary(rule, monitors, goto=False):
     """Return one line of what a rule does, e.g. "When firefox opens: screen 2 (HDMI-0) · workspace 10"."""
     if rule["monitor"] >= 0:
-        name = next((n for num, n, _size in monitors if num == rule["monitor"]), None)
-        screen = (_("screen {n} ({name})").format(n=rule["monitor"] + 1, name=name) if name
+        known = next((m for m in monitors if m[0] == rule["monitor"]), None)
+        screen = (screen_name(known[0], known[1], known[3]) if known
                   else _("screen {n}, not connected now").format(n=rule["monitor"] + 1))
     else:
         screen = _("current screen")
@@ -175,7 +196,8 @@ class PlacementPage:
             buttons.append(b)
         self.widget.append(buttons)
         self.widget.append(muted(_("Screens are numbered the way Ohmychadwm counts them: the primary screen is "
-                                   "screen 1. Rearranging your screens on the Displays page can change the numbers.")))
+                                   "screen 1, wherever it stands, so look at left and right. Rearranging your "
+                                   "screens on the Displays page can change the numbers.")))
         self._status = status_label()
         self.widget.append(self._status)
 
@@ -203,10 +225,10 @@ class PlacementPage:
         self._dd_app.set_model(Gtk.StringList.new(labels or [_("No apps found: open the app, then press Refresh")]))
         current = self._current_screen()
         self._dd_screen.set_model(Gtk.StringList.new(
-            [_("Current screen (now screen {n}: {name})").format(n=current[0] + 1, name=current[1])
-             if current else _("Current screen")]
-            + [_("Screen {n}: {name} ({size})").format(n=num + 1, name=name, size=size)
-               for num, name, size in self._monitors]))
+            [_("Current screen (now {screen})").format(screen=screen_name(*current)) if current
+             else _("Current screen")]
+            + [_("{screen}, {size}").format(screen=_first_upper(screen_name(num, name, place)), size=size)
+               for num, name, size, place in self._monitors]))
         self._sync_login()
         self._show_rules()
         self._show_start()
@@ -216,12 +238,12 @@ class PlacementPage:
         start = placement_prefs()[1]
         grid = settings_grid()
         self._start_dds = {}
-        for row, (num, name, size) in enumerate(self._monitors):
+        for row, (num, name, _size, place) in enumerate(self._monitors):
             dd = Gtk.DropDown.new_from_strings([_("Workspace {n}").format(n=n) for n in ott_placement.WORKSPACES])
             dd.set_selected(start.get(name, 1) - 1)
             dd.set_hexpand(True)
             self._start_dds[name] = dd
-            grid.attach(row_label(_("Screen {n}: {name}").format(n=num + 1, name=name)), 0, row, 1, 1)
+            grid.attach(row_label(_first_upper(screen_name(num, name, place))), 0, row, 1, 1)
             grid.attach(dd, 1, row, 1, 1)
         self._start_box.append(grid)
         save = Gtk.Button(label=_("Save"))
@@ -256,7 +278,7 @@ class PlacementPage:
         surface = root.get_surface() if root else None
         monitor = surface.get_display().get_monitor_at_surface(surface) if surface else None
         connector = monitor.get_connector() if monitor else None
-        return next(((num, name) for num, name, _size in self._monitors if name == connector), None)
+        return next(((num, name, place) for num, name, _size, place in self._monitors if name == connector), None)
 
     def _command_for(self, cls):
         return next((command for c, _title, _now, command in self._choices if c == cls), None)
@@ -343,7 +365,7 @@ class PlacementPage:
             self._dd_app.get_model().append(label)
             index = len(self._choices) - 1
         self._dd_app.set_selected(index)
-        screen = next((i + 1 for i, (num, _name, _size) in enumerate(self._monitors) if num == rule["monitor"]), 0)
+        screen = next((i + 1 for i, m in enumerate(self._monitors) if m[0] == rule["monitor"]), 0)
         self._dd_screen.set_selected(screen)
         self._dd_workspace.set_selected(rule["workspace"] or 0)
         self._dd_mode.set_selected(list(_mode_labels()).index(rule["mode"]))

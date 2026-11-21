@@ -111,7 +111,7 @@ def screen_boxes():
     for line in out.splitlines():
         m = ott_placement._MONITOR.match(line)
         if m:
-            boxes[m[2]] = (int(m[1]), int(m[5]), int(m[6]), int(m[3]), int(m[4]))
+            boxes[m[3]] = (int(m[1]), int(m[6]), int(m[7]), int(m[4]), int(m[5]))
     return boxes
 
 

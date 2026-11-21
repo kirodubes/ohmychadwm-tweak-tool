@@ -34,6 +34,10 @@
 - **"When you log in"**: choose the workspace each screen shows after login, once the login apps have opened
   (e.g. the left screen on 10 with Firefox, the right on 4 with Alacritty). Both settings need no recompile and no
   password; a restart of Ohmychadwm (Super+Shift+R) doesn't make the screens jump.
+- **Every screen says where it stands**: "Screen 2 (HDMI-0, left)", "Screen 1 (DVI-D-0, right, primary)", in the
+  rules, the Screen list and the login section. On riker the primary screen is the right one, so "screen 2" was the
+  left screen and a login setting went to the wrong screen. The place comes from the xrandr layout: left/middle/right,
+  top/bottom when stacked, "number n from the left" with more than three screens.
 - **The Screen list says which screen you are on now**: "The screen you are working on (now screen 1: DVI-D-0)".
 
 ### Technical Details
