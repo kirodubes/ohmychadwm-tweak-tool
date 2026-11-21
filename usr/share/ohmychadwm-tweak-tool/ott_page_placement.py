@@ -41,15 +41,17 @@ def summary(rule, monitors):
     parts = []
     if rule["workspace"]:
         parts.append(_("workspace {n}").format(n=rule["workspace"]))
-    elif rule["workspace"] is None:
+    elif rule["workspace"] == 0:
+        parts.append(_("the workspace you are on"))
+    else:
         parts.append(_("workspaces {mask}").format(mask=rule["tags"]))
-    if rule["mode"] in ("float", "center"):
+    if rule["mode"] is not None:
         parts.append(_mode_labels()[rule["mode"]].lower())
-    elif rule["mode"] is None:
+    else:
         parts.append(_("own floating settings"))
     if rule["instance"] or rule["title"]:
         parts.append(_("only windows named “{name}”").format(name=rule["title"] or rule["instance"]))
-    if not parts and rule["monitor"] < 0:
+    if rule["monitor"] < 0 and rule["workspace"] == 0 and rule["mode"] == "tiled":
         return _("When {app} opens: no effect, it opens like any other app").format(app=rule["class"] or "*")
     return _("When {app} opens: {placement}").format(app=rule["class"] or "*",
                                                      placement=" · ".join([screen] + parts))
