@@ -45,7 +45,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_targets.py            # Look targets: read_all / current / drift / apply  (toolkit-free, from OMA)
 ├── ott_chadwm.py             # config.def.h: theme include, managed block (font + options), rebuild, restart
 ├── ott_placement.py          # rules[] parse/set/remove, xrandr --listmonitors (dwm order), open windows via xprop
-├── ott_session.py            # `ott-session` login helper: start workspace per screen, go to an app when it opens (xdotool)
+├── ott_session.py            # `ott-session` helper: go to an app's screen + workspace when it opens, also at login (xdotool)
 ├── ott_scan.py ott_env.py ott_system.py   # from OMA: theme scan, GTK_THEME line, system/SDDM cursor
 ├── ott_display.py            # xrandr parse / plan / arandr script / switch / revert / save
 ├── ott_input.py              # libinput props via xinput, validate(), build_conf() for xorg.conf.d
@@ -87,7 +87,7 @@ A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is 
 | `config.def.h` `#define KIRO_AZERTY` | Keyboard | workspace keys; rebuild + `--install`, then `keybindings-<set>.txt` → `keybindings.txt` |
 | `~/.config/ohmychadwm/scripts/run.sh` | Startup apps, App placement | only `run …` / `#run …` lines |
 | `~/.config/ohmychadwm/sxhkd/sxhkdrc` + xdg-mime | Default apps | single-word commands on the terminal/file-manager keys |
-| `~/.config/ohmychadwm-tweak-tool/prefs.json` `placement` | App placement | `goto` classes, `start` {connector: workspace}; read by `ott-session` |
+| `~/.config/ohmychadwm-tweak-tool/prefs.json` `placement` | App placement | `goto` rule names; read by `ott-session` |
 
 `current()` (Look) takes an active `GTK_THEME` first for the theme, then GTK 3 (what Thunar shows), then gsettings,
 then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 `0` means "X default", so
@@ -175,7 +175,7 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   Open windows come from `xprop` (`_NET_CLIENT_LIST`, WM_CLASS); `xorg-xprop` is pulled in by at-spi2-core.
   C forbids an empty `rules[]`: `remove_rule()` leaves `ott_placement.PLACEHOLDER` when the last rule goes, `rules()`
   hides it and `set_rule()` drops it. Never write an empty table.
-  "Go to it" and the start workspaces live in prefs.json (`placement`), not in config.def.h, and need no rebuild:
+  "Go to it" lives in prefs.json (`placement.goto`), not in config.def.h, and needs no rebuild:
   `ott-session` switches with the pointer + Super+Left/Right (see the CHANGELOG 2026.11.21 for why). Never send the
   number keys when `keys_match()` is False: xdotool adds Shift and chadwm MOVES the window instead.
   Every screen label names its place (`ott_placement._places()`: left/right…, primary): dwm's screen 1 is the
@@ -183,6 +183,8 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   A menu entry's StartupWMClass is only a hint (Vivaldi: `vivaldi` vs class `Vivaldi-stable`): rules for apps that
   aren't open are written on class AND instance (`set_rule(both=True)`), shown as one rule. chadwm's motionnotify
   ignores the first motion of a session, so `ott_session._select_screen()` moves target → other → target.
+  No per-screen "login workspace" setting: tried and removed (2026-11-21) because it contradicted the rules. After
+  login, the "go to it" rules of the apps that start at login decide (`ott_session.login_plan()`).
   "Also start it at login" writes the same `run …` line as Startup apps (`ott_startup`, tagged `added by`); Remove
   only drops a line this app added. Erik first read the rule list as apps that start at login: keep the wording
   explicit about which rules start at login.

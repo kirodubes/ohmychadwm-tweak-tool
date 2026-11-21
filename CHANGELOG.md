@@ -30,20 +30,18 @@
 - **Edit a rule**: every rule has an Edit button that puts its app, screen, workspace, how it opens and the login
   tick back in the form; change what you want and press Save rule (saving replaces the app's old rule).
 - **"Go to it when it opens"** on a rule: when the app opens a window, its screen and workspace come to the front
-  with the app focused, instead of the app opening out of sight (on riker: Firefox → screen 1, workspace 10).
-- **"When you log in"**: choose the workspace each screen shows after login, once the login apps have opened
-  (e.g. the left screen on 10 with Firefox, the right on 4 with Alacritty). Both settings need no recompile and no
-  password; a restart of Ohmychadwm (Super+Shift+R) doesn't make the screens jump.
-- **"Go to it" apps that start at login are in front after login.** On riker Firefox started at login but stayed
-  hidden on the left screen's workspace 10, because the login setting named the other screen. Now a screen without
-  a login workspace of its own shows the workspace of its "go to it" login app; a workspace chosen under "When you
-  log in" still wins on its screen.
+  with the app focused, instead of the app opening out of sight (on riker: Firefox → screen 1, workspace 10). Also
+  after login: every "go to it" app that starts at login is in front on its screen (two on one screen: the last rule
+  wins), and a line under the rules says what each screen shows after login. No recompile, no password; a restart
+  of Ohmychadwm (Super+Shift+R) doesn't make the screens jump.
+- A separate "When you log in" section (a workspace per screen) was tried and removed the same day: it contradicted
+  the rules (on riker it put the right screen on an empty workspace 10 while Firefox stayed hidden on the left).
 - **Rules for apps that aren't open also work when the menu entry's window class is off.** A Vivaldi rule did
   nothing on riker: its menu entry says `vivaldi`, its window is class `Vivaldi-stable`, instance `vivaldi-stable`,
   and chadwm compares case-sensitively. A rule saved for an app that isn't open is now written twice, on the class
   and on the instance; the page shows it as one rule. Picking the app from the open windows still writes one line
   with the real class.
-- **Login workspaces are set on the right screen.** Right after login chadwm ignores the first pointer movement
+- **The login switch lands on the right screen.** Right after login chadwm ignores the first pointer movement
   (it only records the screen), so both screens were set on the primary one. The helper now goes target screen →
   other screen → target screen.
 - **Every screen says where it stands**: "Screen 2 (HDMI-0, left)", "Screen 1 (DVI-D-0, right, primary)", in the
@@ -71,11 +69,12 @@
   type the same on every layout; configs without the shiftview keys fall back to the number keys, refused when
   `ott_keyboard.keys_match()` says they don't fit the layout (xdotool would add Shift = move the window). It watches
   `xprop -spy _NET_CLIENT_LIST`; window ids seen before are ignored, so Super+Shift+R triggers nothing. With
-  `--login` it first waits until no new window came for 3 s (max 15 s), then sets the start workspaces. It renames
+  `--login` it first waits until no new window came for 3 s (max 15 s), then shows the "go to it" login apps
+  (`login_plan()`). It renames
   itself to `ott-session` via /proc/self/comm, so run.sh's `pgrep -x` and the page find one instance. The page adds
-  `run ott-session --login` to run.sh and starts the helper while either setting is on, and removes both when off.
-  Settings in prefs.json: `placement.goto` (classes) and `placement.start` (connector → workspace, so rearranging
-  screens doesn't swap them). Tested on riker: start workspaces, go to it, no jump on Super+Shift+R.
+  `run ott-session --login` to run.sh and starts the helper while a rule has "go to it", and removes both when none has.
+  Setting in prefs.json: `placement.goto` (rule names). Tested on riker: login switch, go to it, no jump on
+  Super+Shift+R.
 - Package recipe: `xdotool` and `xorg-xprop` are dependencies now (xdotool was optional).
 - `ott_placement.rules()` merges a class line and an instance line with the same name and settings into one rule
   (`both`); `matches()` mirrors chadwm's `applyrules()` (case-sensitive substring on class/instance) and

@@ -1,8 +1,8 @@
-"""ott-session: at login, show each screen's start workspace; later, go to an app's workspace when it opens.
+"""ott-session: go to an app's screen and workspace when it opens, also for the apps that start at login.
 
 chadwm has no way for another program to switch workspaces, so this does what a person does: put the pointer on the
 screen (chadwm makes that screen the active one) and press that workspace's key with xdotool. Settings come from
-prefs.json ("placement": {"goto": [classes], "start": {connector: workspace}}), the rules from config.def.h.
+prefs.json ("placement": {"goto": [rule names]}), the rules from config.def.h.
 Started by a run.sh line (`ott-session --login`) or by the App placement page; one instance per session.
 """
 
@@ -30,9 +30,8 @@ def _say(msg):
 
 
 def settings():
-    """Return (goto classes, {connector: start workspace}) from prefs.json."""
-    p = ott_config.load_prefs().get("placement") or {}
-    return set(p.get("goto") or []), {k: int(v) for k, v in (p.get("start") or {}).items()}
+    """Return the names of the rules with "go to it when it opens", from prefs.json."""
+    return set((ott_config.load_prefs().get("placement") or {}).get("goto") or [])
 
 
 def workspace_keys(config_text):
@@ -177,30 +176,29 @@ def _settle(seen):
     return seen
 
 
-def login_targets(start, goto, open_names, rules, boxes):
-    """Return [(connector, workspace)] to show at login: the chosen start workspaces, plus the workspace of every
-    "go to it" app that opened at login, on a screen that has no start workspace of its own (that one wins)."""
-    targets = {c: w for c, w in start.items() if c in boxes and 1 <= w <= 10}
+def login_plan(goto, names, rules, boxes):
+    """Return [(connector, workspace, rule name)]: what each screen shows after login. Every "go to it" rule among
+    names (apps that opened at login) brings its workspace to the front; two on one screen: the last rule wins."""
     by_number = {b[0]: c for c, b in boxes.items()}
+    plan = {}
     for rule in rules:
-        if rule["class"] not in goto or rule["class"] not in open_names or not rule["workspace"]:
-            continue
-        connector = by_number.get(max(rule["monitor"], 0))  # "current screen" is the primary one at login
-        if connector and connector not in targets:
-            targets[connector] = rule["workspace"]
-    return sorted(targets.items(), key=lambda item: boxes[item[0]][0])
+        if rule["class"] in goto and rule["class"] in names and rule["workspace"]:
+            connector = by_number.get(max(rule["monitor"], 0))  # "current screen" is the primary one at login
+            if connector:
+                plan[connector] = (rule["workspace"], rule["class"])
+    return [(c, w, n) for c, (w, n) in sorted(plan.items(), key=lambda item: boxes[item[0]][0])]
 
 
-def show_login_workspaces(start, goto):
+def show_login_workspaces(goto):
     """Show the login workspaces on every screen, then put the pointer back where it was."""
     go, boxes = _switcher(), screen_boxes()
     if go is None:
         return
     rules = ott_placement.rules(ott_chadwm.read_config())
     open_names = {r["class"] for r in (_rule_for(rules, *_wm_names(wid)) for wid in _client_ids()) if r}
-    targets = login_targets(start, goto, open_names, rules, boxes)
+    plan = login_plan(goto, open_names, rules, boxes)
     where = subprocess.run(["xdotool", "getmouselocation", "--shell"], capture_output=True, text=True).stdout
-    for connector, workspace in targets:
+    for connector, workspace, _name in plan:
         _select_screen(boxes[connector], boxes)
         go(workspace)
         _say(f"{connector} shows workspace {workspace}")
@@ -231,7 +229,7 @@ def watch(seen):
     for line in spy.stdout:
         ids = set(re.findall(r"0x[0-9a-f]+", line.partition("#")[2]))
         new, seen = ids - seen, seen | ids  # ids survive Super+Shift+R, so a restart triggers nothing
-        goto = settings()[0]
+        goto = settings()
         if not new or not goto:
             continue
         rules = ott_placement.rules(ott_chadwm.read_config())
@@ -248,7 +246,7 @@ def _already_running():
 
 
 def main():
-    """Run once per session: start workspaces at login (--login), then watch for "go to it" apps."""
+    """Run once per session: at login (--login) show the "go to it" login apps, then watch for new windows."""
     try:
         with open("/proc/self/comm", "w") as f:
             f.write(NAME)  # so run.sh's `pgrep -x` and the page find it under its own name, not python3
@@ -262,10 +260,10 @@ def main():
     seen = _client_ids()
     if "--login" in sys.argv:
         seen = _settle(seen)
-        goto, start = settings()
-        if start or goto:
-            show_login_workspaces(start, goto)
-    watch(seen)  # cheap; the page stops this helper when neither setting is on
+        goto = settings()
+        if goto:
+            show_login_workspaces(goto)
+    watch(seen)  # cheap; the page stops this helper when no rule has "go to it"
 
 
 if __name__ == "__main__":

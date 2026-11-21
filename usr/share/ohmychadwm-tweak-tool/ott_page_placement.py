@@ -41,23 +41,23 @@ def _mode_labels():
 SESSION_COMMAND = "ott-session --login"
 
 
-def placement_prefs():
-    """Return (goto classes, {connector: start workspace}) as saved in prefs.json."""
+def goto_rules():
+    """Return the names of the rules with "go to it when it opens"."""
     return ott_session.settings()
 
 
-def save_placement_prefs(goto, start):
-    """Save the two settings and keep the login helper's run.sh line and process in step with them."""
-    ott_config.update_prefs({"placement": {"goto": sorted(goto), "start": start}})
+def save_goto(goto):
+    """Save the "go to it" rules and keep the helper's run.sh line and process in step with them."""
+    ott_config.update_prefs({"placement": {"goto": sorted(goto)}})
     text = ott_startup.read()
     entry = next((e for e in ott_startup.entries(text) if e.command == SESSION_COMMAND), None)
-    if goto or start:
+    if goto:
         if entry is None:
             ott_startup.write(ott_startup.add(text, SESSION_COMMAND))
         elif not entry.enabled:
             ott_startup.write(ott_startup.set_enabled(text, SESSION_COMMAND, True))
         if subprocess.run(["pgrep", "-x", ott_session.NAME], capture_output=True).returncode != 0:
-            # without --login: no start workspaces now, those wait for the next login
+            # without --login: the login apps are already open
             subprocess.Popen([sys.executable, os.path.join(os.path.dirname(__file__), "ott_session.py")],
                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     else:
@@ -173,8 +173,7 @@ class PlacementPage:
         grid.attach(self._chk_login, 1, 4, 1, 1)
         self._chk_goto = Gtk.CheckButton(label=_("Go to it when it opens"))
         self._chk_goto.set_tooltip_text(_("Switches to its screen and workspace when the app opens a window, so it "
-                                          "is in front of you. Also after you log in, unless you chose a workspace "
-                                          "for that screen under “When you log in”."))
+                                          "is in front of you; also after you log in when it starts at login."))
         grid.attach(self._chk_goto, 1, 5, 1, 1)
         self._dd_app.connect("notify::selected", lambda _dd, _pspec: self._sync_login())
         self.widget.append(grid)
@@ -198,20 +197,11 @@ class PlacementPage:
         self.widget.append(muted(_("Screens are numbered the way Ohmychadwm counts them: the primary screen is "
                                    "screen 1, wherever it stands, so look at left and right. Rearranging your "
                                    "screens on the Displays page can change the numbers.")))
+        if not can_switch():
+            self.widget.append(warning(_("Your workspace keys don't match your keyboard layout, so “Go to it when it "
+                                         "opens” can't switch workspaces for you. Fix it on the Keyboard page.")))
         self._status = status_label()
         self.widget.append(self._status)
-
-        self.widget.append(section(_("When you log in")))
-        self.widget.append(muted(_("The workspace each screen shows after you log in, once the apps that start at "
-                                   "login have opened. Left on Workspace 1, a screen shows the app that has “Go to "
-                                   "it when it opens”; a workspace you choose here wins.")))
-        if not can_switch():
-            self.widget.append(warning(_("Your workspace keys don't match your keyboard layout, so the tool can't "
-                                         "switch workspaces for you. Fix it on the Keyboard page.")))
-        self._start_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self.widget.append(self._start_box)
-        self._start_status = status_label()
-        self.widget.append(self._start_status)
         self._show_rules()
         self._load()
 
@@ -232,43 +222,14 @@ class PlacementPage:
                for num, name, size, place in self._monitors]))
         self._sync_login()
         self._show_rules()
-        self._show_start()
-
-    def _show_start(self):
-        clear(self._start_box)
-        start = placement_prefs()[1]
-        grid = settings_grid()
-        self._start_dds = {}
-        for row, (num, name, _size, place) in enumerate(self._monitors):
-            dd = Gtk.DropDown.new_from_strings([_("Workspace {n}").format(n=n) for n in ott_placement.WORKSPACES])
-            dd.set_selected(start.get(name, 1) - 1)
-            dd.set_hexpand(True)
-            self._start_dds[name] = dd
-            grid.attach(row_label(_first_upper(screen_name(num, name, place))), 0, row, 1, 1)
-            grid.attach(dd, 1, row, 1, 1)
-        self._start_box.append(grid)
-        save = Gtk.Button(label=_("Save"))
-        save.set_halign(Gtk.Align.END)
-        save.connect("clicked", self._on_save_start)
-        self._start_box.append(save)
-
-    def _on_save_start(self, _widget):
-        goto, _old = placement_prefs()
-        start = {name: dd.get_selected() + 1 for name, dd in self._start_dds.items() if dd.get_selected() > 0}
-        try:
-            save_placement_prefs(goto, start)
-        except OSError as e:
-            set_status(self._start_status, _("Could not save: {error}").format(error=e), error=True)
-            return
-        set_status(self._start_status, _("Saved. The screens show these workspaces from your next login."))
 
     def _set_goto(self, cls, on):
         """Save cls's "go to it" flag; return a sentence for the status, or ''."""
-        goto, start = placement_prefs()
+        goto = goto_rules()
         if (cls in goto) == on:
             return ""
         try:
-            save_placement_prefs(goto | {cls} if on else goto - {cls}, start)
+            save_goto(goto | {cls} if on else goto - {cls})
         except OSError as e:
             return " " + _("Could not save: {error}").format(error=e)
         return " " + (_("You go there when it opens.") if on else _("It no longer takes you there."))
@@ -291,7 +252,7 @@ class PlacementPage:
         if not self._choices:
             return
         cls, _title, _now, command = self._choices[self._dd_app.get_selected()]
-        self._chk_goto.set_active(cls in placement_prefs()[0])
+        self._chk_goto.set_active(cls in goto_rules())
         entry = self._login_entries().get(command) if command else None
         self._chk_login.set_sensitive(command is not None)
         self._chk_login.set_active(bool(entry and entry.enabled))
@@ -312,7 +273,7 @@ class PlacementPage:
             self._rules_box.append(muted(_("Rules now. They move an app's window when it opens; only the ones marked "
                                            "“starts at login” open by themselves.")))
         login = {c for c, e in self._login_entries().items() if e.enabled}
-        goto = placement_prefs()[0]
+        goto = goto_rules()
         for rule in rules:
             row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
             text = summary(rule, self._monitors, rule["class"] in goto)
@@ -335,6 +296,14 @@ class PlacementPage:
             else:
                 label.set_tooltip_text(_("Written by hand in config.def.h: change it there."))
             self._rules_box.append(row)
+        starts = {r["class"] for r in rules if self._command_for(r["class"]) in login}
+        boxes = {name: (num,) for num, name, _size, _place in self._monitors}
+        places = {name: (num, place) for num, name, _size, place in self._monitors}
+        plan = ott_session.login_plan(goto, starts, rules, boxes)
+        if plan:
+            shown = " · ".join(_("{screen} shows {app} (workspace {n})").format(
+                screen=screen_name(places[c][0], c, places[c][1]), app=name, n=w) for c, w, name in plan)
+            self._rules_box.append(muted(_("After you log in: {screens}.").format(screens=shown)))
 
     def _on_save(self, _widget):
         if not self._choices:
@@ -372,7 +341,7 @@ class PlacementPage:
         self._dd_screen.set_selected(screen)
         self._dd_workspace.set_selected(rule["workspace"] or 0)
         self._dd_mode.set_selected(list(_mode_labels()).index(rule["mode"]))
-        self._chk_goto.set_active(cls in placement_prefs()[0])
+        self._chk_goto.set_active(cls in goto_rules())
         self._sync_login()
         set_status(self._status, _("The rule for {name} is in the form: change it, then press Save rule.").format(
             name=cls))
