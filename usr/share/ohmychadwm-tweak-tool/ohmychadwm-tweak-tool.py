@@ -37,10 +37,15 @@ def _gresource_theme(name):
                               for d in _THEME_DIRS)
 
 
+def _forced_theme():
+    theme, active = ott_env.read()
+    return theme if active and theme else None
+
+
 def _follow_forced_theme():
     # the session's GTK_THEME is what /etc/environment said at login; a restart after a look must use today's line
-    theme, active = ott_env.read()
-    if active and theme:
+    theme = _forced_theme()
+    if theme:
         os.environ["GTK_THEME"] = theme
     else:
         os.environ.pop("GTK_THEME", None)
@@ -82,7 +87,15 @@ class TweakApp(Gtk.Application):
             self._interface.connect("changed::color-scheme", lambda *_args: self._apply_color_scheme())
             self._interface.connect("changed::gtk-theme", lambda *_args: self._on_theme_changed())
             self._theme_at_start = self._interface.get_string("gtk-theme")
+        # GTK_THEME beats gtk-theme and prefer-dark: an Apply that only rewrites that line (Style Dark when
+        # gsettings already says adw-gtk3-dark) would leave this window on the old, light theme
+        self._env_monitor = Gio.File.new_for_path(ott_env.ENV_FILE).monitor_file(Gio.FileMonitorFlags.NONE, None)
+        self._env_monitor.connect("changed", lambda *_args: self._on_forced_theme_changed())
         self._apply_color_scheme(starting=True)
+
+    def _on_forced_theme_changed(self):
+        if _forced_theme() != os.environ.get("GTK_THEME"):
+            self._restart_soon()
 
     def _apply_color_scheme(self, starting=False):
         scheme = self._interface.get_string("color-scheme") if self._interface else "prefer-dark"

@@ -53,6 +53,9 @@
   workspace 10 started at login, but you stayed on workspace 1). A replaced run.sh had lost the `ott-session --login`
   line, and saving a rule again did not put it back while the "go to it" choice was unchanged. Every Save rule now
   puts it back.
+- **Style Dark no longer leaves the tweak tool itself light** (HQ PC): after an Apply that only changed the
+  system-wide theme line (`GTK_THEME` in `/etc/environment`), the open window kept the old light theme. It now
+  restarts itself on the same page, as it already did when the GTK theme changed.
 
 ### Technical Details
 - `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /
@@ -91,12 +94,18 @@
   this window, matched to `xrandr --listmonitors` by connector name.
 - `_set_goto()` returned early when the flag was unchanged, so `save_goto()`, the only code that adds the helper's
   run.sh line, never ran; it now always calls `save_goto()` and only skips the status sentence.
+- The app `execv`s itself only when gsettings `gtk-theme` changed. When it already said `adw-gtk3-dark` and an
+  Apply only rewrote `GTK_THEME="adw-gtk3"` to `adw-gtk3-dark`, no restart came, and the process kept
+  `GTK_THEME=adw-gtk3`: GTK ignores prefer-dark when `GTK_THEME` is set, so the window stayed light. A
+  `Gio.FileMonitor` on `/etc/environment` now calls `_restart_soon()` when the active line differs from the
+  process's `GTK_THEME`; the restart still waits for `_busy` and pkexec, and `_follow_forced_theme()` picks up the new line.
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_placement.py` (new)
 - `usr/share/ohmychadwm-tweak-tool/ott_page_placement.py` (new)
 - `usr/share/ohmychadwm-tweak-tool/ott_gui.py`
 - `usr/share/ohmychadwm-tweak-tool/ott_search.py`
+- `usr/share/ohmychadwm-tweak-tool/ohmychadwm-tweak-tool.py`
 - `po/*.po`, `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
 - `CLAUDE.md`
 
