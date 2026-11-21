@@ -18,6 +18,8 @@
   **Removing the last rule no longer fails to compile** (riker): C forbids an empty `rules[]`, so the last Remove
   leaves one placeholder rule (class `ohmychadwm-no-rules`, matches no window). The page hides it and the next saved
   rule replaces it. The failed compile had already put the old file back, so nothing broke.
+  Every rule now names its screen, also when it has none: "When Alacritty opens: the screen you are working on ·
+  workspace 4". A rule that only sets a screen is no longer called "no effect".
 
 ### Technical Details
 - `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /

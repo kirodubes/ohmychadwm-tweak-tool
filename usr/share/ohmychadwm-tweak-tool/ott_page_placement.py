@@ -30,12 +30,14 @@ def _mode_labels():
 
 
 def summary(rule, monitors):
-    """Return one line of what a rule does, e.g. "When firefox opens: screen 2 (HDMI-1) · workspace 10"."""
-    parts = []
+    """Return one line of what a rule does, e.g. "When firefox opens: screen 2 (HDMI-0) · workspace 10"."""
     if rule["monitor"] >= 0:
         name = next((n for num, n, _size in monitors if num == rule["monitor"]), None)
-        parts.append(_("screen {n} ({name})").format(n=rule["monitor"] + 1, name=name) if name
-                     else _("screen {n}, not connected now").format(n=rule["monitor"] + 1))
+        screen = (_("screen {n} ({name})").format(n=rule["monitor"] + 1, name=name) if name
+                  else _("screen {n}, not connected now").format(n=rule["monitor"] + 1))
+    else:
+        screen = _("the screen you are working on")
+    parts = []
     if rule["workspace"]:
         parts.append(_("workspace {n}").format(n=rule["workspace"]))
     elif rule["workspace"] is None:
@@ -46,9 +48,10 @@ def summary(rule, monitors):
         parts.append(_("own floating settings"))
     if rule["instance"] or rule["title"]:
         parts.append(_("only windows named “{name}”").format(name=rule["title"] or rule["instance"]))
-    if not parts:
+    if not parts and rule["monitor"] < 0:
         return _("When {app} opens: no effect, it opens like any other app").format(app=rule["class"] or "*")
-    return _("When {app} opens: {placement}").format(app=rule["class"] or "*", placement=" · ".join(parts))
+    return _("When {app} opens: {placement}").format(app=rule["class"] or "*",
+                                                     placement=" · ".join([screen] + parts))
 
 
 class PlacementPage:
