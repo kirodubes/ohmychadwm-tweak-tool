@@ -171,6 +171,8 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   the file on disk, and put the old file back on a failed compile/install. No separate Add + Apply: on riker
   (2026-11-21) the choices were made and Apply pressed without Add, which said "Nothing changed". Classes go into C source: `CLASS_OK` only.
   Open windows come from `xprop` (`_NET_CLIENT_LIST`, WM_CLASS); `xorg-xprop` is pulled in by at-spi2-core.
+  C forbids an empty `rules[]`: `remove_rule()` leaves `ott_placement.PLACEHOLDER` when the last rule goes, `rules()`
+  hides it and `set_rule()` drops it. Never write an empty table.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.

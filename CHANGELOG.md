@@ -15,6 +15,9 @@
   The app list leaves out python3 windows: that class is every Python GTK app at once, this one included.
   Remove on a rule that is already gone now says so and redraws the list (it said "This rule is already there").
   A spinner turns next to Save rule while Ohmychadwm recompiles, and the status says the password window comes next.
+  **Removing the last rule no longer fails to compile** (riker): C forbids an empty `rules[]`, so the last Remove
+  leaves one placeholder rule (class `ohmychadwm-no-rules`, matches no window). The page hides it and the next saved
+  rule replaces it. The failed compile had already put the old file back, so nothing broke.
 
 ### Technical Details
 - `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /

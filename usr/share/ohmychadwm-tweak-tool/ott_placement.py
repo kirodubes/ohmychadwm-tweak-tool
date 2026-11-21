@@ -21,6 +21,11 @@ _STR = r'(NULL|"[^"\\]*")'
 _ENTRY = re.compile(rf"^\s*\{{\s*{_STR}\s*,\s*{_STR}\s*,\s*{_STR}\s*,\s*([^,{{}}]+?)\s*,"
                     r"\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*(-?\d+)\s*\}\s*,?\s*(?://.*|/\*.*\*/)?\s*$")
 _SHIFT = re.compile(r"^\(?\s*1\s*<<\s*(\d)\s*\)?$")
+_LIVE_ENTRY = re.compile(r"^\s*\{")  # any rule line, also hand-written ones _ENTRY can't read
+# C forbids an empty rules[]: when the last rule goes, this one stays. No window has this class; the page hides it.
+PLACEHOLDER = "ohmychadwm-no-rules"
+_PLACEHOLDER_LINE = (f'    {{ "{PLACEHOLDER}", NULL, NULL, 0, 0, 0, -1 }},'
+                     " /* keeps rules[] non-empty: C forbids an empty array */\n")
 
 
 def _unquote(s):
@@ -62,6 +67,8 @@ def rules(text):
         if not m:
             continue
         cls, instance, title = (_unquote(m[i]) for i in (1, 2, 3))
+        if cls == PLACEHOLDER:
+            continue
         workspace, mode = _workspace(m[4].strip()), _mode(int(m[5]), int(m[6]))
         out.append({
             "class": cls, "instance": instance, "title": title, "tags": m[4].strip(),
@@ -81,11 +88,12 @@ def format_rule(cls, workspace, monitor, mode):
 
 
 def _without(lines, start, end, cls):
-    # plain rules for cls (no instance, no title); rules that also match an instance or a title are kept
+    # plain rules for cls (no instance, no title) and the placeholder; rules that also match an instance or a
+    # title are kept
     keep = []
     for line in lines[start + 1:end]:
         m = _ENTRY.match(line)
-        if m and _unquote(m[1]) == cls and _unquote(m[2]) is None and _unquote(m[3]) is None:
+        if m and _unquote(m[1]) in (cls, PLACEHOLDER) and _unquote(m[2]) is None and _unquote(m[3]) is None:
             continue
         keep.append(line)
     return keep
@@ -107,7 +115,10 @@ def remove_rule(text, cls):
     """Return text without the plain rules (no instance, no title) for cls."""
     lines = text.splitlines(keepends=True)
     start, end = _array(lines)
-    return "".join(lines[:start + 1] + _without(lines, start, end, cls) + lines[end:])
+    body = _without(lines, start, end, cls)
+    if not any(_LIVE_ENTRY.match(line) for line in body):
+        body.append(_PLACEHOLDER_LINE)
+    return "".join(lines[:start + 1] + body + lines[end:])
 
 
 _MONITOR = re.compile(r"^\s*(\d+):\s+\+?\*?(\S+)\s+(\d+)/\d+x(\d+)/\d+\+(-?\d+)\+(-?\d+)\s")
