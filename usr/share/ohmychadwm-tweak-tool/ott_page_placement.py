@@ -27,7 +27,7 @@ from ott_i18n import _  # noqa: E402
 
 
 def _mode_labels():
-    return {"tiled": _("Tiled, as usual"), "float": _("Floating"), "center": _("Floating, in the middle")}
+    return {"tiled": _("Tiled"), "float": _("Floating"), "center": _("Floating, in the middle")}
 
 
 def summary(rule, monitors):
@@ -37,12 +37,12 @@ def summary(rule, monitors):
         screen = (_("screen {n} ({name})").format(n=rule["monitor"] + 1, name=name) if name
                   else _("screen {n}, not connected now").format(n=rule["monitor"] + 1))
     else:
-        screen = _("the screen you are working on")
+        screen = _("current screen")
     parts = []
     if rule["workspace"]:
         parts.append(_("workspace {n}").format(n=rule["workspace"]))
     elif rule["workspace"] == 0:
-        parts.append(_("the workspace you are on"))
+        parts.append(_("current workspace"))
     else:
         parts.append(_("workspaces {mask}").format(mask=rule["tags"]))
     if rule["mode"] is not None:
@@ -94,9 +94,9 @@ class PlacementPage:
         self._dd_app.set_enable_search(True)
         self._dd_app.set_search_match_mode(Gtk.StringFilterMatchMode.SUBSTRING)
         self._dd_app.set_expression(Gtk.PropertyExpression.new(Gtk.StringObject, None, "string"))
-        self._dd_screen = Gtk.DropDown.new_from_strings([_("The screen you are working on")])
+        self._dd_screen = Gtk.DropDown.new_from_strings([_("Current screen")])
         self._dd_workspace = Gtk.DropDown.new_from_strings(
-            [_("The workspace you are on")] + [str(n) for n in ott_placement.WORKSPACES])
+            [_("Current workspace")] + [str(n) for n in ott_placement.WORKSPACES])
         self._dd_mode = Gtk.DropDown.new_from_strings(list(_mode_labels().values()))
         for row, (label, dd) in enumerate(((_("App"), self._dd_app), (_("Screen"), self._dd_screen),
                                            (_("Workspace"), self._dd_workspace), (_("Open as"), self._dd_mode))):
@@ -143,8 +143,8 @@ class PlacementPage:
         self._dd_app.set_model(Gtk.StringList.new(labels or [_("No apps found: open the app, then press Refresh")]))
         current = self._current_screen()
         self._dd_screen.set_model(Gtk.StringList.new(
-            [_("The screen you are working on (now screen {n}: {name})").format(n=current[0] + 1, name=current[1])
-             if current else _("The screen you are working on")]
+            [_("Current screen (now screen {n}: {name})").format(n=current[0] + 1, name=current[1])
+             if current else _("Current screen")]
             + [_("Screen {n}: {name} ({size})").format(n=num + 1, name=name, size=size)
                for num, name, size in self._monitors]))
         self._sync_login()
@@ -183,7 +183,7 @@ class PlacementPage:
             self._rules_box.append(muted(str(e)))
             return
         if not rules:
-            self._rules_box.append(muted(_("No rules yet: apps open on the screen and workspace you are working on.")))
+            self._rules_box.append(muted(_("No rules yet: apps open on the current screen and workspace.")))
         else:
             self._rules_box.append(muted(_("Rules now. They move an app's window when it opens; only the ones marked "
                                            "“starts at login” open by themselves.")))

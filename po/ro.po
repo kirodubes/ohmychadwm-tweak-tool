@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 06:37+0100\n"
+"POT-Creation-Date: 2026-11-21 06:39+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Romanian\n"
@@ -1212,7 +1212,7 @@ msgid "Floating, in the middle"
 msgstr "o temă de pictograme"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:30
-msgid "Tiled, as usual"
+msgid "Tiled"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:37
@@ -1226,7 +1226,7 @@ msgid "screen {n}, not connected now"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:40
-msgid "the screen you are working on"
+msgid "current screen"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:43
@@ -1235,7 +1235,7 @@ msgid "workspace {n}"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:45
-msgid "the workspace you are on"
+msgid "current workspace"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:47
@@ -1276,11 +1276,11 @@ msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:97
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:147
-msgid "The screen you are working on"
+msgid "Current screen"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:99
-msgid "The workspace you are on"
+msgid "Current workspace"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:101
@@ -1342,7 +1342,7 @@ msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:146
 #, python-brace-format
-msgid "The screen you are working on (now screen {n}: {name})"
+msgid "Current screen (now screen {n}: {name})"
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:148
@@ -1361,7 +1361,7 @@ msgid "No start command found for this app: add it on the Startup apps page."
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:186
-msgid "No rules yet: apps open on the screen and workspace you are working on."
+msgid "No rules yet: apps open on the current screen and workspace."
 msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:188
