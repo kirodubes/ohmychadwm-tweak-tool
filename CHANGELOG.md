@@ -56,6 +56,7 @@
 - **Style Dark no longer leaves the tweak tool itself light** (HQ PC): after an Apply that only changed the
   system-wide theme line (`GTK_THEME` in `/etc/environment`), the open window kept the old light theme. It now
   restarts itself on the same page, as it already did when the GTK theme changed.
+  After that restart it was still light (HQ PC, adw-gtk3-dark): it now asks GTK for the dark colour scheme itself.
 
 ### Technical Details
 - `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /
@@ -99,6 +100,10 @@
   `GTK_THEME=adw-gtk3`: GTK ignores prefer-dark when `GTK_THEME` is set, so the window stayed light. A
   `Gio.FileMonitor` on `/etc/environment` now calls `_restart_soon()` when the active line differs from the
   process's `GTK_THEME`; the restart still waits for `_busy` and pkexec, and `_follow_forced_theme()` picks up the new line.
+- adw-gtk3-dark's `gtk-4.0/` is byte-identical to adw-gtk3's: one libadwaita stylesheet that turns dark only on
+  `@media (prefers-color-scheme: dark)`, which GTK 4.24 takes from `gtk-interface-color-scheme`. `prefer-dark=true`
+  read from `settings.ini` leaves that DEFAULT (light), and `_apply_color_scheme()` returned early because prefer-dark
+  was already True. It now sets `gtk_interface_color_scheme` to DARK/LIGHT directly (checked under Xvfb).
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_placement.py` (new)

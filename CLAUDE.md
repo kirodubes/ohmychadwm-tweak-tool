@@ -166,6 +166,8 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   restart can cut it off. Test it with the app started inside the session: started over SSH, pkexec has no agent.
   The `GTK_THEME` line in `/etc/environment` also triggers it (FileMonitor): GTK ignores prefer-dark while that env
   var is set, so an Apply that only rewrites the line (Style Dark) left the window light until the restart was added.
+- **Light/dark = `gtk_interface_color_scheme`, not `gtk_application_prefer_dark_theme`.** adw-gtk3(-dark) is one
+  stylesheet with `@media (prefers-color-scheme: dark)`; prefer-dark from settings.ini leaves the scheme DEFAULT (light).
 - **App placement** (2026-11-21) edits the `rules[]` table in place, no managed block: the shipped Gimp/Firefox
   rules are the user's to change too. It replaces or removes only *plain* rules (instance and title `NULL`) for the
   exact class; rules with an instance, a title or a tag mask other than `0`/`1 << n` are listed, marked as hand

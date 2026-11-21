@@ -100,15 +100,17 @@ class TweakApp(Gtk.Application):
     def _apply_color_scheme(self, starting=False):
         scheme = self._interface.get_string("color-scheme") if self._interface else "prefer-dark"
         settings = Gtk.Settings.get_default()
-        dark = scheme != "prefer-light"
+        want = Gtk.InterfaceColorScheme.LIGHT if scheme == "prefer-light" else Gtk.InterfaceColorScheme.DARK
         log.debug_print(f"color-scheme {scheme}")
-        if dark == settings.props.gtk_application_prefer_dark_theme:
+        # set the scheme itself: prefer-dark=true read from settings.ini leaves it DEFAULT (light), and
+        # adw-gtk3(-dark) only turns dark on @media (prefers-color-scheme: dark)
+        if want == settings.props.gtk_interface_color_scheme:
             return
         if not starting and _gresource_theme(settings.props.gtk_theme_name):
             # GTK 4.24 drops an Arc theme's stylesheet when light/dark changes in an open window: see-through
             self._restart_soon()
             return
-        settings.props.gtk_application_prefer_dark_theme = dark
+        settings.props.gtk_interface_color_scheme = want
 
     def _on_theme_changed(self):
         # an open GTK 4 window can't take a new theme reliably (Arc goes see-through); a fresh start always can
