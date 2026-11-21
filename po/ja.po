@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 19:18+0100\n"
+"POT-Creation-Date: 2026-11-21 05:59+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Japanese\n"
@@ -20,6 +20,7 @@ msgstr ""
 #: usr/share/ohmychadwm-tweak-tool/ott_apply.py:53
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:152
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:199
 msgid "Recompiling Ohmychadwm…"
 msgstr "Ohmychadwm を再コンパイルしています…"
 
@@ -121,90 +122,90 @@ msgid "Layout kept and saved to {path}, so every login uses it."
 msgstr ""
 "レイアウトを保持し、{path} に保存しました。毎回のログイン時に使用されます。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:35
 msgid "best value — almost all goes to the project"
 msgstr "おすすめ：ほぼ全額がプロジェクトに届きます"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:36
 msgid "buy a coffee — one-off tip"
 msgstr "コーヒーをおごる：1 回きりのチップ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
 msgid "membership tiers + perks"
 msgstr "特典付きのメンバーシッププラン"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:38
 msgid "YouTube membership"
 msgstr "YouTube メンバーシップ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:38
 msgid "join on YouTube"
 msgstr "YouTube でメンバーになる"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:38
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:39
 msgid "direct one-off"
 msgstr "直接の 1 回きりの寄付"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
 msgid "restart Ohmychadwm from the app"
 msgstr "アプリから Ohmychadwm を再起動"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:237
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:239
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:35
 msgid "Mouse & touchpad"
 msgstr "マウスとタッチパッド"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:46
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:240
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:36
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:37
 msgid "Keyboard"
 msgstr "キーボード"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:46
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:34
 msgid "Displays"
 msgstr "ディスプレイ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
 msgid "edit the saved display layout by hand"
 msgstr "保存済みのディスプレイレイアウトを手動で編集"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:49
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:237
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:215
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:32
 msgid "Wallpaper"
 msgstr "壁紙"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:49
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:240
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:242
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:40
 msgid "Default apps"
 msgstr "既定のアプリ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:51
 msgid "rebuild Ohmychadwm"
 msgstr "Ohmychadwm を再ビルド"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:51
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:242
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:41
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:52
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:244
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:42
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:43
 msgid "Update & News"
 msgstr "アップデートとニュース"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:60
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:67
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:61
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:68
 msgid "Support Kiro"
 msgstr "Kiro を支援"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:71
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:72
 msgid ""
 "Kiro and its tools are built by one person, for the community — and kept "
 "free. If the Ohmychadwm Tweak Tool saves you time, a little support keeps "
@@ -214,115 +215,115 @@ msgstr ""
 "す。Ohmychadwm Tweak Tool が時間の節約に役立ったら、少しのご支援が開発の継続"
 "につながります。ご利用いただきありがとうございます。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:90
 msgid "Close"
 msgstr "閉じる"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
 #, python-brace-format
 msgid "System ({language})"
 msgstr "システム（{language}）"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:104
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
 msgid "Language"
 msgstr "言語"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:109
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:110
 #: usr/share/ohmychadwm-tweak-tool/ott_page_update.py:42
 msgid "Restart now"
 msgstr "今すぐ再起動"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:116
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:117
 msgid "Saved. The app shows the new language when it starts again."
 msgstr "保存しました。次回の起動時に新しい言語で表示されます。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:136
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:137
 #: po/ohmychadwm-tweak-tool.desktop.in:2
 msgid "Ohmychadwm Tweak Tool"
 msgstr "Ohmychadwm Tweak Tool"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:139
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:140
 msgid "♥ Support"
 msgstr "♥ 支援する"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:140
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
 msgid "Support Kiro's development"
 msgstr "Kiro の開発を支援"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
 msgid "Quit"
 msgstr "終了"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:183
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:184
 msgid "Your desktop"
 msgstr "お使いのデスクトップ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
 msgid "Session"
 msgstr "セッション"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
 msgid "not an Ohmychadwm session — changes show there"
 msgstr "Ohmychadwm のセッションではありません。変更はそちらに反映されます。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
 msgid "Config"
 msgstr "設定ファイル"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
 msgid "missing — log into Ohmychadwm once first"
 msgstr "見つかりません。先に Ohmychadwm に一度ログインしてください。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:270
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Bar theme"
 msgstr "バーのテーマ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
 msgid "none"
 msgstr "なし"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
 msgid "Your own bar build"
 msgstr "独自のバーのビルド"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:191
 msgid "none yet — the packaged Ohmychadwm runs"
 msgstr "まだありません。パッケージ版の Ohmychadwm が実行されています。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:191
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
 msgid "Display layout"
 msgstr "ディスプレイのレイアウト"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:193
 msgid "Virtual machine"
 msgstr "仮想マシン"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:193
 msgid "no"
 msgstr "いいえ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:194
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:195
 msgid "Tools"
 msgstr "ツール"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:196
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:197
 #, python-brace-format
 msgid "found — {why}"
 msgstr "検出しました：{why}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:196
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:197
 #, python-brace-format
 msgid "missing — {why}"
 msgstr "見つかりません：{why}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:207
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:208
 #, python-brace-format
 msgid "This section could not load: {error}"
 msgstr "このセクションを読み込めませんでした：{error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:87
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
@@ -331,32 +332,40 @@ msgstr "このセクションを読み込めませんでした：{error}"
 msgid "Themes"
 msgstr "テーマ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
 msgid "Look"
 msgstr "外観"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:30
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:31
 msgid "Bar & windows"
 msgstr "バーとウィンドウ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:239
-#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:69
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:37
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:38
+msgid "App placement"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:241
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:39
 msgid "Startup apps"
 msgstr "自動起動アプリ"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:241
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:243
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:40
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:41
 msgid "Keys"
 msgstr "ショートカット"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:243
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:245
 msgid "Status"
 msgstr "状態"
 
@@ -639,6 +648,7 @@ msgstr ""
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:258
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:74
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
 msgid ""
 "~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
@@ -661,6 +671,7 @@ msgstr ""
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:81
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:289
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:105
 msgid "Restart Ohmychadwm now"
 msgstr "今すぐ Ohmychadwm を再起動"
 
@@ -692,12 +703,14 @@ msgid "Applied. It shows at your next Ohmychadwm login."
 msgstr "適用しました。次回の Ohmychadwm ログイン時に反映されます。"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:165
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:238
 #, python-brace-format
 msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
 msgstr ""
 "新しい Ohmychadwm のインストールがキャンセルされたか、失敗しました：{error}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:239
 msgid "Installing the new Ohmychadwm was cancelled or failed."
 msgstr "新しい Ohmychadwm のインストールがキャンセルされたか、失敗しました。"
 
@@ -1184,6 +1197,196 @@ msgstr ""
 msgid "Applied. Apps you open from now on use the new look."
 msgstr "適用しました。これから開くアプリに新しい外観が使われます。"
 
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:29
+#, fuzzy
+msgid "Floating"
+msgstr "フローティングの切り替え"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:29
+#, fuzzy
+msgid "Floating, in the middle"
+msgstr "アイコンテーマ"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:29
+msgid "Tiled, as usual"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:37
+#, python-brace-format
+msgid "screen {n} ({name})"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:38
+#, python-brace-format
+msgid "screen {n}, not connected now"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:40
+#, python-brace-format
+msgid "workspace {n}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:42
+#, python-brace-format
+msgid "workspaces {mask}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:46
+msgid "own floating settings"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:48
+#, fuzzy, python-brace-format
+msgid "only windows named “{name}”"
+msgstr "「{name}」を適用中…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:50
+#, python-brace-format
+msgid "When {app} opens: no effect, it opens like any other app"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:51
+#, python-brace-format
+msgid "When {app} opens: {placement}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:78
+msgid ""
+"Choose on which screen and workspace an app opens, and whether it floats. "
+"Open windows are listed first. Saving a rule recompiles Ohmychadwm (asks "
+"your password); it takes effect the next time the app opens a window."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:85
+msgid "Reading the open windows…"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:131
+msgid "The screen you are working on"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:91
+msgid "The workspace you are on"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:93
+#, fuzzy
+msgid "App"
+msgstr "適用"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:93
+#, fuzzy
+msgid "Screen"
+msgstr "全画面表示"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:94
+msgid "Open as"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:94
+msgid "Workspace"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:102
+msgid "Refresh"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:103
+#, fuzzy
+msgid "Read the open windows and the screens again"
+msgstr "ウィンドウ間と画面端の隙間（ピクセル単位）"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:108
+#, fuzzy
+msgid "Save rule"
+msgstr "保存"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:114
+msgid ""
+"Screens are numbered the way Ohmychadwm counts them: the primary screen is "
+"screen 1. Rearranging your screens on the Displays page can change the "
+"numbers."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:126
+#, python-brace-format
+msgid "{title}  ({window_class}, open now)"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:127
+#, python-brace-format
+msgid "{title}  ({window_class})"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:129
+msgid "No apps found: open the app, then press Refresh"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:132
+#, python-brace-format
+msgid "Screen {n}: {name} ({size})"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:144
+msgid "No rules yet: apps open on the screen and workspace you are working on."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:146
+msgid ""
+"Rules now. They only move a window when you open the app; they never start "
+"it (that is the Startup apps page)."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:155
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
+msgid "Remove"
+msgstr "削除"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:160
+msgid "Written by hand in config.def.h: change it there."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:165
+msgid "No apps found: open the app, then press Refresh."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:172
+#, python-brace-format
+msgid ""
+"Choose a screen, a workspace or floating for {name}: as it is, the rule "
+"would change nothing."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:176
+#, fuzzy, python-brace-format
+msgid "Saved the rule for {name}."
+msgstr "テーマの値を読み込みました。適用を押すと反映されます。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:180
+#, fuzzy, python-brace-format
+msgid "Removed the rule for {name}."
+msgstr "テーマの値を読み込みました。適用を押すと反映されます。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:193
+msgid "This rule is already there."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:212
+#, fuzzy
+msgid "Restart Ohmychadwm to use it."
+msgstr "適用しました。反映するには Ohmychadwm を再起動してください。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:215
+#, fuzzy
+msgid "Press Super+Shift+R to use it."
+msgstr "適用しました。反映するには Super+Shift+R を押してください。"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:217
+#, fuzzy
+msgid "It shows at your next Ohmychadwm login."
+msgstr "適用しました。次回の Ohmychadwm ログイン時に反映されます。"
+
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:34
 msgid ""
 "What Ohmychadwm starts when you log in (the run lines of ~/.config/"
@@ -1205,10 +1408,6 @@ msgstr "ログイン時に起動するコマンド（例：redshift-gtk）"
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:53
 msgid "Add"
 msgstr "追加"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
-msgid "Remove"
-msgstr "削除"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:83
 #, python-brace-format
@@ -1469,11 +1668,11 @@ msgstr ""
 "Variety を起動しました。1 分ほどしてからこのソースを選び直すと、ダウンロード"
 "した壁紙が表示されます。"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:173
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:174
 msgid "Search settings"
 msgstr "設定を検索"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:217
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:218
 msgid "Nothing found."
 msgstr "見つかりませんでした。"
 
@@ -1788,6 +1987,10 @@ msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar
 msgstr ""
 "テーマ;アイコン;カーソル;フォント;外観;gtk;lxappearance;chadwm;ohmychadwm;"
 "バー;隙間;壁紙;ディスプレイ;マウス;タッチパッド;自動起動;ショートカット"
+
+#, fuzzy, python-brace-format
+#~ msgid "Added the rule for {name} — press Apply to use it."
+#~ msgstr "テーマの値を読み込みました。適用を押すと反映されます。"
 
 #~ msgid "Rosé Pine Moon"
 #~ msgstr "Rosé Pine Moon"

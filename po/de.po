@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 19:18+0100\n"
+"POT-Creation-Date: 2026-11-21 05:59+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: German\n"
@@ -20,6 +20,7 @@ msgstr ""
 #: usr/share/ohmychadwm-tweak-tool/ott_apply.py:53
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:121
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:152
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:199
 msgid "Recompiling Ohmychadwm…"
 msgstr "Ohmychadwm wird neu kompiliert…"
 
@@ -122,90 +123,90 @@ msgstr ""
 "Layout beibehalten und unter {path} gespeichert. Es wird bei jeder Anmeldung "
 "verwendet."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:34
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:35
 msgid "best value — almost all goes to the project"
 msgstr "beste Wahl: fast alles geht an das Projekt"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:36
 msgid "buy a coffee — one-off tip"
 msgstr "spendiere einen Kaffee: ein einmaliges Trinkgeld"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:36
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
 msgid "membership tiers + perks"
 msgstr "Mitgliedsstufen mit Extras"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:38
 msgid "YouTube membership"
 msgstr "YouTube-Mitgliedschaft"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:37
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:38
 msgid "join on YouTube"
 msgstr "werde Mitglied auf YouTube"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:38
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:39
 msgid "direct one-off"
 msgstr "direkt, einmalig"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
 msgid "restart Ohmychadwm from the app"
 msgstr "Ohmychadwm in der App neu starten"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:44
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:237
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:239
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:35
 msgid "Mouse & touchpad"
 msgstr "Maus und Touchpad"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:45
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:46
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:240
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:36
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:37
 msgid "Keyboard"
 msgstr "Tastatur"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:46
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
 #: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:34
 msgid "Displays"
 msgstr "Bildschirme"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
 msgid "edit the saved display layout by hand"
 msgstr "Gespeichertes Bildschirmlayout manuell bearbeiten"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:48
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:49
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:237
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:215
 #: usr/share/ohmychadwm-tweak-tool/ott_page_wallpaper.py:34
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:32
 msgid "Wallpaper"
 msgstr "Hintergrund"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:49
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:240
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:242
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:40
 msgid "Default apps"
 msgstr "Standard-Apps"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:51
 msgid "rebuild Ohmychadwm"
 msgstr "Ohmychadwm neu erstellen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:51
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:242
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:41
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:52
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:244
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:42
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:43
 msgid "Update & News"
 msgstr "Aktualisierung und Neuigkeiten"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:60
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:67
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:61
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:68
 msgid "Support Kiro"
 msgstr "Kiro unterstützen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:71
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:72
 msgid ""
 "Kiro and its tools are built by one person, for the community — and kept "
 "free. If the Ohmychadwm Tweak Tool saves you time, a little support keeps "
@@ -216,115 +217,115 @@ msgstr ""
 "eine kleine Unterstützung dabei, die Arbeit fortzusetzen. Schön, dass du "
 "dabei bist."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:90
 msgid "Close"
 msgstr "Schließen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:102
 #, python-brace-format
 msgid "System ({language})"
 msgstr "System ({language})"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:104
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:105
 msgid "Language"
 msgstr "Sprache"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:109
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:110
 #: usr/share/ohmychadwm-tweak-tool/ott_page_update.py:42
 msgid "Restart now"
 msgstr "Jetzt neu starten"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:116
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:117
 msgid "Saved. The app shows the new language when it starts again."
 msgstr "Gespeichert. Die App zeigt die neue Sprache beim nächsten Start."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:136
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:137
 #: po/ohmychadwm-tweak-tool.desktop.in:2
 msgid "Ohmychadwm Tweak Tool"
 msgstr "Ohmychadwm Tweak Tool"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:139
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:140
 msgid "♥ Support"
 msgstr "♥ Unterstützen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:140
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:141
 msgid "Support Kiro's development"
 msgstr "Die Entwicklung von Kiro unterstützen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:143
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:144
 msgid "Quit"
 msgstr "Beenden"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:183
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:184
 msgid "Your desktop"
 msgstr "Dein Desktop"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
 msgid "Session"
 msgstr "Sitzung"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:186
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
 msgid "not an Ohmychadwm session — changes show there"
 msgstr "Keine Ohmychadwm-Sitzung: Änderungen werden dort angezeigt"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
 msgid "Config"
 msgstr "Konfiguration"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:187
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
 msgid "missing — log into Ohmychadwm once first"
 msgstr "Fehlt: Melde dich zuerst einmal bei Ohmychadwm an"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:270
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 msgid "Bar theme"
 msgstr "Leistenthema"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:188
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
 msgid "none"
 msgstr "keins"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:189
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
 msgid "Your own bar build"
 msgstr "Dein eigener Leisten-Build"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:190
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:191
 msgid "none yet — the packaged Ohmychadwm runs"
 msgstr "Noch keines: Das mitgelieferte Ohmychadwm läuft"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:191
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
 msgid "Display layout"
 msgstr "Bildschirmlayout"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:193
 msgid "Virtual machine"
 msgstr "Virtuelle Maschine"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:193
 msgid "no"
 msgstr "Nein"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:194
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:195
 msgid "Tools"
 msgstr "Tools"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:196
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:197
 #, python-brace-format
 msgid "found — {why}"
 msgstr "Gefunden: {why}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:196
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:197
 #, python-brace-format
 msgid "missing — {why}"
 msgstr "Fehlt: {why}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:207
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:208
 #, python-brace-format
 msgid "This section could not load: {error}"
 msgstr "Dieser Bereich konnte nicht geladen werden: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:232
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:87
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
@@ -333,32 +334,40 @@ msgstr "Dieser Bereich konnte nicht geladen werden: {error}"
 msgid "Themes"
 msgstr "Themen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:233
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:27
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:28
 msgid "Look"
 msgstr "Aussehen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:234
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:235
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:51
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:30
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:31
 msgid "Bar & windows"
 msgstr "Leiste und Fenster"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:239
-#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:236
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:69
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:37
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:38
+msgid "App placement"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:241
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:26
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:39
 msgid "Startup apps"
 msgstr "Autostart-Apps"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:241
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:243
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keys.py:26
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:40
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:41
 msgid "Keys"
 msgstr "Tastenkürzel"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:243
+#: usr/share/ohmychadwm-tweak-tool/ott_gui.py:245
 msgid "Status"
 msgstr "Status"
 
@@ -640,6 +649,7 @@ msgstr "Sekunden ohne Aktivität bis zum Ausblenden der Leiste; 0 = nie"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:258
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:74
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:31
 msgid ""
 "~/.config/ohmychadwm is not set up for this user — log into Ohmychadwm once "
@@ -662,6 +672,7 @@ msgstr ""
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:83
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:81
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:289
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:105
 msgid "Restart Ohmychadwm now"
 msgstr "Ohmychadwm jetzt neu starten"
 
@@ -698,12 +709,14 @@ msgstr ""
 "angezeigt."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:165
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:238
 #, python-brace-format
 msgid "Installing the new Ohmychadwm was cancelled or failed: {error}"
 msgstr ""
 "Installation des neuen Ohmychadwm abgebrochen oder fehlgeschlagen: {error}"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:166
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:239
 msgid "Installing the new Ohmychadwm was cancelled or failed."
 msgstr "Installation des neuen Ohmychadwm abgebrochen oder fehlgeschlagen."
 
@@ -1194,6 +1207,200 @@ msgstr ""
 msgid "Applied. Apps you open from now on use the new look."
 msgstr "Angewendet. Apps, die du ab jetzt öffnest, nutzen das neue Aussehen."
 
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:29
+#, fuzzy
+msgid "Floating"
+msgstr "Schwebemodus ein-/ausschalten"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:29
+#, fuzzy
+msgid "Floating, in the middle"
+msgstr "ein Symbolthema"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:29
+msgid "Tiled, as usual"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:37
+#, python-brace-format
+msgid "screen {n} ({name})"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:38
+#, python-brace-format
+msgid "screen {n}, not connected now"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:40
+#, python-brace-format
+msgid "workspace {n}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:42
+#, python-brace-format
+msgid "workspaces {mask}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:46
+msgid "own floating settings"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:48
+#, fuzzy, python-brace-format
+msgid "only windows named “{name}”"
+msgstr "„{name}“ wird angewendet…"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:50
+#, python-brace-format
+msgid "When {app} opens: no effect, it opens like any other app"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:51
+#, python-brace-format
+msgid "When {app} opens: {placement}"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:78
+msgid ""
+"Choose on which screen and workspace an app opens, and whether it floats. "
+"Open windows are listed first. Saving a rule recompiles Ohmychadwm (asks "
+"your password); it takes effect the next time the app opens a window."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:85
+msgid "Reading the open windows…"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:131
+msgid "The screen you are working on"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:91
+msgid "The workspace you are on"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:93
+#, fuzzy
+msgid "App"
+msgstr "Anwenden"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:93
+#, fuzzy
+msgid "Screen"
+msgstr "Vollbild"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:94
+msgid "Open as"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:94
+msgid "Workspace"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:102
+msgid "Refresh"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:103
+#, fuzzy
+msgid "Read the open windows and the screens again"
+msgstr "Abstand zwischen Fenstern und zum Bildschirmrand, in Pixeln"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:108
+#, fuzzy
+msgid "Save rule"
+msgstr "Speichern"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:114
+msgid ""
+"Screens are numbered the way Ohmychadwm counts them: the primary screen is "
+"screen 1. Rearranging your screens on the Displays page can change the "
+"numbers."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:126
+#, python-brace-format
+msgid "{title}  ({window_class}, open now)"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:127
+#, python-brace-format
+msgid "{title}  ({window_class})"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:129
+msgid "No apps found: open the app, then press Refresh"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:132
+#, python-brace-format
+msgid "Screen {n}: {name} ({size})"
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:144
+msgid "No rules yet: apps open on the screen and workspace you are working on."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:146
+msgid ""
+"Rules now. They only move a window when you open the app; they never start "
+"it (that is the Startup apps page)."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:155
+#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
+msgid "Remove"
+msgstr "Entfernen"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:160
+msgid "Written by hand in config.def.h: change it there."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:165
+msgid "No apps found: open the app, then press Refresh."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:172
+#, python-brace-format
+msgid ""
+"Choose a screen, a workspace or floating for {name}: as it is, the rule "
+"would change nothing."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:176
+#, fuzzy, python-brace-format
+msgid "Saved the rule for {name}."
+msgstr ""
+"Die Werte des Themas wurden geladen. Drücke Anwenden, um sie zu verwenden."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:180
+#, fuzzy, python-brace-format
+msgid "Removed the rule for {name}."
+msgstr ""
+"Die Werte des Themas wurden geladen. Drücke Anwenden, um sie zu verwenden."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:193
+msgid "This rule is already there."
+msgstr ""
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:212
+#, fuzzy
+msgid "Restart Ohmychadwm to use it."
+msgstr "Angewendet. Starte Ohmychadwm neu, um die Änderungen zu sehen."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:215
+#, fuzzy
+msgid "Press Super+Shift+R to use it."
+msgstr "Angewendet. Drücke Super+Shift+R, um die Änderungen zu sehen."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_placement.py:217
+#, fuzzy
+msgid "It shows at your next Ohmychadwm login."
+msgstr ""
+"Angewendet. Die Änderungen werden bei deiner nächsten Ohmychadwm-Anmeldung "
+"angezeigt."
+
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:34
 msgid ""
 "What Ohmychadwm starts when you log in (the run lines of ~/.config/"
@@ -1217,10 +1424,6 @@ msgstr "Befehl, der bei der Anmeldung gestartet wird, z. B. redshift-gtk"
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:53
 msgid "Add"
 msgstr "Hinzufügen"
-
-#: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:72
-msgid "Remove"
-msgstr "Entfernen"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_startup.py:83
 #, python-brace-format
@@ -1481,11 +1684,11 @@ msgstr ""
 "Variety ist gestartet. Wähle diese Quelle in einer Minute erneut, um die "
 "Downloads zu sehen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:173
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:174
 msgid "Search settings"
 msgstr "Einstellungen suchen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_search.py:217
+#: usr/share/ohmychadwm-tweak-tool/ott_search.py:218
 msgid "Nothing found."
 msgstr "Nichts gefunden."
 
@@ -1802,6 +2005,11 @@ msgstr ""
 #: po/ohmychadwm-tweak-tool.desktop.in:10
 msgid "theme;icons;cursor;font;appearance;gtk;lxappearance;chadwm;ohmychadwm;bar;gaps;wallpaper;display;mouse;touchpad;startup;keys"
 msgstr "Thema;Symbole;Cursor;Schrift;Aussehen;GTK;lxappearance;chadwm;ohmychadwm;Leiste;Abstände;Hintergrund;Bildschirm;Maus;Touchpad;Autostart;Tastenkürzel"
+
+#, fuzzy, python-brace-format
+#~ msgid "Added the rule for {name} — press Apply to use it."
+#~ msgstr ""
+#~ "Die Werte des Themas wurden geladen. Drücke Anwenden, um sie zu verwenden."
 
 #~ msgid "Rosé Pine Moon"
 #~ msgstr "Rosé Pine Moon"

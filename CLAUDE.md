@@ -31,6 +31,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_page_themes.py        # Themes: 18 tiles (FlowBox, Apply + spinner each), one click = ott_apply.apply_look + feh + restart
 ├── ott_page_look.py          # Look (OMA's page): drift banner, pickers, force GTK_THEME, system cursor, bar theme+font
 ├── ott_page_bar.py           # Bar & windows: THEME_BORDER/GAPS/SMARTGAPS/TOPBAR/SHOWSYSTRAY/AUTOHIDE → rebuild
+├── ott_page_placement.py     # App placement: per app screen / workspace / floating (rules[]), Save rule / Remove → rebuild at once
 ├── ott_page_wallpaper.py     # Wallpaper (KHP layout): sources, thumbnails, preview, Variety prev/next, feh
 ├── ott_page_displays.py      # Displays: per output mode/rate/on/primary, 15 s keep/revert, save
 ├── ott_page_input.py         # Mouse & touchpad: live xinput (debounced), Save → pkexec --input
@@ -43,6 +44,7 @@ usr/share/ohmychadwm-tweak-tool/
 ├── ott_apply.py              # apply_look(): user files, bar rebuild, ONE pkexec (used by Look and Themes)
 ├── ott_targets.py            # Look targets: read_all / current / drift / apply  (toolkit-free, from OMA)
 ├── ott_chadwm.py             # config.def.h: theme include, managed block (font + options), rebuild, restart
+├── ott_placement.py          # rules[] parse/set/remove, xrandr --listmonitors (dwm order), open windows via xprop
 ├── ott_scan.py ott_env.py ott_system.py   # from OMA: theme scan, GTK_THEME line, system/SDDM cursor
 ├── ott_display.py            # xrandr parse / plan / arandr script / switch / revert / save
 ├── ott_input.py              # libinput props via xinput, validate(), build_conf() for xorg.conf.d
@@ -76,6 +78,7 @@ A page with `own_scroll = True` (Look, which keeps its Apply footer visible) is 
 | gsettings `org.gnome.desktop.interface`, xfconf `xsettings` | Look | theme, icons, cursor, size, font, color-scheme |
 | `~/.icons/default/index.theme`, `~/.Xresources` | Look | cursor (`xrdb -merge` + `xsetroot -cursor_name left_ptr`) |
 | `~/.config/ohmychadwm/chadwm/config.def.h` | Look, Bar | theme include; one managed block with font and bar & window options |
+| `config.def.h` `rules[]` | App placement | plain rules only (class, NULL, NULL, `0`/`1 << n`, centred, floating, monitor) |
 | `~/.fehbg` | Wallpaper | written by feh itself |
 | `~/.screenlayout/<user>.sh` | Displays | arandr format, written only after **Keep** |
 | `/etc/X11/xorg.conf.d/40-ohmychadwm-input.conf` (root) | Mouse & touchpad | InputClass `MatchIsPointer` then `MatchIsTouchpad` |
@@ -159,6 +162,15 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   see-through), so the app `execv`s itself on the shown page when gsettings `gtk-theme` changes, after every page's
   `_busy` is clear and no pkexec child runs. A new page with a worker must set `_busy` while it works, or the
   restart can cut it off. Test it with the app started inside the session: started over SSH, pkexec has no agent.
+- **App placement** (2026-11-21) edits the `rules[]` table in place, no managed block: the shipped Gimp/Firefox
+  rules are the user's to change too. It replaces or removes only *plain* rules (instance and title `NULL`) for the
+  exact class; rules with an instance, a title or a tag mask other than `0`/`1 << n` are listed, marked as hand
+  written, and never touched. chadwm ORs the tags of every matching rule (`strstr` on the class, case-sensitive),
+  so one plain rule per class is kept. Monitor numbers are dwm's `m->num`: Xinerama order, the primary first, the
+  same order as `xrandr --listmonitors`. **Save rule** and **Remove** each rebuild at once (one pkexec), always from
+  the file on disk, and put the old file back on a failed compile/install. No separate Add + Apply: on riker
+  (2026-11-21) the choices were made and Apply pressed without Add, which said "Nothing changed". Classes go into C source: `CLASS_OK` only.
+  Open windows come from `xprop` (`_NET_CLIENT_LIST`, WM_CLASS); `xorg-xprop` is pulled in by at-spi2-core.
 - **Keys** parses sxhkdrc and `keys[]` directly, never `keybindings.txt` (can be stale).
 - ohmychadwm's own terminal scripts `scripts/apply-font-globally.sh` / `generate-chadwm-theme.sh` touch rofi/terminal
   fonts and theme generation. They are a different scope, so don't merge them in here.

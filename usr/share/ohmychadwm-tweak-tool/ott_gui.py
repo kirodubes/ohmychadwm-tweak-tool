@@ -23,6 +23,7 @@ from ott_page_input import InputPage  # noqa: E402
 from ott_page_keyboard import KeyboardPage  # noqa: E402
 from ott_page_keys import KeysPage  # noqa: E402
 from ott_page_look import LookPage  # noqa: E402
+from ott_page_placement import PlacementPage  # noqa: E402
 from ott_page_startup import StartupPage  # noqa: E402
 from ott_page_themes import ThemesPage  # noqa: E402
 from ott_page_update import UpdatePage  # noqa: E402
@@ -232,6 +233,7 @@ def build(window):
         ("themes", _("Themes"), _safe("Themes", ThemesPage)),
         ("look", _("Look"), _safe("Look", LookPage)),
         ("bar", _("Bar & windows"), _safe("Bar & windows", BarPage)),
+        ("placement", _("App placement"), _safe("App placement", PlacementPage)),
         ("wallpaper", _("Wallpaper"), _safe("Wallpaper", lambda: WallpaperPage(window))),
         ("displays", _("Displays"), _safe("Displays", lambda: DisplaysPage(window))),
         ("mouse", _("Mouse & touchpad"), _safe("Mouse & touchpad", InputPage)),

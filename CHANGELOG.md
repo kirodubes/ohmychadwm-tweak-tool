@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## 2026.11.21
+
+### What Changed
+- **New App placement page** (after Bar & windows): choose on which screen and workspace an app opens, and
+  whether it floats (in the middle or not), for example Firefox on screen 2, workspace 10. The open windows are
+  listed first, then the installed apps that name their window class. The rules Ohmychadwm already has (Gimp,
+  Firefox on workspace 9, mintstick) show too and can be removed or replaced. **Save rule** and **Remove** recompile
+  Ohmychadwm straight away (password asked once) and offer a restart. A first version with separate Add and Apply
+  buttons said "Nothing changed" when the choices were made and Apply pressed without Add (riker test). A rule takes effect the next time
+  the app opens a window. Same idea as the KiroTux premium apps' App placement page, written for chadwm.
+  Each rule reads as a sentence ("When Firefox opens: workspace 9"), rules that change nothing say "no effect",
+  and a line above them says rules never start an app (first wording on riker read as a list of apps that start).
+  The app list leaves out python3 windows: that class is every Python GTK app at once, this one included.
+
+### Technical Details
+- `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /
+  `remove_rule()` rewrite only plain rules (instance and title `NULL`, tags `0` or `1 << n`) for the exact class and
+  keep every other line. chadwm ORs the tags of all matching rules, so one plain rule per class is kept. Screens come
+  from `xrandr --listmonitors`, which lists them in the order dwm numbers them (Xinerama, the primary first); open
+  windows from `xprop` (`_NET_CLIENT_LIST`, `WM_CLASS`). Classes are checked against `CLASS_OK` before they go into
+  C source.
+- `ott_page_placement.py` (new): each Save rule / Remove reads `config.def.h` fresh, writes, compiles, installs
+  through the existing `--install` helper, and restores the old file when the compile or the install fails, so the
+  page never shows rules the installed binary doesn't have and never writes over another page's rebuild.
+- Search: monitor, screen, workspace, tag, rule, window rule and floating also find App placement.
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_placement.py` (new)
+- `usr/share/ohmychadwm-tweak-tool/ott_page_placement.py` (new)
+- `usr/share/ohmychadwm-tweak-tool/ott_gui.py`
+- `usr/share/ohmychadwm-tweak-tool/ott_search.py`
+- `po/*.po`, `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
+- `CLAUDE.md`
+
 ## 2026.11.20
 
 ### What Changed
