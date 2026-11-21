@@ -38,6 +38,14 @@
   hidden on the left screen's workspace 10, because the login setting named the other screen. Now a screen without
   a login workspace of its own shows the workspace of its "go to it" login app; a workspace chosen under "When you
   log in" still wins on its screen.
+- **Rules for apps that aren't open also work when the menu entry's window class is off.** A Vivaldi rule did
+  nothing on riker: its menu entry says `vivaldi`, its window is class `Vivaldi-stable`, instance `vivaldi-stable`,
+  and chadwm compares case-sensitively. A rule saved for an app that isn't open is now written twice, on the class
+  and on the instance; the page shows it as one rule. Picking the app from the open windows still writes one line
+  with the real class.
+- **Login workspaces are set on the right screen.** Right after login chadwm ignores the first pointer movement
+  (it only records the screen), so both screens were set on the primary one. The helper now goes target screen →
+  other screen → target screen.
 - **Every screen says where it stands**: "Screen 2 (HDMI-0, left)", "Screen 1 (DVI-D-0, right, primary)", in the
   rules, the Screen list and the login section. On riker the primary screen is the right one, so "screen 2" was the
   left screen and a login setting went to the wrong screen. The place comes from the xrandr layout: left/middle/right,
@@ -69,6 +77,9 @@
   Settings in prefs.json: `placement.goto` (classes) and `placement.start` (connector → workspace, so rearranging
   screens doesn't swap them). Tested on riker: start workspaces, go to it, no jump on Super+Shift+R.
 - Package recipe: `xdotool` and `xorg-xprop` are dependencies now (xdotool was optional).
+- `ott_placement.rules()` merges a class line and an instance line with the same name and settings into one rule
+  (`both`); `matches()` mirrors chadwm's `applyrules()` (case-sensitive substring on class/instance) and
+  `ott_session` uses it to find a window's rule. `set_rule(both=True)` / `remove_rule()` write and drop both lines.
 - Login start: `ott_placement.choices()` also returns a one-word start command per app (the .desktop `Exec` program,
   else `/proc/<_NET_WM_PID>/cmdline` of the open window), checked against `COMMAND_OK` before it goes into run.sh.
   `_set_login()` adds or switches on the line with `ott_startup`; unticking removes a line this app added and only

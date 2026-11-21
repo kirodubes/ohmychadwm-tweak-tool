@@ -340,7 +340,7 @@ class PlacementPage:
         if not self._choices:
             set_status(self._status, _("No apps found: open the app, then press Refresh."), error=True)
             return
-        cls, _title, _now, command = self._choices[self._dd_app.get_selected()]
+        cls, _title, open_now, command = self._choices[self._dd_app.get_selected()]
         screen = self._dd_screen.get_selected()
         monitor = self._monitors[screen - 1][0] if 0 < screen <= len(self._monitors) else -1
         workspace, mode = self._dd_workspace.get_selected(), list(_mode_labels())[self._dd_mode.get_selected()]
@@ -350,7 +350,9 @@ class PlacementPage:
             return
         login = self._set_login(command, self._chk_login.get_active()) if command else ""
         login += self._set_goto(cls, self._chk_goto.get_active())
-        self._change(lambda text: ott_placement.set_rule(text, cls, workspace, monitor, mode),
+        # an open window gives the real class; for an app that is not open the name is its menu entry's hint, so
+        # the rule is also written on the instance (see ott_placement.set_rule)
+        self._change(lambda text: ott_placement.set_rule(text, cls, workspace, monitor, mode, both=not open_now),
                      _("Saved the rule for {name}.").format(name=cls) + login,
                      _("This rule is already there.") + login)
 

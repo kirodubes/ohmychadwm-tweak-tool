@@ -180,6 +180,9 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   number keys when `keys_match()` is False: xdotool adds Shift and chadwm MOVES the window instead.
   Every screen label names its place (`ott_placement._places()`: left/right…, primary): dwm's screen 1 is the
   PRIMARY screen, which is often not the left one (riker: right), and people read "screen 1" as left.
+  A menu entry's StartupWMClass is only a hint (Vivaldi: `vivaldi` vs class `Vivaldi-stable`): rules for apps that
+  aren't open are written on class AND instance (`set_rule(both=True)`), shown as one rule. chadwm's motionnotify
+  ignores the first motion of a session, so `ott_session._select_screen()` moves target → other → target.
   "Also start it at login" writes the same `run …` line as Startup apps (`ott_startup`, tagged `added by`); Remove
   only drops a line this app added. Erik first read the rule list as apps that start at login: keep the wording
   explicit about which rules start at login.

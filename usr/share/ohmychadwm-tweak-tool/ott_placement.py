@@ -59,11 +59,24 @@ def _mode(centered, floating):
     return None
 
 
+def _plain_name(cls, instance, title):
+    """Return (name, field) of a plain rule line (only a class, or only an instance), else (None, None)."""
+    if title is None and cls and instance is None:
+        return cls, "class"
+    if title is None and instance and cls is None:
+        return instance, "instance"
+    return None, None
+
+
 def rules(text):
-    """Return every rule in rules[] as dicts; 'editable' is False for ones written by hand in another form."""
+    """Return every rule in rules[] as dicts; 'editable' is False for ones written by hand in another form.
+
+    A rule's "class" is its name. A plain rule may be written twice, once on the class and once on the instance
+    with the same settings (set_rule(both=True)); those two lines come back as one rule with "both" True.
+    """
     lines = text.splitlines(keepends=True)
     start, end = _array(lines)
-    out = []
+    out, plain = [], {}
     for line in lines[start + 1:end]:
         m = _ENTRY.match(line)
         if not m:
@@ -72,49 +85,75 @@ def rules(text):
         if cls == PLACEHOLDER:
             continue
         workspace, mode = _workspace(m[4].strip()), _mode(int(m[5]), int(m[6]))
-        out.append({
-            "class": cls, "instance": instance, "title": title, "tags": m[4].strip(),
-            "workspace": workspace, "mode": mode, "monitor": int(m[7]),
-            "editable": bool(cls) and instance is None and title is None and workspace is not None and mode is not None,
-        })
+        name, field = _plain_name(cls, instance, title)
+        rule = {
+            "class": name or cls, "instance": None if name else instance, "title": title, "tags": m[4].strip(),
+            "workspace": workspace, "mode": mode, "monitor": int(m[7]), "field": field or "class", "both": False,
+            "editable": bool(name) and workspace is not None and mode is not None,
+        }
+        twin = plain.get(name)
+        if twin and twin["field"] != field and all(twin[k] == rule[k] for k in ("tags", "mode", "monitor")):
+            twin["both"] = True
+            continue
+        if name:
+            plain.setdefault(name, rule)
+        out.append(rule)
     return out
 
 
-def format_rule(cls, workspace, monitor, mode):
-    """Return one rules[] line in the column layout of the shipped table."""
+def matches(rule, wm_instance, wm_class):
+    """Return True when chadwm would apply rule to a window (case-sensitive substring, like applyrules())."""
+    name = rule["class"]
+    on_class = rule["field"] == "class" or rule["both"]
+    on_instance = rule["field"] == "instance" or rule["both"]
+    return bool(name) and ((on_class and name in (wm_class or "")) or (on_instance and name in (wm_instance or "")))
+
+
+def format_rule(name, workspace, monitor, mode, field="class"):
+    """Return one rules[] line in the column layout of the shipped table, the name in the class or instance column."""
     centered, floating = _FLAGS[mode]
     tags = f"1 << {workspace - 1}" if workspace else "0"
-    name = f'"{cls}", '
-    return (f"    {{ {name:<12}NULL,       NULL,       {tags + ',':<14}{str(centered) + ',':<13}"
+    quoted = f'"{name}", '
+    cls, instance = (f"{quoted:<12}", f"{'NULL,':<11}") if field == "class" else (f"{'NULL,':<12}", f"{quoted:<11}")
+    return (f"    {{ {cls}{instance}NULL,       {tags + ',':<14}{str(centered) + ',':<13}"
             f"{str(floating) + ',':<13}{monitor} }},\n")
 
 
-def _without(lines, start, end, cls):
-    # plain rules for cls (no instance, no title) and the placeholder; rules that also match an instance or a
-    # title are kept
+def _without(lines, start, end, name):
+    # the plain lines for name (on the class or on the instance) and the placeholder; rules that also match a
+    # title, or both a class and an instance, are kept
     keep = []
     for line in lines[start + 1:end]:
         m = _ENTRY.match(line)
-        if m and _unquote(m[1]) in (cls, PLACEHOLDER) and _unquote(m[2]) is None and _unquote(m[3]) is None:
-            continue
+        if m:
+            cls, instance, title = (_unquote(m[i]) for i in (1, 2, 3))
+            if cls == PLACEHOLDER or _plain_name(cls, instance, title)[0] == name:
+                continue
         keep.append(line)
     return keep
 
 
-def set_rule(text, cls, workspace, monitor, mode):
-    """Return text with the rule for cls replaced by one for (workspace 0-10, monitor -1.., mode)."""
+def set_rule(text, cls, workspace, monitor, mode, both=False):
+    """Return text with the rule for cls replaced by one for (workspace 0-10, monitor -1.., mode).
+
+    both=True also writes it on the instance: a menu entry's StartupWMClass is only a hint (Vivaldi says "vivaldi",
+    its window is class "Vivaldi-stable", instance "vivaldi-stable"), and chadwm compares case-sensitively.
+    """
     if not CLASS_OK.match(cls):
         raise ValueError(f"not a window class: {cls!r}")
     if workspace not in (0, *WORKSPACES) or monitor < -1 or mode not in MODES:
         raise ValueError("workspace, screen or mode out of range")
     lines = text.splitlines(keepends=True)
     start, end = _array(lines)
-    body = _without(lines, start, end, cls) + [format_rule(cls, workspace, monitor, mode)]
+    new = [format_rule(cls, workspace, monitor, mode)]
+    if both:
+        new.append(format_rule(cls, workspace, monitor, mode, field="instance"))
+    body = _without(lines, start, end, cls) + new
     return "".join(lines[:start + 1] + body + lines[end:])
 
 
 def remove_rule(text, cls):
-    """Return text without the plain rules (no instance, no title) for cls."""
+    """Return text without the plain rules for cls, on the class and on the instance."""
     lines = text.splitlines(keepends=True)
     start, end = _array(lines)
     body = _without(lines, start, end, cls)

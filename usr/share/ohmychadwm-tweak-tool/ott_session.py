@@ -120,22 +120,35 @@ def _client_ids():
     return set(re.findall(r"0x[0-9a-f]+", out.partition("#")[2]))
 
 
-def _wm_class(wid):
-    classes = re.findall(r'"([^"]*)"', ott_placement._xprop("-id", wid, "WM_CLASS"))
-    return classes[1] if len(classes) > 1 else None
+def _wm_names(wid):
+    names = re.findall(r'"([^"]*)"', ott_placement._xprop("-id", wid, "WM_CLASS"))
+    return (names[0], names[1]) if len(names) > 1 else (None, None)
+
+
+def _rule_for(rules, wm_instance, wm_class):
+    """Return the plain rule chadwm applies to this window, or None (the last match wins, as in applyrules())."""
+    hits = [r for r in rules if r["editable"] and ott_placement.matches(r, wm_instance, wm_class)]
+    return hits[-1] if hits else None
 
 
 def _xdotool(*args):
     subprocess.run(["xdotool", *args], capture_output=True, timeout=5)
 
 
-def _select_screen(box):
-    # chadwm selects the screen on pointer motion (over the desktop or a window there): move twice to be sure
+def _centre(box):
     _number, x, y, w, h = box
-    _xdotool("mousemove", str(x + w // 2), str(y + h // 2))
-    time.sleep(0.05)
-    _xdotool("mousemove", str(x + w // 2 + 1), str(y + h // 2 + 1))
-    time.sleep(0.15)
+    return str(x + w // 2), str(y + h // 2)
+
+
+def _select_screen(box, boxes):
+    # chadwm selects a screen on pointer motion only when the screen differs from the one of the previous motion,
+    # and the first motion of a session only records it (motionnotify(): `m != mon && mon`). So: target, another
+    # screen, target again; that also selects it right after login.
+    other = next((b for b in boxes.values() if b != box), None)
+    for target in ((box, other, box) if other else (box,)):
+        _xdotool("mousemove", *_centre(target))
+        time.sleep(0.1)
+    time.sleep(0.1)
 
 
 def _press(key):
@@ -164,13 +177,13 @@ def _settle(seen):
     return seen
 
 
-def login_targets(start, goto, open_classes, rules, boxes):
+def login_targets(start, goto, open_names, rules, boxes):
     """Return [(connector, workspace)] to show at login: the chosen start workspaces, plus the workspace of every
     "go to it" app that opened at login, on a screen that has no start workspace of its own (that one wins)."""
     targets = {c: w for c, w in start.items() if c in boxes and 1 <= w <= 10}
     by_number = {b[0]: c for c, b in boxes.items()}
     for rule in rules:
-        if rule["class"] not in goto or rule["class"] not in open_classes or not rule["workspace"]:
+        if rule["class"] not in goto or rule["class"] not in open_names or not rule["workspace"]:
             continue
         connector = by_number.get(max(rule["monitor"], 0))  # "current screen" is the primary one at login
         if connector and connector not in targets:
@@ -183,11 +196,12 @@ def show_login_workspaces(start, goto):
     go, boxes = _switcher(), screen_boxes()
     if go is None:
         return
-    open_classes = {_wm_class(wid) for wid in _client_ids()}
-    targets = login_targets(start, goto, open_classes, ott_placement.rules(ott_chadwm.read_config()), boxes)
+    rules = ott_placement.rules(ott_chadwm.read_config())
+    open_names = {r["class"] for r in (_rule_for(rules, *_wm_names(wid)) for wid in _client_ids()) if r}
+    targets = login_targets(start, goto, open_names, rules, boxes)
     where = subprocess.run(["xdotool", "getmouselocation", "--shell"], capture_output=True, text=True).stdout
     for connector, workspace in targets:
-        _select_screen(boxes[connector])
+        _select_screen(boxes[connector], boxes)
         go(workspace)
         _say(f"{connector} shows workspace {workspace}")
     pos = dict(line.split("=", 1) for line in where.splitlines() if "=" in line)
@@ -195,36 +209,37 @@ def show_login_workspaces(start, goto):
         _xdotool("mousemove", pos["X"], pos["Y"])
 
 
-def go_to(cls):
-    """Select the screen and workspace of cls's rule, so the window that just opened is in front."""
-    rule = next((r for r in ott_placement.rules(ott_chadwm.read_config()) if r["class"] == cls), None)
-    if rule is None:
-        return
+def go_to(rule):
+    """Select the screen and workspace of rule, so the window that just opened is in front."""
     go = _switcher()
     if go is None:
         return
     if rule["monitor"] >= 0:
-        box = next((b for b in screen_boxes().values() if b[0] == rule["monitor"]), None)
+        boxes = screen_boxes()
+        box = next((b for b in boxes.values() if b[0] == rule["monitor"]), None)
         if box:
-            _select_screen(box)
+            _select_screen(box, boxes)
     if rule["workspace"]:
         go(rule["workspace"])
-    _say(f"went to {cls}: screen {rule['monitor'] + 1 if rule['monitor'] >= 0 else 'current'}, "
+    _say(f"went to {rule['class']}: screen {rule['monitor'] + 1 if rule['monitor'] >= 0 else 'current'}, "
          f"workspace {rule['workspace'] or 'current'}")
 
 
 def watch(seen):
-    """Follow _NET_CLIENT_LIST; a window id not seen before whose class has "go to it" brings you there."""
+    """Follow _NET_CLIENT_LIST; a window id not seen before whose rule has "go to it" brings you there."""
     spy = subprocess.Popen(["xprop", "-root", "-spy", "_NET_CLIENT_LIST"], stdout=subprocess.PIPE, text=True)
     for line in spy.stdout:
         ids = set(re.findall(r"0x[0-9a-f]+", line.partition("#")[2]))
         new, seen = ids - seen, seen | ids  # ids survive Super+Shift+R, so a restart triggers nothing
         goto = settings()[0]
+        if not new or not goto:
+            continue
+        rules = ott_placement.rules(ott_chadwm.read_config())
         for wid in sorted(new):
-            cls = _wm_class(wid)
-            if cls in goto:
+            rule = _rule_for(rules, *_wm_names(wid))
+            if rule and rule["class"] in goto:
                 time.sleep(0.2)  # let chadwm finish placing it
-                go_to(cls)
+                go_to(rule)
 
 
 def _already_running():
