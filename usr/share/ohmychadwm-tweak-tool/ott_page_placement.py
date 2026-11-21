@@ -226,12 +226,14 @@ class PlacementPage:
     def _set_goto(self, cls, on):
         """Save cls's "go to it" flag; return a sentence for the status, or ''."""
         goto = goto_rules()
-        if (cls in goto) == on:
-            return ""
+        changed = (cls in goto) != on
         try:
-            save_goto(goto | {cls} if on else goto - {cls})
+            # also when unchanged: a replaced run.sh loses the helper line, and only save_goto puts it back
+            save_goto((goto | {cls} if on else goto - {cls}) if changed else goto)
         except OSError as e:
             return " " + _("Could not save: {error}").format(error=e)
+        if not changed:
+            return ""
         return " " + (_("You go there when it opens.") if on else _("It no longer takes you there."))
 
     def _current_screen(self):

@@ -49,6 +49,10 @@
   left screen and a login setting went to the wrong screen. The place comes from the xrandr layout: left/middle/right,
   top/bottom when stacked, "number n from the left" with more than three screens.
 - **The Screen list says which screen you are on now**: "The screen you are working on (now screen 1: DVI-D-0)".
+- **"Go to it" apps no longer stay hidden on their workspace after login** (HQ PC: Firefox and Vivaldi on
+  workspace 10 started at login, but you stayed on workspace 1). A replaced run.sh had lost the `ott-session --login`
+  line, and saving a rule again did not put it back while the "go to it" choice was unchanged. Every Save rule now
+  puts it back.
 
 ### Technical Details
 - `ott_placement.py` (new, toolkit-free): parses the `rules[]` table of `config.def.h`, `set_rule()` /
@@ -85,6 +89,8 @@
   comments out one Kiro ships. The rules run before chadwm starts at login, which is fine: `scan()` applies the
   rules to windows that already exist. The current screen comes from `Gdk.Display.get_monitor_at_surface()` of
   this window, matched to `xrandr --listmonitors` by connector name.
+- `_set_goto()` returned early when the flag was unchanged, so `save_goto()`, the only code that adds the helper's
+  run.sh line, never ran; it now always calls `save_goto()` and only skips the status sentence.
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_placement.py` (new)
