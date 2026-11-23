@@ -119,7 +119,7 @@ def _language_controls():
         restart.set_visible(changed)
 
     def on_restart(_widget):
-        argv = [sys.executable, os.path.abspath(sys.argv[0]), *sys.argv[1:]]
+        argv = [sys.executable, os.path.abspath(sys.argv[0]), *(a for a in sys.argv[1:] if a != "--first-login")]
         ott_i18n.restore_environment()
         os.execv(sys.executable, argv)
 

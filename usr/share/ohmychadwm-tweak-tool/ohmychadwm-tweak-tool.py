@@ -8,6 +8,7 @@
 import codecs
 import os
 import sys
+import time
 
 if codecs.lookup(sys.getfilesystemencoding()).name != "utf-8":
     os.environ["PYTHONUTF8"] = "1"
@@ -26,6 +27,7 @@ import ott_env  # noqa: E402
 import ott_gui  # noqa: E402
 import log  # noqa: E402
 
+_FIRST_LOGIN_MARK = "first_login_shown"
 _INTERFACE_SCHEMA = "org.gnome.desktop.interface"
 _THEME_DIRS = ("~/.themes", "~/.local/share/themes", "/usr/share/themes")
 _RESTART_POLL_MS = 500
@@ -129,7 +131,10 @@ class TweakApp(Gtk.Application):
             return True  # a look is still being applied or a password is asked: try again
         page = self._window.ott_stack.get_visible_child_name()
         self._window.save_size()
-        args = [a for i, a in enumerate(sys.argv[1:], 1) if a != "--page" and sys.argv[i - 1] != "--page"]
+        args = [
+            a for i, a in enumerate(sys.argv[1:], 1)
+            if a not in ("--page", "--first-login") and sys.argv[i - 1] != "--page"
+        ]
         log.log_info(f"GTK theme changed: restarting on the {page} page")
         os.execv(sys.executable, [sys.executable, os.path.abspath(__file__), *args, "--page", page])
         return False
@@ -181,6 +186,13 @@ def main():
     """Parse flags and run the application."""
     if "--debug" in sys.argv:
         log.DEBUG = True
+    if "--first-login" in sys.argv:
+        # run.sh starts this at every login; only the first one opens the window. Checked after the UTF-8 re-exec,
+        # so the mark written here can't make the re-exec'd process quit.
+        if ott_config.load_prefs().get(_FIRST_LOGIN_MARK):
+            return
+        ott_config.update_prefs({_FIRST_LOGIN_MARK: time.strftime("%Y-%m-%d")})
+        ott_gui.START_PAGE = "displays"
     if "--page" in sys.argv[:-1]:
         ott_gui.START_PAGE = sys.argv[sys.argv.index("--page") + 1]
     log.log_section("Ohmychadwm Tweak Tool")

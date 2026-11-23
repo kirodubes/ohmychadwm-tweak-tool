@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2026.11.23
+
+### What Changed
+- **Opens by itself at the first login, on the Displays page**, like the KiroTux premium apps' Welcome page. A new
+  user (or the live ISO in QEMU/VirtualBox) can set the screen resolution straight away. It opens once, on every
+  machine; later logins skip it.
+
+### Technical Details
+- New `--first-login` flag: Ohmychadwm's `run.sh` (ohmychadwm 2026.11.23) runs `ohmychadwm-tweak-tool --first-login`
+  at every login. Not an `/etc/xdg/autostart` entry: chadwm never reads that folder, and XFCE would.
+- If `first_login_shown` is in prefs.json the process returns before any GTK work; otherwise it writes the date
+  there and starts on the `displays` page. The check sits in `main()`, after the UTF-8 re-exec, so the mark can't
+  make the re-exec'd process quit.
+- Both self-restarts (GTK theme change, Status → Language → Restart now) drop `--first-login` from argv, or the
+  restarted window would see the mark and close.
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ohmychadwm-tweak-tool.py`
+- `usr/share/ohmychadwm-tweak-tool/ott_gui.py`
+- `CLAUDE.md`
+
 ## 2026.11.21
 
 ### What Changed

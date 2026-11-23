@@ -13,7 +13,9 @@ It **replaces `ohmychadwm-appearance` (OMA)**. OMA's single page is the Look pag
 dependency stays satisfied. Keep all three.
 
 - **Language**: Python 3, GTK4 + PyGObject.
-- **Entry point**: `usr/share/ohmychadwm-tweak-tool/ohmychadwm-tweak-tool.py` (`--debug`, `--page NAME`)
+- **Entry point**: `usr/share/ohmychadwm-tweak-tool/ohmychadwm-tweak-tool.py` (`--debug`, `--page NAME`,
+  `--first-login`: ohmychadwm's `run.sh` runs it every login; opens on Displays only while prefs.json lacks
+  `first_login_shown`. Every self-restart (`execv`) must drop `--first-login` from argv, or the window closes.)
 - **Launchers**: `usr/bin/ohmychadwm-tweak-tool` + relative symlinks `ott` and `oma`. `usr/bin/ott-session` starts the App placement login helper. **`oma` must stay**: existing
   users keep their own sxhkdrc (skel is copied once), and theirs runs `oma` on Ctrl+Alt+X.
 - **Runs as the normal user.** All root work goes through ONE helper, `ott_root.py` (`run_root()` calls it via
