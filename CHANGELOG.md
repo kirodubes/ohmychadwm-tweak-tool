@@ -6,6 +6,9 @@
 - **Opens by itself at the first login, on the Displays page**, like the KiroTux premium apps' Welcome page. A new
   user (or the live ISO in QEMU/VirtualBox) can set the screen resolution straight away. It opens once, on every
   machine; later logins skip it.
+- **At that first login it floats in the middle of the screen** (900x680) instead of taking a tile. On the live
+  ISO's 1024x768 screen it used to get half the width next to the installer, which cut the Displays page off.
+  Opened any other way it tiles as before.
 
 ### Technical Details
 - New `--first-login` flag: Ohmychadwm's `run.sh` (ohmychadwm 2026.11.23) runs `ohmychadwm-tweak-tool --first-login`
@@ -15,6 +18,11 @@
   make the re-exec'd process quit.
 - Both self-restarts (GTK theme change, Status → Language → Restart now) drop `--first-login` from argv, or the
   restarted window would see the mark and close.
+- Floating without a window rule: chadwm's `manage()` calls `updatewindowtype()`, which floats and centres a
+  `_NET_WM_WINDOW_TYPE_DIALOG` window, but only reads the type when the window maps. GTK 4 has no type hint, so a
+  `realize` handler sets the property with `xprop` (from `xorg-apps`), synchronously so it lands before the map. A
+  later restart (theme change) drops `--first-login` and the window tiles again. Tested in VirtualBox: dialog type,
+  900x680 at 508,198 on 1920x1080.
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ohmychadwm-tweak-tool.py`

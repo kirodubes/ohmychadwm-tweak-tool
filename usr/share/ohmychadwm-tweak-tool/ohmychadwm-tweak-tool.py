@@ -7,6 +7,7 @@
 # the guard is loop-safe.
 import codecs
 import os
+import subprocess
 import sys
 import time
 
@@ -28,6 +29,8 @@ import ott_gui  # noqa: E402
 import log  # noqa: E402
 
 _FIRST_LOGIN_MARK = "first_login_shown"
+# First login only: open as a centred floating window instead of a tile (next to the installer on a small screen)
+_FLOAT = False
 _INTERFACE_SCHEMA = "org.gnome.desktop.interface"
 _THEME_DIRS = ("~/.themes", "~/.local/share/themes", "/usr/share/themes")
 _RESTART_POLL_MS = 500
@@ -155,6 +158,8 @@ class Main(Gtk.ApplicationWindow):
         prefs = ott_config.load_prefs()
         self.set_default_size(prefs.get("window_width", 900), prefs.get("window_height", 680))
         self.connect("close-request", self._on_close)
+        if _FLOAT:
+            self.connect("realize", self._mark_dialog)
         self._load_css()
         header = Gtk.HeaderBar()
         header.set_show_title_buttons(True)
@@ -171,6 +176,21 @@ class Main(Gtk.ApplicationWindow):
         Gtk.StyleContext.add_provider_for_display(
             self.get_display(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
+
+    def _mark_dialog(self, _window):
+        # chadwm floats and centres a dialog-type window, but reads the type only when the window maps; GTK 4 has no
+        # type hint, so xprop sets it here, between realize and map. Synchronous on purpose: it must land before map.
+        xid = getattr(self.get_surface(), "get_xid", None)
+        if xid is None:
+            return
+        try:
+            subprocess.run(
+                ["xprop", "-id", str(xid()), "-f", "_NET_WM_WINDOW_TYPE", "32a",
+                 "-set", "_NET_WM_WINDOW_TYPE", "_NET_WM_WINDOW_TYPE_DIALOG"],
+                timeout=2, check=False,
+            )
+        except (OSError, subprocess.TimeoutExpired) as e:
+            log.log_warn(f"first login: could not float the window: {e}")
 
     def save_size(self):
         """Remember the window size for the next start."""
@@ -193,6 +213,8 @@ def main():
             return
         ott_config.update_prefs({_FIRST_LOGIN_MARK: time.strftime("%Y-%m-%d")})
         ott_gui.START_PAGE = "displays"
+        global _FLOAT
+        _FLOAT = True
     if "--page" in sys.argv[:-1]:
         ott_gui.START_PAGE = sys.argv[sys.argv.index("--page") + 1]
     log.log_section("Ohmychadwm Tweak Tool")
