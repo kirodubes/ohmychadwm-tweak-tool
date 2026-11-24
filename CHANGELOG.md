@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 2026.11.24
+
+### What Changed
+- **All 13 languages are complete again.** The App placement page, the Keyboard page's workspace keys and a few
+  smaller texts from the 2026-11-21 to 11-23 work showed in English: 62 untranslated and 18 fuzzy strings per
+  language. They are now translated in nl, de, es, fr, ru, pt_BR, hu, it, tr, zh_CN, ja, pl and ro.
+
+### Technical Details
+- Drafted from one table per language (`fill-po.py --table`), with the terms the catalogs and the KiroTux premium
+  apps already use (e.g. "workspace" = werkblad / Arbeitsfläche / espacio de trabajo). The 18 fuzzy entries were
+  wrong msgmerge guesses ("Save rule" had taken "Opslaan", "App" had taken "Toepassen") and were translated anew.
+- The summary line lowercases the mode labels (`_mode_labels()[…].lower()`), so they avoid nouns that must stay
+  capitalised (German "Schwebend, mittig", not "in der Mitte"). Hungarian and Turkish keep `{app}`/`{name}` without
+  a suffix ("{app} megnyitásakor", "{app} açıldığında", colon forms elsewhere).
+- Second review pass by two separate reviewers (49 fixes taken, e.g. "Restart Ohmychadwm to use it" also follows a removed rule, so it now says "the change", not "the rule"); `msgfmt -c` and `pofilter` (variables, brace format,
+  untranslated) clean; 445/445 translated in every catalog.
+
+### Files Modified
+- `po/*.po`, `po/ohmychadwm-tweak-tool.pot`
+- `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
+
 ## 2026.11.23
 
 ### What Changed
