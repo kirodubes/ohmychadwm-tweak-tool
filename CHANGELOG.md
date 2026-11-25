@@ -7,15 +7,31 @@
   come from kiro-atelier-wallpapers and kiro-system-files, which a plain Arch install with ohmychadwm doesn't have.
   The app now ships a small thumbnail of every look and the tiles show that. Applying a look still needs the
   wallpaper package; its tile still says what is missing.
+- **Install the wallpapers from the Themes page.** Only while paintings are missing, a line above the tiles says so,
+  with an **Install the wallpapers** button. It opens a terminal with `sudo pacman -S --needed
+  kiro-atelier-wallpapers` (the user sees each step and types their own password). As soon as the paintings are
+  there, the line goes away and the looks can be used, without restarting the app.
+- The Kiro look's "Not installed" tooltip named kiro-atelier-wallpapers; its picture comes from kiro-system-files,
+  and the tooltip now says so. The install button doesn't offer kiro-system-files: it rewrites `/etc` files, too much
+  for a plain Arch system.
 
 ### Technical Details
 - 18 thumbnails at the tile size (300x169, JPEG q82, 256 KB in all) in `usr/share/ohmychadwm-tweak-tool/thumbs/`,
   named after the look's `key`, made with `magick … -resize "300x169!"` (the same stretch the tile used).
 - `_tile` loads `thumbs/<key>.jpg` first and falls back to the installed picture when a look has no thumb.
+- `ott_themes.wallpapers_missing()`: any look whose painting doesn't resolve in `KA_DIR` (the Kiro look's own picture
+  is not counted). The button reuses `ott_update.terminal()`, the same root-in-a-terminal path as Update now, so the
+  app still has only one pkexec helper. A 2 s `GLib.timeout_add_seconds` watch re-resolves the looks and rebuilds the
+  tiles (`_resolve()` + `_fill()`) once the paintings are there; `refresh()` does the same on a page visit.
+- Tested in GTK Broadway with `KA_DIR` pointed at an empty folder: the line and the thumbnails show, Apply is greyed;
+  switching `KA_DIR` back hides the line and all 18 looks become usable, the tiles still showing their pictures.
+- 5 new or changed strings, translated in all 13 languages with each catalog's own word for "wallpaper" and "look";
+  449/449 everywhere.
 
 ### Files Modified
-- `usr/share/ohmychadwm-tweak-tool/ott_page_themes.py`
+- `usr/share/ohmychadwm-tweak-tool/ott_page_themes.py`, `ott_themes.py`
 - `usr/share/ohmychadwm-tweak-tool/thumbs/*.jpg` (new)
+- `po/*.po`, `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
 - `CLAUDE.md`
 
 ## 2026.11.24

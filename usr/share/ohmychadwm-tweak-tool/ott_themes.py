@@ -19,6 +19,7 @@ from ott_i18n import _
 
 KA_DIR = "/usr/share/backgrounds/kiro-atelier"
 KIRO_WALLPAPER = "/usr/share/backgrounds/kiro/kiro-wallpaper.jpg"
+WALLPAPER_PACKAGE = "kiro-atelier-wallpapers"
 _COLOR_RE = re.compile(r'^\s*static\s+const\s+char\s+SchemeSelbr\[\]\s*=\s*"(#[0-9A-Fa-f]{6})"')
 
 # picture: KIRO_WALLPAPER, or the subject of a Kiro Atelier painting (any style or version of it matches). The KA file
@@ -143,6 +144,11 @@ def picture(look):
     return hits[0] if hits else None
 
 
+def wallpapers_missing():
+    """Return True when a Kiro Atelier painting of a look is not installed (WALLPAPER_PACKAGE would add it)."""
+    return any(picture(look) is None for look in BUILTIN if not look["picture"].startswith("/"))
+
+
 def border_color(bar):
     """Return SchemeSelbr (focused window border) of bar theme bar ('#rrggbb'), or None."""
     try:
@@ -171,7 +177,9 @@ def resolve_all():
         r = Resolved(look, pic, bar if bar in bars else None, _first(look["gtk"], gtk), _first(look["icons"], icons),
                      _first(look["cursor"], cursors), border_color(bar))
         if pic is None:
-            r.missing.append(_("the wallpaper (kiro-atelier-wallpapers)"))
+            # the Kiro look's picture comes from kiro-system-files, the paintings from WALLPAPER_PACKAGE
+            package = "kiro-system-files" if look["picture"].startswith("/") else WALLPAPER_PACKAGE
+            r.missing.append(_("the wallpaper ({package})").format(package=package))
         if r.bar is None:
             r.missing.append(_("the bar theme {name}").format(name=bar))
         for value, what in ((r.gtk, _("a GTK theme")), (r.icons, _("an icon theme")), (r.cursor, _("a cursor"))):

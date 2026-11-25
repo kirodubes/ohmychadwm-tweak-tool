@@ -18,6 +18,7 @@ import ott_root  # noqa: E402
 import ott_system  # noqa: E402
 import ott_targets  # noqa: E402
 import ott_themes  # noqa: E402
+import ott_update  # noqa: E402
 import ott_wallpaper  # noqa: E402
 from ott_widgets import muted, page_box, run_async, section, session_note, set_status, status_label  # noqa: E402
 from ott_i18n import N_, _  # noqa: E402
@@ -25,6 +26,7 @@ from ott_i18n import N_, _  # noqa: E402
 _THUMB_W, _THUMB_H = 300, 169
 _THUMB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "thumbs")
 _RESTART_CHECK_MS = 3000
+_INSTALL_CHECK_S = 2
 
 
 def _tile_css(looks):
@@ -82,9 +84,8 @@ class ThemesPage:
         self._busy = False
         self._tiles = {}
         self._spinners = {}
-        # Kiro first, the rest alphabetical by the name shown (translated)
-        looks = ott_themes.resolve_all()
-        self._looks = looks[:1] + sorted(looks[1:], key=lambda r: r.look["name"].casefold())
+        self._watch_id = 0
+        self._resolve()
 
         self.widget.append(section(_("Themes")))
         if (note := session_note()) is not None:
@@ -99,20 +100,30 @@ class ThemesPage:
             self._chk_login.set_tooltip_text(_("This login screen theme can't show another wallpaper."))
         self.widget.append(self._chk_login)
 
+        # only while paintings are missing (pure Arch): the tiles show shipped thumbnails, Apply needs the real files
+        self._install_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        self._install_row.append(muted(_(
+            "The wallpapers are not installed: the pictures are previews and the looks can't be used yet.")))
+        btn_install = Gtk.Button(label=_("Install the wallpapers"))
+        btn_install.set_tooltip_text(_("Opens a terminal: you see every step and type your password there."))
+        btn_install.connect("clicked", self._on_install)
+        self._install_row.append(btn_install)
+        self._install_row.set_visible(ott_themes.wallpapers_missing())
+        self.widget.append(self._install_row)
+
         provider = Gtk.CssProvider()
         provider.load_from_data(_tile_css(self._looks).encode())
         Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), provider,
                                                   Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
-        flow = Gtk.FlowBox(selection_mode=Gtk.SelectionMode.NONE, homogeneous=True)
-        flow.set_max_children_per_line(5)
-        flow.set_valign(Gtk.Align.START)
-        flow.set_min_children_per_line(1)
-        flow.set_column_spacing(12)
-        flow.set_row_spacing(12)
-        for r in self._looks:
-            flow.append(self._tile(r))
-        self.widget.append(flow)
+        self._flow = Gtk.FlowBox(selection_mode=Gtk.SelectionMode.NONE, homogeneous=True)
+        self._flow.set_max_children_per_line(5)
+        self._flow.set_valign(Gtk.Align.START)
+        self._flow.set_min_children_per_line(1)
+        self._flow.set_column_spacing(12)
+        self._flow.set_row_spacing(12)
+        self._fill()
+        self.widget.append(self._flow)
 
         footer = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
         self._spinner = Gtk.Spinner()
@@ -122,6 +133,43 @@ class ThemesPage:
         footer.append(self._status)
         self.widget.append(footer)
         self.refresh()
+
+    def _resolve(self):
+        # Kiro first, the rest alphabetical by the name shown (translated)
+        looks = ott_themes.resolve_all()
+        self._looks = looks[:1] + sorted(looks[1:], key=lambda r: r.look["name"].casefold())
+
+    def _fill(self):
+        self._flow.remove_all()
+        self._tiles.clear()
+        self._spinners.clear()
+        for r in self._looks:
+            self._flow.append(self._tile(r))
+
+    def _on_install(self, _widget):
+        command = f"sudo pacman -S --needed {ott_themes.WALLPAPER_PACKAGE}"
+        log.log_info(f"terminal: {command}")
+        ok, msg = ott_update.terminal(command)
+        if not ok:
+            set_status(self._status, msg, error=True)
+            return
+        set_status(self._status, _("A terminal window opened. The looks can be used as soon as the wallpapers are in."))
+        if not self._watch_id:
+            self._watch_id = GLib.timeout_add_seconds(_INSTALL_CHECK_S, self._check_installed)
+
+    def _check_installed(self):
+        if self._busy or ott_themes.wallpapers_missing():
+            return True
+        self._watch_id = 0
+        self._wallpapers_arrived()
+        return False
+
+    def _wallpapers_arrived(self):
+        self._install_row.set_visible(False)
+        self._resolve()
+        self._fill()
+        self.refresh()
+        set_status(self._status, _("The wallpapers are installed."))
 
     def _tile(self, r):
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
@@ -188,6 +236,13 @@ class ThemesPage:
     def refresh(self):
         """Mark the look in use (the Look and Bar pages may have changed it)."""
         if self._busy:
+            return
+        # installed by hand (or the terminal's watch ran out) while the page was away
+        if self._install_row.get_visible() and not ott_themes.wallpapers_missing():
+            if self._watch_id:
+                GLib.source_remove(self._watch_id)
+                self._watch_id = 0
+            self._wallpapers_arrived()
             return
         sel = ott_targets.current()
         bar = ott_chadwm.active_theme(ott_chadwm.read_config())
