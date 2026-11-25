@@ -29,13 +29,17 @@
   kiro-system-files' 26.11-17): under `/usr/share/backgrounds` so the SDDM background check accepts it, in its own
   folder so no two packages own one path and the Wallpaper page (non-recursive `listdir`) doesn't list it twice.
   `ott_themes.picture()` tries `KIRO_WALLPAPER` first, then `KIRO_WALLPAPER_COPY`.
+- **The copy stays in sync by itself.** `up.sh` (canonical Kiro-HQ copy, new optional hook) runs
+  `build/sync-assets.sh`: it fetches the wallpaper as pushed to kiro-system-files on GitHub and, only when it
+  differs, replaces the copy and regenerates `thumbs/kiro.jpg`. Offline or a failed fetch keeps the current files.
+  `build/` is not packaged (the PKGBUILD copies `usr/` only).
 - 5 new or changed strings, translated in all 13 languages with each catalog's own word for "wallpaper" and "look";
   449/449 everywhere.
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_page_themes.py`, `ott_themes.py`
 - `usr/share/ohmychadwm-tweak-tool/thumbs/*.jpg` (new)
-- `usr/share/backgrounds/ohmychadwm-tweak-tool/kiro-wallpaper.jpg` (new)
+- `usr/share/backgrounds/ohmychadwm-tweak-tool/kiro-wallpaper.jpg` (new), `build/sync-assets.sh` (new), `up.sh`
 - `po/*.po`, `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
 - `CLAUDE.md`
 
