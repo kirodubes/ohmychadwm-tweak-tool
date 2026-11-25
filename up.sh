@@ -11,7 +11,8 @@ set -euo pipefail
 #   - Standard daily up-sync for any block in the ecosystem.
 #   - Ensures git remote is SSH (runs setup.sh if not), pulls latest,
 #     cleans __pycache__, optionally runs chaotic.sh / repo.sh /
-#     build/sync-videos.py, then stages, commits, and pushes the working tree.
+#     build/sync-videos.py / build/sync-assets.sh, then stages, commits,
+#     and pushes the working tree.
 #
 #   Why: one command to keep a block in sync with its remote, with
 #   safe defaults (auto-rebase on rejected push, never force-push).
@@ -179,6 +180,15 @@ main() {
     if [[ -f "${SCRIPT_DIR}/build/sync-videos.py" ]]; then
         log_section "Running build/sync-videos.py"
         python "${SCRIPT_DIR}/build/sync-videos.py" || log_warn "Video sync skipped (missing creds or deps) — keeping current files"
+    fi
+
+    # Optional per-repo hook: if a block ships build/sync-assets.sh (currently
+    # only ohmychadwm-tweak-tool: its copy of the Kiro wallpaper), fetch the
+    # files it mirrors from another repo before committing. Inert elsewhere.
+    # Non-fatal so being offline never blocks the push.
+    if [[ -f "${SCRIPT_DIR}/build/sync-assets.sh" ]]; then
+        log_section "Running build/sync-assets.sh"
+        bash "${SCRIPT_DIR}/build/sync-assets.sh" || log_warn "Asset sync failed — keeping current files"
     fi
 
     git_commit_and_push
