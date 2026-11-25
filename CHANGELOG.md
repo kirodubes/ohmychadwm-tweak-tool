@@ -11,9 +11,9 @@
   with an **Install the wallpapers** button. It opens a terminal with `sudo pacman -S --needed
   kiro-atelier-wallpapers` (the user sees each step and types their own password). As soon as the paintings are
   there, the line goes away and the looks can be used, without restarting the app.
-- The Kiro look's "Not installed" tooltip named kiro-atelier-wallpapers; its picture comes from kiro-system-files,
-  and the tooltip now says so. The install button doesn't offer kiro-system-files: it rewrites `/etc` files, too much
-  for a plain Arch system.
+- **The Kiro look works on pure Arch too.** Its picture came only from kiro-system-files, which rewrites `/etc`
+  files and is too much for a plain Arch system. The app now ships its own copy of the Kiro wallpaper and uses it
+  when kiro-system-files isn't there.
 
 ### Technical Details
 - 18 thumbnails at the tile size (300x169, JPEG q82, 256 KB in all) in `usr/share/ohmychadwm-tweak-tool/thumbs/`,
@@ -25,12 +25,17 @@
   tiles (`_resolve()` + `_fill()`) once the paintings are there; `refresh()` does the same on a page visit.
 - Tested in GTK Broadway with `KA_DIR` pointed at an empty folder: the line and the thumbnails show, Apply is greyed;
   switching `KA_DIR` back hides the line and all 18 looks become usable, the tiles still showing their pictures.
+- The copy is `/usr/share/backgrounds/ohmychadwm-tweak-tool/kiro-wallpaper.jpg` (434 KB, the same file as
+  kiro-system-files' 26.11-17): under `/usr/share/backgrounds` so the SDDM background check accepts it, in its own
+  folder so no two packages own one path and the Wallpaper page (non-recursive `listdir`) doesn't list it twice.
+  `ott_themes.picture()` tries `KIRO_WALLPAPER` first, then `KIRO_WALLPAPER_COPY`.
 - 5 new or changed strings, translated in all 13 languages with each catalog's own word for "wallpaper" and "look";
   449/449 everywhere.
 
 ### Files Modified
 - `usr/share/ohmychadwm-tweak-tool/ott_page_themes.py`, `ott_themes.py`
 - `usr/share/ohmychadwm-tweak-tool/thumbs/*.jpg` (new)
+- `usr/share/backgrounds/ohmychadwm-tweak-tool/kiro-wallpaper.jpg` (new)
 - `po/*.po`, `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo`
 - `CLAUDE.md`
 

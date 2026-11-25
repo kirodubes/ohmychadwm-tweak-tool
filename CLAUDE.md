@@ -163,7 +163,9 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   kiro-atelier-wallpapers still shows them (2026-11-25). A new or changed look needs its thumb regenerated:
   `magick <picture> -resize "300x169!" -strip -quality 82 thumbs/<key>.jpg`. Only while
   `wallpapers_missing()` the page shows **Install the wallpapers** (`sudo pacman -S --needed kiro-atelier-wallpapers`
-  in a terminal via `ott_update.terminal`, a 2 s watch rebuilds the tiles). Never offer kiro-system-files there.
+  in a terminal via `ott_update.terminal`, a 2 s watch rebuilds the tiles). Never offer kiro-system-files there: the Kiro look falls back to
+  the app's own copy `usr/share/backgrounds/ohmychadwm-tweak-tool/kiro-wallpaper.jpg` (`KIRO_WALLPAPER_COPY`);
+  refresh it when kiro-system-files changes its wallpaper.
   After a rebuild the page restarts Ohmychadwm itself and checks `ott_chadwm.running_binary()`: a run.sh without
   `hash -r` (before ohmychadwm 2026.11.20) keeps starting `/usr/bin/ohmychadwm` until the next login, and the status
   says so.

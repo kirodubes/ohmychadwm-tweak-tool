@@ -19,6 +19,8 @@ from ott_i18n import _
 
 KA_DIR = "/usr/share/backgrounds/kiro-atelier"
 KIRO_WALLPAPER = "/usr/share/backgrounds/kiro/kiro-wallpaper.jpg"
+# the app's own copy, for systems without kiro-system-files (pure Arch); under backgrounds so SDDM can read it
+KIRO_WALLPAPER_COPY = "/usr/share/backgrounds/ohmychadwm-tweak-tool/kiro-wallpaper.jpg"
 WALLPAPER_PACKAGE = "kiro-atelier-wallpapers"
 _COLOR_RE = re.compile(r'^\s*static\s+const\s+char\s+SchemeSelbr\[\]\s*=\s*"(#[0-9A-Fa-f]{6})"')
 
@@ -139,7 +141,8 @@ def picture(look):
     """Return the installed picture file of look, or None."""
     pic = look["picture"]
     if pic.startswith("/"):
-        return pic if os.path.isfile(pic) else None
+        candidates = (pic, KIRO_WALLPAPER_COPY) if pic == KIRO_WALLPAPER else (pic,)
+        return next((p for p in candidates if os.path.isfile(p)), None)
     hits = sorted(glob.glob(os.path.join(KA_DIR, f"kiro-atelier-{pic}-*.jpg")))
     return hits[0] if hits else None
 
@@ -177,9 +180,7 @@ def resolve_all():
         r = Resolved(look, pic, bar if bar in bars else None, _first(look["gtk"], gtk), _first(look["icons"], icons),
                      _first(look["cursor"], cursors), border_color(bar))
         if pic is None:
-            # the Kiro look's picture comes from kiro-system-files, the paintings from WALLPAPER_PACKAGE
-            package = "kiro-system-files" if look["picture"].startswith("/") else WALLPAPER_PACKAGE
-            r.missing.append(_("the wallpaper ({package})").format(package=package))
+            r.missing.append(_("the wallpaper ({package})").format(package=WALLPAPER_PACKAGE))
         if r.bar is None:
             r.missing.append(_("the bar theme {name}").format(name=bar))
         for value, what in ((r.gtk, _("a GTK theme")), (r.icons, _("an icon theme")), (r.cursor, _("a cursor"))):
