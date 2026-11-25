@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 2026.11.25
+
+### What Changed
+- **The Themes page shows its pictures on pure Arch too.** A viewer's video showed 18 empty frames: the pictures
+  come from kiro-atelier-wallpapers and kiro-system-files, which a plain Arch install with ohmychadwm doesn't have.
+  The app now ships a small thumbnail of every look and the tiles show that. Applying a look still needs the
+  wallpaper package; its tile still says what is missing.
+
+### Technical Details
+- 18 thumbnails at the tile size (300x169, JPEG q82, 256 KB in all) in `usr/share/ohmychadwm-tweak-tool/thumbs/`,
+  named after the look's `key`, made with `magick … -resize "300x169!"` (the same stretch the tile used).
+- `_tile` loads `thumbs/<key>.jpg` first and falls back to the installed picture when a look has no thumb.
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_page_themes.py`
+- `usr/share/ohmychadwm-tweak-tool/thumbs/*.jpg` (new)
+- `CLAUDE.md`
+
 ## 2026.11.24
 
 ### What Changed

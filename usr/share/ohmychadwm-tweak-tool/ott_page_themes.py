@@ -1,5 +1,6 @@
 """Themes page: eighteen pictures, one click sets the whole look (wallpaper, login screen, bar, GTK, icons, cursor)."""
 
+import os
 import threading
 
 import gi
@@ -22,6 +23,7 @@ from ott_widgets import muted, page_box, run_async, section, session_note, set_s
 from ott_i18n import N_, _  # noqa: E402
 
 _THUMB_W, _THUMB_H = 300, 169
+_THUMB_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "thumbs")
 _RESTART_CHECK_MS = 3000
 
 
@@ -175,8 +177,11 @@ class ThemesPage:
             btn.set_sensitive(False)
             box.set_tooltip_text(_("Not installed: {what}").format(what=", ".join(r.missing)))
         self._tiles[r.look["key"]] = (btn, in_use)
-        if r.picture:
-            run_async(lambda: _load_pixbuf(r.picture),
+        # the shipped thumbnail shows the look even before kiro-atelier-wallpapers is installed (pure Arch)
+        thumb = os.path.join(_THUMB_DIR, f"{r.look['key']}.jpg")
+        source = thumb if os.path.isfile(thumb) else r.picture
+        if source:
+            run_async(lambda: _load_pixbuf(source),
                       lambda pixbuf: pic.set_paintable(Gdk.Texture.new_for_pixbuf(pixbuf)) if pixbuf else None)
         return box
 

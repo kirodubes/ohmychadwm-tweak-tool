@@ -159,6 +159,9 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   at a given height and they grew. Every look sets `top` (bar position) and `border`; `_bar_options()` writes an override only where it differs from the
   bar theme. Each look uses a clearly different bar theme: everforest = gruvchad, celestial ≈ dracul, nord-polarnight ≈
   nord-frost and the five planet themes are near copies (colour check 2026-11-20), so use one of each group at most.
+  The tiles show `thumbs/<key>.jpg` (300x169, shipped in the app) before the installed picture, so pure Arch without
+  kiro-atelier-wallpapers still shows them (2026-11-25). A new or changed look needs its thumb regenerated:
+  `magick <picture> -resize "300x169!" -strip -quality 82 thumbs/<key>.jpg`.
   After a rebuild the page restarts Ohmychadwm itself and checks `ott_chadwm.running_binary()`: a run.sh without
   `hash -r` (before ohmychadwm 2026.11.20) keeps starting `/usr/bin/ohmychadwm` until the next login, and the status
   says so.
