@@ -99,11 +99,17 @@ def _width(out):
     return h if out.rotate in ("left", "right") else w
 
 
-def plan(outputs, wanted, primary):
+def left_to_right(outputs):
+    """Return the names of the enabled outputs, left to right."""
+    return [o.name for o in sorted((o for o in outputs if o.mode), key=lambda o: (o.x, o.y))]
+
+
+def plan(outputs, wanted, primary, order=None):
     """Return new [Output] with wanted {name: (mode or None, rate)} applied and primary set.
 
-    When a width changes, the enabled outputs are placed side by side again in their current left-to-right
-    order, so they never overlap; otherwise every position stays as it is.
+    order is the wanted left-to-right list of output names. When it differs from the current order, or a width
+    changes, the enabled outputs are placed side by side again (in order, else in their current order), so they
+    never overlap; otherwise every position stays as it is.
     """
     new, reflow = [], False
     for out in outputs:
@@ -116,9 +122,18 @@ def plan(outputs, wanted, primary):
                 reflow = True
         out.primary = out.name == primary and out.mode is not None
         new.append(out)
+    enabled = [o for o in new if o.mode]
+    if order:
+        rank = {name: i for i, name in enumerate(order)}
+        wanted_order = [o.name for o in sorted(enabled, key=lambda o: (rank.get(o.name, len(rank)), o.x))]
+        if wanted_order != left_to_right(enabled):
+            reflow = True
+    else:
+        rank = None
     if reflow:
         x = 0
-        for out in sorted((o for o in new if o.mode), key=lambda o: o.x):
+        key = (lambda o: (rank.get(o.name, len(rank)), o.x)) if rank else (lambda o: o.x)
+        for out in sorted(enabled, key=key):
             out.x, out.y = x, 0
             x += _width(out)
     return new
@@ -149,14 +164,17 @@ def _run(script):
     return proc.returncode == 0, proc.stderr.strip()
 
 
-def switch(wanted, primary):
-    """Apply wanted {name: (mode or None, rate)} now without saving; return (ok, message, new_script, old_script)."""
+def switch(wanted, primary, order=None):
+    """Apply wanted {name: (mode or None, rate)} in order (left to right) now without saving.
+
+    Return (ok, message, new_script, old_script).
+    """
     try:
         outputs = query()
     except (OSError, subprocess.CalledProcessError) as e:
         return False, _("xrandr failed: {error}").format(error=e), None, None
     old = build_script(outputs)
-    new = build_script(plan(outputs, wanted, primary))
+    new = build_script(plan(outputs, wanted, primary, order))
     if new is None:
         return False, _("At least one display has to stay on."), None, None
     ok, err = _run(new)

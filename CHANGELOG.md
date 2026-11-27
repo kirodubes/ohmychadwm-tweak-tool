@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## 2026.11.27
+
+### What Changed
+- **Displays: set the screens' order from left to right.** Each screen row has a new "Position N from the left"
+  dropdown (shown with two or more screens), filled from the current layout. Choose a different order, Apply, and the
+  screens are placed side by side in that order; Keep saves it for every login as before. Two screens with the same
+  position get a clear message instead of an overlap. Before, the page kept whatever positions xrandr reported, and
+  changing the order needed arandr. Asked by Erik on riker with three screens (two ASUS on the RTX 2060, a BenQ on
+  the motherboard HDMI): "what to do if I want to set the screens in the correct order from left to right".
+
+### Technical Details
+- `ott_display.left_to_right()` returns the enabled outputs sorted by x. `plan()` takes `order` (names, left to
+  right); when it differs from the current order it uses the existing side-by-side reflow (also used when a width
+  changes), sorted by the wanted order, so no new placement code. `switch()` passes `order` through.
+- Tested offline on riker's real `xrandr` output: the current order changes nothing, and three other orders give
+  0 / 1920 / 3840 with the primary flag kept. On riker the dev copy read the live layout correctly (HDMI-0
+  position 1, DVI-D-0 position 2).
+- The KiroTux premium apps' Displays page places screens relative to the first only (two "Right of" overlap with
+  three screens); that is a MASTER_TODO item, and the premium apps keep their own copy of the code.
+- Two new texts, translated into all 13 languages (451/451); the wording follows App placement's "number {n} from
+  the left".
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ott_page_displays.py`
+- `po/*.po` (13), `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo` (13)
+- `CHANGELOG.md`
+
 ## 2026.11.25
 
 ### What Changed

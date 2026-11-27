@@ -132,6 +132,8 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
 - **Displays**: changes run now, and only **Keep** (15 s countdown, else revert) writes `~/.screenlayout/<user>.sh`,
   the file `run.sh` runs at login, in arandr's format. `--rate` is only written when it isn't the mode's default,
   because arandr itself never writes one. When a width changes, enabled outputs are re-placed side by side.
+  The "Position N from the left" dropdowns pass `order` to `plan()`; a changed order uses the same side-by-side
+  reflow (y = 0, no stacking above/below), so a vertical layout made in arandr is flattened only when the order changes.
 - **Mouse & touchpad**: `ott_root --input` takes JSON and runs `ott_input.validate()` **as root** before writing,
   so the helper only writes text it built itself. Keyboards with RGB/media drivers register a pointer; they are
   skipped by name.

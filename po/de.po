@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-25 06:10+0100\n"
+"POT-Creation-Date: 2026-11-27 20:19+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: German\n"
@@ -83,39 +83,39 @@ msgstr "E-Mail"
 msgid "Compile failed:"
 msgstr "Kompilieren fehlgeschlagen:"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:157
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:175
 #, python-brace-format
 msgid "xrandr failed: {error}"
 msgstr "xrandr fehlgeschlagen: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:161
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:124
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:179
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:135
 msgid "At least one display has to stay on."
 msgstr "Mindestens ein Bildschirm muss eingeschaltet bleiben."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:165
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:183
 #, python-brace-format
 msgid "xrandr could not use this layout: {error}"
 msgstr "xrandr konnte dieses Layout nicht verwenden: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:166
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:184
 msgid "Display layout changed."
 msgstr "Bildschirmlayout geändert."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:172
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:190
 msgid "There is no previous layout to go back to."
 msgstr "Es gibt kein vorheriges Layout, zu dem du zurückkehren kannst."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
 msgid "Display layout reverted, nothing saved."
 msgstr "Bildschirmlayout zurückgesetzt, nichts gespeichert."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:174
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
 #, python-brace-format
 msgid "Revert failed: {error}"
 msgstr "Zurücksetzen fehlgeschlagen: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:210
 #, python-brace-format
 msgid "Layout kept and saved to {path}, so every login uses it."
 msgstr ""
@@ -576,7 +576,7 @@ msgstr "Welche App Links, Ordner und Dateien öffnet (xdg-mime)."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:82
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:110
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:84
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:294
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:206
@@ -751,19 +751,28 @@ msgstr "xrandr konnte die Bildschirme nicht auslesen: {error}"
 msgid "xrandr reports no connected display."
 msgstr "xrandr meldet keinen angeschlossenen Bildschirm."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:85
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:78
+#, python-brace-format
+msgid "Position {number} from the left"
+msgstr "Position {number} von links"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:89
 msgid "On"
 msgstr "Ein"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:87
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:91
 msgid "Primary"
 msgstr "Primär"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:128
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:138
+msgid "Two displays have the same position: give each display its own place."
+msgstr "Zwei Bildschirme haben dieselbe Position: Gib jedem Bildschirm seinen eigenen Platz."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:144
 msgid "Switching…"
 msgstr "Wird umgeschaltet…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:144
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:160
 msgid "Keep this display layout?"
 msgstr "Dieses Bildschirmlayout beibehalten?"
 
@@ -1958,171 +1967,171 @@ msgstr "xfconf-query nicht installiert, übersprungen"
 msgid "{tool} not configured, skipped"
 msgstr "{tool} nicht eingerichtet, übersprungen"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:34
 msgid "Kiro"
 msgstr "Kiro"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:32
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:34
 msgid "The look Kiro ships with."
 msgstr "Der Look, mit dem Kiro ausgeliefert wird."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:37
 msgid "A frozen lake in art deco, cool blue, thin borders."
 msgstr "Ein gefrorener See im Art déco, kühles Blau, dünne Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:35
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:37
 msgid "Nord Frost"
 msgstr "Nord Frost"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:38
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:40
 msgid "Dracula Night"
 msgstr "Dracula Night"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:39
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:41
 msgid "A glowing figure under two moons, purple and candy icons."
 msgstr "Eine leuchtende Gestalt unter zwei Monden, Lila und Candy-Symbole."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:45
 msgid "A starry city in layered paper, deep blue."
 msgstr "Eine Sternenstadt aus Papierschichten, tiefblau."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:43
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:45
 msgid "Tokyo Night"
 msgstr "Tokyo Night"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:47
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:49
 msgid "A sunset in layered paper, light and calm."
 msgstr "Ein Sonnenuntergang aus Papierschichten, hell und ruhig."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:47
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:49
 msgid "Paper Day"
 msgstr "Paper Day"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:52
 msgid "An origami forest, soft green and wide borders."
 msgstr "Ein Origami-Wald, sanftes Grün und breite Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:50
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:52
 msgid "Everforest"
 msgstr "Everforest"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:56
 msgid "A car in a monsoon desert, deep brown with red borders."
 msgstr "Ein Auto in einer Monsunwüste, tiefbraun mit roten Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:56
 msgid "Desert Dusk"
 msgstr "Desert Dusk"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:60
 msgid "A pink bird in a dreamscape, light rose tones."
 msgstr "Ein rosa Vogel in einer Traumlandschaft, helle Rosétöne."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:58
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:60
 msgid "Rosé Pine"
 msgstr "Rosé Pine"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:62
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:64
 msgid "Rose Quill"
 msgstr "Rose Quill"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:63
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:65
 msgid "Rose and lavender paper swirls with the rose borders."
 msgstr "Rosa und lavendelfarbene Papierwirbel mit den rosa Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:68
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:70
 msgid "Snow Leopard"
 msgstr "Snow Leopard"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:69
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:71
 msgid "A snow leopard in gold and teal art deco, with blue borders."
 msgstr "Ein Schneeleopard in Gold und Petrol im Art déco, mit blauen Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:73
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:75
 msgid "A paper-quilled solar system, pastel on dark."
 msgstr "Ein Sonnensystem in Papierfiligran, Pastell auf Dunkel."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:73
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:75
 msgid "Catppuccin Space"
 msgstr "Catppuccin Space"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:77
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:79
 msgid "Celestial Ocean"
 msgstr "Celestial Ocean"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:78
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:80
 msgid "Psychedelic sea swirls, deep sea blue and teal borders."
 msgstr ""
 "Psychedelische Meereswirbel, tiefes Meeresblau und petrolfarbene Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:82
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:84
 msgid "Bright Moon"
 msgstr "Bright Moon"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:83
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:85
 msgid "A pale moon over a dream valley, light, with a warm orange bar."
 msgstr ""
 "Ein blasser Mond über einem Traumtal, hell, mit einer warmen orangen Leiste."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:87
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:89
 msgid "Monokai House"
 msgstr "Monokai House"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:88
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:90
 msgid "A house in a dream pyramid under the moon, lime green borders."
 msgstr "Ein Haus in einer Traumpyramide unter dem Mond, limettengrüne Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:92
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:94
 msgid "A paper-cut tree at dawn, purple bar, red borders."
 msgstr "Ein Scherenschnitt-Baum im Morgengrauen, lila Leiste, rote Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:92
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:94
 msgid "Summit Dawn"
 msgstr "Summit Dawn"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:96
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:98
 msgid "Dragon Fire"
 msgstr "Dragon Fire"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:97
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:99
 msgid "A ball of fire on the sea, orange on plum, very wide borders."
 msgstr "Ein Feuerball auf dem Meer, Orange auf Pflaume, sehr breite Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:101
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:103
 msgid "Neptune Deep"
 msgstr "Neptune Deep"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:102
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:104
 msgid "Wanderers in a blue shadow box, navy with yellow borders."
 msgstr "Wanderer in einem blauen Schattenkasten, Marineblau mit gelben Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:105
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:107
 msgid "Red and black origami shards, blood-red borders."
 msgstr "Rote und schwarze Origami-Scherben, blutrote Rahmen."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:105
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:107
 msgid "Venom"
 msgstr "Venom"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:182
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:183
 #, python-brace-format
 msgid "the wallpaper ({package})"
 msgstr "der Hintergrund ({package})"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:184
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:185
 #, python-brace-format
 msgid "the bar theme {name}"
 msgstr "das Leistenthema {name}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:186
 msgid "a GTK theme"
 msgstr "ein GTK-Thema"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:186
 msgid "a cursor"
 msgstr "ein Mauszeiger"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:185
+#: usr/share/ohmychadwm-tweak-tool/ott_themes.py:186
 msgid "an icon theme"
 msgstr "ein Symbolthema"
 

@@ -72,6 +72,10 @@ class DisplaysPage:
         vbox = ott_display.is_virtualbox()
         grid = settings_grid()
         group = None
+        # screens that are on first, left to right, then the ones that are off
+        current = ott_display.left_to_right(connected)
+        current += [o.name for o in connected if o.name not in current]
+        places = [_("Position {number} from the left").format(number=n) for n in range(1, len(connected) + 1)]
         for row, out in enumerate(connected):
             names = list(out.modes)
             mode = out.mode or out.preferred or (names[0] if names else None)
@@ -95,7 +99,12 @@ class DisplaysPage:
             grid.attach(dd_rate, 2, row, 1, 1)
             grid.attach(on, 3, row, 1, 1)
             grid.attach(primary, 4, row, 1, 1)
-            self._rows[out.name] = (dd_mode, dd_rate, on, primary)
+            dd_place = Gtk.DropDown.new_from_strings(places)
+            dd_place.set_selected(current.index(out.name))
+            dd_place.set_hexpand(False)
+            if len(connected) > 1:
+                grid.attach(dd_place, 5, row, 1, 1)
+            self._rows[out.name] = (dd_mode, dd_rate, on, primary, dd_place)
         self.widget.append(grid)
 
         self._btn_apply = Gtk.Button(label=_("Apply"))
@@ -114,19 +123,26 @@ class DisplaysPage:
     def _on_apply(self, _widget):
         if self._busy:
             return
-        wanted, primary = {}, None
-        for name, (dd_mode, dd_rate, on, prim) in self._rows.items():
+        wanted, primary, place = {}, None, {}
+        for name, (dd_mode, dd_rate, on, prim, dd_place) in self._rows.items():
             mode = selected(dd_mode) if on.get_active() else None
             wanted[name] = (mode, selected(dd_rate).removesuffix(" Hz") or None)
             if prim.get_active() and mode:
                 primary = name
+            if mode:
+                place[name] = dd_place.get_selected()
         if not any(m for m, _r in wanted.values()):
             set_status(self._status, _("At least one display has to stay on."), error=True)
             return
+        if len(set(place.values())) != len(place):
+            set_status(self._status, _("Two displays have the same position: give each display its own place."),
+                       error=True)
+            return
+        order = sorted(place, key=place.get)
         self._busy = True
         self._btn_apply.set_sensitive(False)
         set_status(self._status, _("Switching…"))
-        run_async(lambda: ott_display.switch(wanted, primary), self._switched)
+        run_async(lambda: ott_display.switch(wanted, primary, order), self._switched)
 
     def _switched(self, result):
         ok, msg, new, old = result
