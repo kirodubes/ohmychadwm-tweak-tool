@@ -9,8 +9,22 @@
   position get a clear message instead of an overlap. Before, the page kept whatever positions xrandr reported, and
   changing the order needed arandr. Asked by Erik on riker with three screens (two ASUS on the RTX 2060, a BenQ on
   the motherboard HDMI): "what to do if I want to set the screens in the correct order from left to right".
+- **Displays: which screen is which.** Erik found the order hard to set ("it is hard to figure out"): `HDMI-0` and
+  `DVI-D-0` tell a user nothing. Each row now shows the screen's model next to its connector ("ASUS VX279 (HDMI-0)",
+  "BenQ GC2870 (HDMI-1-1)"), and a new **Identify** button shows a big card on every screen for a few seconds: its
+  position from the left, model and connector. A click closes them early. Two identical ASUS screens on riker are
+  told apart only by Identify, which is why both were added.
 
 ### Technical Details
+- Model names come from `xrandr --prop`: `ott_display.parse_models()` reads each output's EDID and takes the
+  monitor-name descriptor (tag 0xFC); a broken or missing EDID just leaves the connector name. It works for an
+  output on the other GPU too (riker's BenQ on the Intel port).
+- Identify: chadwm opens every new window on the screen under the pointer and ignores the screen GTK asks for
+  (`fullscreen_on_monitor`), so the first try put all three cards on one screen. A worker thread now moves the pointer
+  to each screen first with `ott_session.select_screen()` (new public wrapper around `_select_screen()`, which
+  already handles chadwm skipping the first motion), opens that card in the GTK thread, and puts the pointer back
+  (`pointer()` / `move_pointer()`). The page is `_busy` meanwhile. Tested on riker: all three cards on the right
+  screens, the pointer back where it was.
 - `ott_display.left_to_right()` returns the enabled outputs sorted by x. `plan()` takes `order` (names, left to
   right); when it differs from the current order it uses the existing side-by-side reflow (also used when a width
   changes), sorted by the wanted order, so no new placement code. `switch()` passes `order` through.
@@ -23,9 +37,9 @@
   the left".
 
 ### Files Modified
-- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ott_page_displays.py`
+- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ott_page_displays.py`, `ott_session.py`, `ott.css`
 - `po/*.po` (13), `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo` (13)
-- `CHANGELOG.md`
+- `CHANGELOG.md`, `CLAUDE.md`
 
 ## 2026.11.25
 

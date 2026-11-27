@@ -134,6 +134,10 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   because arandr itself never writes one. When a width changes, enabled outputs are re-placed side by side.
   The "Position N from the left" dropdowns pass `order` to `plan()`; a changed order uses the same side-by-side
   reflow (y = 0, no stacking above/below), so a vertical layout made in arandr is flattened only when the order changes.
+  Row labels carry the EDID model (`parse_models()` on `xrandr --prop`). **Identify**: chadwm opens a new window on
+  the screen under the pointer and ignores `fullscreen_on_monitor`, so each card is opened after
+  `ott_session.select_screen()` moved the pointer there (worker thread, `_busy`), and the pointer goes back after.
+  Any future "show a window on screen N" needs the same.
 - **Mouse & touchpad**: `ott_root --input` takes JSON and runs `ott_input.validate()` **as root** before writing,
   so the helper only writes text it built itself. Keyboards with RGB/media drivers register a pointer; they are
   skipped by name.

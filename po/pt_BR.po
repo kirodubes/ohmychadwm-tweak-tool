@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 20:19+0100\n"
+"POT-Creation-Date: 2026-11-27 20:34+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -83,39 +83,39 @@ msgstr "E-mail"
 msgid "Compile failed:"
 msgstr "Falha na compilação:"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:175
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:216
 #, python-brace-format
 msgid "xrandr failed: {error}"
 msgstr "Falha no xrandr: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:179
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:135
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:220
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:198
 msgid "At least one display has to stay on."
 msgstr "Pelo menos uma tela precisa permanecer ligada."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:183
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:224
 #, python-brace-format
 msgid "xrandr could not use this layout: {error}"
 msgstr "O xrandr não conseguiu usar este layout: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:184
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:225
 msgid "Display layout changed."
 msgstr "Layout das telas alterado."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:190
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:231
 msgid "There is no previous layout to go back to."
 msgstr "Não há um layout anterior para restaurar."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:233
 msgid "Display layout reverted, nothing saved."
 msgstr "Layout das telas restaurado; nada foi salvo."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:233
 #, python-brace-format
 msgid "Revert failed: {error}"
 msgstr "Falha ao restaurar: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:210
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:251
 #, python-brace-format
 msgid "Layout kept and saved to {path}, so every login uses it."
 msgstr "Layout mantido e salvo em {path}; ele será usado em todos os logins."
@@ -163,7 +163,7 @@ msgstr "Teclado"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:34
 msgid "Displays"
@@ -573,7 +573,7 @@ msgstr "Qual app abre links, pastas e arquivos (xdg-mime)."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:82
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:110
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:121
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:84
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:294
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:206
@@ -711,7 +711,7 @@ msgstr "A instalação do novo Ohmychadwm foi cancelada ou falhou: {error}"
 msgid "Installing the new Ohmychadwm was cancelled or failed."
 msgstr "A instalação do novo Ohmychadwm foi cancelada ou falhou."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:57
 msgid ""
 "You are not in an Ohmychadwm session: a change shows right away, but the "
 "saved layout is only used at your Ohmychadwm logins. This desktop keeps its "
@@ -721,7 +721,7 @@ msgstr ""
 "imediatamente, mas o layout salvo só é usado nos seus logins no Ohmychadwm. "
 "Este desktop mantém suas próprias configurações de tela."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:59
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:62
 #, python-brace-format
 msgid ""
 "Changes are used right away. Keep them within {seconds} seconds and they are "
@@ -733,37 +733,47 @@ msgstr ""
 "que também pode editá-lo) para todos os logins. Caso contrário, o layout "
 "anterior será restaurado."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:66
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:69
 #, python-brace-format
 msgid "xrandr could not read the displays: {error}"
 msgstr "O xrandr não conseguiu ler as telas: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:70
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:73
 msgid "xrandr reports no connected display."
 msgstr "O xrandr não detectou nenhuma tela conectada."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:78
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:82
 #, python-brace-format
 msgid "Position {number} from the left"
 msgstr "Posição {number} a partir da esquerda"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:93
 msgid "On"
 msgstr "Ligada"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:91
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:95
 msgid "Primary"
 msgstr "Principal"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:138
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:117
+msgid "Identify"
+msgstr "Identificar"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:118
+msgid ""
+"Show each display's position, model and name on that display for a few "
+"seconds"
+msgstr "Mostra por alguns segundos em cada tela a sua posição, modelo e nome"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:201
 msgid "Two displays have the same position: give each display its own place."
 msgstr "Duas telas têm a mesma posição: dê a cada tela o seu próprio lugar."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:144
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:207
 msgid "Switching…"
 msgstr "Alternando…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:160
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:223
 msgid "Keep this display layout?"
 msgstr "Manter este layout de telas?"
 

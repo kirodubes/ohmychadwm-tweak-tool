@@ -2,15 +2,18 @@
 
 import os
 import subprocess
+import threading
+import time
 
 import gi
 
 gi.require_version("Gtk", "4.0")
-from gi.repository import Gtk  # noqa: E402
+from gi.repository import GLib, Gtk  # noqa: E402
 
 import log  # noqa: E402
 import ott_chadwm  # noqa: E402
 import ott_display  # noqa: E402
+import ott_session  # noqa: E402
 from ott_widgets import (  # noqa: E402
     warning,
     KEEP_SECONDS,
@@ -75,6 +78,7 @@ class DisplaysPage:
         # screens that are on first, left to right, then the ones that are off
         current = ott_display.left_to_right(connected)
         current += [o.name for o in connected if o.name not in current]
+        self._order, self._models = current, ott_display.models()
         places = [_("Position {number} from the left").format(number=n) for n in range(1, len(connected) + 1)]
         for row, out in enumerate(connected):
             names = list(out.modes)
@@ -94,7 +98,8 @@ class DisplaysPage:
             else:
                 primary.set_group(group)
             primary.set_active(out.primary or (len(connected) == 1))
-            grid.attach(row_label(out.name), 0, row, 1, 1)
+            model = self._models.get(out.name)
+            grid.attach(row_label(f"{model} ({out.name})" if model else out.name), 0, row, 1, 1)
             grid.attach(dd_mode, 1, row, 1, 1)
             grid.attach(dd_rate, 2, row, 1, 1)
             grid.attach(on, 3, row, 1, 1)
@@ -107,13 +112,71 @@ class DisplaysPage:
             self._rows[out.name] = (dd_mode, dd_rate, on, primary, dd_place)
         self.widget.append(grid)
 
+        buttons = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        buttons.set_halign(Gtk.Align.END)
+        btn_identify = Gtk.Button(label=_("Identify"))
+        btn_identify.set_tooltip_text(_("Show each display's position, model and name on that display for a few "
+                                        "seconds"))
+        btn_identify.connect("clicked", self._on_identify)
         self._btn_apply = Gtk.Button(label=_("Apply"))
         self._btn_apply.add_css_class("suggested-action")
-        self._btn_apply.set_halign(Gtk.Align.END)
         self._btn_apply.connect("clicked", self._on_apply)
-        self.widget.append(self._btn_apply)
+        if len(connected) > 1:
+            buttons.append(btn_identify)
+        buttons.append(self._btn_apply)
+        self.widget.append(buttons)
         self._status = status_label()
         self.widget.append(self._status)
+
+    def _on_identify(self, _widget):
+        """Show a full-screen card on every display that is on: its position from the left, model and name."""
+        if self._busy:
+            return
+        listed = self._window.get_display().get_monitors()
+        monitors = {m.get_connector(): m for m in (listed.get_item(i) for i in range(listed.get_n_items()))}
+        targets = [name for name in self._order if name in monitors]
+        windows = []
+
+        def show(name, shown):
+            lines = [str(self._order.index(name) + 1), self._models.get(name) or "", name]
+            label = Gtk.Label()
+            label.set_markup("\n".join(GLib.markup_escape_text(line) for line in lines if line))
+            label.set_justify(Gtk.Justification.CENTER)
+            win = Gtk.Window(decorated=False)
+            win.add_css_class("identify")
+            win.set_child(label)
+            click = Gtk.GestureClick()
+            click.connect("pressed", close_all)
+            win.add_controller(click)
+            win.fullscreen_on_monitor(monitors[name])
+            win.present()
+            windows.append(win)
+            shown.set()
+            return False
+
+        def close_all(*_args):
+            for win in windows:
+                win.destroy()
+            windows.clear()
+            self._busy = False
+            return False
+
+        def work():
+            # chadwm opens a window on the screen that has the pointer and ignores the screen GTK asks for
+            where = ott_session.pointer()
+            for name in targets:
+                in_session = ott_session.select_screen(name)
+                shown = threading.Event()
+                GLib.idle_add(show, name, shown)
+                shown.wait(2)
+                if in_session:
+                    time.sleep(0.3)
+            if where:
+                ott_session.move_pointer(where)
+
+        self._busy = True
+        log.log_info(f"Displays: identify on {len(targets)} display(s)")
+        run_async(work, lambda _result: GLib.timeout_add_seconds(4, close_all))
 
     def _mode_changed(self, dd_mode, out, dd_rate):
         rates = _rates(out, selected(dd_mode))

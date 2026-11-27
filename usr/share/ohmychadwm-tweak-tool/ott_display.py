@@ -94,6 +94,47 @@ def query():
     return parse(subprocess.run(["xrandr", "--query"], capture_output=True, text=True, check=True).stdout)
 
 
+def _edid_name(edid):
+    # the four 18-byte descriptors of the EDID base block; tag 0xFC holds the monitor name
+    for offset in (54, 72, 90, 108):
+        desc = edid[offset:offset + 18]
+        if len(desc) == 18 and desc[:3] == b"\0\0\0" and desc[3] == 0xFC:
+            return desc[5:].split(b"\n")[0].decode("ascii", "replace").strip() or None
+    return None
+
+
+def parse_models(prop_text):
+    """Return {output: monitor model} from `xrandr --prop` text, read from each output's EDID."""
+    models, current, hexbuf, in_edid = {}, None, [], False
+    for line in prop_text.splitlines() + [""]:
+        if in_edid:
+            if re.fullmatch(r"[0-9a-fA-F]+", line.strip()):
+                hexbuf.append(line.strip())
+                continue
+            in_edid = False
+            try:
+                name = _edid_name(bytes.fromhex("".join(hexbuf)))
+            except ValueError:
+                name = None
+            if name:
+                models[current] = name
+        m = _HEADER.match(line)
+        if m:
+            current = m["name"]
+        elif line.strip() == "EDID:" and current:
+            in_edid, hexbuf = True, []
+    return models
+
+
+def models():
+    """Return {output: monitor model} for the connected outputs; {} when xrandr fails."""
+    try:
+        text = subprocess.run(["xrandr", "--prop"], capture_output=True, text=True, timeout=10).stdout
+    except (OSError, subprocess.TimeoutExpired):
+        return {}
+    return parse_models(text)
+
+
 def _width(out):
     w, h = (int(n) for n in out.mode.split("x"))
     return h if out.rotate in ("left", "right") else w

@@ -150,6 +150,31 @@ def _select_screen(box, boxes):
     time.sleep(0.1)
 
 
+def pointer():
+    """Return the pointer position as (x, y) strings, or None when xdotool can't tell."""
+    try:
+        where = subprocess.run(["xdotool", "getmouselocation", "--shell"], capture_output=True, text=True,
+                               timeout=5).stdout
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    pos = dict(line.split("=", 1) for line in where.splitlines() if "=" in line)
+    return (pos["X"], pos["Y"]) if "X" in pos and "Y" in pos else None
+
+
+def move_pointer(pos):
+    """Put the pointer back at pos from pointer()."""
+    _xdotool("mousemove", *pos)
+
+
+def select_screen(connector):
+    """Make connector chadwm's active screen (new windows open there); return False when it isn't on."""
+    boxes = screen_boxes()
+    if connector not in boxes:
+        return False
+    _select_screen(boxes[connector], boxes)
+    return True
+
+
 def _press(key):
     _xdotool("key", "--clearmodifiers", key)
     time.sleep(0.15)

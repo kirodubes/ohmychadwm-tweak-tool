@@ -70,3 +70,14 @@ label.info-label {
     border-radius: 6px;
     transition: background-color 400ms ease-out;
 }
+
+/* Displays → Identify: one full-screen card per display */
+window.identify {
+    background-color: alpha(black, 0.82);
+}
+
+window.identify label {
+    color: white;
+    font-size: 72px;
+    font-weight: 700;
+}

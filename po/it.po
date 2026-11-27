@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ohmychadwm-tweak-tool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 20:19+0100\n"
+"POT-Creation-Date: 2026-11-27 20:34+0100\n"
 "PO-Revision-Date: 2026-10-31 12:46+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: Italian\n"
@@ -83,39 +83,39 @@ msgstr "Posta"
 msgid "Compile failed:"
 msgstr "Compilazione non riuscita:"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:175
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:216
 #, python-brace-format
 msgid "xrandr failed: {error}"
 msgstr "xrandr non è riuscito: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:179
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:135
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:220
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:198
 msgid "At least one display has to stay on."
 msgstr "Almeno uno schermo deve restare acceso."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:183
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:224
 #, python-brace-format
 msgid "xrandr could not use this layout: {error}"
 msgstr "xrandr non è riuscito ad applicare questa disposizione: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:184
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:225
 msgid "Display layout changed."
 msgstr "Disposizione degli schermi modificata."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:190
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:231
 msgid "There is no previous layout to go back to."
 msgstr "Non c'è una disposizione precedente da ripristinare."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:233
 msgid "Display layout reverted, nothing saved."
 msgstr "Disposizione degli schermi ripristinata, nessuna modifica salvata."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:192
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:233
 #, python-brace-format
 msgid "Revert failed: {error}"
 msgstr "Ripristino non riuscito: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_display.py:210
+#: usr/share/ohmychadwm-tweak-tool/ott_display.py:251
 #, python-brace-format
 msgid "Layout kept and saved to {path}, so every login uses it."
 msgstr ""
@@ -164,7 +164,7 @@ msgstr "Tastiera"
 
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:47
 #: usr/share/ohmychadwm-tweak-tool/ott_gui.py:238
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:52
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:55
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:33
 #: usr/share/ohmychadwm-tweak-tool/ott_search.py:34
 msgid "Displays"
@@ -574,7 +574,7 @@ msgstr "Quale app apre link, cartelle e file (xdg-mime)."
 
 #: usr/share/ohmychadwm-tweak-tool/ott_page_apps.py:82
 #: usr/share/ohmychadwm-tweak-tool/ott_page_bar.py:89
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:110
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:121
 #: usr/share/ohmychadwm-tweak-tool/ott_page_keyboard.py:84
 #: usr/share/ohmychadwm-tweak-tool/ott_page_look.py:294
 #: usr/share/ohmychadwm-tweak-tool/ott_page_themes.py:206
@@ -715,7 +715,7 @@ msgid "Installing the new Ohmychadwm was cancelled or failed."
 msgstr ""
 "Installazione della nuova versione di Ohmychadwm annullata o non riuscita."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:54
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:57
 msgid ""
 "You are not in an Ohmychadwm session: a change shows right away, but the "
 "saved layout is only used at your Ohmychadwm logins. This desktop keeps its "
@@ -725,7 +725,7 @@ msgstr ""
 "disposizione salvata viene usata solo quando accedi a Ohmychadwm. Questo "
 "desktop mantiene le proprie impostazioni degli schermi."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:59
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:62
 #, python-brace-format
 msgid ""
 "Changes are used right away. Keep them within {seconds} seconds and they are "
@@ -736,37 +736,50 @@ msgstr ""
 "salvarle in {path} (formato arandr, modificabile anche con arandr) e usarle "
 "a ogni accesso; altrimenti verrà ripristinata la disposizione precedente."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:66
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:69
 #, python-brace-format
 msgid "xrandr could not read the displays: {error}"
 msgstr "xrandr non è riuscito a leggere gli schermi: {error}"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:70
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:73
 msgid "xrandr reports no connected display."
 msgstr "xrandr non rileva schermi collegati."
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:78
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:82
 #, python-brace-format
 msgid "Position {number} from the left"
 msgstr "Posizione {number} da sinistra"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:89
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:93
 msgid "On"
 msgstr "Attivo"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:91
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:95
 msgid "Primary"
 msgstr "Principale"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:138
-msgid "Two displays have the same position: give each display its own place."
-msgstr "Due schermi hanno la stessa posizione: dai a ogni schermo il suo posto."
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:117
+msgid "Identify"
+msgstr "Identifica"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:144
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:118
+msgid ""
+"Show each display's position, model and name on that display for a few "
+"seconds"
+msgstr ""
+"Mostra per qualche secondo su ogni schermo la sua posizione, il modello e il "
+"nome"
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:201
+msgid "Two displays have the same position: give each display its own place."
+msgstr ""
+"Due schermi hanno la stessa posizione: dai a ogni schermo il suo posto."
+
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:207
 msgid "Switching…"
 msgstr "Modifica in corso…"
 
-#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:160
+#: usr/share/ohmychadwm-tweak-tool/ott_page_displays.py:223
 msgid "Keep this display layout?"
 msgstr "Mantenere questa disposizione degli schermi?"
 
