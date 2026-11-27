@@ -14,8 +14,17 @@
   "BenQ GC2870 (HDMI-1-1)"), and a new **Identify** button shows a big card on every screen for a few seconds: its
   position from the left, model and connector. A click closes them early. Two identical ASUS screens on riker are
   told apart only by Identify, which is why both were added.
+- **Screens switch off after 15 minutes for existing users too.** kiro-xfce now ships DPMS sleep 15 instead of 30
+  (the blank after 15 minutes didn't reach riker's BenQ on the other GPU; DPMS does), but `/etc/skel` reaches new
+  users only. At the next login the app sets the power manager's sleep to 15 once, only where it still has the old
+  pair (blank 15, sleep 30), on AC and battery. Own values are left alone.
 
 ### Technical Details
+- `ott_display.dpms_sleep_to_15()` reads the channel with one `xfconf-query -l -v` and writes with
+  `xfconf-query -s` (never the XML). It returns `None` when xfconf can't be reached, so `main()` only stores the
+  `dpms_sleep_15` mark in prefs.json after a real check; it runs before the `--first-login` early return, so
+  run.sh's start at every login does it even if the user never opens the app. Tested with a stub `xfconf-query`:
+  old pair (both set), own values (untouched), no channel (nothing), xfconf down (retry).
 - Model names come from `xrandr --prop`: `ott_display.parse_models()` reads each output's EDID and takes the
   monitor-name descriptor (tag 0xFC); a broken or missing EDID just leaves the connector name. It works for an
   output on the other GPU too (riker's BenQ on the Intel port).
@@ -37,7 +46,8 @@
   the left".
 
 ### Files Modified
-- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ott_page_displays.py`, `ott_session.py`, `ott.css`
+- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ott_page_displays.py`, `ott_session.py`, `ott.css`,
+  `ohmychadwm-tweak-tool.py`
 - `po/*.po` (13), `po/ohmychadwm-tweak-tool.pot`, `usr/share/locale/*/LC_MESSAGES/ohmychadwm-tweak-tool.mo` (13)
 - `CHANGELOG.md`, `CLAUDE.md`
 

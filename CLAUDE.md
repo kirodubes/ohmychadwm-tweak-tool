@@ -138,6 +138,9 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
   the screen under the pointer and ignores `fullscreen_on_monitor`, so each card is opened after
   `ott_session.select_screen()` moved the pointer there (worker thread, `_busy`), and the pointer goes back after.
   Any future "show a window on screen N" needs the same.
+- **One-time migrations run at the top of `main()`**, before the `--first-login` early return (run.sh starts the app
+  at every login), each guarded by its own prefs.json mark set only after a real check. First one: `dpms_sleep_15`
+  (`ott_display.dpms_sleep_to_15()`, power-manager sleep 30 → 15 only where blank 15 / sleep 30 is untouched).
 - **Mouse & touchpad**: `ott_root --input` takes JSON and runs `ott_input.validate()` **as root** before writing,
   so the helper only writes text it built itself. Keyboards with RGB/media drivers register a pointer; they are
   skipped by name.

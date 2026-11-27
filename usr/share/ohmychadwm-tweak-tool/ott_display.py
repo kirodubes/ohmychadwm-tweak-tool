@@ -135,6 +135,33 @@ def models():
     return parse_models(text)
 
 
+def dpms_sleep_to_15():
+    """Set the power manager's screen sleep to 15 minutes where it still has Kiro's old default (blank 15, sleep 30).
+
+    Blanking doesn't reach a screen on a second GPU, DPMS sleep does (kiro-xfce 2026.11.27). A user's own values are
+    left alone. Return the properties set, or None when xfconf can't be read (try again at the next start).
+    """
+    if not shutil.which("xfconf-query"):
+        return []
+    channel = "xfce4-power-manager"
+    try:
+        proc = subprocess.run(["xfconf-query", "-c", channel, "-l", "-v"], capture_output=True, text=True, timeout=10)
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if proc.returncode != 0:
+        # no channel yet = the power manager never saved anything: nothing to migrate
+        return [] if "does not exist" in proc.stderr else None
+    values = dict(line.split(None, 1) for line in proc.stdout.splitlines() if len(line.split(None, 1)) == 2)
+    changed = []
+    for power in ("ac", "battery"):
+        blank, sleep = f"/{channel}/blank-on-{power}", f"/{channel}/dpms-on-{power}-sleep"
+        if values.get(blank, "").strip() == "15" and values.get(sleep, "").strip() == "30":
+            if subprocess.run(["xfconf-query", "-c", channel, "-p", sleep, "-s", "15"],
+                              capture_output=True, timeout=10).returncode == 0:
+                changed.append(sleep)
+    return changed
+
+
 def _width(out):
     w, h = (int(n) for n in out.mode.split("x"))
     return h if out.rotate in ("left", "right") else w

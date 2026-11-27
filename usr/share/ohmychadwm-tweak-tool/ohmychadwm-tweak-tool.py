@@ -24,11 +24,13 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE_DIR)
 
 import ott_config  # noqa: E402
+import ott_display  # noqa: E402
 import ott_env  # noqa: E402
 import ott_gui  # noqa: E402
 import log  # noqa: E402
 
 _FIRST_LOGIN_MARK = "first_login_shown"
+_DPMS_MARK = "dpms_sleep_15"
 # First login only: open as a centred floating window instead of a tile (next to the installer on a small screen)
 _FLOAT = False
 _INTERFACE_SCHEMA = "org.gnome.desktop.interface"
@@ -206,6 +208,13 @@ def main():
     """Parse flags and run the application."""
     if "--debug" in sys.argv:
         log.DEBUG = True
+    # once per user, also at the --first-login start of every login (which quits right after the first one)
+    if not ott_config.load_prefs().get(_DPMS_MARK):
+        changed = ott_display.dpms_sleep_to_15()
+        if changed is not None:
+            ott_config.update_prefs({_DPMS_MARK: time.strftime("%Y-%m-%d")})
+            if changed:
+                log.log_info(f"Screens now sleep after 15 minutes: {', '.join(changed)}")
     if "--first-login" in sys.argv:
         # run.sh starts this at every login; only the first one opens the window. Checked after the UTF-8 re-exec,
         # so the mark written here can't make the re-exec'd process quit.
