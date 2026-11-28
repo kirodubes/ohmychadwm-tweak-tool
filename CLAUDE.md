@@ -129,6 +129,10 @@ then the Kiro default from `/etc/skel`. The cursor size is the exception: GTK 3 
 - Edit the **user** copies under `~/.config/ohmychadwm`, never `/etc/skel`.
 - All file writes are line-based (keys, comments and lines the app doesn't own survive) with a one-time
   `<file>.oma-bak` backup. Don't switch to configparser for writing, which drops comments.
+- **Backups of files in a `*.d` folder go to `/var/lib/ohmychadwm-tweak-tool/<full path>.oma-bak`** (`ott_root._backup_path`).
+  SDDM reads every file in `sddm.conf.d` whatever its extension, so `kde_settings.conf.oma-bak` sorted last and its old
+  `[Autologin] Session=` beat ATT's change (riker, 2026-11-28). The package's `readme.install` moves old ones there. Never
+  put a backup back inside a `.d` folder.
 - **Displays**: changes run now, and only **Keep** (15 s countdown, else revert) writes `~/.screenlayout/<user>.sh`,
   the file `run.sh` runs at login, in arandr's format. `--rate` is only written when it isn't the mode's default,
   because arandr itself never writes one. When a width changes, enabled outputs are re-placed side by side.

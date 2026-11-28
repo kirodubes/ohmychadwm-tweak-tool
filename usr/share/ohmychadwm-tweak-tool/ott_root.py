@@ -21,12 +21,20 @@ import ott_system  # noqa: E402
 
 INSTALL_PATH = "/usr/local/bin/ohmychadwm"
 HELPER = os.path.abspath(__file__)
+BACKUP_DIR = "/var/lib/ohmychadwm-tweak-tool"
 
 
 def run_root(args):
     """Run this helper once through pkexec with args; return (ok, error text). Called from the GUI's worker thread."""
     proc = subprocess.run(["pkexec", sys.executable, HELPER, *args], capture_output=True, text=True)
     return proc.returncode == 0, (proc.stdout + proc.stderr).strip()
+
+
+def _backup_path(path):
+    # SDDM reads every file in sddm.conf.d, any extension, so a backup there overrides the real conf
+    if os.path.dirname(path).endswith(".d"):
+        return BACKUP_DIR + path + ".oma-bak"
+    return path + ".oma-bak"
 
 
 def _write_file(path, transform, backup=True):
@@ -39,8 +47,10 @@ def _write_file(path, transform, backup=True):
     new = transform(text)
     if new == text:
         return
-    bak = path + ".oma-bak"
-    if backup and os.path.isfile(path) and not os.path.exists(bak):
+    bak = _backup_path(path)
+    # an old backup next to the file still counts, or an edited file would be saved as the original
+    if backup and os.path.isfile(path) and not os.path.exists(bak) and not os.path.exists(path + ".oma-bak"):
+        os.makedirs(os.path.dirname(bak), exist_ok=True)
         shutil.copy2(path, bak)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     tmp = path + ".ott-tmp"

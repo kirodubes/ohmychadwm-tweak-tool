@@ -35,6 +35,8 @@ Hungarian, Italian, Turkish, Polish, Japanese, Chinese (simplified) and Romanian
 pick it under **Language** and press **Restart now**.
 
 Before it changes a file for the first time, the app keeps a copy of the original next to it as `<file>.oma-bak`.
+A file in a `*.d` folder (the SDDM conf in `/etc/sddm.conf.d/`) is copied to `/var/lib/ohmychadwm-tweak-tool/` under its full path
+instead, because SDDM reads every file in that folder and the old copy would win.
 Root is only needed for `/etc/environment`, the system cursor, the input file and installing the rebuilt bar. Each
 Apply asks for your password **once** (pkexec).
 

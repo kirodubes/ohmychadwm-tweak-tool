@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 2026.11.28
+
+### What Changed
+- **Fix: an SDDM change made in ATT (autologin session, theme) could be silently ignored.** Before the app changes
+  the SDDM login-screen cursor, it keeps a backup copy of the original. That copy sat next to the file as
+  `/etc/sddm.conf.d/kde_settings.conf.oma-bak`, but SDDM reads every file in that folder, whatever its extension,
+  and the last one wins. The old copy therefore beat every later change to `kde_settings.conf`. Found on riker: ATT
+  set autologin to ohmychadwm, and after a reboot the box still logged into XFCE, the session saved in the backup.
+  Ohmychadwm Appearance had the same bug, so its users have the same stray backup.
+- Backups of files in a `*.d` folder now go to `/var/lib/ohmychadwm-tweak-tool/` under their full path. The
+  package's install script moves any existing `/etc/sddm.conf.d/*.oma-bak` there on install and upgrade, which
+  also covers the swap from Ohmychadwm Appearance.
+
+### Technical Details
+- `ott_root._backup_path()` maps a file in a folder ending in `.d` to `BACKUP_DIR + path + ".oma-bak"`. Every other
+  file keeps `<file>.oma-bak` next to it, and the suffix stays `.oma-bak`, as before.
+- `_write_file()` also skips the backup when an old `<file>.oma-bak` still sits next to the file. Without that
+  check, the first write after the update would save an already-edited file as if it were the original.
+- `tests/run-live-ohmychadwm.sh` also looks in `/var/lib/ohmychadwm-tweak-tool` for backups a run created.
+
+### Files Modified
+- `usr/share/ohmychadwm-tweak-tool/ott_root.py`, `README.md`, `CLAUDE.md`, `tests/run-live-ohmychadwm.sh`,
+  `CHANGELOG.md`; `KIRO-PKG-BUILD-APPS/ohmychadwm-tweak-tool/readme.install`
+
 ## 2026.11.27
 
 ### What Changed
