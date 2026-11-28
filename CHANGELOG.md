@@ -3,6 +3,11 @@
 ## 2026.11.28
 
 ### What Changed
+- **Fix: with screens on two graphics cards, some went black after 10 minutes and the others stayed lit.** The X
+  screen saver's blank (X's default of 10 minutes, which nothing in ohmychadwm sets) only reaches the screens on the
+  card that runs the desktop: on riker the two ASUS screens went black, the BenQ on the motherboard stayed on. The
+  screen sleep after 15 minutes reaches every screen (tested: all three dark together). The app now switches the
+  blank off at every login, so the sleep turns all screens off at once.
 - **Fix: a saved screen layout could leave a screen dark after a reboot on a PC with two GPUs.** Linux names the
   screen connectors of two graphics cards in the order their drivers start, and that order can change from one boot
   to the next. On riker the BenQ on the motherboard HDMI was `HDMI-1-3` on one boot and `HDMI-1-1` on the next. The
@@ -22,6 +27,8 @@
   also covers the swap from Ohmychadwm Appearance.
 
 ### Technical Details
+- `ott_display.screensaver_off()` runs `xset s off` on every `--first-login` start (it lasts one session, so it
+  is not a one-time migration); `xorg-xset` joins the PKGBUILD depends.
 - `ott_display.build_script()` adds one `# ott-monitor <output> <id>` comment line per screen that is on; the id is
   the first 16 hex digits of the EDID's SHA-1 (`parse_ids()`, sharing `_parse_edids()` with `parse_models()`).
   arandr loads such a file fine: it keeps every line except the single `xrandr` line.
@@ -40,7 +47,7 @@
 - `tests/run-live-ohmychadwm.sh` also looks in `/var/lib/ohmychadwm-tweak-tool` for backups a run created.
 
 ### Files Modified
-- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ohmychadwm-tweak-tool.py`,
+- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ohmychadwm-tweak-tool.py`, `KIRO-PKG-BUILD-APPS/ohmychadwm-tweak-tool/PKGBUILD`,
   `usr/share/ohmychadwm-tweak-tool/ott_root.py`, `README.md`, `CLAUDE.md`, `tests/run-live-ohmychadwm.sh`,
   `CHANGELOG.md`; `KIRO-PKG-BUILD-APPS/ohmychadwm-tweak-tool/readme.install`
 

@@ -216,6 +216,9 @@ def main():
             if changed:
                 log.log_info(f"Screens now sleep after 15 minutes: {', '.join(changed)}")
     if "--first-login" in sys.argv:
+        # every login: X's blank skips a screen on a second GPU, the power manager's DPMS sleep reaches them all
+        if not ott_display.screensaver_off():
+            log.log_info("Could not switch the X screen saver blank off (xset)")
         # every login, after run.sh ran the saved layout: a screen on a second GPU can come up under another name
         renamed = ott_display.heal_layout()
         if renamed:

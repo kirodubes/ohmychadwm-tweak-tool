@@ -175,6 +175,17 @@ def dpms_sleep_to_15():
     return changed
 
 
+# The X screen saver blanks only the screens on the GPU that runs the X screen: on riker (2026-11-28) its default
+# 600 s left the two NVIDIA screens black and the BenQ on the Intel port lit. DPMS sleep (the power manager's 15
+# minutes) darkens every screen together, so the blank is switched off and the sleep does the job alone.
+def screensaver_off():
+    """Switch the X screen saver blank off for this session; return True when xset did it."""
+    try:
+        return subprocess.run(["xset", "s", "off"], capture_output=True, timeout=10).returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+
+
 def _width(out):
     w, h = (int(n) for n in out.mode.split("x"))
     return h if out.rotate in ("left", "right") else w
