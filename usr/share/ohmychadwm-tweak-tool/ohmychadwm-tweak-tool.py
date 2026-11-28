@@ -216,6 +216,11 @@ def main():
             if changed:
                 log.log_info(f"Screens now sleep after 15 minutes: {', '.join(changed)}")
     if "--first-login" in sys.argv:
+        # every login, after run.sh ran the saved layout: a screen on a second GPU can come up under another name
+        renamed = ott_display.heal_layout()
+        if renamed:
+            log.log_info("Screen layout follows renamed outputs: "
+                         + ", ".join(f"{old} -> {new}" for old, new in renamed.items()))
         # run.sh starts this at every login; only the first one opens the window. Checked after the UTF-8 re-exec,
         # so the mark written here can't make the re-exec'd process quit.
         if ott_config.load_prefs().get(_FIRST_LOGIN_MARK):

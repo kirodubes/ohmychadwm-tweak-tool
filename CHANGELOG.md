@@ -3,6 +3,14 @@
 ## 2026.11.28
 
 ### What Changed
+- **Fix: a saved screen layout could leave a screen dark after a reboot on a PC with two GPUs.** Linux names the
+  screen connectors of two graphics cards in the order their drivers start, and that order can change from one boot
+  to the next. On riker the BenQ on the motherboard HDMI was `HDMI-1-3` on one boot and `HDMI-1-1` on the next. The
+  saved layout still said `HDMI-1-3`, xrandr skips a name it can't find, and the BenQ stayed dark. Now the Displays
+  page saves which monitor each connector had. At every login, if a saved screen is missing and the same monitor is
+  connected under another name, the app renames it in the layout, applies the layout and saves it. Layouts saved
+  before this update (or with arandr) carry no monitor ids: when exactly one saved screen is missing and exactly one
+  new screen is connected, those two are paired.
 - **Fix: an SDDM change made in ATT (autologin session, theme) could be silently ignored.** Before the app changes
   the SDDM login-screen cursor, it keeps a backup copy of the original. That copy sat next to the file as
   `/etc/sddm.conf.d/kde_settings.conf.oma-bak`, but SDDM reads every file in that folder, whatever its extension,
@@ -14,6 +22,17 @@
   also covers the swap from Ohmychadwm Appearance.
 
 ### Technical Details
+- `ott_display.build_script()` adds one `# ott-monitor <output> <id>` comment line per screen that is on; the id is
+  the first 16 hex digits of the EDID's SHA-1 (`parse_ids()`, sharing `_parse_edids()` with `parse_models()`).
+  arandr loads such a file fine: it keeps every line except the single `xrandr` line.
+- `heal()` (pure, tested on riker's real file) pairs missing saved screens with connected screens the file doesn't
+  have on: first by id (only a unique match), then the one-to-one fallback, which is skipped when the missing screen
+  has an id (a different monitor). The names are swapped in the `xrandr` line, so a new name the file listed as
+  `--off` takes the old name's place, and the id lines are rewritten. `heal_layout()` runs it, applies it and saves
+  it; `main()` calls it on every `--first-login` start, before the early return, after run.sh ran the layout.
+- Two identical monitors whose EDIDs carry no serial get the same id; those are never paired by id.
+- riker itself got `softdep i915 pre: nvidia-drm` in `/etc/modprobe.d/` (initramfs rebuilt), so the BenQ keeps
+  `HDMI-1-3` there; the app fix is for every other two-GPU PC.
 - `ott_root._backup_path()` maps a file in a folder ending in `.d` to `BACKUP_DIR + path + ".oma-bak"`. Every other
   file keeps `<file>.oma-bak` next to it, and the suffix stays `.oma-bak`, as before.
 - `_write_file()` also skips the backup when an old `<file>.oma-bak` still sits next to the file. Without that
@@ -21,7 +40,8 @@
 - `tests/run-live-ohmychadwm.sh` also looks in `/var/lib/ohmychadwm-tweak-tool` for backups a run created.
 
 ### Files Modified
-- `usr/share/ohmychadwm-tweak-tool/ott_root.py`, `README.md`, `CLAUDE.md`, `tests/run-live-ohmychadwm.sh`,
+- `usr/share/ohmychadwm-tweak-tool/ott_display.py`, `ohmychadwm-tweak-tool.py`,
+  `usr/share/ohmychadwm-tweak-tool/ott_root.py`, `README.md`, `CLAUDE.md`, `tests/run-live-ohmychadwm.sh`,
   `CHANGELOG.md`; `KIRO-PKG-BUILD-APPS/ohmychadwm-tweak-tool/readme.install`
 
 ## 2026.11.27
